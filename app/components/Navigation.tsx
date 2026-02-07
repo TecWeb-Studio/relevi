@@ -17,7 +17,7 @@ export default function Navigation() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/#services', label: 'Services' },
+    { href: '/services', label: 'Services' },
     { href: '/team', label: 'Our Team' },
     { href: '/events', label: 'Events' },
     { href: '/#contact', label: 'Contact' },
@@ -25,11 +25,10 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-3'
           : 'bg-transparent py-6'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -37,8 +36,8 @@ export default function Navigation() {
             href="/"
             className="text-2xl font-bold text-olive-700 hover:text-olive-600 transition-colors duration-300 animate-fadeIn"
           >
-            <span className="text-olive-600">Serenity</span>{' '}
-            <span className="text-olive-800">Touch</span>
+            <span className="text-olive-600">Relevi</span>{' '}
+            <span className="text-olive-800">Healing</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -85,9 +84,8 @@ export default function Navigation() {
         </div>
 
         <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-            isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-          }`}
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+            }`}
         >
           <div className="flex flex-col space-y-4 py-4">
             {navLinks.map((link) => (

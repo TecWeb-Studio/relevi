@@ -55,14 +55,14 @@ export default function Footer() {
               <li>123 Wellness Street</li>
               <li>Tranquil City, TC 12345</li>
               <li>Phone: (555) 123-4567</li>
-              <li>Email: info@serenitytouch.com</li>
+              <li>Email: info@revelihealing.com</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-olive-700 mt-8 pt-8 text-center text-olive-300 animate-fadeIn">
           <p>
-            &copy; {new Date().getFullYear()} Serenity Touch Massage Center. All
+            &copy; {new Date().getFullYear()} ReleviHealing Massage Center. All
             rights reserved.
           </p>
         </div>

@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Serenity Touch - Massage Center",
-  description: "Experience relaxation and rejuvenation at Serenity Touch Massage Center. Professional massage services in a tranquil environment.",
+  title: "ReleviHealing - Massage Center",
+  description: "Experience relaxation and rejuvenation at ReleviHealing Massage Center. Professional massage services in a tranquil environment.",
 };
 
 export default function RootLayout({

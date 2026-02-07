@@ -25,45 +25,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const services = [
-    {
-      title: 'Swedish Massage',
-      description:
-        'A gentle, relaxing massage that uses long strokes and kneading to promote relaxation and improve circulation.',
-      icon: '🌿',
-    },
-    {
-      title: 'Deep Tissue',
-      description:
-        'Targeted pressure on chronic tension areas to release deep-seated knots and restore mobility.',
-      icon: '💆',
-    },
-    {
-      title: 'Hot Stone Therapy',
-      description:
-        'Heated basalt stones placed on key points to melt away tension and promote deep relaxation.',
-      icon: '🔥',
-    },
-    {
-      title: 'Aromatherapy',
-      description:
-        'Essential oils combined with massage techniques to enhance physical and emotional well-being.',
-      icon: '🌸',
-    },
-    {
-      title: 'Sports Massage',
-      description:
-        'Specialized techniques to help athletes prepare for events and recover from training.',
-      icon: '🏃',
-    },
-    {
-      title: 'Reflexology',
-      description:
-        'Pressure applied to specific points on the feet and hands to promote overall wellness.',
-      icon: '👣',
-    },
-  ];
-
   return (
     <div className="bg-white">
       <section
@@ -79,7 +40,7 @@ export default function Home() {
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fadeInDown">
             <span className="text-olive-800">Welcome to </span>
-            <span className="text-gradient">Serenity Touch</span>
+            <span className="text-gradient">ReleviHealing</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 animate-fadeInUp" style={{ animationDelay: '200ms' }}>
             Where relaxation meets rejuvenation. Experience the healing power of
@@ -87,8 +48,14 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scaleIn" style={{ animationDelay: '400ms' }}>
             <Link
-              href="/team"
+              href="/services"
               className="bg-olive-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              Explore Services
+            </Link>
+            <Link
+              href="/team"
+              className="bg-white text-olive-600 border-2 border-olive-600 px-8 py-4 rounded-full font-semibold hover:bg-olive-50 transition-all duration-300 hover:scale-105"
             >
               Meet Our Team
             </Link>
@@ -118,46 +85,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 reveal">
-            <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
-              Our Services
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover our range of therapeutic treatments designed to restore
-              balance to your body and mind.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className="reveal bg-olive-50 rounded-2xl p-8 hover-lift transition-all duration-300 group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-olive-800 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-24 bg-gradient-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
               <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-6">
-                Why Choose Serenity Touch?
+                Why Choose ReleviHealing?
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -262,7 +195,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-gray-800 font-medium">Email</p>
-                    <p className="text-gray-600">info@serenitytouch.com</p>
+                    <p className="text-gray-600">info@revelihealing.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

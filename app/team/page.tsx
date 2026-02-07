@@ -11,6 +11,7 @@ interface TeamMember {
   experience: string;
   certifications: string[];
   emoji: string;
+  image?: string; // Optional image URL to replace emoji
 }
 
 export default function TeamPage() {
@@ -40,7 +41,7 @@ export default function TeamPage() {
       id: 1,
       name: 'Sarah Mitchell',
       role: 'Founder & Lead Therapist',
-      bio: 'With over 15 years of experience in therapeutic massage, Sarah founded Serenity Touch with a vision to create a sanctuary for healing and relaxation. Her holistic approach combines traditional techniques with modern wellness practices.',
+      bio: 'With over 15 years of experience in therapeutic massage, Sarah founded ReleviHealing with a vision to create a sanctuary for healing and relaxation. Her holistic approach combines traditional techniques with modern wellness practices.',
       specialties: ['Deep Tissue', 'Swedish Massage', 'Hot Stone Therapy'],
       experience: '15+ years',
       certifications: ['Licensed Massage Therapist', 'Certified Aromatherapist', 'Reiki Master'],
@@ -126,9 +127,17 @@ export default function TeamPage() {
                 onClick={() => setSelectedMember(member)}
               >
                 <div className="h-64 bg-gradient-to-br from-olive-100 to-olive-200 flex items-center justify-center group-hover:from-olive-200 group-hover:to-olive-300 transition-all duration-300">
-                  <div className="text-9xl transform group-hover:scale-110 transition-transform duration-300">
-                    {member.emoji}
-                  </div>
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="text-9xl transform group-hover:scale-110 transition-transform duration-300">
+                      {member.emoji}
+                    </div>
+                  )}
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-olive-800 mb-2">
@@ -248,7 +257,15 @@ export default function TeamPage() {
           >
             <div className="relative">
               <div className="h-48 bg-gradient-to-br from-olive-100 to-olive-300 flex items-center justify-center">
-                <div className="text-9xl">{selectedMember.emoji}</div>
+                {selectedMember.image ? (
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="text-9xl">{selectedMember.emoji}</div>
+                )}
               </div>
               <button
                 onClick={() => setSelectedMember(null)}
@@ -262,7 +279,7 @@ export default function TeamPage() {
                 {selectedMember.name}
               </h2>
               <p className="text-olive-600 text-lg mb-6">{selectedMember.role}</p>
-              
+
               <div className="mb-6">
                 <h3 className="text-lg font-semibold text-olive-800 mb-2">About</h3>
                 <p className="text-gray-600 leading-relaxed">{selectedMember.bio}</p>
