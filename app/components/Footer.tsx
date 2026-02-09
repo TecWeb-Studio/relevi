@@ -82,7 +82,7 @@ export default function Footer() {
           <p>
             &copy; {new Date().getFullYear()} Relevi Healing. {t('footer.copyright')}{" "}
             <Link
-              href="https://tecwebstudio.com"
+              href="https://www.tecwebstudio.it"
               className="text-olive-100 hover:text-white transition-colors duration-300"
             >
               {t('footer.tecweb')}
@@ -93,3 +93,4 @@ export default function Footer() {
     </footer>
   );
 }
+
