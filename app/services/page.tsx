@@ -99,8 +99,8 @@ export default function ServicesPage() {
                 key={category.value}
                 onClick={() => setFilter(category.value)}
                 className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${filter === category.value
-                    ? 'bg-olive-600 text-white shadow-lg'
-                    : 'bg-olive-100 text-olive-700 hover:bg-olive-200'
+                  ? 'bg-olive-600 text-white shadow-lg'
+                  : 'bg-olive-100 text-olive-700 hover:bg-olive-200'
                   }`}
               >
                 {category.label}
@@ -186,8 +186,8 @@ export default function ServicesPage() {
               <div
                 key={pkg.key}
                 className={`reveal rounded-3xl p-8 transition-all duration-300 ${pkg.featured
-                    ? 'bg-gradient-to-br from-olive-600 to-olive-700 text-white shadow-2xl transform md:scale-105'
-                    : 'bg-white border-2 border-olive-200 hover-lift'
+                  ? 'bg-gradient-to-br from-olive-600 to-olive-700 text-white shadow-2xl transform md:scale-105'
+                  : 'bg-white border-2 border-olive-200 hover-lift'
                   }`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
@@ -217,8 +217,8 @@ export default function ServicesPage() {
                     <div
                       key={service}
                       className={`py-2 flex items-center gap-2 ${pkg.featured
-                          ? 'text-olive-100'
-                          : 'text-gray-700 border-b border-olive-200'
+                        ? 'text-olive-100'
+                        : 'text-gray-700 border-b border-olive-200'
                         }`}
                     >
                       <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,8 +239,8 @@ export default function ServicesPage() {
                 <button
                   onClick={() => window.open('https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0', '_blank')}
                   className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${pkg.featured
-                      ? 'bg-white text-olive-600 hover:bg-olive-50'
-                      : 'bg-olive-600 text-white hover:bg-olive-700'
+                    ? 'bg-white text-olive-600 hover:bg-olive-50'
+                    : 'bg-olive-600 text-white hover:bg-olive-700'
                     }`}
                 >
                   {t('services.packages.bookPackage')}
