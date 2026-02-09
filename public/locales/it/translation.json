@@ -262,24 +262,22 @@
     "members": {
       "corradoZamboni": {
         "name": "Corrado Zamboni",
-        "role": "Fondatore & Terapista Principale",
-        "bio": "Con oltre 15 anni di esperienza nel massaggio terapeutico, Sarah ha fondato ReleviHealing con la visione di creare un santuario per la guarigione e il relax. Il suo approccio olistico combina tecniche tradizionali con pratiche moderne di benessere.",
+        "role": "Consulente Filosofico",
+        "bio": "Corrado ha studiato e insegnato economia ed è un imprenditore nel settore della salute e della nutrizione. Si è laureato in storia e filosofia, con una tesi in estetica sul pensiero delle arti in Paul Valery, si occupa di economia sociale e filosofia politica sotto il cielo dell'etica e del pensiero critico. Accompagna la ricerca personale con l'attenzione e l'espressione del linguaggio della parola, del corpo e delle emozioni, quindi la filosofia e il pensiero delle arti, in laboratori di pensiero, danza, scrittura e disegno. Un approccio che risveglia la vitalità, le emozioni e la connessione autentica con sè, con l'altro, con l'universo. E che si propone anche attraverso uno sportello di confronto/consulenza individuale e in caffè filosofici aperti alla cittadinanza",
         "specialties": [
-          "Tessuto Profondo",
-          "Massaggio Svedese",
-          "Terapia con Pietre Calde"
+          "Economia e Commercio",
+          "Consulenze Filosofiche"
         ],
         "experience": "15+ anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Aromaterapeuta Certificato",
-          "Maestro Reiki"
+          "Laurea in Storia e Filosofia",
+          "Esperto in Economia Sociale"
         ]
       },
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
         "role": "Massaggiatore Senior",
-        "bio": "James è specializzato nel massaggio sportivo e nella riabilitazione da infortuni. La sua esperienza come ex atleta gli dà una prospettiva unica nel trattare la tensione muscolare e migliorare le prestazioni atletiche.",
+        "bio": "Denise è specializzata nel massaggio sportivo e nella riabilitazione da infortuni. La sua esperienza come ex atleta le dà una prospettiva unica nel trattare la tensione muscolare e migliorare le prestazioni atletiche.",
         "specialties": [
           "Massaggio Sportivo",
           "Tessuto Profondo",
@@ -295,23 +293,23 @@
       "francescaTonon": {
         "name": "Francesca Tonon",
         "role": "Coordinatore del Benessere",
-        "bio": "Maria porta calore e competenza in ogni interazione con il cliente. Il suo tocco intuitivo e la natura accogliente la rendono una delle preferite tra chi cerca relax e sollievo dallo stress.",
+        "bio": "Francesca offre consulenze naturopatiche a 360 gradi, con un approccio unico e personalizzato che va oltre le tradizionali terapie. L'approccio che propone si fonda sulla combinazione di diverse discipline naturali e olistiche, tutte mirate al benessere completo della persona - sia a livello fisico che emotivo. Ciò che rende unica la sua consulenza è proprio l'integrazione di più tecniche, in modo da creare un percorso personalizzato per ogni cliente.",
         "specialties": [
-          "Massaggio Svedese",
-          "Massaggio Prenatale",
-          "Aromaterapia"
+          "Naturopatia",
+          "Kinesiologia",
+          "Medicina Tradizionale Cinese"
         ],
         "experience": "8 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificata Massaggio Prenatale",
-          "Praticante Aromaterapia"
+          "Specialista Naturopatia",
+          "Kinesiologo Certificato",
+          "Praticante di Medicina Tradizionale Cinese"
         ]
       },
       "giancarloPavanello": {
         "name": "Giancarlo Pavanello",
-        "role": "Specialista in Riflessologia",
-        "bio": "David ha dedicato la sua carriera all'antica arte della riflessologia. Le sue precise tecniche di pressione aiutano i clienti a raggiungere equilibrio e benessere attraverso il potere del tocco.",
+        "role": "Massaggiere Specializzato Multitech",
+        "bio": "Da ReLeVi Healing, Giancarlo propone trattamenti personalizzati orientati al riequilibrio e all'ascolto del corpo, con un approccio basato su sensibilità, presenza e tecnica. Le sue competenze includono: Massaggio Decontratturante e Sportivo, Linfodrenaggio metodo Vodder, Massaggio Svedese e Antistress, Massaggio Biodinamico a 4 mani per un'esperienza di profonda connessione corpo-mente, Tecniche orientali come Thai Tradizionale, Ayurvedico Abhyangam, Massaggi con oli essenziali, Hot Stone, Lomi Lomi NUI e Californiano emozionale. Ogni trattamento è adattato ai bisogni della persona in un ambiente accogliente e rispettoso.",
         "specialties": [
           "Riflessologia",
           "Massaggio Thai",
@@ -327,22 +325,18 @@
       "graziaSferrazzaCallea": {
         "name": "Grazia Sferrazza Callea",
         "role": "Coordinatore Spa & Terapista",
-        "bio": "Emma gestisce le operazioni della nostra spa fornendo al contempo servizi eccezionali di massaggio terapeutico. Le sue capacità organizzative e il tocco terapeutico garantiscono che ogni visita superi le aspettative.",
+        "bio": "Sono Grazia Sferrazza Callea, ho studiato naturopatia, kinesiologia, Medicina Tradizionale Cinese e Bilanciamento Craniosacrale. Nel 2009 ho iniziato a studiare la mia menopausa e, grazie alle mie competenze ho fatto delle scoperte che mi hanno permesso di inquadrare questo fenomeno biologico in quadro di senso talmente diverso da essere trasformativo. Infatti sono diventata Menopausa Coach. Da un quindicina di anni ho scritto un paio di libri sull'argomento e aiuto le donne che cercano di ritrovare un equilibrio fisico ed emotivo.",
         "specialties": [
-          "Terapia con Pietre Calde",
-          "Massaggio di Coppia",
-          "Massaggio Rilassante"
+          "Menopausa Coaching"
         ],
         "experience": "6 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificazione Gestione Spa",
-          "Specialista Pietre Calde"
+          "Menopausa Coach"
         ]
       },
       "martinaPasut": {
         "name": "Martina Pasut",
-        "role": "Massaggiatore",
+        "role": "Insegnante di Yoga",
         "bio": "La mia passione per lo yoga nasce dal desiderio di approfondire la connessione con me stessa-mente, corpo ed emozioni-ma anche con le persone e la natura, di cui siamo tutti parte Attraverso il movimento fluido, il respiro consapevole e un'attenzione costante ai miei allievi, il mio obiettivo è offrire benessere psicofisico. Anche se in un'epoca in cui ansia e stress sembrano dominare le nostre vite, possiamo permetterci di lasciarci andare e rilassarci in profondità. Con me, niente posizioni impossibili né gare di flessibilità: lo yoga è per tutti!",
         "specialties": [
           "Yoga"
@@ -354,55 +348,48 @@
       },
       "martinaRoma": {
         "name": "Martina Roma",
-        "role": "Massaggiatore",
-        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "role": "Osteopata",
+        "bio": "D.O. in Osteopatia, con specializzazioni in osteopatia pediatrica e corsi di perfezionamento in gravidanza, post parto, disturbi temporo-mandibolari e taping kinesiologico. La sua formazione continua le permette di offrire trattamenti altamente personalizzati. Quello che più mi incanta dell' osteopatia è la capacità di prendere in carico la persona nella sua globalità, ascoltare la sua storia e sentire il percorso del sintomo nel corpo del paziente. Mi appassiona spiegare le connessioni anatomiche e fisiologiche tra il sintomo e la sua origine in modo da rendere chi ho davanti consapevole del suo corpo. Mi piace notare le connessioni tra l' osteopatia e la natura: la purezza è l'elemento che li accomuna. Da questa riflessione nasce il mio interesse e inseguito la mia passione per il trattamento neonatale/pediatrico: il bambino si lascia accogliere dalle mie mani, è libero da pregiudizi e si affida totalmente. Con le mie conoscenze, la formazione costante e la mia sensibilità cerco di assicurare il benessere della persona",
         "specialties": [
-          "Massaggio Svedese",
-          "Tessuto Profondo",
-          "Terapia Cupping"
+          "Osteapatia",
+          "Osteopatia Pediatrica",
+          "Massaggiatrice Osteopatica"
         ],
         "experience": "7 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificato Terapia Cupping",
-          "Praticante Tui Na"
+          "Massaggiatore Autorizzato"
         ]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
-        "role": "Massaggiatore",
-        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "role": "Praticante Biodinamico Craniosacrale",
+        "bio": "Massimo ha abbracciato e approfondito l'approccio Biodinamico sotto la guida di Mike Boxhall, terapeuta inglese pioniere del settore. Propone una modalità di lavoro e sostegno basata sull'ascolto profondo della persona, integrando corpo- mente-Spirito e sostenendo le intrinseche capacità di autoregolazione innate in ognuno di noi. Affinché la Salute possa nuovamente manifestare il suo potenziale e garantirci vitalità, armonia, serenità e pienezza.",
         "specialties": [
-          "Massaggio Svedese",
-          "Tessuto Profondo",
-          "Terapia Cupping"
+          "Biodinamica"
         ],
-        "experience": "7 anni",
+        "experience": "16 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificato Terapia Cupping",
-          "Praticante Tui Na"
+          "Operatore Craniosacrale",
+          "Praticante Biodinamico"
         ]
       },
       "monicaBortoluzzi": {
         "name": "Monica Bortoluzzi",
-        "role": "Massaggiatore",
-        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "role": "Counselor & Rebirthing Practitioner",
+        "bio": "REBIRTHING: Il Rebirthing è una pratica di respirazione che aiuta a connetterci con la nostra consapevolezza interiore, scoprendo e liberandoci da convinzioni limitanti che influenzano la nostra vita. Attraverso questa pratica, possiamo ottenere intuizioni e comprensioni profonde per il nostro benessere psicofisico. COLLOQUI DI COUNSELING: In una sessione di counseling, esploriamo insieme le radici del tuo malessere psicofisico, scoprendo pensieri e reazioni emotive che derivano dal passato. Come counselor, ti accompagno in un viaggio di auto- conoscenza, creando uno spazio sicuro e non giudicante dove puoi entrare in contatto con la tua parte più profonda, per evolvere e crescere in modo autentico.",
         "specialties": [
-          "Massaggio Svedese",
-          "Tessuto Profondo",
-          "Terapia Cupping"
+          "Rebirthing",
+          "Counseling"
         ],
         "experience": "7 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificato Terapia Cupping",
-          "Praticante Tui Na"
+          "Rebirthing Practitioner",
+          "Counselor Professionista"
         ]
       },
       "paoloAvella": {
         "name": "Paolo Avella",
-        "role": "Massaggiatore",
+        "role": "Specialista Ginnastica Ortodinamica",
         "bio": "La sua missione è aiutare le persone a migliorare mobilità, postura e benessere generale, attraverso un approccio mirato e progressivo. Grazie alla sua formazione riconosciuta da Sport e Salute e dal Ministero dello Sport, Paolo guida con professionalità e passione ogni percorso, adattando gli esercizi alle esigenze di ciascun individuo.",
         "specialties": [
           "Ginnastica Ortodinamica"
@@ -416,34 +403,28 @@
       },
       "sabrinaPozzobon": {
         "name": "Sabrina Pozzobon",
-        "role": "Massaggiatore",
-        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "role": "Consulente di Immagine",
+        "bio": "Amo la natura e i suoi colori, ma anche la moda e il tessile, campo in cui ho sempre lavorato anche grazie al mio diploma da modellista. Da queste passioni è nata la mia attuale professione. Posso aiutarvi a studiare la vostra armocromia, le vostre forme, le vostre potenzialità e il vostro stile in poche e semplici mosse. I colori giusti non cambiano solo l'aspetto, ma il modo in cui ci percepiamo e ci presentiamo al mondo.",
         "specialties": [
-          "Massaggio Svedese",
-          "Tessuto Profondo",
-          "Terapia Cupping"
+          "Consulente di Immagine Armocromia"
         ],
         "experience": "7 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificato Terapia Cupping",
-          "Praticante Tui Na"
+          "Consulente di Immagine Armocromia"
         ]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
-        "role": "Massaggiatore",
-        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "role": "Arteterapeuta & Insegnante Yoga",
+        "bio": "Tamara è un'insegnante di yoga e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore. Attraverso l'arteterapia, Tamara accompagna le persone in un viaggio di esplorazione di sé, utilizzando l'espressione artistica come strumento per accedere a emozioni profonde e favorire il benessere psicofisico. Presso ReLeVi Healing, Tamara guiderà sessioni di arteterapia, offrendo uno spazio sicuro e accogliente dove esprimersi liberamente e intraprendere un percorso di trasformazione personale.",
         "specialties": [
-          "Massaggio Svedese",
-          "Tessuto Profondo",
-          "Terapia Cupping"
+          "Arteterapia",
+          "Yoga"
         ],
         "experience": "7 anni",
         "certifications": [
-          "Massaggiatore Autorizzato",
-          "Certificato Terapia Cupping",
-          "Praticante Tui Na"
+          "Insegnante di Yoga",
+          "Arteterapeuta"
         ]
       }
     }

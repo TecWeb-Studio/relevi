@@ -7,21 +7,24 @@ const i18nConfig = {
   fallbackLng: 'en',
   supportedLngs: ['en', 'it'],
   debug: process.env.NODE_ENV === 'development',
-  
+
+  defaultNS: 'translation',
+  ns: ['translation'],
+
   interpolation: {
     escapeValue: false,
   },
-  
+
   detection: {
     order: ['localStorage', 'navigator', 'htmlTag'],
     caches: ['localStorage'],
     lookupLocalStorage: 'i18nextLng',
   },
-  
+
   backend: {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
   },
-  
+
   react: {
     useSuspense: false,
   },

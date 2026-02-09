@@ -262,24 +262,22 @@
     "members": {
       "corradoZamboni": {
         "name": "Corrado Zamboni",
-        "role": "Founder & Lead Therapist",
-        "bio": "With over 15 years of experience in therapeutic massage, Sarah founded ReleviHealing with a vision to create a sanctuary for healing and relaxation. Her holistic approach combines traditional techniques with modern wellness practices.",
+        "role": "Philosophical Consultant",
+        "bio": "Corrado studied and taught economics and is an entrepreneur in the health and nutrition sector. He holds a degree in history and philosophy, with a thesis in aesthetics on the thought of arts in Paul Valery. He is engaged in social economics and political philosophy under the light of ethics and critical thinking. He accompanies personal research with attention and expression of the language of words, body and emotions, through philosophy and the thought of arts, in workshops of thought, dance, writing and drawing. An approach that awakens vitality, emotions and authentic connection with oneself, with others, with the universe. He also offers individual consultation and philosophical cafés open to the community.",
         "specialties": [
-          "Deep Tissue",
-          "Swedish Massage",
-          "Hot Stone Therapy"
+          "Economics & Commerce",
+          "Philosophical Consulting"
         ],
         "experience": "15+ years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Certified Aromatherapist",
-          "Reiki Master"
+          "Degree in History and Philosophy",
+          "Expert in Social Economy"
         ]
       },
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
         "role": "Senior Massage Therapist",
-        "bio": "James specializes in sports massage and injury rehabilitation. His background as a former athlete gives him unique insight into treating muscle tension and enhancing athletic performance.",
+        "bio": "Denise specializes in sports massage and injury rehabilitation. Her background as a former athlete gives her unique insight into treating muscle tension and enhancing athletic performance.",
         "specialties": [
           "Sports Massage",
           "Deep Tissue",
@@ -295,159 +293,142 @@
       "francescaTonon": {
         "name": "Francesca Tonon",
         "role": "Wellness Coordinator",
-        "bio": "Maria brings warmth and expertise to every client interaction. Her intuitive touch and nurturing nature make her a favorite among those seeking relaxation and stress relief.",
+        "bio": "Francesca offers comprehensive naturopathic consultations with a unique and personalized approach that goes beyond traditional therapies. Her approach is based on the combination of various natural and holistic disciplines, all aimed at the complete well-being of the person—both physically and emotionally. What makes her consultation unique is precisely the integration of multiple techniques, creating a personalized path for each client.",
         "specialties": [
-          "Swedish Massage",
-          "Prenatal Massage",
-          "Aromatherapy"
+          "Naturopathy",
+          "Kinesiology",
+          "Traditional Chinese Medicine"
         ],
         "experience": "8 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Prenatal Massage Certified",
-          "Aromatherapy Practitioner"
+          "Specialist in Naturopathy",
+          "Certified Kinesiologist",
+          "Traditional Chinese Medicine Practitioner"
         ]
       },
       "giancarloPavanello": {
         "name": "Giancarlo Pavanello",
-        "role": "Reflexology Specialist",
-        "bio": "David has dedicated his career to the ancient art of reflexology. His precise pressure techniques help clients achieve balance and wellness through the power of touch.",
+        "role": "Multi-Technique Specialized Masseur",
+        "bio": "At ReLeVi Healing, Giancarlo offers personalized treatments focused on rebalancing and body listening, with an approach based on sensitivity, presence and technique. His skills include: Detoxifying and Sports Massage, Vodder Method Lymphatic Drainage, Swedish and Anti-stress Massage, Four-handed Biodynamic Massage for a profound mind-body connection experience, Oriental techniques such as Traditional Thai, Ayurvedic Abhyangam, Massages with essential oils, Hot Stone, Lomi Lomi NUI and emotional California massage. Each treatment is adapted to the individual's needs in a welcoming and respectful environment.",
         "specialties": [
-          "Reflexology",
-          "Thai Massage",
-          "Shiatsu"
+          "Detoxifying & Sports Massage",
+          "Lymphatic Drainage",
+          "Oriental Massage Techniques"
         ],
         "experience": "12 years",
         "certifications": [
-          "Certified Reflexologist",
-          "Thai Massage Practitioner",
-          "Shiatsu Specialist"
+          "Certified Massage Therapist",
+          "Vodder Method Certified",
+          "Traditional Thai Massage Practitioner"
         ]
       },
       "graziaSferrazzaCallea": {
         "name": "Grazia Sferrazza Callea",
         "role": "Spa Coordinator & Therapist",
-        "bio": "Emma manages our spa operations while providing exceptional massage therapy services. Her organizational skills and therapeutic touch ensure every visit exceeds expectations.",
+        "bio": "I am Grazia Sferrazza Callea. I have studied naturopathy, kinesiology, Traditional Chinese Medicine and Craniosacral Balancing. In 2009 I began studying my own menopause and, thanks to my skills, I made discoveries that allowed me to frame this biological phenomenon in a sense-making way so transformative that I became a Menopause Coach. For about fifteen years I have written a couple of books on the subject and I help women seeking to regain physical and emotional balance.",
         "specialties": [
-          "Hot Stone Therapy",
-          "Couples Massage",
-          "Relaxation Massage"
+          "Menopause Coaching"
         ],
         "experience": "6 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Spa Management Certification",
-          "Hot Stone Specialist"
+          "Menopause Coach"
         ]
       },
       "martinaPasut": {
         "name": "Martina Pasut",
-        "role": "Massage Therapist",
-        "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
+        "role": "Yoga Instructor",
+        "bio": "My passion for yoga stems from a desire to deepen my connection with myself—mind, body, and emotions—as well as with people and nature, of which we are all a part. Through fluid movement, conscious breathing, and constant attention to my students, my goal is to offer psychophysical well-being. Even in times when anxiety and stress seem to dominate our lives, we can afford to let go and relax deeply. With me, there are no impossible positions or flexibility competitions: yoga is for everyone!",
         "specialties": [
-          "Swedish Massage",
-          "Deep Tissue",
-          "Cupping Therapy"
+          "Yoga"
         ],
         "experience": "7 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Yoga with Anukalana approach"
         ]
       },
       "martinaRoma": {
         "name": "Martina Roma",
-        "role": "Massage Therapist",
-        "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
+        "role": "Osteopath",
+        "bio": "D.O. in Osteopathy, with specializations in pediatric osteopathy and advanced courses in pregnancy, postpartum, temporomandibular disorders, and kinesiological taping. Her continuous education allows her to offer highly personalized treatments. What enchants me most about osteopathy is the ability to take care of the person in their entirety, listen to their story, and feel the path of the symptom in the patient's body. I am passionate about explaining the anatomical and physiological connections between the symptom and its origin to make people aware of their body. I enjoy noticing connections between osteopathy and nature: purity is the element they share. From this reflection, my interest and passion for neonatal/pediatric treatment was born: the child lets themselves be welcomed by my hands, is free from prejudices, and trusts completely. With my knowledge, continuous training, and sensitivity, I strive to ensure the well-being of the person.",
         "specialties": [
-          "Swedish Massage",
-          "Deep Tissue",
-          "Cupping Therapy"
+          "Osteopathy",
+          "Pediatric Osteopathy",
+          "Osteopathic Massage Therapist"
         ],
         "experience": "7 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Licensed Massage Therapist"
         ]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
-        "role": "Massage Therapist",
-        "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
+        "role": "Craniosacral & Biodynamic Practitioner",
+        "bio": "Massimo has embraced and deepened the Biodynamic approach under the guidance of Mike Boxhall, a pioneering English therapist in the field. He proposes a way of working and support based on deep listening to the person, integrating body-mind-spirit and supporting the intrinsic self-regulation capacities innate in each of us. So that Health can once again manifest its potential and guarantee us vitality, harmony, serenity, and fullness.",
         "specialties": [
-          "Swedish Massage",
-          "Deep Tissue",
-          "Cupping Therapy"
+          "Biodynamic Therapy"
         ],
-        "experience": "7 years",
+        "experience": "16 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Craniosacral Practitioner",
+          "Biodynamic Practitioner"
         ]
       },
       "monicaBortoluzzi": {
         "name": "Monica Bortoluzzi",
-        "role": "Massage Therapist",
-        "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
+        "role": "Counselor & Rebirthing Practitioner",
+        "bio": "REBIRTHING: Rebirthing is a breathing practice that helps us connect with our inner awareness, discovering and freeing ourselves from limiting beliefs that influence our lives. Through this practice, we can gain deep insights and understanding for our psychophysical well-being. COUNSELING SESSIONS: In a counseling session, we explore together the roots of your psychophysical discomfort, discovering thoughts and emotional reactions that stem from the past. As a counselor, I accompany you on a journey of self-discovery, creating a safe and non-judgmental space where you can connect with your deepest self, to evolve and grow authentically.",
         "specialties": [
-          "Swedish Massage",
-          "Deep Tissue",
-          "Cupping Therapy"
+          "Rebirthing",
+          "Counseling"
         ],
         "experience": "7 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Rebirthing Practitioner",
+          "Professional Counselor"
         ]
       },
       "paoloAvella": {
         "name": "Paolo Avella",
-        "role": "Massage Therapist",
-        "bio": "His mission is to help people improve mobility, posture and general well-being through a targeted and progressive approach. Thanks to his training recognized by Sport e Salute and the Ministry of Sport, Paolo guides with professionalism and passion each path, adapting exercises to the needs of each individual.",
+        "role": "Orthodynamic Gymnastics Specialist",
+        "bio": "His mission is to help people improve mobility, posture, and general well-being through a targeted and progressive approach. Thanks to his training recognized by Sport e Salute and the Ministry of Sport, Paolo guides with professionalism and passion every path, adapting exercises to the needs of each individual.",
         "specialties": [
           "Orthodynamic Gymnastics"
         ],
         "experience": "7 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Improves neuro-motor functionality",
+          "Increases strength and cardio-respiratory capacity",
+          "Adapts to those with motor difficulties (seated protocol)"
         ]
       },
       "sabrinaPozzobon": {
         "name": "Sabrina Pozzobon",
-        "role": "Massage Therapist",
-        "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
+        "role": "Image Consultant",
+        "bio": "I love nature and its colors, but also fashion and textiles, fields I have always worked in thanks to my diploma as a dressmaker. From these passions my current profession was born. I can help you study your personal color analysis, your shapes, your potential and your style in just a few simple steps. The right colors don't just change your appearance, they change the way we perceive ourselves and present ourselves to the world.",
         "specialties": [
-          "Swedish Massage",
-          "Deep Tissue",
-          "Cupping Therapy"
+          "Image Consulting",
+          "Personal Color Analysis",
+          "Style & Wardrobe"
         ],
         "experience": "7 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Image Consultant",
+          "Color Analysis Specialist",
+          "Fashion & Wardrobe Expert"
         ]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
-        "role": "Massage Therapist",
-        "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
+        "role": "Art Therapist & Yoga Instructor",
+        "bio": "Tamara is a yoga instructor and art therapist with a personal and professional journey dedicated to awareness and inner growth. Through art therapy, Tamara guides people on a journey of self-exploration, using artistic expression as a tool to access deep emotions and promote psychophysical well-being. At ReLeVi Healing, Tamara will lead art therapy sessions, offering a safe and welcoming space to express yourself freely and embark on a path of personal transformation.",
         "specialties": [
-          "Swedish Massage",
-          "Deep Tissue",
-          "Cupping Therapy"
+          "Art Therapy",
+          "Yoga"
         ],
         "experience": "7 years",
         "certifications": [
-          "Licensed Massage Therapist",
-          "Cupping Therapy Certified",
-          "Tui Na Practitioner"
+          "Yoga Instructor",
+          "Art Therapist"
         ]
       }
     }
