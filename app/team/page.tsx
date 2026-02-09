@@ -46,7 +46,7 @@ export default function TeamPage() {
       experience: '15+ years',
       certifications: ['Licensed Massage Therapist', 'Certified Aromatherapist', 'Reiki Master'],
       emoji: '👩‍⚕️',
-      image: '/team-photos/CorradoZamboni.jpg',
+      image: '/team-photos-crop/CorradoZamboni.jpg',
     },
     {
       id: 2,
@@ -57,7 +57,7 @@ export default function TeamPage() {
       experience: '10 years',
       certifications: ['Sports Massage Specialist', 'NASM-CPT', 'Kinesiology Certification'],
       emoji: '👨‍⚕️',
-      image: '/team-photos/DeniseDallaPasqua.jpg',
+      image: '/team-photos-crop/DeniseDallaPasqua.jpg',
     },
     {
       id: 3,
@@ -68,7 +68,7 @@ export default function TeamPage() {
       experience: '8 years',
       certifications: ['Licensed Massage Therapist', 'Prenatal Massage Certified', 'Aromatherapy Practitioner'],
       emoji: '👩‍🦱',
-      image: '/team-photos/FrancescaTonon.jpg',
+      image: '/team-photos-crop/FrancescaTonon.jpg',
     },
     {
       id: 4,
@@ -79,7 +79,7 @@ export default function TeamPage() {
       experience: '12 years',
       certifications: ['Certified Reflexologist', 'Thai Massage Practitioner', 'Shiatsu Specialist'],
       emoji: '👨‍🦲',
-      image: '/team-photos/GiancarloPavanello.jpg',
+      image: '/team-photos-crop/GiancarloPavanello.jpg',
     },
     {
       id: 5,
@@ -90,7 +90,7 @@ export default function TeamPage() {
       experience: '6 years',
       certifications: ['Licensed Massage Therapist', 'Spa Management Certification', 'Hot Stone Specialist'],
       emoji: '👩‍💼',
-      image: '/team-photos/GraziaCallea.jpg',
+      image: '/team-photos-crop/GraziaCallea.jpg',
     },
     {
       id: 6,
@@ -101,7 +101,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/MartinaPasut.jpg',
+      image: '/team-photos-crop/MartinaPasut.jpg',
     },
     {
       id: 7,
@@ -112,7 +112,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/MartinaRoma.jpg',
+      image: '/team-photos-crop/MartinaRoma.jpg',
     },
     {
       id: 8,
@@ -123,7 +123,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/MassimoGnesotto.jpg',
+      image: '/team-photos-crop/MassimoGnesotto2.jpg',
     },
     {
       id: 9,
@@ -134,7 +134,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/MonicaBortoluzzi.jpg',
+      image: '/team-photos-crop/MonicaBortoluzzi.jpg',
     },
     {
       id: 10,
@@ -145,7 +145,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/PaoloAvella.jpg',
+      image: '/team-photos-crop/PaoloAvella.jpg',
     },
     {
       id: 11,
@@ -156,7 +156,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/SabrinaPozzobon.jpg',
+      image: '/team-photos-crop/SabrinaPozzobon.jpg',
     },
         {
       id: 12,
@@ -167,7 +167,7 @@ export default function TeamPage() {
       experience: '7 years',
       certifications: ['Licensed Massage Therapist', 'Cupping Therapy Certified', 'Tui Na Practitioner'],
       emoji: '👨‍💻',
-      image: '/team-photos/TamaraZanchetta.jpg',
+      image: '/team-photos-crop/TamaraZanchetta.jpg',
     },
   ];
 
@@ -198,7 +198,7 @@ export default function TeamPage() {
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => setSelectedMember(member)}
               >
-                <div className="h-64 bg-gradient-to-br from-olive-100 to-olive-200 flex items-center justify-center group-hover:from-olive-200 group-hover:to-olive-300 transition-all duration-300">
+                <div className="h-55 bg-gradient-to-br from-olive-100 to-olive-200 flex items-center justify-center group-hover:from-olive-200 group-hover:to-olive-300 transition-all duration-300">
                   {member.image ? (
                     <img
                       src={member.image}
@@ -328,7 +328,7 @@ export default function TeamPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
-              <div className="h-48 bg-gradient-to-br from-olive-100 to-olive-300 flex items-center justify-center">
+              <div className="h-94 bg-gradient-to-br from-olive-100 to-olive-300 flex items-center justify-center">
                 {selectedMember.image ? (
                   <img
                     src={selectedMember.image}
