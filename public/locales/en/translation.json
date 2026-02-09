@@ -30,6 +30,18 @@
       },
       "peacefulEnvironment": "Peaceful Environment"
     },
+    "whyChooseUs": {
+      "title": "What You'll Find in Relevi",
+      "intro": "We offer a personalized approach to every individual, combining different disciplines for complete and authentic well-being.",
+      "specialization": {
+        "title": "Specialization",
+        "description": "Experts in various holistic disciplines."
+      },
+      "personalizedApproach": {
+        "title": "Personalized Approach",
+        "description": "Treatments tailored to your specific needs."
+      }
+    },
     "contact": {
       "title": "Get In Touch",
       "subtitle": "Ready to start your journey to relaxation? Contact us today to book your appointment.",

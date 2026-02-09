@@ -30,6 +30,18 @@
       },
       "peacefulEnvironment": "Ambiente di Pace"
     },
+    "whyChooseUs": {
+      "title": "Che cosa troverai in Relevi",
+      "intro": "Offriamo un approccio personalizzato a ogni individuo, combinando diverse discipline per un benessere completo e autentico.",
+      "specialization": {
+        "title": "Specializzazione",
+        "description": "Esperti in diverse discipline olistiche."
+      },
+      "personalizedApproach": {
+        "title": "Approccio Personalizzato",
+        "description": "Trattamenti su misura per le tue esigenze specifiche."
+      }
+    },
     "contact": {
       "title": "Contattaci",
       "subtitle": "Pronto per iniziare il tuo viaggio verso il relax? Contattaci oggi per prenotare il tuo appuntamento.",
