@@ -35,8 +35,9 @@
       "subtitle": "Ready to start your journey to relaxation? Contact us today to book your appointment.",
       "contactInfo": "Contact Information",
       "address": "Address",
-      "addressValue": "123 Wellness Street, Tranquil City, TC 12345",
+      "addressValue": "Via Campagna 46, San Polo di Piave, 31020 Treviso",
       "phone": "Phone",
+      "phoneValue": "+39 351 7471 159",
       "email": "Email",
       "hours": "Hours",
       "hoursValue": "Mon-Sat: 9AM - 8PM | Sun: 10AM - 6PM",
@@ -68,17 +69,29 @@
       "wellnessStarter": {
         "name": "Wellness Starter",
         "description": "Perfect for beginners",
-        "services": ["Swedish Massage", "Aromatherapy Consultation"]
+        "services": [
+          "Swedish Massage",
+          "Aromatherapy Consultation"
+        ]
       },
       "healingRetreat": {
         "name": "Healing Retreat",
         "description": "Our most popular package",
-        "services": ["Deep Tissue", "Hot Stone Therapy", "Reflexology"]
+        "services": [
+          "Deep Tissue",
+          "Hot Stone Therapy",
+          "Reflexology"
+        ]
       },
       "premiumRejuvenation": {
         "name": "Premium Rejuvenation",
         "description": "The ultimate experience",
-        "services": ["Swedish Massage", "Hot Stone Therapy", "Aromatherapy", "Reflexology"]
+        "services": [
+          "Swedish Massage",
+          "Hot Stone Therapy",
+          "Aromatherapy",
+          "Reflexology"
+        ]
       },
       "bestValue": "BEST VALUE",
       "bookPackage": "Book Package"
@@ -101,49 +114,89 @@
         "title": "Swedish Massage",
         "description": "A gentle, relaxing massage that uses long strokes and kneading to promote relaxation.",
         "fullDescription": "Swedish Massage is one of the most popular massage techniques. It uses long gliding strokes, circular movements, kneading, and tapping to ease muscle tension and promote relaxation. Perfect for first-time clients and those seeking general wellness.",
-        "benefits": ["Stress relief", "Improved circulation", "Better sleep", "Muscle relaxation"]
+        "benefits": [
+          "Stress relief",
+          "Improved circulation",
+          "Better sleep",
+          "Muscle relaxation"
+        ]
       },
       "deepTissue": {
         "title": "Deep Tissue",
         "description": "Targeted pressure on chronic tension areas to release deep-seated knots.",
         "fullDescription": "Deep tissue massage uses slow, deliberate strokes and concentrated pressure on muscle layers to release chronic tension. This treatment is ideal for those with muscle knots, chronic pain, or high stress levels.",
-        "benefits": ["Chronic pain relief", "Improved range of motion", "Athletic recovery", "Tension release"]
+        "benefits": [
+          "Chronic pain relief",
+          "Improved range of motion",
+          "Athletic recovery",
+          "Tension release"
+        ]
       },
       "hotStoneTherapy": {
         "title": "Hot Stone Therapy",
         "description": "Heated basalt stones placed on key points to melt away tension and promote deep relaxation.",
         "fullDescription": "Hot stone therapy combines massage with the therapeutic benefits of heated stones. The warmth penetrates deep into muscles, promoting relaxation and healing. Ideal for winter months and stress relief.",
-        "benefits": ["Deep relaxation", "Pain relief", "Improved circulation", "Warmth therapy"]
+        "benefits": [
+          "Deep relaxation",
+          "Pain relief",
+          "Improved circulation",
+          "Warmth therapy"
+        ]
       },
       "aromatherapy": {
         "title": "Aromatherapy",
         "description": "Essential oils combined with massage techniques to enhance physical and emotional well-being.",
         "fullDescription": "Aromatherapy harnesses the power of essential oils to enhance the massage experience. Each oil has unique therapeutic properties, from lavender for relaxation to eucalyptus for invigoration.",
-        "benefits": ["Emotional balance", "Enhanced relaxation", "Improved mood", "Holistic wellness"]
+        "benefits": [
+          "Emotional balance",
+          "Enhanced relaxation",
+          "Improved mood",
+          "Holistic wellness"
+        ]
       },
       "sportsMassage": {
         "title": "Sports Massage",
         "description": "Specialized techniques to help athletes prepare for events and recover from training.",
         "fullDescription": "Sports massage is designed specifically for athletes and active individuals. It helps prevent injuries, improves performance, and accelerates recovery from training and competition.",
-        "benefits": ["Performance enhancement", "Injury prevention", "Faster recovery", "Improved flexibility"]
+        "benefits": [
+          "Performance enhancement",
+          "Injury prevention",
+          "Faster recovery",
+          "Improved flexibility"
+        ]
       },
       "reflexology": {
         "title": "Reflexology",
         "description": "Pressure applied to specific points on the feet and hands to promote overall wellness.",
         "fullDescription": "Reflexology is based on the principle that specific points on the feet and hands correspond to different organs and systems in the body. Stimulating these points promotes healing and balance throughout the body.",
-        "benefits": ["Organ health", "Improved energy", "Stress reduction", "Better sleep"]
+        "benefits": [
+          "Organ health",
+          "Improved energy",
+          "Stress reduction",
+          "Better sleep"
+        ]
       },
       "prenatalMassage": {
         "title": "Prenatal Massage",
         "description": "Specialized massage designed for pregnant women to reduce discomfort and promote wellness.",
         "fullDescription": "Our prenatal massage is specifically designed for expecting mothers. Using safe techniques and specialized positioning, we help relieve back pain, reduce swelling, and prepare your body for labor.",
-        "benefits": ["Back pain relief", "Reduced swelling", "Better sleep", "Stress relief"]
+        "benefits": [
+          "Back pain relief",
+          "Reduced swelling",
+          "Better sleep",
+          "Stress relief"
+        ]
       },
       "couplesMassage": {
         "title": "Couples Massage",
         "description": "Share a relaxing massage experience with someone special in our dedicated couples room.",
         "fullDescription": "Enjoy a synchronized massage experience in our luxurious couples massage room. Perfect for anniversaries, special occasions, or simply quality time together with a loved one.",
-        "benefits": ["Bonding experience", "Stress relief", "Quality time", "Shared wellness"]
+        "benefits": [
+          "Bonding experience",
+          "Stress relief",
+          "Quality time",
+          "Shared wellness"
+        ]
       }
     },
     "durations": {
@@ -211,97 +264,193 @@
         "name": "Corrado Zamboni",
         "role": "Founder & Lead Therapist",
         "bio": "With over 15 years of experience in therapeutic massage, Sarah founded ReleviHealing with a vision to create a sanctuary for healing and relaxation. Her holistic approach combines traditional techniques with modern wellness practices.",
-        "specialties": ["Deep Tissue", "Swedish Massage", "Hot Stone Therapy"],
+        "specialties": [
+          "Deep Tissue",
+          "Swedish Massage",
+          "Hot Stone Therapy"
+        ],
         "experience": "15+ years",
-        "certifications": ["Licensed Massage Therapist", "Certified Aromatherapist", "Reiki Master"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Certified Aromatherapist",
+          "Reiki Master"
+        ]
       },
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
         "role": "Senior Massage Therapist",
         "bio": "James specializes in sports massage and injury rehabilitation. His background as a former athlete gives him unique insight into treating muscle tension and enhancing athletic performance.",
-        "specialties": ["Sports Massage", "Deep Tissue", "Myofascial Release"],
+        "specialties": [
+          "Sports Massage",
+          "Deep Tissue",
+          "Myofascial Release"
+        ],
         "experience": "10 years",
-        "certifications": ["Sports Massage Specialist", "NASM-CPT", "Kinesiology Certification"]
+        "certifications": [
+          "Sports Massage Specialist",
+          "NASM-CPT",
+          "Kinesiology Certification"
+        ]
       },
       "francescaTonon": {
         "name": "Francesca Tonon",
         "role": "Wellness Coordinator",
         "bio": "Maria brings warmth and expertise to every client interaction. Her intuitive touch and nurturing nature make her a favorite among those seeking relaxation and stress relief.",
-        "specialties": ["Swedish Massage", "Prenatal Massage", "Aromatherapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Prenatal Massage",
+          "Aromatherapy"
+        ],
         "experience": "8 years",
-        "certifications": ["Licensed Massage Therapist", "Prenatal Massage Certified", "Aromatherapy Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Prenatal Massage Certified",
+          "Aromatherapy Practitioner"
+        ]
       },
       "giancarloPavanello": {
         "name": "Giancarlo Pavanello",
         "role": "Reflexology Specialist",
         "bio": "David has dedicated his career to the ancient art of reflexology. His precise pressure techniques help clients achieve balance and wellness through the power of touch.",
-        "specialties": ["Reflexology", "Thai Massage", "Shiatsu"],
+        "specialties": [
+          "Reflexology",
+          "Thai Massage",
+          "Shiatsu"
+        ],
         "experience": "12 years",
-        "certifications": ["Certified Reflexologist", "Thai Massage Practitioner", "Shiatsu Specialist"]
+        "certifications": [
+          "Certified Reflexologist",
+          "Thai Massage Practitioner",
+          "Shiatsu Specialist"
+        ]
       },
       "graziaSferrazzaCallea": {
         "name": "Grazia Sferrazza Callea",
         "role": "Spa Coordinator & Therapist",
         "bio": "Emma manages our spa operations while providing exceptional massage therapy services. Her organizational skills and therapeutic touch ensure every visit exceeds expectations.",
-        "specialties": ["Hot Stone Therapy", "Couples Massage", "Relaxation Massage"],
+        "specialties": [
+          "Hot Stone Therapy",
+          "Couples Massage",
+          "Relaxation Massage"
+        ],
         "experience": "6 years",
-        "certifications": ["Licensed Massage Therapist", "Spa Management Certification", "Hot Stone Specialist"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Spa Management Certification",
+          "Hot Stone Specialist"
+        ]
       },
       "martinaPasut": {
         "name": "Martina Pasut",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       },
       "martinaRoma": {
         "name": "Martina Roma",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       },
       "monicaBortoluzzi": {
         "name": "Monica Bortoluzzi",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       },
       "paoloAvella": {
         "name": "Paolo Avella",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       },
       "sabrinaPozzobon": {
         "name": "Sabrina Pozzobon",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
         "role": "Massage Therapist",
         "bio": "Michael combines Eastern and Western massage techniques to provide a unique therapeutic experience. His gentle yet effective approach helps clients find relief from chronic tension.",
-        "specialties": ["Swedish Massage", "Deep Tissue", "Cupping Therapy"],
+        "specialties": [
+          "Swedish Massage",
+          "Deep Tissue",
+          "Cupping Therapy"
+        ],
         "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist", "Cupping Therapy Certified", "Tui Na Practitioner"]
+        "certifications": [
+          "Licensed Massage Therapist",
+          "Cupping Therapy Certified",
+          "Tui Na Practitioner"
+        ]
       }
     }
   },

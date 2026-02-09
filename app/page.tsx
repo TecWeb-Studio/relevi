@@ -198,7 +198,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-gray-800 font-medium">{t('home.contact.phone')}</p>
-                    <p className="text-gray-600">(555) 123-4567</p>
+                    <p className="text-gray-600">{t('home.contact.phoneValue')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

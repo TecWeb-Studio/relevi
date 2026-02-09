@@ -72,7 +72,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-olive-200">
               <li>{t('home.contact.addressValue')}</li>
-              <li>(555) 123-4567</li>
+              <li>{t('home.contact.phoneValue')}</li>
               <li>info@revelihealing.com</li>
             </ul>
           </div>

@@ -35,8 +35,9 @@
       "subtitle": "Pronto per iniziare il tuo viaggio verso il relax? Contattaci oggi per prenotare il tuo appuntamento.",
       "contactInfo": "Informazioni di Contatto",
       "address": "Indirizzo",
-      "addressValue": "Via Wellness 123, Città Tranquilla, TC 12345",
+      "addressValue": "Via Campagna 46, San Polo di Piave, 31020 Treviso",
       "phone": "Telefono",
+      "phoneValue": "+39 351 7471 159",
       "email": "Email",
       "hours": "Orari",
       "hoursValue": "Lun-Sab: 9:00 - 20:00 | Dom: 10:00 - 18:00",
@@ -68,17 +69,29 @@
       "wellnessStarter": {
         "name": "Benessere Starter",
         "description": "Perfetto per chi inizia",
-        "services": ["Massaggio Svedese", "Consulenza Aromaterapia"]
+        "services": [
+          "Massaggio Svedese",
+          "Consulenza Aromaterapia"
+        ]
       },
       "healingRetreat": {
         "name": "Ritiro di Guarigione",
         "description": "Il nostro pacchetto più popolare",
-        "services": ["Tessuto Profondo", "Terapia con Pietre Calde", "Riflessologia"]
+        "services": [
+          "Tessuto Profondo",
+          "Terapia con Pietre Calde",
+          "Riflessologia"
+        ]
       },
       "premiumRejuvenation": {
         "name": "Ringiovanimento Premium",
         "description": "L'esperienza definitiva",
-        "services": ["Massaggio Svedese", "Terapia con Pietre Calde", "Aromaterapia", "Riflessologia"]
+        "services": [
+          "Massaggio Svedese",
+          "Terapia con Pietre Calde",
+          "Aromaterapia",
+          "Riflessologia"
+        ]
       },
       "bestValue": "MIGLIOR VALORE",
       "bookPackage": "Prenota Pacchetto"
@@ -101,49 +114,89 @@
         "title": "Massaggio Svedese",
         "description": "Un massaggio delicato e rilassante che utilizza lunghe stesure e impastamenti per promuovere il relax.",
         "fullDescription": "Il Massaggio Svedese è una delle tecniche più popolari. Utilizza lunghe stesure scorrevoli, movimenti circolari, impastamenti e percussioni per alleviare la tensione muscolare e promuovere il relax. Perfetto per i nuovi clienti e chi cerca il benessere generale.",
-        "benefits": ["Riduzione dello stress", "Circolazione migliorata", "Sonno migliore", "Rilassamento muscolare"]
+        "benefits": [
+          "Riduzione dello stress",
+          "Circolazione migliorata",
+          "Sonno migliore",
+          "Rilassamento muscolare"
+        ]
       },
       "deepTissue": {
         "title": "Tessuto Profondo",
         "description": "Pressione mirata sulle aree di tensione cronica per sciogliere nodi profondi.",
         "fullDescription": "Il massaggio del tessuto profondo utilizza stesure lente e deliberate e pressione concentrata sugli strati muscolari per sciogliere la tensione cronica. Questo trattamento è ideale per chi ha nodi muscolari, dolore cronico o alti livelli di stress.",
-        "benefits": ["Sollievo dal dolore cronico", "Migliorata mobilità", "Recupero atletico", "Rilascio della tensione"]
+        "benefits": [
+          "Sollievo dal dolore cronico",
+          "Migliorata mobilità",
+          "Recupero atletico",
+          "Rilascio della tensione"
+        ]
       },
       "hotStoneTherapy": {
         "title": "Terapia con Pietre Calde",
         "description": "Pietre di basalto riscaldate posizionate su punti chiave per sciogliere la tensione e promuovere un rilassamento profondo.",
         "fullDescription": "La terapia con pietre calde combina il massaggio con i benefici terapeutici delle pietre riscaldate. Il calore penetra a fondo nei muscoli, promuovendo rilassamento e guarigione. Ideale per i mesi invernali e il sollievo dallo stress.",
-        "benefits": ["Rilassamento profondo", "Sollievo dal dolore", "Circolazione migliorata", "Terapia del calore"]
+        "benefits": [
+          "Rilassamento profondo",
+          "Sollievo dal dolore",
+          "Circolazione migliorata",
+          "Terapia del calore"
+        ]
       },
       "aromatherapy": {
         "title": "Aromaterapia",
         "description": "Oli essenziali combinati con tecniche di massaggio per migliorare il benessere fisico ed emotivo.",
         "fullDescription": "L'aromaterapia sfrutta il potere degli oli essenziali per migliorare l'esperienza di massaggio. Ogni olio ha proprietà terapeutiche uniche, dalla lavanda per il rilassamento all'eucalipto per l'invigorente.",
-        "benefits": ["Equilibrio emotivo", "Rilassamento potenziato", "Umore migliorato", "Benessere olistico"]
+        "benefits": [
+          "Equilibrio emotivo",
+          "Rilassamento potenziato",
+          "Umore migliorato",
+          "Benessere olistico"
+        ]
       },
       "sportsMassage": {
         "title": "Massaggio Sportivo",
         "description": "Tecniche specializzate per aiutare gli atleti a prepararsi per gli eventi e recuperare dall'allenamento.",
         "fullDescription": "Il massaggio sportivo è progettato specificamente per atleti e persone attive. Aiuta a prevenire infortuni, migliorare le prestazioni e accelerare il recupero dall'allenamento e dalla competizione.",
-        "benefits": ["Miglioramento delle prestazioni", "Prevenzione infortuni", "Recupero più veloce", "Flessibilità migliorata"]
+        "benefits": [
+          "Miglioramento delle prestazioni",
+          "Prevenzione infortuni",
+          "Recupero più veloce",
+          "Flessibilità migliorata"
+        ]
       },
       "reflexology": {
         "title": "Riflessologia",
         "description": "Pressione applicata su punti specifici dei piedi e delle mani per promuovere il benessere generale.",
         "fullDescription": "La riflessologia si basa sul principio che punti specifici dei piedi e delle mani corrispondono a diversi organi e sistemi del corpo. Stimolare questi punti promuove guarigione ed equilibrio in tutto il corpo.",
-        "benefits": ["Salute degli organi", "Energia migliorata", "Riduzione dello stress", "Sonno migliore"]
+        "benefits": [
+          "Salute degli organi",
+          "Energia migliorata",
+          "Riduzione dello stress",
+          "Sonno migliore"
+        ]
       },
       "prenatalMassage": {
         "title": "Massaggio Prenatale",
         "description": "Massaggio specializzato progettato per le donne incinte per ridurre il disagio e promuovere il benessere.",
         "fullDescription": "Il nostro massaggio prenatale è progettato specificamente per le future mamme. Utilizzando tecniche sicure e posizioni specializzate, aiutiamo a alleviare il mal di schiena, ridurre il gonfiore e preparare il corpo per il parto.",
-        "benefits": ["Sollievo dal mal di schiena", "Gonfiore ridotto", "Sonno migliore", "Riduzione dello stress"]
+        "benefits": [
+          "Sollievo dal mal di schiena",
+          "Gonfiore ridotto",
+          "Sonno migliore",
+          "Riduzione dello stress"
+        ]
       },
       "couplesMassage": {
         "title": "Massaggio di Coppia",
         "description": "Condividi un'esperienza di massaggio rilassante con qualcuno di speciale nella nostra sala coppie dedicata.",
         "fullDescription": "Goditi un'esperienza di massaggio sincronizzata nella nostra lussuosa sala massaggi per coppie. Perfetto per anniversari, occasioni speciali o semplicemente per trascorrere del tempo di qualità con una persona cara.",
-        "benefits": ["Esperienza di connessione", "Sollievo dallo stress", "Tempo di qualità", "Benessere condiviso"]
+        "benefits": [
+          "Esperienza di connessione",
+          "Sollievo dallo stress",
+          "Tempo di qualità",
+          "Benessere condiviso"
+        ]
       }
     },
     "durations": {
@@ -211,97 +264,193 @@
         "name": "Corrado Zamboni",
         "role": "Fondatore & Terapista Principale",
         "bio": "Con oltre 15 anni di esperienza nel massaggio terapeutico, Sarah ha fondato ReleviHealing con la visione di creare un santuario per la guarigione e il relax. Il suo approccio olistico combina tecniche tradizionali con pratiche moderne di benessere.",
-        "specialties": ["Tessuto Profondo", "Massaggio Svedese", "Terapia con Pietre Calde"],
+        "specialties": [
+          "Tessuto Profondo",
+          "Massaggio Svedese",
+          "Terapia con Pietre Calde"
+        ],
         "experience": "15+ anni",
-        "certifications": ["Massaggiatore Autorizzato", "Aromaterapeuta Certificato", "Maestro Reiki"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Aromaterapeuta Certificato",
+          "Maestro Reiki"
+        ]
       },
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
         "role": "Massaggiatore Senior",
         "bio": "James è specializzato nel massaggio sportivo e nella riabilitazione da infortuni. La sua esperienza come ex atleta gli dà una prospettiva unica nel trattare la tensione muscolare e migliorare le prestazioni atletiche.",
-        "specialties": ["Massaggio Sportivo", "Tessuto Profondo", "Rilascio Miofasciale"],
+        "specialties": [
+          "Massaggio Sportivo",
+          "Tessuto Profondo",
+          "Rilascio Miofasciale"
+        ],
         "experience": "10 anni",
-        "certifications": ["Specialista Massaggio Sportivo", "NASM-CPT", "Certificazione Chinesiologia"]
+        "certifications": [
+          "Specialista Massaggio Sportivo",
+          "NASM-CPT",
+          "Certificazione Chinesiologia"
+        ]
       },
       "francescaTonon": {
         "name": "Francesca Tonon",
         "role": "Coordinatore del Benessere",
         "bio": "Maria porta calore e competenza in ogni interazione con il cliente. Il suo tocco intuitivo e la natura accogliente la rendono una delle preferite tra chi cerca relax e sollievo dallo stress.",
-        "specialties": ["Massaggio Svedese", "Massaggio Prenatale", "Aromaterapia"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Massaggio Prenatale",
+          "Aromaterapia"
+        ],
         "experience": "8 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificata Massaggio Prenatale", "Praticante Aromaterapia"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificata Massaggio Prenatale",
+          "Praticante Aromaterapia"
+        ]
       },
       "giancarloPavanello": {
         "name": "Giancarlo Pavanello",
         "role": "Specialista in Riflessologia",
         "bio": "David ha dedicato la sua carriera all'antica arte della riflessologia. Le sue precise tecniche di pressione aiutano i clienti a raggiungere equilibrio e benessere attraverso il potere del tocco.",
-        "specialties": ["Riflessologia", "Massaggio Thai", "Shiatsu"],
+        "specialties": [
+          "Riflessologia",
+          "Massaggio Thai",
+          "Shiatsu"
+        ],
         "experience": "12 anni",
-        "certifications": ["Riflessologo Certificato", "Praticante Massaggio Thai", "Specialista Shiatsu"]
+        "certifications": [
+          "Riflessologo Certificato",
+          "Praticante Massaggio Thai",
+          "Specialista Shiatsu"
+        ]
       },
       "graziaSferrazzaCallea": {
         "name": "Grazia Sferrazza Callea",
         "role": "Coordinatore Spa & Terapista",
         "bio": "Emma gestisce le operazioni della nostra spa fornendo al contempo servizi eccezionali di massaggio terapeutico. Le sue capacità organizzative e il tocco terapeutico garantiscono che ogni visita superi le aspettative.",
-        "specialties": ["Terapia con Pietre Calde", "Massaggio di Coppia", "Massaggio Rilassante"],
+        "specialties": [
+          "Terapia con Pietre Calde",
+          "Massaggio di Coppia",
+          "Massaggio Rilassante"
+        ],
         "experience": "6 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificazione Gestione Spa", "Specialista Pietre Calde"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificazione Gestione Spa",
+          "Specialista Pietre Calde"
+        ]
       },
       "martinaPasut": {
         "name": "Martina Pasut",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       },
       "martinaRoma": {
         "name": "Martina Roma",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       },
       "monicaBortoluzzi": {
         "name": "Monica Bortoluzzi",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       },
       "paoloAvella": {
         "name": "Paolo Avella",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       },
       "sabrinaPozzobon": {
         "name": "Sabrina Pozzobon",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
         "role": "Massaggiatore",
         "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
-        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "specialties": [
+          "Massaggio Svedese",
+          "Tessuto Profondo",
+          "Terapia Cupping"
+        ],
         "experience": "7 anni",
-        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+        "certifications": [
+          "Massaggiatore Autorizzato",
+          "Certificato Terapia Cupping",
+          "Praticante Tui Na"
+        ]
       }
     }
   },
