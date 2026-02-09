@@ -210,11 +210,10 @@ export default function EventsPage() {
               <button
                 key={type}
                 onClick={() => setFilter(type)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  filter === type
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${filter === type
                     ? 'bg-olive-600 text-white shadow-lg'
                     : 'bg-olive-50 text-olive-700 hover:bg-olive-100'
-                }`}
+                  }`}
               >
                 {type.charAt(0).toUpperCase() + type.slice(1)}s
               </button>
@@ -269,11 +268,10 @@ export default function EventsPage() {
                     <div className="text-sm">
                       <span className="text-gray-500">Spots available: </span>
                       <span
-                        className={`font-semibold ${
-                          event.spotsLeft <= 3
+                        className={`font-semibold ${event.spotsLeft <= 3
                             ? 'text-red-500'
                             : 'text-olive-600'
-                        }`}
+                          }`}
                       >
                         {event.spotsLeft}/{event.spots}
                       </span>
@@ -491,11 +489,10 @@ export default function EventsPage() {
                 <div>
                   <p className="text-gray-500">Available Spots</p>
                   <p
-                    className={`text-lg font-semibold ${
-                      selectedEvent.spotsLeft <= 3
+                    className={`text-lg font-semibold ${selectedEvent.spotsLeft <= 3
                         ? 'text-red-500'
                         : 'text-olive-600'
-                    }`}
+                      }`}
                   >
                     {selectedEvent.spotsLeft} of {selectedEvent.spots} remaining
                   </p>
