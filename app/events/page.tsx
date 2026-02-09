@@ -167,12 +167,24 @@ export default function EventsPage() {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    let locale = 'en-US';
+    try {
+      // detect locale from path prefix (/de/... or /it/...) or browser
+      const parts = typeof window !== 'undefined' ? window.location.pathname.split('/').filter(Boolean) : [];
+      const prefix = parts.length > 0 ? parts[0] : null;
+      if (prefix === 'de') locale = 'de-DE';
+      else if (prefix === 'it') locale = 'it-IT';
+      else if (typeof navigator !== 'undefined' && navigator.language) locale = navigator.language;
+    } catch (e) {
+      locale = 'en-US';
+    }
+
+    return new Intl.DateTimeFormat(locale, {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    });
+    }).format(date);
   };
 
   return (

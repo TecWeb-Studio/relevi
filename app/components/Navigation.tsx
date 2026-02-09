@@ -23,6 +23,25 @@ export default function Navigation() {
     { href: '/#contact', label: 'Contact' },
   ];
 
+  const languages = [
+    { code: 'en', label: 'EN' },
+    { code: 'de', label: 'DE' },
+    { code: 'it', label: 'IT' },
+  ];
+
+  const changeLocale = (lang: string) => {
+    const pathname = window.location.pathname;
+    const parts = pathname.split('/').filter(Boolean);
+    // Remove existing locale prefix if present
+    if (parts.length > 0 && ['en', 'de', 'it'].includes(parts[0])) {
+      parts.shift();
+    }
+    const rest = parts.length ? `/${parts.join('/')}` : '';
+    const prefix = lang === 'en' ? '' : `/${lang}`;
+    const newPath = (prefix + rest) || '/';
+    window.location.pathname = newPath;
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled
@@ -52,6 +71,17 @@ export default function Navigation() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-olive-600 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
+            <div className="flex items-center space-x-2">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => changeLocale(l.code)}
+                  className="px-3 py-1 rounded-md text-sm border border-olive-100 bg-white hover:bg-olive-50"
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <button
@@ -98,6 +128,17 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <div className="flex gap-2 px-4">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => changeLocale(l.code)}
+                  className="px-3 py-2 rounded-md text-sm border border-olive-100 bg-white hover:bg-olive-50 w-full"
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
