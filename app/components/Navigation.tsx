@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,31 +18,24 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
-    { href: '/team', label: 'Our Team' },
-    { href: '/events', label: 'Events' },
-    { href: '/#contact', label: 'Contact' },
+    { href: '/', label: t('nav.home') },
+    { href: '/services', label: t('nav.services') },
+    { href: '/team', label: t('nav.team') },
+    { href: '/events', label: t('nav.events') },
+    { href: '/#contact', label: t('nav.contact') },
   ];
 
   const languages = [
     { code: 'en', label: 'EN' },
-    { code: 'de', label: 'DE' },
     { code: 'it', label: 'IT' },
   ];
 
-  const changeLocale = (lang: string) => {
-    const pathname = window.location.pathname;
-    const parts = pathname.split('/').filter(Boolean);
-    // Remove existing locale prefix if present
-    if (parts.length > 0 && ['en', 'de', 'it'].includes(parts[0])) {
-      parts.shift();
-    }
-    const rest = parts.length ? `/${parts.join('/')}` : '';
-    const prefix = lang === 'en' ? '' : `/${lang}`;
-    const newPath = (prefix + rest) || '/';
-    window.location.pathname = newPath;
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem('i18nextLng', lang);
   };
+
+  const currentLang = i18n.language || 'en';
 
   return (
     <nav
@@ -75,8 +70,13 @@ export default function Navigation() {
               {languages.map((l) => (
                 <button
                   key={l.code}
-                  onClick={() => changeLocale(l.code)}
-                  className="px-3 py-1 rounded-md text-sm border border-olive-100 bg-white hover:bg-olive-50"
+                  onClick={() => changeLanguage(l.code)}
+                  className={`px-3 py-1 rounded-md text-sm border transition-all duration-300 ${
+                    currentLang === l.code
+                      ? 'bg-olive-600 text-white border-olive-600'
+                      : 'border-olive-100 bg-white hover:bg-olive-50 text-gray-700'
+                  }`}
+                  aria-label={`Switch to ${l.label}`}
                 >
                   {l.label}
                 </button>
@@ -87,6 +87,7 @@ export default function Navigation() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-olive-700 hover:text-olive-600 transition-colors"
+            aria-label="Toggle menu"
           >
             <svg
               className="w-6 h-6"
@@ -132,8 +133,13 @@ export default function Navigation() {
               {languages.map((l) => (
                 <button
                   key={l.code}
-                  onClick={() => changeLocale(l.code)}
-                  className="px-3 py-2 rounded-md text-sm border border-olive-100 bg-white hover:bg-olive-50 w-full"
+                  onClick={() => changeLanguage(l.code)}
+                  className={`px-3 py-2 rounded-md text-sm border transition-all duration-300 w-full ${
+                    currentLang === l.code
+                      ? 'bg-olive-600 text-white border-olive-600'
+                      : 'border-olive-100 bg-white hover:bg-olive-50 text-gray-700'
+                  }`}
+                  aria-label={`Switch to ${l.label}`}
                 >
                   {l.label}
                 </button>

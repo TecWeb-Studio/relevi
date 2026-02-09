@@ -1,0 +1,477 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Servizi",
+    "team": "Il Nostro Team",
+    "events": "Eventi",
+    "contact": "Contatti"
+  },
+  "home": {
+    "hero": {
+      "title": "Benvenuti a ReleviHealing",
+      "subtitle": "Dove il relax incontra il ringiovanimento. Vivi il potere curativo del tocco terapeutico nel nostro tranquillo santuario.",
+      "exploreServices": "Esplora i Servizi",
+      "meetTeam": "Conosci il Team",
+      "viewEvents": "Vedi Eventi"
+    },
+    "whyChoose": {
+      "title": "Perché Scegliere ReleviHealing?",
+      "expertTherapists": {
+        "title": "Terapisti Esperti",
+        "description": "I nostri massaggiatori certificati hanno anni di esperienza e formazione specializzata in varie tecniche."
+      },
+      "tranquilEnvironment": {
+        "title": "Ambiente Tranquillo",
+        "description": "La nostra spa è progettata per essere un rifugio di pace dove puoi fuggire dallo stress della vita quotidiana."
+      },
+      "premiumProducts": {
+        "title": "Prodotti Premium",
+        "description": "Utilizziamo solo oli e prodotti biologici di altissima qualità per tutti i nostri trattamenti."
+      },
+      "peacefulEnvironment": "Ambiente di Pace"
+    },
+    "contact": {
+      "title": "Contattaci",
+      "subtitle": "Pronto per iniziare il tuo viaggio verso il relax? Contattaci oggi per prenotare il tuo appuntamento.",
+      "contactInfo": "Informazioni di Contatto",
+      "address": "Indirizzo",
+      "addressValue": "Via Wellness 123, Città Tranquilla, TC 12345",
+      "phone": "Telefono",
+      "email": "Email",
+      "hours": "Orari",
+      "hoursValue": "Lun-Sab: 9:00 - 20:00 | Dom: 10:00 - 18:00",
+      "bookAppointment": "Prenota un Appuntamento",
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "emailPlaceholder": "tua@email.com",
+      "message": "Messaggio",
+      "messagePlaceholder": "Dicci cosa ti serve...",
+      "sendMessage": "Invia Messaggio"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "I Nostri Servizi",
+      "subtitle": "Scopri la nostra gamma completa di trattamenti terapeutici progettati per ripristinare l'equilibrio del corpo e della mente. Ogni servizio è personalizzato per soddisfare le tue esigenze uniche di benessere."
+    },
+    "filters": {
+      "allServices": "Tutti i Servizi",
+      "recommended": "Consigliati"
+    },
+    "duration": "Durata",
+    "price": "Prezzo",
+    "viewDetails": "Vedi Dettagli",
+    "recommended": "Consigliato",
+    "packages": {
+      "title": "Pacchetti Servizi",
+      "subtitle": "Ottieni più valore con i nostri pacchetti selezionati",
+      "wellnessStarter": {
+        "name": "Benessere Starter",
+        "description": "Perfetto per chi inizia",
+        "services": ["Massaggio Svedese", "Consulenza Aromaterapia"]
+      },
+      "healingRetreat": {
+        "name": "Ritiro di Guarigione",
+        "description": "Il nostro pacchetto più popolare",
+        "services": ["Tessuto Profondo", "Terapia con Pietre Calde", "Riflessologia"]
+      },
+      "premiumRejuvenation": {
+        "name": "Ringiovanimento Premium",
+        "description": "L'esperienza definitiva",
+        "services": ["Massaggio Svedese", "Terapia con Pietre Calde", "Aromaterapia", "Riflessologia"]
+      },
+      "bestValue": "MIGLIOR VALORE",
+      "bookPackage": "Prenota Pacchetto"
+    },
+    "cta": {
+      "title": "Pronto a Prenotare il Tuo Servizio?",
+      "subtitle": "Contattaci oggi per programmare il tuo appuntamento e fare il primo passo verso il benessere e il relax.",
+      "button": "Contattaci"
+    },
+    "modal": {
+      "about": "Informazioni sul Servizio",
+      "benefits": "Benefici",
+      "therapists": "Terapisti",
+      "specialized": "Specializzati",
+      "close": "Chiudi",
+      "bookNow": "Prenota Ora"
+    },
+    "serviceTypes": {
+      "swedishMassage": {
+        "title": "Massaggio Svedese",
+        "description": "Un massaggio delicato e rilassante che utilizza lunghe stesure e impastamenti per promuovere il relax.",
+        "fullDescription": "Il Massaggio Svedese è una delle tecniche più popolari. Utilizza lunghe stesure scorrevoli, movimenti circolari, impastamenti e percussioni per alleviare la tensione muscolare e promuovere il relax. Perfetto per i nuovi clienti e chi cerca il benessere generale.",
+        "benefits": ["Riduzione dello stress", "Circolazione migliorata", "Sonno migliore", "Rilassamento muscolare"]
+      },
+      "deepTissue": {
+        "title": "Tessuto Profondo",
+        "description": "Pressione mirata sulle aree di tensione cronica per sciogliere nodi profondi.",
+        "fullDescription": "Il massaggio del tessuto profondo utilizza stesure lente e deliberate e pressione concentrata sugli strati muscolari per sciogliere la tensione cronica. Questo trattamento è ideale per chi ha nodi muscolari, dolore cronico o alti livelli di stress.",
+        "benefits": ["Sollievo dal dolore cronico", "Migliorata mobilità", "Recupero atletico", "Rilascio della tensione"]
+      },
+      "hotStoneTherapy": {
+        "title": "Terapia con Pietre Calde",
+        "description": "Pietre di basalto riscaldate posizionate su punti chiave per sciogliere la tensione e promuovere un rilassamento profondo.",
+        "fullDescription": "La terapia con pietre calde combina il massaggio con i benefici terapeutici delle pietre riscaldate. Il calore penetra a fondo nei muscoli, promuovendo rilassamento e guarigione. Ideale per i mesi invernali e il sollievo dallo stress.",
+        "benefits": ["Rilassamento profondo", "Sollievo dal dolore", "Circolazione migliorata", "Terapia del calore"]
+      },
+      "aromatherapy": {
+        "title": "Aromaterapia",
+        "description": "Oli essenziali combinati con tecniche di massaggio per migliorare il benessere fisico ed emotivo.",
+        "fullDescription": "L'aromaterapia sfrutta il potere degli oli essenziali per migliorare l'esperienza di massaggio. Ogni olio ha proprietà terapeutiche uniche, dalla lavanda per il rilassamento all'eucalipto per l'invigorente.",
+        "benefits": ["Equilibrio emotivo", "Rilassamento potenziato", "Umore migliorato", "Benessere olistico"]
+      },
+      "sportsMassage": {
+        "title": "Massaggio Sportivo",
+        "description": "Tecniche specializzate per aiutare gli atleti a prepararsi per gli eventi e recuperare dall'allenamento.",
+        "fullDescription": "Il massaggio sportivo è progettato specificamente per atleti e persone attive. Aiuta a prevenire infortuni, migliorare le prestazioni e accelerare il recupero dall'allenamento e dalla competizione.",
+        "benefits": ["Miglioramento delle prestazioni", "Prevenzione infortuni", "Recupero più veloce", "Flessibilità migliorata"]
+      },
+      "reflexology": {
+        "title": "Riflessologia",
+        "description": "Pressione applicata su punti specifici dei piedi e delle mani per promuovere il benessere generale.",
+        "fullDescription": "La riflessologia si basa sul principio che punti specifici dei piedi e delle mani corrispondono a diversi organi e sistemi del corpo. Stimolare questi punti promuove guarigione ed equilibrio in tutto il corpo.",
+        "benefits": ["Salute degli organi", "Energia migliorata", "Riduzione dello stress", "Sonno migliore"]
+      },
+      "prenatalMassage": {
+        "title": "Massaggio Prenatale",
+        "description": "Massaggio specializzato progettato per le donne incinte per ridurre il disagio e promuovere il benessere.",
+        "fullDescription": "Il nostro massaggio prenatale è progettato specificamente per le future mamme. Utilizzando tecniche sicure e posizioni specializzate, aiutiamo a alleviare il mal di schiena, ridurre il gonfiore e preparare il corpo per il parto.",
+        "benefits": ["Sollievo dal mal di schiena", "Gonfiore ridotto", "Sonno migliore", "Riduzione dello stress"]
+      },
+      "couplesMassage": {
+        "title": "Massaggio di Coppia",
+        "description": "Condividi un'esperienza di massaggio rilassante con qualcuno di speciale nella nostra sala coppie dedicata.",
+        "fullDescription": "Goditi un'esperienza di massaggio sincronizzata nella nostra lussuosa sala massaggi per coppie. Perfetto per anniversari, occasioni speciali o semplicemente per trascorrere del tempo di qualità con una persona cara.",
+        "benefits": ["Esperienza di connessione", "Sollievo dallo stress", "Tempo di qualità", "Benessere condiviso"]
+      }
+    },
+    "durations": {
+      "swedishMassage": "60-90 minuti",
+      "deepTissue": "60-90 minuti",
+      "hotStoneTherapy": "75-90 minuti",
+      "aromatherapy": "60-75 minuti",
+      "sportsMassage": "60-90 minuti",
+      "reflexology": "60 minuti",
+      "prenatalMassage": "60 minuti",
+      "couplesMassage": "60-90 minuti"
+    },
+    "prices": {
+      "swedishMassage": "€80-120",
+      "deepTissue": "€100-150",
+      "hotStoneTherapy": "€120-160",
+      "aromatherapy": "€90-130",
+      "sportsMassage": "€100-140",
+      "reflexology": "€70-100",
+      "prenatalMassage": "€85-115",
+      "couplesMassage": "€160-240"
+    },
+    "packagePrices": {
+      "wellnessStarter": "€180",
+      "healingRetreat": "€320",
+      "premiumRejuvenation": "€420"
+    }
+  },
+  "team": {
+    "hero": {
+      "title": "Conosci il Nostro Team",
+      "subtitle": "Il nostro team dedicato di massaggiatori certificati porta anni di esperienza, passione e competenza per aiutarti a raggiungere il benessere e il relax ottimali."
+    },
+    "experienceLabel": "Esperienza",
+    "more": "altri",
+    "commitment": {
+      "title": "Il Nostro Impegno per l'Eccellenza",
+      "certifiedProfessionals": {
+        "title": "Professionisti Certificati",
+        "description": "Tutti i nostri terapisti sono autorizzati e certificati nelle rispettive specialità, garantendoti le migliori cure di qualità."
+      },
+      "personalizedCare": {
+        "title": "Cura Personalizzata",
+        "description": "Dedichiamo tempo a comprendere le tue esigenze uniche e personalizziamo ogni sessione per affrontare le tue preoccupazioni specifiche."
+      },
+      "continuousLearning": {
+        "title": "Apprendimento Continuo",
+        "description": "Il nostro team partecipa regolarmente a formazioni avanzate e workshop per rimanere aggiornato sulle ultime tecniche e tendenze del benessere."
+      }
+    },
+    "stats": {
+      "combinedExperience": "Anni di Esperienza Combinata",
+      "expertTherapists": "Terapisti Esperti",
+      "certifications": "Certificazioni",
+      "happyClients": "Clienti Soddisfatti"
+    },
+    "modal": {
+      "about": "Informazioni",
+      "specialties": "Specializzazioni",
+      "certifications": "Certificazioni",
+      "bookSession": "Prenota una Sessione"
+    },
+    "members": {
+      "corradoZamboni": {
+        "name": "Corrado Zamboni",
+        "role": "Fondatore & Terapista Principale",
+        "bio": "Con oltre 15 anni di esperienza nel massaggio terapeutico, Sarah ha fondato ReleviHealing con la visione di creare un santuario per la guarigione e il relax. Il suo approccio olistico combina tecniche tradizionali con pratiche moderne di benessere.",
+        "specialties": ["Tessuto Profondo", "Massaggio Svedese", "Terapia con Pietre Calde"],
+        "experience": "15+ anni",
+        "certifications": ["Massaggiatore Autorizzato", "Aromaterapeuta Certificato", "Maestro Reiki"]
+      },
+      "deniseDallaPasqua": {
+        "name": "Denise Dalla Pasqua",
+        "role": "Massaggiatore Senior",
+        "bio": "James è specializzato nel massaggio sportivo e nella riabilitazione da infortuni. La sua esperienza come ex atleta gli dà una prospettiva unica nel trattare la tensione muscolare e migliorare le prestazioni atletiche.",
+        "specialties": ["Massaggio Sportivo", "Tessuto Profondo", "Rilascio Miofasciale"],
+        "experience": "10 anni",
+        "certifications": ["Specialista Massaggio Sportivo", "NASM-CPT", "Certificazione Chinesiologia"]
+      },
+      "francescaTonon": {
+        "name": "Francesca Tonon",
+        "role": "Coordinatore del Benessere",
+        "bio": "Maria porta calore e competenza in ogni interazione con il cliente. Il suo tocco intuitivo e la natura accogliente la rendono una delle preferite tra chi cerca relax e sollievo dallo stress.",
+        "specialties": ["Massaggio Svedese", "Massaggio Prenatale", "Aromaterapia"],
+        "experience": "8 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificata Massaggio Prenatale", "Praticante Aromaterapia"]
+      },
+      "giancarloPavanello": {
+        "name": "Giancarlo Pavanello",
+        "role": "Specialista in Riflessologia",
+        "bio": "David ha dedicato la sua carriera all'antica arte della riflessologia. Le sue precise tecniche di pressione aiutano i clienti a raggiungere equilibrio e benessere attraverso il potere del tocco.",
+        "specialties": ["Riflessologia", "Massaggio Thai", "Shiatsu"],
+        "experience": "12 anni",
+        "certifications": ["Riflessologo Certificato", "Praticante Massaggio Thai", "Specialista Shiatsu"]
+      },
+      "graziaSferrazzaCallea": {
+        "name": "Grazia Sferrazza Callea",
+        "role": "Coordinatore Spa & Terapista",
+        "bio": "Emma gestisce le operazioni della nostra spa fornendo al contempo servizi eccezionali di massaggio terapeutico. Le sue capacità organizzative e il tocco terapeutico garantiscono che ogni visita superi le aspettative.",
+        "specialties": ["Terapia con Pietre Calde", "Massaggio di Coppia", "Massaggio Rilassante"],
+        "experience": "6 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificazione Gestione Spa", "Specialista Pietre Calde"]
+      },
+      "martinaPasut": {
+        "name": "Martina Pasut",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      },
+      "martinaRoma": {
+        "name": "Martina Roma",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      },
+      "massimoGnesotto": {
+        "name": "Massimo Gnesotto",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      },
+      "monicaBortoluzzi": {
+        "name": "Monica Bortoluzzi",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      },
+      "paoloAvella": {
+        "name": "Paolo Avella",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      },
+      "sabrinaPozzobon": {
+        "name": "Sabrina Pozzobon",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      },
+      "tamaraZanchetta": {
+        "name": "Tamara Zanchetta",
+        "role": "Massaggiatore",
+        "bio": "Michael combina tecniche di massaggio orientali e occidentali per fornire un'esperienza terapeutica unica. Il suo approccio gentile ma efficace aiuta i clienti a trovare sollievo dalla tensione cronica.",
+        "specialties": ["Massaggio Svedese", "Tessuto Profondo", "Terapia Cupping"],
+        "experience": "7 anni",
+        "certifications": ["Massaggiatore Autorizzato", "Certificato Terapia Cupping", "Praticante Tui Na"]
+      }
+    }
+  },
+  "events": {
+    "hero": {
+      "title": "Prossimi Eventi",
+      "subtitle": "Unisciti a noi per workshop, ritiri ed eventi speciali progettati per migliorare il tuo percorso di benessere e connetterti con la nostra comunità."
+    },
+    "filters": {
+      "all": "Tutti",
+      "workshop": "Workshop",
+      "retreat": "Ritiro",
+      "special": "Speciale",
+      "class": "Corso"
+    },
+    "spotsAvailable": "Posti disponibili",
+    "learnMore": "Scopri di Più",
+    "noEvents": {
+      "title": "Nessun evento trovato",
+      "subtitle": "Torna presto per nuovi eventi in questa categoria."
+    },
+    "hostEvent": {
+      "title": "Organizza il Tuo Evento",
+      "subtitle": "Interessato a organizzare un evento privato di benessere? Che si tratti di un ritiro aziendale, festa di addio al nubilato o celebrazione speciale, possiamo creare un'esperienza personalizzata per il tuo gruppo.",
+      "privateParties": {
+        "title": "Feste Private",
+        "description": "Compleanni, addii al nubilato e altro"
+      },
+      "corporateEvents": {
+        "title": "Eventi Aziendali",
+        "description": "Team building e giornate del benessere"
+      },
+      "specialOccasions": {
+        "title": "Occasioni Speciali",
+        "description": "Anniversari e fughe romantiche"
+      },
+      "requestInfo": "Richiedi Informazioni",
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "tua@email.com",
+      "eventType": "Tipo di Evento",
+      "eventTypes": {
+        "privateParty": "Festa Privata",
+        "corporateEvent": "Evento Aziendale",
+        "specialOccasion": "Occasione Speciale",
+        "other": "Altro"
+      },
+      "message": "Messaggio",
+      "messagePlaceholder": "Dicci del tuo evento...",
+      "sendRequest": "Invia Richiesta"
+    },
+    "modal": {
+      "description": "Descrizione",
+      "availableSpots": "Posti Disponibili",
+      "remaining": "rimasti",
+      "close": "Chiudi",
+      "registerNow": "Registrati Ora"
+    },
+    "eventList": {
+      "couplesWorkshop": {
+        "title": "Workshop Massaggio di Coppia",
+        "description": "Impara l'arte del tocco terapeutico con il tuo partner. Questo workshop pratico insegna tecniche di massaggio di base per le coppie da praticare a casa. Include istruzioni, materiali e rinfreschi leggeri.",
+        "price": "€150 a coppia"
+      },
+      "wellnessRetreat": {
+        "title": "Ritiro Benessere Weekend",
+        "description": "Fuggi nella natura per un intero weekend di relax e ringiovanimento. Include sessioni multiple di massaggio, corsi di yoga, meditazione, pasti sani e passeggiate nella natura. Alloggio incluso.",
+        "price": "€450 a persona"
+      },
+      "valentinesSpecial": {
+        "title": "Speciale San Valentino",
+        "description": "Celebra l'amore con il nostro speciale pacchetto per coppie. Include massaggi affiancati, aromaterapia, champagne e fragole ricoperte di cioccolato. Perfetto per le coppie che vogliono connettersi e rilassarsi.",
+        "price": "€280 a coppia"
+      },
+      "selfMassageClass": {
+        "title": "Corso Tecniche di Auto-Massaggio",
+        "description": "Impara efficaci tecniche di auto-massaggio per alleviare la tensione nel collo, spalle, mani e piedi. Perfetto per chi lavora alla scrivania o sperimenta stress quotidiano. Porta a casa un kit di cura personale.",
+        "price": "€45 a persona"
+      },
+      "meditationCombo": {
+        "title": "Combo Meditazione & Massaggio",
+        "description": "Inizia con una sessione guidata di meditazione seguita da un rilassante massaggio svedese. Questa combinazione aiuta a intensificare il relax e promuovere una calma duratura. Tutti i livelli sono i benvenuti.",
+        "price": "€95 a persona"
+      },
+      "aromatherapyWorkshop": {
+        "title": "Workshop Aromaterapia",
+        "description": "Scopri il potere curativo degli oli essenziali. Impara sui diversi oli, le loro proprietà e come miscelarli per il massimo beneficio. Crea la tua miscela personalizzata da portare a casa.",
+        "price": "€65 a persona"
+      },
+      "prenatalSeminar": {
+        "title": "Seminario Massaggio Prenatale",
+        "description": "Le future mamme e i loro partner sono invitati a conoscere i benefici e le tecniche del massaggio prenatale. Include una dimostrazione e sessione di domande con i nostri terapisti certificati.",
+        "price": "€30 a persona"
+      },
+      "springRenewal": {
+        "title": "Ritiro Rinascita di Primavera",
+        "description": "Dai il benvenuto alla primavera con una giornata piena di attività di rinnovamento. Include yoga mattutina, trattamenti di massaggio, pranzo biologico, meditazione guidata nella natura e workshop di benessere.",
+        "price": "€275 a persona"
+      }
+    },
+    "eventDetails": {
+      "couplesWorkshop": {
+        "date": "2026-02-15",
+        "time": "10:00 - 13:00",
+        "location": "Studio Principale",
+        "spots": 10,
+        "spotsLeft": 4
+      },
+      "wellnessRetreat": {
+        "date": "2026-02-22",
+        "time": "Tutto il Giorno",
+        "location": "Mountain Springs Resort",
+        "spots": 20,
+        "spotsLeft": 8
+      },
+      "valentinesSpecial": {
+        "date": "2026-02-14",
+        "time": "Orari Vari",
+        "location": "Tutte le Sale Trattamenti",
+        "spots": 12,
+        "spotsLeft": 5
+      },
+      "selfMassageClass": {
+        "date": "2026-02-20",
+        "time": "14:00 - 16:00",
+        "location": "Centro Educativo",
+        "spots": 15,
+        "spotsLeft": 12
+      },
+      "meditationCombo": {
+        "date": "2026-02-25",
+        "time": "9:00 - 11:30",
+        "location": "Giardino Zen",
+        "spots": 8,
+        "spotsLeft": 3
+      },
+      "aromatherapyWorkshop": {
+        "date": "2026-03-01",
+        "time": "18:00 - 20:00",
+        "location": "Studio Principale",
+        "spots": 12,
+        "spotsLeft": 7
+      },
+      "prenatalSeminar": {
+        "date": "2026-03-08",
+        "time": "11:00 - 12:30",
+        "location": "Centro Educativo",
+        "spots": 15,
+        "spotsLeft": 10
+      },
+      "springRenewal": {
+        "date": "2026-03-15",
+        "time": "9:00 - 17:00",
+        "location": "Padiglione del Giardino",
+        "spots": 25,
+        "spotsLeft": 15
+      }
+    }
+  },
+  "footer": {
+    "brandName": "Serenity Touch",
+    "tagline": "Il tuo viaggio verso il relax e il benessere inizia qui. Vivi il potere curativo del tocco.",
+    "quickLinks": "Link Rapidi",
+    "contactUs": "Contattaci",
+    "copyright": "Tutti i diritti riservati. Progettato da",
+    "tecweb": "TecWeb Studio"
+  },
+  "language": {
+    "english": "Inglese",
+    "italian": "Italiano"
+  }
+}

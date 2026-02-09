@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { headers } from 'next/headers';
 import './globals.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import I18nProvider from './components/I18nProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,25 +25,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const hdrs = headers();
-  let detected = 'en';
-  if (hdrs && typeof (hdrs as any).get === 'function') {
-    detected = (hdrs as any).get('x-nextjs-locale') || (hdrs as any).get('accept-language') || 'en';
-  } else if (hdrs && typeof hdrs === 'object') {
-    detected = (hdrs as any)['x-nextjs-locale'] || (hdrs as any)['accept-language'] || 'en';
-  }
-  const locale = (String(detected).split(',')[0] || 'en').split('-')[0];
-
   return (
-    <html lang={locale}>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        <Navigation />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <I18nProvider>
+          <Navigation />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

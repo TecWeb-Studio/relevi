@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,31 +41,30 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fadeInDown">
-            <span className="text-olive-800">Welcome to </span>
+            <span className="text-olive-800">{t('home.hero.title').split('ReleviHealing')[0]}</span>
             <span className="text-gradient">ReleviHealing</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 animate-fadeInUp" style={{ animationDelay: '200ms' }}>
-            Where relaxation meets rejuvenation. Experience the healing power of
-            therapeutic touch in our tranquil sanctuary.
+            {t('home.hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scaleIn" style={{ animationDelay: '400ms' }}>
             <Link
               href="/services"
               className="bg-olive-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              Explore Services
+              {t('home.hero.exploreServices')}
             </Link>
             <Link
               href="/team"
               className="bg-white text-olive-600 border-2 border-olive-600 px-8 py-4 rounded-full font-semibold hover:bg-olive-50 transition-all duration-300 hover:scale-105"
             >
-              Meet Our Team
+              {t('home.hero.meetTeam')}
             </Link>
             <Link
               href="/events"
               className="bg-white text-olive-600 border-2 border-olive-600 px-8 py-4 rounded-full font-semibold hover:bg-olive-50 transition-all duration-300 hover:scale-105"
             >
-              View Events
+              {t('home.hero.viewEvents')}
             </Link>
           </div>
         </div>
@@ -90,48 +91,51 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
               <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-6">
-                Why Choose ReleviHealing?
+                {t('home.whyChoose.title')}
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-olive-600 rounded-full flex items-center justify-center text-white text-xl flex-shrink-0">
-                    ✓
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-olive-800 mb-2">
-                      Expert Therapists
+                      {t('home.whyChoose.expertTherapists.title')}
                     </h3>
                     <p className="text-gray-600">
-                      Our certified massage therapists have years of experience
-                      and specialized training in various techniques.
+                      {t('home.whyChoose.expertTherapists.description')}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-olive-600 rounded-full flex items-center justify-center text-white text-xl flex-shrink-0">
-                    ✓
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-olive-800 mb-2">
-                      Tranquil Environment
+                      {t('home.whyChoose.tranquilEnvironment.title')}
                     </h3>
                     <p className="text-gray-600">
-                      Our spa is designed to be a peaceful sanctuary where you
-                      can escape from the stresses of daily life.
+                      {t('home.whyChoose.tranquilEnvironment.description')}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-olive-600 rounded-full flex items-center justify-center text-white text-xl flex-shrink-0">
-                    ✓
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-olive-800 mb-2">
-                      Premium Products
+                      {t('home.whyChoose.premiumProducts.title')}
                     </h3>
                     <p className="text-gray-600">
-                      We use only the highest quality organic oils and products
-                      for all our treatments.
+                      {t('home.whyChoose.premiumProducts.description')}
                     </p>
                   </div>
                 </div>
@@ -141,9 +145,13 @@ export default function Home() {
             <div className="reveal relative" style={{ animationDelay: '200ms' }}>
               <div className="aspect-square bg-olive-200 rounded-3xl flex items-center justify-center animate-pulse-slow">
                 <div className="text-center p-8">
-                  <div className="text-8xl mb-4">🧘</div>
+                  <div className="w-24 h-24 mx-auto mb-4 bg-olive-600 rounded-full flex items-center justify-center">
+                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </div>
                   <p className="text-olive-800 text-lg font-medium">
-                    Peaceful Environment
+                    {t('home.whyChoose.peacefulEnvironment')}
                   </p>
                 </div>
               </div>
@@ -157,54 +165,62 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 reveal">
             <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
-              Get In Touch
+              {t('home.contact.title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ready to start your journey to relaxation? Contact us today to
-              book your appointment.
+              {t('home.contact.subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="reveal bg-olive-50 rounded-3xl p-8 md:p-12">
               <h3 className="text-2xl font-bold text-olive-800 mb-6">
-                Contact Information
+                {t('home.contact.contactInfo')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-olive-600 rounded-full flex items-center justify-center text-white">
-                    📍
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-gray-800 font-medium">Address</p>
-                    <p className="text-gray-600">123 Wellness Street, Tranquil City, TC 12345</p>
+                    <p className="text-gray-800 font-medium">{t('home.contact.address')}</p>
+                    <p className="text-gray-600">{t('home.contact.addressValue')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-olive-600 rounded-full flex items-center justify-center text-white">
-                    📞
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-gray-800 font-medium">Phone</p>
+                    <p className="text-gray-800 font-medium">{t('home.contact.phone')}</p>
                     <p className="text-gray-600">(555) 123-4567</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-olive-600 rounded-full flex items-center justify-center text-white">
-                    ✉️
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-gray-800 font-medium">Email</p>
+                    <p className="text-gray-800 font-medium">{t('home.contact.email')}</p>
                     <p className="text-gray-600">info@revelihealing.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-olive-600 rounded-full flex items-center justify-center text-white">
-                    🕒
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-gray-800 font-medium">Hours</p>
-                    <p className="text-gray-600">Mon-Sat: 9AM - 8PM | Sun: 10AM - 6PM</p>
+                    <p className="text-gray-800 font-medium">{t('home.contact.hours')}</p>
+                    <p className="text-gray-600">{t('home.contact.hoursValue')}</p>
                   </div>
                 </div>
               </div>
@@ -213,44 +229,44 @@ export default function Home() {
             <div className="reveal" style={{ animationDelay: '200ms' }}>
               <form className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-olive-100">
                 <h3 className="text-2xl font-bold text-olive-800 mb-6">
-                  Book an Appointment
+                  {t('home.contact.bookAppointment')}
                 </h3>
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Name
+                      {t('home.contact.name')}
                     </label>
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-olive-500 focus:border-transparent transition-all"
-                      placeholder="Your name"
+                      placeholder={t('home.contact.namePlaceholder')}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
+                      {t('home.contact.email')}
                     </label>
                     <input
                       type="email"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-olive-500 focus:border-transparent transition-all"
-                      placeholder="your@email.com"
+                      placeholder={t('home.contact.emailPlaceholder')}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Message
+                      {t('home.contact.message')}
                     </label>
                     <textarea
                       rows={4}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-olive-500 focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us about your needs..."
+                      placeholder={t('home.contact.messagePlaceholder')}
                     />
                   </div>
                   <button
                     type="submit"
                     className="w-full bg-olive-600 text-white py-4 rounded-lg font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02] shadow-lg"
                   >
-                    Send Message
+                    {t('home.contact.sendMessage')}
                   </button>
                 </div>
               </form>
