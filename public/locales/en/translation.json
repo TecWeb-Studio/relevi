@@ -8,14 +8,14 @@
   },
   "home": {
     "hero": {
-      "title": "Welcome to ReleviHealing",
+      "title": "Welcome to Relevi Healing",
       "subtitle": "Where relaxation meets rejuvenation. Experience the healing power of therapeutic touch in our tranquil sanctuary.",
       "exploreServices": "Explore Services",
       "meetTeam": "Meet Our Team",
       "viewEvents": "View Events"
     },
     "whyChoose": {
-      "title": "Why Choose ReleviHealing?",
+      "title": "Why Choose Relevi Healing?",
       "expertTherapists": {
         "title": "Expert Therapists",
         "description": "Our certified massage therapists have years of experience and specialized training in various techniques."
@@ -65,7 +65,7 @@
   "services": {
     "hero": {
       "title": "Our Services",
-      "subtitle": "Discover our comprehensive range of therapeutic treatments designed to restore balance to your body and mind. Each service is tailored to meet your unique wellness needs."
+      "subtitle": "Awaken your vital energy: explore our therapeutic paths."
     },
     "filters": {
       "allServices": "All Services",
@@ -76,24 +76,17 @@
     "viewDetails": "View Details",
     "recommended": "Recommended",
     "packages": {
-      "title": "Service Packages",
-      "subtitle": "Get more value with our specially curated packages",
+      "title": "Start your wellness journey",
+      "subtitle": "Contact us today for a personalized consultation and discover how we can help you find harmony between body and mind.",
       "wellnessStarter": {
         "name": "Wellness Starter",
         "description": "Perfect for beginners",
-        "services": [
-          "Swedish Massage",
-          "Aromatherapy Consultation"
-        ]
+        "services": ["Swedish Massage", "Aromatherapy Consultation"]
       },
       "healingRetreat": {
         "name": "Healing Retreat",
         "description": "Our most popular package",
-        "services": [
-          "Deep Tissue",
-          "Hot Stone Therapy",
-          "Reflexology"
-        ]
+        "services": ["Deep Tissue", "Hot Stone Therapy", "Reflexology"]
       },
       "premiumRejuvenation": {
         "name": "Premium Rejuvenation",
@@ -106,7 +99,7 @@
         ]
       },
       "bestValue": "BEST VALUE",
-      "bookPackage": "Book Package"
+      "bookPackage": "Book Now"
     },
     "cta": {
       "title": "Ready to Book Your Service?",
@@ -209,32 +202,57 @@
           "Quality time",
           "Shared wellness"
         ]
+      },
+      "naturopathicConsultation": {
+        "title": "Naturopathic Consultation",
+        "description": "Comprehensive natural health guidance tailored to your unique wellness needs.",
+        "fullDescription": "Our naturopathic consultations combine traditional healing wisdom with modern wellness practices. We assess your overall health and create personalized treatment plans using natural remedies and holistic approaches to support your well-being.",
+        "benefits": [
+          "Personalized health plan",
+          "Natural remedies",
+          "Energy balance",
+          "Preventive wellness"
+        ]
+      },
+      "holisticMassages": {
+        "title": "Holistic Massages",
+        "description": "Integrated massage therapy combining various techniques for complete body and mind wellness.",
+        "fullDescription": "Our holistic massage approach integrates multiple therapeutic techniques to address your complete well-being. By combining different massage styles and healing modalities, we create a comprehensive treatment that balances body, mind, and spirit.",
+        "benefits": [
+          "Full-body rejuvenation",
+          "Stress relief",
+          "Mental clarity",
+          "Emotional balance"
+        ]
+      },
+      "iridology": {
+        "title": "Iridology",
+        "description": "Detailed analysis of the iris to assess overall health and identify wellness opportunities.",
+        "fullDescription": "Iridology is a natural assessment technique that examines the patterns and colors in the iris to provide insights into your body's condition. This non-invasive analysis helps identify areas of strength and areas needing support in your wellness journey.",
+        "benefits": [
+          "Health insights",
+          "Early detection",
+          "Personalized recommendations",
+          "Holistic assessment"
+        ]
+      },
+      "orthodynamicGymnastics": {
+        "title": "Orthodynamic Gymnastics",
+        "description": "Specialized movement and exercise program designed to improve mobility, posture, and functional fitness.",
+        "fullDescription": "Orthodynamic gymnastics focuses on correcting posture and improving movement patterns through targeted exercises. This specialized program enhances neuro-motor function, increases strength and flexibility, and can be adapted for all fitness levels.",
+        "benefits": [
+          "Improved posture",
+          "Enhanced mobility",
+          "Better strength",
+          "Movement efficiency"
+        ]
       }
     },
     "durations": {
-      "swedishMassage": "60-90 minutes",
-      "deepTissue": "60-90 minutes",
-      "hotStoneTherapy": "75-90 minutes",
-      "aromatherapy": "60-75 minutes",
-      "sportsMassage": "60-90 minutes",
-      "reflexology": "60 minutes",
-      "prenatalMassage": "60 minutes",
-      "couplesMassage": "60-90 minutes"
-    },
-    "prices": {
-      "swedishMassage": "$80-120",
-      "deepTissue": "$100-150",
-      "hotStoneTherapy": "$120-160",
-      "aromatherapy": "$90-130",
-      "sportsMassage": "$100-140",
-      "reflexology": "$70-100",
-      "prenatalMassage": "$85-115",
-      "couplesMassage": "$160-240"
-    },
-    "packagePrices": {
-      "wellnessStarter": "$180",
-      "healingRetreat": "$320",
-      "premiumRejuvenation": "$420"
+      "naturopathicConsultation": "60-90 minutes",
+      "holisticMassages": "60-90 minutes",
+      "iridology": "45-60 minutes",
+      "orthodynamicGymnastics": "45-60 minutes"
     }
   },
   "team": {
@@ -276,10 +294,7 @@
         "name": "Corrado Zamboni",
         "role": "Philosophical Consultant",
         "bio": "Corrado studied and taught economics and is an entrepreneur in the health and nutrition sector. He holds a degree in history and philosophy, with a thesis in aesthetics on the thought of arts in Paul Valery. He is engaged in social economics and political philosophy under the light of ethics and critical thinking. He accompanies personal research with attention and expression of the language of words, body and emotions, through philosophy and the thought of arts, in workshops of thought, dance, writing and drawing. An approach that awakens vitality, emotions and authentic connection with oneself, with others, with the universe. He also offers individual consultation and philosophical cafés open to the community.",
-        "specialties": [
-          "Economics & Commerce",
-          "Philosophical Consulting"
-        ],
+        "specialties": ["Economics & Commerce", "Philosophical Consulting"],
         "experience": "15+ years",
         "certifications": [
           "Degree in History and Philosophy",
@@ -290,11 +305,7 @@
         "name": "Denise Dalla Pasqua",
         "role": "Senior Massage Therapist",
         "bio": "Denise specializes in sports massage and injury rehabilitation. Her background as a former athlete gives her unique insight into treating muscle tension and enhancing athletic performance.",
-        "specialties": [
-          "Sports Massage",
-          "Deep Tissue",
-          "Myofascial Release"
-        ],
+        "specialties": ["Sports Massage", "Deep Tissue", "Myofascial Release"],
         "experience": "10 years",
         "certifications": [
           "Sports Massage Specialist",
@@ -338,25 +349,17 @@
         "name": "Grazia Sferrazza Callea",
         "role": "Spa Coordinator & Therapist",
         "bio": "I am Grazia Sferrazza Callea. I have studied naturopathy, kinesiology, Traditional Chinese Medicine and Craniosacral Balancing. In 2009 I began studying my own menopause and, thanks to my skills, I made discoveries that allowed me to frame this biological phenomenon in a sense-making way so transformative that I became a Menopause Coach. For about fifteen years I have written a couple of books on the subject and I help women seeking to regain physical and emotional balance.",
-        "specialties": [
-          "Menopause Coaching"
-        ],
+        "specialties": ["Menopause Coaching"],
         "experience": "6 years",
-        "certifications": [
-          "Menopause Coach"
-        ]
+        "certifications": ["Menopause Coach"]
       },
       "martinaPasut": {
         "name": "Martina Pasut",
         "role": "Yoga Instructor",
         "bio": "My passion for yoga stems from a desire to deepen my connection with myself—mind, body, and emotions—as well as with people and nature, of which we are all a part. Through fluid movement, conscious breathing, and constant attention to my students, my goal is to offer psychophysical well-being. Even in times when anxiety and stress seem to dominate our lives, we can afford to let go and relax deeply. With me, there are no impossible positions or flexibility competitions: yoga is for everyone!",
-        "specialties": [
-          "Yoga"
-        ],
+        "specialties": ["Yoga"],
         "experience": "7 years",
-        "certifications": [
-          "Yoga with Anukalana approach"
-        ]
+        "certifications": ["Yoga with Anukalana approach"]
       },
       "martinaRoma": {
         "name": "Martina Roma",
@@ -368,17 +371,13 @@
           "Osteopathic Massage Therapist"
         ],
         "experience": "7 years",
-        "certifications": [
-          "Licensed Massage Therapist"
-        ]
+        "certifications": ["Licensed Massage Therapist"]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
         "role": "Craniosacral & Biodynamic Practitioner",
         "bio": "Massimo has embraced and deepened the Biodynamic approach under the guidance of Mike Boxhall, a pioneering English therapist in the field. He proposes a way of working and support based on deep listening to the person, integrating body-mind-spirit and supporting the intrinsic self-regulation capacities innate in each of us. So that Health can once again manifest its potential and guarantee us vitality, harmony, serenity, and fullness.",
-        "specialties": [
-          "Biodynamic Therapy"
-        ],
+        "specialties": ["Biodynamic Therapy"],
         "experience": "16 years",
         "certifications": [
           "Craniosacral Practitioner",
@@ -389,23 +388,15 @@
         "name": "Monica Bortoluzzi",
         "role": "Counselor & Rebirthing Practitioner",
         "bio": "REBIRTHING: Rebirthing is a breathing practice that helps us connect with our inner awareness, discovering and freeing ourselves from limiting beliefs that influence our lives. Through this practice, we can gain deep insights and understanding for our psychophysical well-being. COUNSELING SESSIONS: In a counseling session, we explore together the roots of your psychophysical discomfort, discovering thoughts and emotional reactions that stem from the past. As a counselor, I accompany you on a journey of self-discovery, creating a safe and non-judgmental space where you can connect with your deepest self, to evolve and grow authentically.",
-        "specialties": [
-          "Rebirthing",
-          "Counseling"
-        ],
+        "specialties": ["Rebirthing", "Counseling"],
         "experience": "7 years",
-        "certifications": [
-          "Rebirthing Practitioner",
-          "Professional Counselor"
-        ]
+        "certifications": ["Rebirthing Practitioner", "Professional Counselor"]
       },
       "paoloAvella": {
         "name": "Paolo Avella",
         "role": "Orthodynamic Gymnastics Specialist",
         "bio": "His mission is to help people improve mobility, posture, and general well-being through a targeted and progressive approach. Thanks to his training recognized by Sport e Salute and the Ministry of Sport, Paolo guides with professionalism and passion every path, adapting exercises to the needs of each individual.",
-        "specialties": [
-          "Orthodynamic Gymnastics"
-        ],
+        "specialties": ["Orthodynamic Gymnastics"],
         "experience": "7 years",
         "certifications": [
           "Improves neuro-motor functionality",
@@ -433,15 +424,9 @@
         "name": "Tamara Zanchetta",
         "role": "Art Therapist & Yoga Instructor",
         "bio": "Tamara is a yoga instructor and art therapist with a personal and professional journey dedicated to awareness and inner growth. Through art therapy, Tamara guides people on a journey of self-exploration, using artistic expression as a tool to access deep emotions and promote psychophysical well-being. At ReLeVi Healing, Tamara will lead art therapy sessions, offering a safe and welcoming space to express yourself freely and embark on a path of personal transformation.",
-        "specialties": [
-          "Art Therapy",
-          "Yoga"
-        ],
+        "specialties": ["Art Therapy", "Yoga"],
         "experience": "7 years",
-        "certifications": [
-          "Yoga Instructor",
-          "Art Therapist"
-        ]
+        "certifications": ["Yoga Instructor", "Art Therapist"]
       }
     }
   },
@@ -603,7 +588,7 @@
     }
   },
   "footer": {
-    "brandName": "Serenity Touch",
+    "brandName": "Relevi Healing",
     "tagline": "Your journey to relaxation and wellness begins here. Experience the healing power of touch.",
     "quickLinks": "Quick Links",
     "contactUs": "Contact Us",

@@ -221,4 +221,4 @@ Refer to the documentation files:
 - `IMAGE_INTEGRATION_GUIDE.md` - Image setup
 - `IMPROVEMENTS_SUMMARY.md` - Feature overview
 
-Good luck with your ReleviHealing website! 💆‍♀️✨
+Good luck with your Relevi Healing website! 💆‍♀️✨

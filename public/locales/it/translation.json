@@ -8,14 +8,14 @@
   },
   "home": {
     "hero": {
-      "title": "Benvenuti a ReleviHealing",
+      "title": "Benvenuti a Relevi Healing",
       "subtitle": "Dove il relax incontra il ringiovanimento. Vivi il potere curativo del tocco terapeutico nel nostro tranquillo santuario.",
       "exploreServices": "Esplora i Servizi",
       "meetTeam": "Conosci il Team",
       "viewEvents": "Vedi Eventi"
     },
     "whyChoose": {
-      "title": "Perché Scegliere ReleviHealing?",
+      "title": "Perché Scegliere Relevi Healing?",
       "expertTherapists": {
         "title": "Terapisti Esperti",
         "description": "I nostri massaggiatori certificati hanno anni di esperienza e formazione specializzata in varie tecniche."
@@ -65,7 +65,7 @@
   "services": {
     "hero": {
       "title": "I Nostri Servizi",
-      "subtitle": "Scopri la nostra gamma completa di trattamenti terapeutici progettati per ripristinare l'equilibrio del corpo e della mente. Ogni servizio è personalizzato per soddisfare le tue esigenze uniche di benessere."
+      "subtitle": "Risveglia la tua energia vitale: esplora i nostri percorsi terapeutici."
     },
     "filters": {
       "allServices": "Tutti i Servizi",
@@ -76,15 +76,12 @@
     "viewDetails": "Vedi Dettagli",
     "recommended": "Consigliato",
     "packages": {
-      "title": "Pacchetti Servizi",
-      "subtitle": "Ottieni più valore con i nostri pacchetti selezionati",
+      "title": "Inizia il tuo percorso verso il benessere",
+      "subtitle": "Contattaci oggi per una consulenza personalizzata e scopri come possiamo aiutarti a ritrovare l'armonia tra corpo e mente.",
       "wellnessStarter": {
         "name": "Benessere Starter",
         "description": "Perfetto per chi inizia",
-        "services": [
-          "Massaggio Svedese",
-          "Consulenza Aromaterapia"
-        ]
+        "services": ["Massaggio Svedese", "Consulenza Aromaterapia"]
       },
       "healingRetreat": {
         "name": "Ritiro di Guarigione",
@@ -106,7 +103,7 @@
         ]
       },
       "bestValue": "MIGLIOR VALORE",
-      "bookPackage": "Prenota Pacchetto"
+      "bookPackage": "Prenota Ora"
     },
     "cta": {
       "title": "Pronto a Prenotare il Tuo Servizio?",
@@ -201,40 +198,65 @@
       },
       "couplesMassage": {
         "title": "Massaggio di Coppia",
-        "description": "Condividi un'esperienza di massaggio rilassante con qualcuno di speciale nella nostra sala coppie dedicata.",
-        "fullDescription": "Goditi un'esperienza di massaggio sincronizzata nella nostra lussuosa sala massaggi per coppie. Perfetto per anniversari, occasioni speciali o semplicemente per trascorrere del tempo di qualità con una persona cara.",
+        "description": "Condividi un'esperienza di massaggio rilassante con qualcuno di speciale nella nostra sala dedicata alle coppie.",
+        "fullDescription": "Goditi un'esperienza di massaggio sincronizzato nella nostra lussuosa sala massaggi per coppie. Perfetto per anniversari, occasioni speciali, o semplicemente per trascorrere del tempo di qualità insieme a una persona cara.",
         "benefits": [
-          "Esperienza di connessione",
+          "Esperienza di bonding",
           "Sollievo dallo stress",
           "Tempo di qualità",
           "Benessere condiviso"
         ]
+      },
+      "naturopathicConsultation": {
+        "title": "Consulenza Naturopatica",
+        "description": "Guida completa sulla salute naturale personalizzata alle tue esigenze di benessere.",
+        "fullDescription": "Le nostre consulenze naturopatiche combinano la saggezza tradizionale della guarigione con le pratiche moderne di benessere. Valutiamo la tua salute generale e creiamo piani di trattamento personalizzati utilizzando rimedi naturali e approcci olistici per supportare il tuo benessere.",
+        "benefits": [
+          "Piano di salute personalizzato",
+          "Rimedi naturali",
+          "Equilibrio energetico",
+          "Benessere preventivo"
+        ]
+      },
+      "holisticMassages": {
+        "title": "Massaggi Olistici",
+        "description": "Terapia di massaggio integrata che combina varie tecniche per il completo benessere del corpo e della mente.",
+        "fullDescription": "Il nostro approccio al massaggio olistico integra molteplici tecniche terapeutiche per affrontare il tuo benessere completo. Combinando diversi stili di massaggio e modalità di guarigione, creiamo un trattamento completo che equilibra corpo, mente e spirito.",
+        "benefits": [
+          "Ringiovanimento totale",
+          "Sollievo dallo stress",
+          "Chiarezza mentale",
+          "Equilibrio emotivo"
+        ]
+      },
+      "iridology": {
+        "title": "Iridologia",
+        "description": "Analisi dettagliata dell'iride per valutare la salute generale e identificare opportunità di benessere.",
+        "fullDescription": "L'iridologia è una tecnica di valutazione naturale che esamina i modelli e i colori dell'iride per fornire approfondimenti sullo stato del tuo corpo. Questa analisi non invasiva aiuta a identificare aree di forza e aree che richiedono supporto nel tuo percorso di benessere.",
+        "benefits": [
+          "Approfondimenti sulla salute",
+          "Rilevamento precoce",
+          "Raccomandazioni personalizzate",
+          "Valutazione olistica"
+        ]
+      },
+      "orthodynamicGymnastics": {
+        "title": "Ginnastica Ortodinamica",
+        "description": "Programma specializzato di movimento ed esercizio progettato per migliorare mobilità, postura e forma fisica funzionale.",
+        "fullDescription": "La ginnastica ortodinamica si concentra sulla correzione della postura e sul miglioramento dei modelli di movimento attraverso esercizi mirati. Questo programma specializzato migliora la funzione neuromotoria, aumenta la forza e la flessibilità e può essere adattato a tutti i livelli di fitness.",
+        "benefits": [
+          "Postura migliorata",
+          "Mobilità aumentata",
+          "Forza migliore",
+          "Efficienza del movimento"
+        ]
       }
     },
     "durations": {
-      "swedishMassage": "60-90 minuti",
-      "deepTissue": "60-90 minuti",
-      "hotStoneTherapy": "75-90 minuti",
-      "aromatherapy": "60-75 minuti",
-      "sportsMassage": "60-90 minuti",
-      "reflexology": "60 minuti",
-      "prenatalMassage": "60 minuti",
-      "couplesMassage": "60-90 minuti"
-    },
-    "prices": {
-      "swedishMassage": "€80-120",
-      "deepTissue": "€100-150",
-      "hotStoneTherapy": "€120-160",
-      "aromatherapy": "€90-130",
-      "sportsMassage": "€100-140",
-      "reflexology": "€70-100",
-      "prenatalMassage": "€85-115",
-      "couplesMassage": "€160-240"
-    },
-    "packagePrices": {
-      "wellnessStarter": "€180",
-      "healingRetreat": "€320",
-      "premiumRejuvenation": "€420"
+      "naturopathicConsultation": "60-90 minuti",
+      "holisticMassages": "60-90 minuti",
+      "iridology": "45-60 minuti",
+      "orthodynamicGymnastics": "45-60 minuti"
     }
   },
   "team": {
@@ -276,10 +298,7 @@
         "name": "Corrado Zamboni",
         "role": "Consulente Filosofico",
         "bio": "Corrado ha studiato e insegnato economia ed è un imprenditore nel settore della salute e della nutrizione. Si è laureato in storia e filosofia, con una tesi in estetica sul pensiero delle arti in Paul Valery, si occupa di economia sociale e filosofia politica sotto il cielo dell'etica e del pensiero critico. Accompagna la ricerca personale con l'attenzione e l'espressione del linguaggio della parola, del corpo e delle emozioni, quindi la filosofia e il pensiero delle arti, in laboratori di pensiero, danza, scrittura e disegno. Un approccio che risveglia la vitalità, le emozioni e la connessione autentica con sè, con l'altro, con l'universo. E che si propone anche attraverso uno sportello di confronto/consulenza individuale e in caffè filosofici aperti alla cittadinanza",
-        "specialties": [
-          "Economia e Commercio",
-          "Consulenze Filosofiche"
-        ],
+        "specialties": ["Economia e Commercio", "Consulenze Filosofiche"],
         "experience": "15+ anni",
         "certifications": [
           "Laurea in Storia e Filosofia",
@@ -322,11 +341,7 @@
         "name": "Giancarlo Pavanello",
         "role": "Massaggiere Specializzato Multitech",
         "bio": "Da ReLeVi Healing, Giancarlo propone trattamenti personalizzati orientati al riequilibrio e all'ascolto del corpo, con un approccio basato su sensibilità, presenza e tecnica. Le sue competenze includono: Massaggio Decontratturante e Sportivo, Linfodrenaggio metodo Vodder, Massaggio Svedese e Antistress, Massaggio Biodinamico a 4 mani per un'esperienza di profonda connessione corpo-mente, Tecniche orientali come Thai Tradizionale, Ayurvedico Abhyangam, Massaggi con oli essenziali, Hot Stone, Lomi Lomi NUI e Californiano emozionale. Ogni trattamento è adattato ai bisogni della persona in un ambiente accogliente e rispettoso.",
-        "specialties": [
-          "Riflessologia",
-          "Massaggio Thai",
-          "Shiatsu"
-        ],
+        "specialties": ["Riflessologia", "Massaggio Thai", "Shiatsu"],
         "experience": "12 anni",
         "certifications": [
           "Riflessologo Certificato",
@@ -338,25 +353,17 @@
         "name": "Grazia Sferrazza Callea",
         "role": "Coordinatore Spa & Terapista",
         "bio": "Sono Grazia Sferrazza Callea, ho studiato naturopatia, kinesiologia, Medicina Tradizionale Cinese e Bilanciamento Craniosacrale. Nel 2009 ho iniziato a studiare la mia menopausa e, grazie alle mie competenze ho fatto delle scoperte che mi hanno permesso di inquadrare questo fenomeno biologico in quadro di senso talmente diverso da essere trasformativo. Infatti sono diventata Menopausa Coach. Da un quindicina di anni ho scritto un paio di libri sull'argomento e aiuto le donne che cercano di ritrovare un equilibrio fisico ed emotivo.",
-        "specialties": [
-          "Menopausa Coaching"
-        ],
+        "specialties": ["Menopausa Coaching"],
         "experience": "6 anni",
-        "certifications": [
-          "Menopausa Coach"
-        ]
+        "certifications": ["Menopausa Coach"]
       },
       "martinaPasut": {
         "name": "Martina Pasut",
         "role": "Insegnante di Yoga",
         "bio": "La mia passione per lo yoga nasce dal desiderio di approfondire la connessione con me stessa-mente, corpo ed emozioni-ma anche con le persone e la natura, di cui siamo tutti parte Attraverso il movimento fluido, il respiro consapevole e un'attenzione costante ai miei allievi, il mio obiettivo è offrire benessere psicofisico. Anche se in un'epoca in cui ansia e stress sembrano dominare le nostre vite, possiamo permetterci di lasciarci andare e rilassarci in profondità. Con me, niente posizioni impossibili né gare di flessibilità: lo yoga è per tutti!",
-        "specialties": [
-          "Yoga"
-        ],
+        "specialties": ["Yoga"],
         "experience": "7 anni",
-        "certifications": [
-          "Yoga con approccio Anukalana"
-        ]
+        "certifications": ["Yoga con approccio Anukalana"]
       },
       "martinaRoma": {
         "name": "Martina Roma",
@@ -368,31 +375,21 @@
           "Massaggiatrice Osteopatica"
         ],
         "experience": "7 anni",
-        "certifications": [
-          "Massaggiatore Autorizzato"
-        ]
+        "certifications": ["Massaggiatore Autorizzato"]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
         "role": "Praticante Biodinamico Craniosacrale",
         "bio": "Massimo ha abbracciato e approfondito l'approccio Biodinamico sotto la guida di Mike Boxhall, terapeuta inglese pioniere del settore. Propone una modalità di lavoro e sostegno basata sull'ascolto profondo della persona, integrando corpo- mente-Spirito e sostenendo le intrinseche capacità di autoregolazione innate in ognuno di noi. Affinché la Salute possa nuovamente manifestare il suo potenziale e garantirci vitalità, armonia, serenità e pienezza.",
-        "specialties": [
-          "Biodinamica"
-        ],
+        "specialties": ["Biodinamica"],
         "experience": "16 anni",
-        "certifications": [
-          "Operatore Craniosacrale",
-          "Praticante Biodinamico"
-        ]
+        "certifications": ["Operatore Craniosacrale", "Praticante Biodinamico"]
       },
       "monicaBortoluzzi": {
         "name": "Monica Bortoluzzi",
         "role": "Counselor & Rebirthing Practitioner",
         "bio": "REBIRTHING: Il Rebirthing è una pratica di respirazione che aiuta a connetterci con la nostra consapevolezza interiore, scoprendo e liberandoci da convinzioni limitanti che influenzano la nostra vita. Attraverso questa pratica, possiamo ottenere intuizioni e comprensioni profonde per il nostro benessere psicofisico. COLLOQUI DI COUNSELING: In una sessione di counseling, esploriamo insieme le radici del tuo malessere psicofisico, scoprendo pensieri e reazioni emotive che derivano dal passato. Come counselor, ti accompagno in un viaggio di auto- conoscenza, creando uno spazio sicuro e non giudicante dove puoi entrare in contatto con la tua parte più profonda, per evolvere e crescere in modo autentico.",
-        "specialties": [
-          "Rebirthing",
-          "Counseling"
-        ],
+        "specialties": ["Rebirthing", "Counseling"],
         "experience": "7 anni",
         "certifications": [
           "Rebirthing Practitioner",
@@ -403,9 +400,7 @@
         "name": "Paolo Avella",
         "role": "Specialista Ginnastica Ortodinamica",
         "bio": "La sua missione è aiutare le persone a migliorare mobilità, postura e benessere generale, attraverso un approccio mirato e progressivo. Grazie alla sua formazione riconosciuta da Sport e Salute e dal Ministero dello Sport, Paolo guida con professionalità e passione ogni percorso, adattando gli esercizi alle esigenze di ciascun individuo.",
-        "specialties": [
-          "Ginnastica Ortodinamica"
-        ],
+        "specialties": ["Ginnastica Ortodinamica"],
         "experience": "7 anni",
         "certifications": [
           "Migliora la funzionalità neuro-motoria",
@@ -417,27 +412,17 @@
         "name": "Sabrina Pozzobon",
         "role": "Consulente di Immagine",
         "bio": "Amo la natura e i suoi colori, ma anche la moda e il tessile, campo in cui ho sempre lavorato anche grazie al mio diploma da modellista. Da queste passioni è nata la mia attuale professione. Posso aiutarvi a studiare la vostra armocromia, le vostre forme, le vostre potenzialità e il vostro stile in poche e semplici mosse. I colori giusti non cambiano solo l'aspetto, ma il modo in cui ci percepiamo e ci presentiamo al mondo.",
-        "specialties": [
-          "Consulente di Immagine Armocromia"
-        ],
+        "specialties": ["Consulente di Immagine Armocromia"],
         "experience": "7 anni",
-        "certifications": [
-          "Consulente di Immagine Armocromia"
-        ]
+        "certifications": ["Consulente di Immagine Armocromia"]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
         "role": "Arteterapeuta & Insegnante Yoga",
         "bio": "Tamara è un'insegnante di yoga e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore. Attraverso l'arteterapia, Tamara accompagna le persone in un viaggio di esplorazione di sé, utilizzando l'espressione artistica come strumento per accedere a emozioni profonde e favorire il benessere psicofisico. Presso ReLeVi Healing, Tamara guiderà sessioni di arteterapia, offrendo uno spazio sicuro e accogliente dove esprimersi liberamente e intraprendere un percorso di trasformazione personale.",
-        "specialties": [
-          "Arteterapia",
-          "Yoga"
-        ],
+        "specialties": ["Arteterapia", "Yoga"],
         "experience": "7 anni",
-        "certifications": [
-          "Insegnante di Yoga",
-          "Arteterapeuta"
-        ]
+        "certifications": ["Insegnante di Yoga", "Arteterapeuta"]
       }
     }
   },
@@ -599,7 +584,7 @@
     }
   },
   "footer": {
-    "brandName": "Serenity Touch",
+    "brandName": "Relevi Healing",
     "tagline": "Il tuo viaggio verso il relax e il benessere inizia qui. Vivi il potere curativo del tocco.",
     "quickLinks": "Link Rapidi",
     "contactUs": "Contattaci",

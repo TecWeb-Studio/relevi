@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ReleviHealing - Massage Center",
-  description: "Experience relaxation and rejuvenation at ReleviHealing Massage Center. Professional massage services in a tranquil environment.",
+  title: "Relevi Healing - Massage Center",
+  description: "Experience relaxation and rejuvenation at Relevi Healing Massage Center. Professional massage services in a tranquil environment.",
 };
 
 export default function RootLayout({
