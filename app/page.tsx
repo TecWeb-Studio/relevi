@@ -263,7 +263,8 @@ export default function Home() {
                     />
                   </div>
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={() => window.open('https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0', '_blank')}
                     className="w-full bg-olive-600 text-white py-4 rounded-lg font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02] shadow-lg"
                   >
                     {t('home.contact.sendMessage')}

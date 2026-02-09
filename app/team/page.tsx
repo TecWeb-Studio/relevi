@@ -263,7 +263,7 @@ export default function TeamPage() {
                   <p className="text-olive-800 font-semibold">{t(`team.members.${selectedMember.key}.experience`)}</p>
                 </div>
                 <button
-                  onClick={() => setSelectedMember(null)}
+                  onClick={() => window.open('https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0', '_blank')}
                   className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300"
                 >
                   {t('team.modal.bookSession')}
