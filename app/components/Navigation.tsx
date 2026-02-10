@@ -39,9 +39,11 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${isScrolled
         ? 'bg-white/95 backdrop-blur-md shadow-lg py-3'
-        : 'bg-transparent py-6'
+        : isMobileMenuOpen
+          ? 'bg-white/92 backdrop-blur-md shadow-md py-4'
+          : 'bg-transparent py-6'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,11 +61,11 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-olive-600 font-medium transition-all duration-300 hover:scale-105 relative group animate-slideIn"
+                className="text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 hover:scale-105 relative group animate-slideIn"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-olive-600 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-olive-600 transition-all duration-200 group-hover:w-full" />
               </Link>
             ))}
             <div className="flex items-center space-x-2">
@@ -115,8 +117,8 @@ export default function Navigation() {
         </div>
 
         <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-            }`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-y-0 opacity-100 scale-100 mt-4 pointer-events-auto' : '-translate-y-2 opacity-0 scale-95 pointer-events-none'
+            } will-change-transform`}
         >
           <div className="flex flex-col space-y-4 py-4">
             {navLinks.map((link) => (
@@ -124,7 +126,7 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-olive-600 font-medium transition-colors duration-300 px-4 py-2"
+                className="text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 px-4 py-2"
               >
                 {link.label}
               </Link>

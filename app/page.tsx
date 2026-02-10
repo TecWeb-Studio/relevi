@@ -191,23 +191,15 @@ export default function Home() {
               className="reveal relative"
               style={{ animationDelay: "200ms" }}
             >
-              <div className="aspect-square bg-olive-200 rounded-3xl flex items-center justify-center animate-pulse-slow">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-olive-600 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-12 h-12 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                      />
-                    </svg>
-                  </div>
+              <div className="aspect-square bg-olive-200 rounded-3xl flex items-center justify-center overflow-hidden animate-pulse-slow">
+                {/* Placeholder for sun/icon image - replace src when ready */}
+                <img
+                  src="/placeholder-peaceful-environment.png"
+                  alt={t("home.whyChoose.peacefulEnvironment")}
+                  className="w-full h-full object-cover"
+                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                />
+                <div className="text-center p-8 hidden">
                   <p className="text-olive-800 text-lg font-medium">
                     {t("home.whyChoose.peacefulEnvironment")}
                   </p>
@@ -284,187 +276,13 @@ export default function Home() {
               className="reveal relative h-full"
               style={{ animationDelay: "300ms" }}
             >
-              <svg
-                className="w-full h-auto drop-shadow-2xl"
-                viewBox="0 0 400 500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Background Circle */}
-                <circle
-                  cx="200"
-                  cy="200"
-                  r="180"
-                  fill="#1f3a1f"
-                  opacity="0.3"
-                />
-                <circle
-                  cx="200"
-                  cy="200"
-                  r="160"
-                  fill="url(#gradientBg)"
-                  opacity="0.2"
-                />
-
-                {/* Left leaf cluster */}
-                <g opacity="0.8">
-                  <ellipse
-                    cx="80"
-                    cy="150"
-                    rx="35"
-                    ry="55"
-                    fill="#a3b993"
-                    transform="rotate(-35 80 150)"
-                  />
-                  <ellipse
-                    cx="60"
-                    cy="180"
-                    rx="25"
-                    ry="40"
-                    fill="#b8c9a8"
-                    transform="rotate(-20 60 180)"
-                  />
-                  <ellipse
-                    cx="100"
-                    cy="200"
-                    rx="30"
-                    ry="50"
-                    fill="#9aaa80"
-                    transform="rotate(-50 100 200)"
-                  />
-                  <path
-                    d="M 80 150 Q 85 170 80 190"
-                    stroke="#6b7d58"
-                    strokeWidth="2"
-                  />
-                </g>
-
-                {/* Right leaf cluster */}
-                <g opacity="0.8">
-                  <ellipse
-                    cx="320"
-                    cy="160"
-                    rx="35"
-                    ry="55"
-                    fill="#a3b993"
-                    transform="rotate(35 320 160)"
-                  />
-                  <ellipse
-                    cx="340"
-                    cy="200"
-                    rx="25"
-                    ry="40"
-                    fill="#b8c9a8"
-                    transform="rotate(20 340 200)"
-                  />
-                  <ellipse
-                    cx="300"
-                    cy="220"
-                    rx="30"
-                    ry="50"
-                    fill="#9aaa80"
-                    transform="rotate(50 300 220)"
-                  />
-                  <path
-                    d="M 320 160 Q 315 185 320 210"
-                    stroke="#6b7d58"
-                    strokeWidth="2"
-                  />
-                </g>
-
-                {/* Central botanical element - plant stems */}
-                <g stroke="#a3b993" strokeWidth="2.5">
-                  <path
-                    d="M 200 400 Q 190 320 185 240"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M 200 400 Q 210 320 215 240"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M 200 380 Q 170 320 150 260"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M 200 380 Q 230 320 250 260"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </g>
-
-                {/* Leaf details on stems */}
-                <g opacity="0.7">
-                  <ellipse
-                    cx="170"
-                    cy="300"
-                    rx="18"
-                    ry="30"
-                    fill="#b8c9a8"
-                    transform="rotate(-45 170 300)"
-                  />
-                  <ellipse
-                    cx="230"
-                    cy="310"
-                    rx="18"
-                    ry="30"
-                    fill="#b8c9a8"
-                    transform="rotate(45 230 310)"
-                  />
-                  <ellipse
-                    cx="140"
-                    cy="280"
-                    rx="15"
-                    ry="25"
-                    fill="#a3b993"
-                    transform="rotate(-60 140 280)"
-                  />
-                  <ellipse
-                    cx="260"
-                    cy="270"
-                    rx="15"
-                    ry="25"
-                    fill="#a3b993"
-                    transform="rotate(60 260 270)"
-                  />
-                </g>
-
-                {/* Top botanical accents */}
-                <g opacity="0.7">
-                  <circle cx="180" cy="120" r="8" fill="#d4af37" />
-                  <circle cx="220" cy="130" r="8" fill="#d4af37" />
-                  <circle cx="200" cy="100" r="6" fill="#e6c200" />
-                  <path
-                    d="M 180 120 L 160 100 M 220 130 L 240 110"
-                    stroke="#d4af37"
-                    strokeWidth="1.5"
-                    opacity="0.6"
-                  />
-                </g>
-
-                {/* Gradient definition */}
-                <defs>
-                  <linearGradient
-                    id="gradientBg"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop
-                      offset="0%"
-                      style={{ stopColor: "#a3b993", stopOpacity: 0.3 }}
-                    />
-                    <stop
-                      offset="100%"
-                      style={{ stopColor: "#6b7d58", stopOpacity: 0.3 }}
-                    />
-                  </linearGradient>
-                </defs>
-              </svg>
+              {/* Placeholder for what you'll find logo/image - replace src when ready */}
+              <img
+                src="/placeholder-what-you-find.png"
+                alt={t("home.whyChooseUs.title")}
+                className="w-full h-auto drop-shadow-2xl rounded-lg object-contain"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+              />
             </div>
           </div>
         </div>

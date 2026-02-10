@@ -21,10 +21,24 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Webkit-based browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
   }
 }
 
 @layer utilities {
+  /* Fix flashing animations by hiding reveal elements until they animate in */
+  .reveal {
+    opacity: 0;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
