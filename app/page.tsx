@@ -194,10 +194,10 @@ export default function Home() {
               <div className="aspect-square bg-olive-200 rounded-3xl flex items-center justify-center overflow-hidden animate-pulse-slow">
                 {/* Placeholder for sun/icon image - replace src when ready */}
                 <img
-                  src="/placeholder-peaceful-environment.png"
+                  src="/images/logo.png"
                   alt={t("home.whyChoose.peacefulEnvironment")}
                   className="w-full h-full object-cover"
-                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                  onError={(e) => (e.currentTarget.style.display = "none")}
                 />
                 <div className="text-center p-8 hidden">
                   <p className="text-olive-800 text-lg font-medium">
@@ -223,6 +223,18 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div
+              className="reveal relative h-full"
+              style={{ animationDelay: "300ms" }}
+            >
+              {/* Placeholder for what you'll find logo/image - replace src when ready */}
+              <img
+                src="/images/Progetto-Patrocinato.png"
+                alt={t("home.whyChooseUs.title")}
+                className="w-full h-auto drop-shadow-2xl rounded-lg object-contain"
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+            </div>
             <div className="space-y-8">
               <div className="reveal bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 hover:shadow-xl transition-all duration-300 group">
                 <div className="flex items-start gap-6">
@@ -270,19 +282,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div
-              className="reveal relative h-full"
-              style={{ animationDelay: "300ms" }}
-            >
-              {/* Placeholder for what you'll find logo/image - replace src when ready */}
-              <img
-                src="/placeholder-what-you-find.png"
-                alt={t("home.whyChooseUs.title")}
-                className="w-full h-auto drop-shadow-2xl rounded-lg object-contain"
-                onError={(e) => (e.currentTarget.style.display = 'none')}
-              />
             </div>
           </div>
         </div>
