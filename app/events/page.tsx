@@ -483,7 +483,7 @@ export default function EventsPage() {
                         {t('events.modal.close')}
                       </button>
                       <button
-                        onClick={() => alert(t('events.modal.registrationMessage'))}
+                        onClick={() => window.open('https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0', '_blank')}
                         className="px-6 py-3 bg-olive-600 text-white rounded-full font-semibold hover:bg-olive-700 transition-all duration-300"
                       >
                         {t('events.modal.registerNow')}
