@@ -36,20 +36,16 @@ export default function EventsPage() {
     );
 
     const elements = document.querySelectorAll('.reveal');
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach((el) => {
+      el.classList.remove('animate-fadeInUp');
+      observer.observe(el);
+    });
 
     return () => observer.disconnect();
-  }, []);
+  }, [filter]);
 
   const events: Event[] = [
-    { id: 1, key: 'couplesWorkshop', type: 'workshop' },
-    { id: 2, key: 'wellnessRetreat', type: 'retreat' },
-    { id: 3, key: 'valentinesSpecial', type: 'special' },
-    { id: 4, key: 'selfMassageClass', type: 'class' },
-    { id: 5, key: 'meditationCombo', type: 'special' },
-    { id: 6, key: 'aromatherapyWorkshop', type: 'workshop' },
-    { id: 7, key: 'prenatalSeminar', type: 'class' },
-    { id: 8, key: 'springRenewal', type: 'retreat' },
+    { id: 1, key: 'allergiesEvent', type: 'workshop' },
   ];
 
   const filteredEvents =
@@ -439,6 +435,49 @@ export default function EventsPage() {
                 </p>
               </div>
 
+              {t(`events.eventList.${selectedEvent.key}.programme`, { returnObjects: true }) && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                    {t('events.modal.programme')}
+                  </h3>
+                  <ul className="space-y-2 text-gray-600">
+                    {(t(`events.eventList.${selectedEvent.key}.programme`, { returnObjects: true }) as string[]).map((item, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <span className="text-olive-600 mt-1">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {t(`events.eventList.${selectedEvent.key}.cost`, { returnObjects: true }) && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                    {t('events.modal.cost')}
+                  </h3>
+                  <ul className="space-y-1 text-gray-600">
+                    {(t(`events.eventList.${selectedEvent.key}.cost`, { returnObjects: true }) as string[]).map((item, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <span className="text-olive-600 mt-1">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {t(`events.eventList.${selectedEvent.key}.reservations`) && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                    {t('events.modal.reservations')}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {t(`events.eventList.${selectedEvent.key}.reservations`)}
+                  </p>
+                </div>
+              )}
+
               {(() => {
                 const details = getEventDetails(selectedEvent.key);
                 return (
@@ -462,7 +501,7 @@ export default function EventsPage() {
                         {t('events.modal.close')}
                       </button>
                       <button
-                        onClick={() => alert('Registration coming soon!')}
+                        onClick={() => alert(t('events.modal.registrationMessage'))}
                         className="px-6 py-3 bg-olive-600 text-white rounded-full font-semibold hover:bg-olive-700 transition-all duration-300"
                       >
                         {t('events.modal.registerNow')}

@@ -484,106 +484,38 @@
       "availableSpots": "Available Spots",
       "remaining": "remaining",
       "close": "Close",
-      "registerNow": "Register Now"
+      "registerNow": "Register Now",
+      "programme": "Programme",
+      "cost": "Cost",
+      "reservations": "Reservations",
+      "registrationMessage": "Registration coming soon!"
     },
     "eventList": {
-      "couplesWorkshop": {
-        "title": "Couples Massage Workshop",
-        "description": "Learn the art of therapeutic touch with your partner. This hands-on workshop teaches basic massage techniques for couples to practice at home. Includes instruction, materials, and light refreshments.",
-        "price": "$150 per couple"
-      },
-      "wellnessRetreat": {
-        "title": "Weekend Wellness Retreat",
-        "description": "Escape to nature for a full weekend of relaxation and rejuvenation. Includes multiple massage sessions, yoga classes, meditation, healthy meals, and nature walks. Accommodations included.",
-        "price": "$450 per person"
-      },
-      "valentinesSpecial": {
-        "title": "Valentine's Day Special",
-        "description": "Celebrate love with our special couples package. Includes side-by-side massages, aromatherapy, champagne, and chocolate-covered strawberries. Perfect for couples looking to connect and unwind.",
-        "price": "$280 per couple"
-      },
-      "selfMassageClass": {
-        "title": "Self-Massage Techniques Class",
-        "description": "Learn effective self-massage techniques to relieve tension in your neck, shoulders, hands, and feet. Perfect for those who work at desks or experience daily stress. Take home a self-care kit.",
-        "price": "$45 per person"
-      },
-      "meditationCombo": {
-        "title": "Meditation & Massage Combo",
-        "description": "Begin with a guided meditation session followed by a relaxing Swedish massage. This combination helps deepen relaxation and promotes lasting calm. All levels welcome.",
-        "price": "$95 per person"
-      },
-      "aromatherapyWorkshop": {
-        "title": "Aromatherapy Workshop",
-        "description": "Discover the healing power of essential oils. Learn about different oils, their properties, and how to blend them for maximum benefit. Create your own custom blend to take home.",
-        "price": "$65 per person"
-      },
-      "prenatalSeminar": {
-        "title": "Prenatal Massage Seminar",
-        "description": "Expectant mothers and their partners are invited to learn about the benefits and techniques of prenatal massage. Includes a demonstration and Q&A session with our certified therapists.",
-        "price": "$30 per person"
-      },
-      "springRenewal": {
-        "title": "Spring Renewal Retreat",
-        "description": "Welcome spring with a full day of renewal activities. Includes morning yoga, massage treatments, organic lunch, guided nature meditation, and wellness workshops.",
-        "price": "$275 per person"
+      "allergiesEvent": {
+        "title": "ALLERGIES: immune response and nutrition",
+        "description": "Educational event dedicated to allergies, with insights into the immune system, nutrition, the gut microbiome and phytotherapy. The day will include presentations by doctors and a practical session in the afternoon.",
+        "price": "Free event",
+        "programme": [
+          "10:00 a.m. – Introduction by Dr Corrado Zamboni",
+          "10:15 a.m. – Allergies: the immune system and nutrition – Dr Marco Pasqualini",
+          "11:30 a.m. – Allergies: the intestinal system, microbiome and phytotherapy – Dr Lorenzo Pascazio",
+          "12:30 p.m. – Buffet lunch",
+          "14:00 – Practical session (approximately 3 hours)"
+        ],
+        "cost": [
+          "Free event",
+          "Contribution of €20 for lunch and buffet"
+        ],
+        "reservations": "Limited places – reservations required. Telephone: 351 7471159"
       }
     },
     "eventDetails": {
-      "couplesWorkshop": {
-        "date": "2026-02-15",
-        "time": "10:00 AM - 1:00 PM",
-        "location": "Main Studio",
-        "spots": 10,
-        "spotsLeft": 4
-      },
-      "wellnessRetreat": {
-        "date": "2026-02-22",
-        "time": "All Day",
-        "location": "Mountain Springs Resort",
-        "spots": 20,
-        "spotsLeft": 8
-      },
-      "valentinesSpecial": {
-        "date": "2026-02-14",
-        "time": "Various Times",
-        "location": "All Treatment Rooms",
-        "spots": 12,
-        "spotsLeft": 5
-      },
-      "selfMassageClass": {
-        "date": "2026-02-20",
-        "time": "2:00 PM - 4:00 PM",
-        "location": "Education Center",
-        "spots": 15,
-        "spotsLeft": 12
-      },
-      "meditationCombo": {
-        "date": "2026-02-25",
-        "time": "9:00 AM - 11:30 AM",
-        "location": "Zen Garden",
-        "spots": 8,
-        "spotsLeft": 3
-      },
-      "aromatherapyWorkshop": {
-        "date": "2026-03-01",
-        "time": "6:00 PM - 8:00 PM",
-        "location": "Main Studio",
-        "spots": 12,
-        "spotsLeft": 7
-      },
-      "prenatalSeminar": {
-        "date": "2026-03-08",
-        "time": "11:00 AM - 12:30 PM",
-        "location": "Education Center",
-        "spots": 15,
-        "spotsLeft": 10
-      },
-      "springRenewal": {
-        "date": "2026-03-15",
-        "time": "9:00 AM - 5:00 PM",
-        "location": "Garden Pavilion",
-        "spots": 25,
-        "spotsLeft": 15
+      "allergiesEvent": {
+        "date": "2026-02-28",
+        "time": "10:00 a.m. - 5:00 p.m.",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 30,
+        "spotsLeft": 30
       }
     }
   },
