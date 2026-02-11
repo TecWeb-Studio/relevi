@@ -4,6 +4,7 @@
     "services": "Services",
     "team": "Our Team",
     "events": "Events",
+    "culturalInsights": "Cultural Insights",
     "contact": "Contact"
   },
   "home": {
@@ -260,6 +261,11 @@
       "title": "Meet Our Team",
       "subtitle": "Our dedicated team of certified massage therapists brings years of experience, passion, and expertise to help you achieve optimal wellness and relaxation."
     },
+    "headmaster": {
+      "sectionTitle": "Leadership",
+      "badge": "DIRECTOR"
+    },
+    "viewProfile": "View Profile",
     "experienceLabel": "Experience",
     "more": "more",
     "commitment": {
@@ -290,6 +296,25 @@
       "bookSession": "Book a Session"
     },
     "members": {
+      "headmaster": {
+        "name": "Francesca Mayer",
+        "role": "Director and Founder",
+        "shortBio": "Francesca is the visionary mind behind Relevi Healing, combining extensive experience in holistic disciplines with a passion for authentic wellness.",
+        "bio": "With over 20 years of experience in holistic therapies, Francesca founded Relevi Healing with the vision of creating a space where body, mind, and spirit can find harmony. Her multidisciplinary training and integrated approach have made her a recognized leader in the wellness field. Francesca personally guides the Relevi team, ensuring that every treatment reflects the highest standards of excellence and personalized care.",
+        "specialties": [
+          "Holistic Therapies",
+          "Integrative Medicine",
+          "Body Wellness",
+          "Wellness Leadership"
+        ],
+        "experience": "20+ years",
+        "certifications": [
+          "Founder of Relevi Healing",
+          "Expert in Holistic Therapies",
+          "Integrative Medicine Specialist",
+          "Wellness Consultant"
+        ]
+      },
       "corradoZamboni": {
         "name": "Corrado Zamboni",
         "role": "Philosophical Consultant",
@@ -428,6 +453,36 @@
         "experience": "7 years",
         "certifications": ["Yoga Instructor", "Art Therapist"]
       }
+    }
+  },
+  "culturalInsights": {
+    "hero": {
+      "title": "Cultural Insights",
+      "subtitle": "Explore ancient wisdom and modern knowledge through our downloadable educational materials."
+    },
+    "filters": {
+      "all": "All",
+      "philosophy": "Philosophy",
+      "history": "History",
+      "wellness": "Wellness",
+      "spirituality": "Spirituality"
+    },
+    "categories": {
+      "philosophy": "Philosophy",
+      "history": "History",
+      "wellness": "Wellness",
+      "spirituality": "Spirituality"
+    },
+    "downloadPdf": "Download PDF",
+    "noLessons": {
+      "title": "Lessons Coming Soon",
+      "description": "We're preparing valuable content for you. Check back soon to download our lessons."
+    },
+    "lessons": {},
+    "cta": {
+      "title": "Have Questions?",
+      "subtitle": "Get in touch to learn more about our cultural insights and educational materials.",
+      "button": "Contact Us"
     }
   },
   "events": {

@@ -4,6 +4,7 @@
     "services": "Servizi",
     "team": "Il Nostro Team",
     "events": "Eventi",
+    "culturalInsights": "Approfondimenti Culturali",
     "contact": "Contatti"
   },
   "home": {
@@ -264,6 +265,11 @@
       "title": "Conosci il Nostro Team",
       "subtitle": "Il nostro team dedicato di massaggiatori certificati porta anni di esperienza, passione e competenza per aiutarti a raggiungere il benessere e il relax ottimali."
     },
+    "headmaster": {
+      "sectionTitle": "Direzione",
+      "badge": "DIRETTRICE"
+    },
+    "viewProfile": "Visualizza Profilo",
     "experienceLabel": "Esperienza",
     "more": "altri",
     "commitment": {
@@ -294,6 +300,25 @@
       "bookSession": "Prenota una Sessione"
     },
     "members": {
+      "headmaster": {
+        "name": "Francesca Mayer",
+        "role": "Direttrice e Fondatrice",
+        "shortBio": "Francesca è la mente visionaria dietro Relevi Healing, combinando una vasta esperienza nelle discipline olistiche con una passione per il benessere autentico.",
+        "bio": "Con oltre 20 anni di esperienza nel campo delle terapie olistiche, Francesca ha fondato Relevi Healing con la visione di creare uno spazio dove corpo, mente e spirito possano trovare armonia. La sua formazione multidisciplinare e il suo approccio integrato l'hanno resa una guida riconosciuta nel settore del benessere. Francesca guida personalmente il team di Relevi, assicurando che ogni trattamento rifletta i più alti standard di eccellenza e cura personalizzata.",
+        "specialties": [
+          "Terapie Olistiche",
+          "Medicina Integrata",
+          "Benessere Corporeo",
+          "Leadership nel Wellness"
+        ],
+        "experience": "20+ anni",
+        "certifications": [
+          "Fondatrice Relevi Healing",
+          "Esperta in Terapie Olistiche",
+          "Specialista in Medicina Integrata",
+          "Consulente di Benessere"
+        ]
+      },
       "corradoZamboni": {
         "name": "Corrado Zamboni",
         "role": "Consulente Filosofico",
@@ -424,6 +449,36 @@
         "experience": "7 anni",
         "certifications": ["Insegnante di Yoga", "Arteterapeuta"]
       }
+    }
+  },
+  "culturalInsights": {
+    "hero": {
+      "title": "Approfondimenti Culturali",
+      "subtitle": "Esplora la saggezza antica e la conoscenza moderna attraverso i nostri materiali didattici scaricabili."
+    },
+    "filters": {
+      "all": "Tutti",
+      "philosophy": "Filosofia",
+      "history": "Storia",
+      "wellness": "Benessere",
+      "spirituality": "Spiritualità"
+    },
+    "categories": {
+      "philosophy": "Filosofia",
+      "history": "Storia",
+      "wellness": "Benessere",
+      "spirituality": "Spiritualità"
+    },
+    "downloadPdf": "Scarica PDF",
+    "noLessons": {
+      "title": "Lezioni in Arrivo",
+      "description": "Stiamo preparando contenuti preziosi per te. Torna presto per scaricare le nostre lezioni."
+    },
+    "lessons": {},
+    "cta": {
+      "title": "Hai Domande?",
+      "subtitle": "Contattaci per saperne di più sui nostri approfondimenti culturali e sui materiali didattici.",
+      "button": "Contattaci"
     }
   },
   "events": {

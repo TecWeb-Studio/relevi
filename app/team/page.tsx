@@ -65,7 +65,64 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      {/* Headmaster Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 reveal">
+            <h2 className="text-4xl font-bold text-olive-800 mb-4">
+              {t('team.headmaster.sectionTitle')}
+            </h2>
+          </div>
+          <div className="max-w-4xl mx-auto reveal">
+            <div
+              className="bg-white rounded-3xl overflow-hidden shadow-2xl hover-lift transition-all duration-300 group cursor-pointer border-2 border-olive-200"
+              onClick={() => setSelectedMember({ id: 0, key: 'headmaster', image: '/team-photos-crop/FrancescaMayer.jpg' })}
+            >
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="h-96 md:h-auto bg-gradient-to-br from-olive-100 to-olive-200 flex items-center justify-center group-hover:from-olive-200 group-hover:to-olive-300 transition-all duration-300">
+                  <img
+                    src="/team-photos-crop/FrancescaMayer.jpg"
+                    alt={t('team.members.headmaster.name')}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-10 flex flex-col justify-center">
+                  <div className="inline-block px-4 py-2 bg-olive-600 text-white rounded-full text-sm font-bold mb-4 self-start">
+                    {t('team.headmaster.badge')}
+                  </div>
+                  <h3 className="text-3xl font-bold text-olive-800 mb-3">
+                    {t('team.members.headmaster.name')}
+                  </h3>
+                  <p className="text-olive-600 font-medium text-lg mb-4">
+                    {t('team.members.headmaster.role')}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {t('team.members.headmaster.shortBio')}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {(t('team.members.headmaster.specialties', { returnObjects: true }) as string[]).slice(0, 3).map((specialty: string) => (
+                      <span
+                        key={specialty}
+                        className="px-4 py-2 bg-olive-100 text-olive-700 rounded-full text-sm font-medium"
+                      >
+                        {specialty}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-gray-500 text-sm mb-6">
+                    {t('team.experienceLabel')}: {t('team.members.headmaster.experience')}
+                  </p>
+                  <button className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 self-start">
+                    {t('team.viewProfile')}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">"
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
