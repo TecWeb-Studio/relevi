@@ -62,8 +62,8 @@ export default function TeamPage() {
     },
     {
       id: 8,
-      key: "michelaEssenza",
-      image: "/team-photos-crop/MichelaEssenza.jpg",
+      key: "michelaDolce",
+      image: "/team-photos-crop/MichelaDolce.jpg",
     },
     {
       id: 9,
