@@ -553,10 +553,7 @@
           "12:30 – Pranzo a buffet",
           "14:00 – Sessione pratica (circa 3 ore)"
         ],
-        "cost": [
-          "Evento gratuito",
-          "Contributo di €20 per pranzo e buffet"
-        ],
+        "cost": ["Evento gratuito", "Contributo di €20 per pranzo e buffet"],
         "reservations": "Posti limitati – prenotazione obbligatoria. Telefono: 351 7471159"
       }
     },

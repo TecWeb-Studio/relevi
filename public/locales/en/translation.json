@@ -557,10 +557,7 @@
           "12:30 p.m. – Buffet lunch",
           "14:00 – Practical session (approximately 3 hours)"
         ],
-        "cost": [
-          "Free event",
-          "Contribution of €20 for lunch and buffet"
-        ],
+        "cost": ["Free event", "Contribution of €20 for lunch and buffet"],
         "reservations": "Limited places – reservations required. Telephone: 351 7471159"
       }
     },
