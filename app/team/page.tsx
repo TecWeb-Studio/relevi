@@ -35,16 +35,15 @@ export default function TeamPage() {
   const teamMembers: TeamMember[] = [
     { id: 1, key: 'corradoZamboni', image: '/team-photos-crop/CorradoZamboni.jpg' },
     { id: 2, key: 'deniseDallaPasqua', image: '/team-photos-crop/DeniseDallaPasqua.jpg' },
-    { id: 3, key: 'francescaTonon', image: '/team-photos-crop/FrancescaTonon.jpg' },
-    { id: 4, key: 'giancarloPavanello', image: '/team-photos-crop/GiancarloPavanello.jpg' },
-    { id: 5, key: 'graziaSferrazzaCallea', image: '/team-photos-crop/GraziaCallea.jpg' },
-    { id: 6, key: 'martinaPasut', image: '/team-photos-crop/MartinaPasut.jpg' },
-    { id: 7, key: 'martinaRoma', image: '/team-photos-crop/MartinaRoma.jpg' },
-    { id: 8, key: 'massimoGnesotto', image: '/team-photos-crop/MassimoGnesotto2.jpg' },
-    { id: 9, key: 'monicaBortoluzzi', image: '/team-photos-crop/MonicaBortoluzzi.jpg' },
-    { id: 10, key: 'paoloAvella', image: '/team-photos-crop/PaoloAvella.jpg' },
-    { id: 11, key: 'sabrinaPozzobon', image: '/team-photos-crop/SabrinaPozzobon.jpg' },
-    { id: 12, key: 'tamaraZanchetta', image: '/team-photos-crop/TamaraZanchetta.jpg' },
+    { id: 3, key: 'giancarloPavanello', image: '/team-photos-crop/GiancarloPavanello.jpg' },
+    { id: 4, key: 'graziaSferrazzaCallea', image: '/team-photos-crop/GraziaCallea.jpg' },
+    { id: 5, key: 'martinaPasut', image: '/team-photos-crop/MartinaPasut.jpg' },
+    { id: 6, key: 'martinaRoma', image: '/team-photos-crop/MartinaRoma.jpg' },
+    { id: 7, key: 'massimoGnesotto', image: '/team-photos-crop/MassimoGnesotto2.jpg' },
+    { id: 8, key: 'monicaBortoluzzi', image: '/team-photos-crop/MonicaBortoluzzi.jpg' },
+    { id: 9, key: 'paoloAvella', image: '/team-photos-crop/PaoloAvella.jpg' },
+    { id: 10, key: 'sabrinaPozzobon', image: '/team-photos-crop/SabrinaPozzobon.jpg' },
+    { id: 11, key: 'tamaraZanchetta', image: '/team-photos-crop/TamaraZanchetta.jpg' },
   ];
 
   return (
