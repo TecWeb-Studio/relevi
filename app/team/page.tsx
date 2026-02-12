@@ -318,12 +318,15 @@ export default function TeamPage() {
                   <p className="text-gray-500">{t('team.experienceLabel')}</p>
                   <p className="text-olive-800 font-semibold">{t(`team.members.${selectedMember.key}.experience`)}</p>
                 </div>
-                <button
-                  onClick={() => window.open('https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0', '_blank')}
-                  className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300"
+                <a
+                  href={`/prenota?operatore=${selectedMember.key}`}
+                  className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 inline-flex items-center gap-2"
                 >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                   {t('team.modal.bookSession')}
-                </button>
+                </a>
               </div>
             </div>
           </div>

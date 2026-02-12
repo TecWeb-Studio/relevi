@@ -33,6 +33,7 @@ export default function Navigation() {
     { href: '/', label: t('nav.home') },
     { href: '/services', label: t('nav.services') },
     { href: '/team', label: t('nav.team') },
+    { href: '/prenota', label: t('nav.booking') },
     { href: '/events', label: t('nav.events') },
     { href: '/approfondimenti-culturali', label: t('nav.culturalInsights') },
     { href: '/#contact', label: t('nav.contact') },

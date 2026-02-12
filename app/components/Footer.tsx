@@ -54,6 +54,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/prenota"
+                  className="text-olive-200 hover:text-white transition-colors duration-300"
+                >
+                  {t('nav.booking')}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/events"
                   className="text-olive-200 hover:text-white transition-colors duration-300"
                 >

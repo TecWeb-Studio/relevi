@@ -3,6 +3,7 @@
     "home": "Home",
     "services": "Servizi",
     "team": "Il Nostro Team",
+    "booking": "Prenota",
     "events": "Eventi",
     "culturalInsights": "Approfondimenti Culturali",
     "contact": "Contatti"
@@ -565,6 +566,63 @@
         "spots": 30,
         "spotsLeft": 30
       }
+    }
+  },
+  "booking": {
+    "hero": {
+      "title": "Prenota la tua Sessione",
+      "highlight": "Sessione",
+      "subtitle": "Scegli il professionista, la data e l'orario che preferisci. Prenota la tua sessione di benessere in pochi semplici passi."
+    },
+    "steps": {
+      "step1": {
+        "title": "Scegli l'Operatore",
+        "description": "Seleziona il professionista che preferisci"
+      },
+      "step2": {
+        "title": "Scegli la Data",
+        "description": "Seleziona un giorno disponibile dal calendario"
+      },
+      "step3": {
+        "title": "Scegli l'Orario",
+        "description": "Prenota lo slot orario che preferisci"
+      }
+    },
+    "selectOperator": {
+      "title": "Scegli il Tuo Professionista",
+      "subtitle": "Seleziona l'operatore con cui desideri prenotare la tua sessione"
+    },
+    "availableDays": "Giorni disponibili",
+    "sessionInfo": "Orari di ricevimento",
+    "calendar": {
+      "available": "Disponibile",
+      "selected": "Selezionato",
+      "today": "Oggi"
+    },
+    "timeSlots": {
+      "title": "Orari Disponibili",
+      "slotsAvailable": "orari disponibili",
+      "noSlots": "Nessun orario disponibile per questa data",
+      "selectDatePrompt": "Seleziona una data",
+      "selectDateHint": "Scegli un giorno disponibile dal calendario per vedere gli orari"
+    },
+    "summary": {
+      "title": "Riepilogo Prenotazione",
+      "operator": "Professionista",
+      "date": "Data",
+      "time": "Orario",
+      "bookViaWhatsApp": "Prenota via WhatsApp",
+      "whatsappNote": "Verrai reindirizzato a WhatsApp per confermare la prenotazione"
+    },
+    "confirm": {
+      "title": "Conferma Prenotazione",
+      "location": "Sede",
+      "cancel": "Annulla",
+      "confirm": "Conferma"
+    },
+    "emptyState": {
+      "title": "Scegli un Professionista",
+      "description": "Seleziona un operatore dalla lista qui sopra per visualizzare il calendario e gli orari disponibili."
     }
   },
   "footer": {

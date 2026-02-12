@@ -3,6 +3,7 @@
     "home": "Home",
     "services": "Services",
     "team": "Our Team",
+    "booking": "Book Now",
     "events": "Events",
     "culturalInsights": "Cultural Insights",
     "contact": "Contact"
@@ -569,6 +570,63 @@
         "spots": 30,
         "spotsLeft": 30
       }
+    }
+  },
+  "booking": {
+    "hero": {
+      "title": "Book Your Session",
+      "highlight": "Session",
+      "subtitle": "Choose your preferred professional, date and time. Book your wellness session in a few simple steps."
+    },
+    "steps": {
+      "step1": {
+        "title": "Choose Operator",
+        "description": "Select your preferred professional"
+      },
+      "step2": {
+        "title": "Choose Date",
+        "description": "Pick an available day from the calendar"
+      },
+      "step3": {
+        "title": "Choose Time",
+        "description": "Book your preferred time slot"
+      }
+    },
+    "selectOperator": {
+      "title": "Choose Your Professional",
+      "subtitle": "Select the operator you'd like to book your session with"
+    },
+    "availableDays": "Available days",
+    "sessionInfo": "Office hours",
+    "calendar": {
+      "available": "Available",
+      "selected": "Selected",
+      "today": "Today"
+    },
+    "timeSlots": {
+      "title": "Available Times",
+      "slotsAvailable": "time slots available",
+      "noSlots": "No time slots available for this date",
+      "selectDatePrompt": "Select a date",
+      "selectDateHint": "Choose an available day from the calendar to see available times"
+    },
+    "summary": {
+      "title": "Booking Summary",
+      "operator": "Professional",
+      "date": "Date",
+      "time": "Time",
+      "bookViaWhatsApp": "Book via WhatsApp",
+      "whatsappNote": "You will be redirected to WhatsApp to confirm your booking"
+    },
+    "confirm": {
+      "title": "Confirm Booking",
+      "location": "Location",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "emptyState": {
+      "title": "Choose a Professional",
+      "description": "Select an operator from the list above to view the calendar and available time slots."
     }
   },
   "footer": {
