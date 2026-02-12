@@ -347,7 +347,7 @@ export default function TeamPage() {
                 </p>
               </div>
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover-lift">
-                <div className="text-4xl font-bold text-olive-600 mb-2">12</div>
+                <div className="text-4xl font-bold text-olive-600 mb-2">13</div>
                 <p className="text-gray-600">
                   {t("team.stats.expertTherapists")}
                 </p>
@@ -362,7 +362,7 @@ export default function TeamPage() {
               </div>
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover-lift">
                 <div className="text-4xl font-bold text-olive-600 mb-2">
-                  1000+
+                  100+
                 </div>
                 <p className="text-gray-600">{t("team.stats.happyClients")}</p>
               </div>
