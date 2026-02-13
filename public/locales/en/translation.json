@@ -44,6 +44,32 @@
         "description": "Treatments tailored to your specific needs."
       }
     },
+    "uniPro": {
+      "title": "UNI-PRO Patronage",
+      "subtitle": "Collaboration and professional guarantees",
+      "summary": "Relevi Healing benefits from the patronage of the professional association UNI-PRO, compliant with Italian law 4/2013. UNI-PRO safeguards holistic operators and holistic counselors through professional registers, verified requirements by the Ethics and Holistic Quality Committee, and accredited training schools. It promotes periodic peer review, professional growth, and a holistic culture grounded in ethics and competence, offering support services to professionals and guarantees of reliability to users. It collaborates with qualified professionals.",
+      "highlights": [
+        "Professional registers for Holistic Operators and Holistic Counselors.",
+        "Accredited training and schools assessed by the Ethics and Holistic Quality Committee.",
+        "Support and protection services for professionals and users.",
+        "Promotion of holistic ethics and continuous development."
+      ],
+      "openButton": "Discover UNI-PRO",
+      "closeButton": "Close UNI-PRO",
+      "pageButton": "Go to UNI-PRO page",
+      "collaborators": {
+        "title": "Collaborators",
+        "list": [
+          {
+            "name": "Simonetta Conti",
+            "role": "Labor and Tax Consultancy",
+            "image": "/uni-pro/SimonettaConti.jpg",
+            "shortBio": "Labor and tax consultant registered with the Order of Labor Consultants of Trieste. Independent practice carried out both in association and individually.",
+            "bio": "Labor and tax consultant registered with the Order of Labor Consultants of Trieste.\nIndependent practice carried out both in association and individually.\nMulti-year teaching activity in tax, fiscal and labor law subjects.\nMember of the commission for the State exams to qualify for the profession of Labor Consultant.\nCourt-appointed Technical Consultant at the Tribunal of Trieste."
+          }
+        ]
+      }
+    },
     "contact": {
       "title": "Get In Touch",
       "subtitle": "Ready to start your journey to relaxation? Contact us today to book your appointment.",

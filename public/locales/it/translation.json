@@ -44,6 +44,32 @@
         "description": "Trattamenti su misura per le tue esigenze specifiche."
       }
     },
+    "uniPro": {
+      "title": "Patrocinio UNI-PRO",
+      "subtitle": "Collaborazione e garanzie professionali",
+      "summary": "Relevi Healing si avvale del patrocinio dell’associazione professionale UNI-PRO, conforme alla legge 4/2013. UNI-PRO tutela operatori olistici e counselor attraverso registri, requisiti verificati dal Comitato di Etica e Qualità Olistica e scuole di formazione accreditate. Promuove confronto periodico, crescita professionale e una cultura olistica fondata su etica e competenza, offrendo servizi di supporto ai professionisti e garanzie di correttezza agli utenti. Collabora con figure qualificate.",
+      "highlights": [
+        "Registri professionali per Operatori Olistici e Counselor Olistici.",
+        "Formazione accreditata e scuole valutate dal Comitato di Etica e Qualità Olistica.",
+        "Servizi di supporto e tutela per professionisti e utenti.",
+        "Promozione di etica olistica e aggiornamento continuo."
+      ],
+      "openButton": "Scopri UNI-PRO",
+      "closeButton": "Chiudi UNI-PRO",
+      "pageButton": "Vai alla pagina UNI-PRO",
+      "collaborators": {
+        "title": "Collaboratori",
+        "list": [
+          {
+            "name": "Simonetta Conti",
+            "role": "Consulenza del Lavoro e Fiscale",
+            "image": "/uni-pro/SimonettaConti.jpg",
+            "shortBio": "Consulente del lavoro e fiscale iscritto all'Ordine dei Consulenti del Lavoro di Trieste. Libera professione svolta in forma associata e individuale.",
+            "bio": "Consulente del lavoro e fiscale iscritto all'Ordine dei Consulenti del Lavoro di Trieste.\nLibera professione svolta in forma associata e individuale.\nAttività di docenza pluriannuale su materie fiscali, tributarie e giuslavoristiche.\nMembro di commissione per gli esami di Stato per l'abilitazione all'esercizio della professione di Consulente del Lavoro.\nConsulente Tecnico del Giudice presso il Tribunale di Trieste."
+          }
+        ]
+      }
+    },
     "contact": {
       "title": "Contattaci",
       "subtitle": "Pronto per iniziare il tuo viaggio verso il relax? Contattaci oggi per prenotare il tuo appuntamento.",

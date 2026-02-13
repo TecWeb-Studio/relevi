@@ -4,7 +4,7 @@
 
 export interface TimeSlot {
   start: string; // "HH:MM"
-  end: string;   // "HH:MM"
+  end: string; // "HH:MM"
 }
 
 export interface OperatorAvailability {
@@ -17,121 +17,131 @@ export interface OperatorAvailability {
 
 export const operatorAvailability: OperatorAvailability[] = [
   {
-    key: 'headmaster', // Francesca Mayer
+    key: "headmaster", // Francesca Mayer
     daysOfWeek: [1, 2, 3, 4, 5], // Mon-Fri
     timeSlots: [
-      { start: '09:00', end: '13:00' },
-      { start: '14:30', end: '18:00' },
+      { start: "09:00", end: "13:00" },
+      { start: "14:30", end: "18:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'corradoZamboni',
+    key: "corradoZamboni",
     daysOfWeek: [2, 4], // Tue, Thu
     timeSlots: [
-      { start: '10:00', end: '13:00' },
-      { start: '15:00', end: '19:00' },
+      { start: "10:00", end: "13:00" },
+      { start: "15:00", end: "19:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'deniseDallaPasqua',
+    key: "deniseDallaPasqua",
     daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
     timeSlots: [
-      { start: '09:00', end: '13:00' },
-      { start: '14:00', end: '18:00' },
+      { start: "09:00", end: "13:00" },
+      { start: "14:00", end: "18:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'giancarloPavanello',
+    key: "giancarloPavanello",
     daysOfWeek: [1, 2, 3, 4, 5, 6], // Mon-Sat
     timeSlots: [
-      { start: '09:00', end: '13:00' },
-      { start: '14:30', end: '19:00' },
+      { start: "09:00", end: "13:00" },
+      { start: "14:30", end: "19:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'graziaSferrazzaCallea',
+    key: "graziaSferrazzaCallea",
     daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
     timeSlots: [
-      { start: '10:00', end: '13:00' },
-      { start: '14:30', end: '17:30' },
+      { start: "10:00", end: "13:00" },
+      { start: "14:30", end: "17:30" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'martinaPasut',
+    key: "martinaPasut",
     daysOfWeek: [2, 4, 6], // Tue, Thu, Sat
     timeSlots: [
-      { start: '09:00', end: '12:00' },
-      { start: '16:00', end: '20:00' },
+      { start: "09:00", end: "12:00" },
+      { start: "16:00", end: "20:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'martinaRoma',
+    key: "martinaRoma",
     daysOfWeek: [1, 2, 3, 4, 5], // Mon-Fri
     timeSlots: [
-      { start: '09:00', end: '13:00' },
-      { start: '14:00', end: '18:00' },
+      { start: "09:00", end: "13:00" },
+      { start: "14:00", end: "18:00" },
     ],
     sessionDuration: 45,
     breakBetweenSessions: 15,
   },
   {
-    key: 'massimoGnesotto',
+    key: "massimoGnesotto",
     daysOfWeek: [2, 4, 6], // Tue, Thu, Sat
     timeSlots: [
-      { start: '10:00', end: '13:00' },
-      { start: '15:00', end: '19:00' },
+      { start: "10:00", end: "13:00" },
+      { start: "15:00", end: "19:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'monicaBortoluzzi',
+    key: "michelaDolce",
     daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
     timeSlots: [
-      { start: '09:30', end: '12:30' },
-      { start: '14:30', end: '18:30' },
+      { start: "10:00", end: "13:00" },
+      { start: "14:30", end: "18:30" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'paoloAvella',
+    key: "monicaBortoluzzi",
+    daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
+    timeSlots: [
+      { start: "09:30", end: "12:30" },
+      { start: "14:30", end: "18:30" },
+    ],
+    sessionDuration: 60,
+    breakBetweenSessions: 15,
+  },
+  {
+    key: "paoloAvella",
     daysOfWeek: [1, 2, 3, 4, 5, 6], // Mon-Sat
     timeSlots: [
-      { start: '08:00', end: '12:00' },
-      { start: '15:00', end: '19:00' },
+      { start: "08:00", end: "12:00" },
+      { start: "15:00", end: "19:00" },
     ],
     sessionDuration: 45,
     breakBetweenSessions: 15,
   },
   {
-    key: 'sabrinaPozzobon',
+    key: "sabrinaPozzobon",
     daysOfWeek: [2, 4, 6], // Tue, Thu, Sat
     timeSlots: [
-      { start: '10:00', end: '13:00' },
-      { start: '14:30', end: '18:00' },
+      { start: "10:00", end: "13:00" },
+      { start: "14:30", end: "18:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
   },
   {
-    key: 'tamaraZanchetta',
+    key: "tamaraZanchetta",
     daysOfWeek: [1, 3, 5, 6], // Mon, Wed, Fri, Sat
     timeSlots: [
-      { start: '09:00', end: '12:00' },
-      { start: '15:00', end: '19:00' },
+      { start: "09:00", end: "12:00" },
+      { start: "15:00", end: "19:00" },
     ],
     sessionDuration: 60,
     breakBetweenSessions: 15,
@@ -152,8 +162,8 @@ export function getAvailableSlots(operatorKey: string, date: Date): string[] {
   const { sessionDuration, breakBetweenSessions } = availability;
 
   for (const range of availability.timeSlots) {
-    const [startH, startM] = range.start.split(':').map(Number);
-    const [endH, endM] = range.end.split(':').map(Number);
+    const [startH, startM] = range.start.split(":").map(Number);
+    const [endH, endM] = range.end.split(":").map(Number);
 
     let currentMinutes = startH * 60 + startM;
     const endMinutes = endH * 60 + endM;
@@ -161,7 +171,9 @@ export function getAvailableSlots(operatorKey: string, date: Date): string[] {
     while (currentMinutes + sessionDuration <= endMinutes) {
       const h = Math.floor(currentMinutes / 60);
       const m = currentMinutes % 60;
-      slots.push(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
+      slots.push(
+        `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`,
+      );
       currentMinutes += sessionDuration + breakBetweenSessions;
     }
   }
@@ -181,8 +193,13 @@ export function hasAvailability(operatorKey: string, date: Date): boolean {
 /**
  * Get operator availability summary (which days they work)
  */
-export function getOperatorScheduleSummary(operatorKey: string): { daysOfWeek: number[]; timeSlots: TimeSlot[] } | null {
+export function getOperatorScheduleSummary(
+  operatorKey: string,
+): { daysOfWeek: number[]; timeSlots: TimeSlot[] } | null {
   const availability = operatorAvailability.find((a) => a.key === operatorKey);
   if (!availability) return null;
-  return { daysOfWeek: availability.daysOfWeek, timeSlots: availability.timeSlots };
+  return {
+    daysOfWeek: availability.daysOfWeek,
+    timeSlots: availability.timeSlots,
+  };
 }
