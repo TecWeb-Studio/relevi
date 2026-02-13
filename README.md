@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Relevi Healing
 
-## Getting Started
+Relevi Healing è uno spazio dedicato al benessere integrato della persona.  
+Non un semplice centro, ma un ambiente in cui discipline differenti dialogano tra loro per accompagnare chi entra in un percorso di equilibrio, consapevolezza e crescita personale.
 
-First, run the development server:
+Qui il lavoro sul corpo incontra quello emotivo ed energetico, in un contesto accogliente e professionale.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Chi siamo ✨
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Relevi Healing nasce con l’obiettivo di offrire un approccio multidisciplinare al benessere.  
+Ogni proposta è pensata per considerare la persona nella sua globalità: fisica, mentale ed emozionale.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Non esiste un percorso uguale per tutti — esiste il percorso giusto per ciascuno.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Cosa puoi trovare 🌿
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All’interno dello spazio vengono proposte attività e trattamenti orientati al riequilibrio e alla crescita personale:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Yoga e pratiche corporee
+- Ginnastica ortodinamica
+- Arteterapia e percorsi espressivi
+- Kinesiologia e discipline energetiche
+- Tecniche ispirate alla medicina tradizionale cinese
+- Massaggi e trattamenti corpo
+- Workshop, incontri ed eventi tematici
 
-## Deploy on Vercel
+Ogni attività è guidata da professionisti qualificati e orientata alla qualità dell’esperienza.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## La filosofia 💫
+
+Il principio è semplice: corpo e mente non sono separati.  
+Attraverso l’integrazione di più discipline, Relevi Healing crea uno spazio in cui rallentare, ascoltarsi e ritrovare armonia.
+
+Non si tratta solo di praticare, ma di trasformare.
+
+---
+
+## Dove trovarci 📍
+
+Via Campagna 46  
+San Polo di Piave (TV)
+
+Contatti diretti disponibili tramite telefono, email e canali social ufficiali.
+
+---
+
+© 2026 Relevi Healing. Tutti i diritti riservati. Progettato da TecWeb Studio
