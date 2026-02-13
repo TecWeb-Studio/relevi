@@ -312,8 +312,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-24 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: "url('/images/imgsfondo1.jpg')",
+            zIndex: 0,
+          }}
+        />
+        <div className="absolute inset-0 bg-white/50 z-5" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 reveal">
             <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
               {t("home.contact.title")}
