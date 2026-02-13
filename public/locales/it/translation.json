@@ -297,7 +297,6 @@
       "badge": "DIRETTRICE"
     },
     "viewProfile": "Visualizza Profilo",
-    "experienceLabel": "Esperienza",
     "more": "altri",
     "commitment": {
       "title": "Il Nostro Impegno per l'Eccellenza",
@@ -338,7 +337,6 @@
           "Benessere Corporeo",
           "Leadership nel Wellness"
         ],
-        "experience": "20+ anni",
         "certifications": [
           "Fondatrice Relevi Healing",
           "Esperta in Terapie Olistiche",
@@ -351,7 +349,6 @@
         "role": "Consulente Filosofico",
         "bio": "Corrado ha studiato e insegnato economia ed è un imprenditore nel settore della salute e della nutrizione. Si è laureato in storia e filosofia, con una tesi in estetica sul pensiero delle arti in Paul Valery, si occupa di economia sociale e filosofia politica sotto il cielo dell'etica e del pensiero critico. Accompagna la ricerca personale con l'attenzione e l'espressione del linguaggio della parola, del corpo e delle emozioni, quindi la filosofia e il pensiero delle arti, in laboratori di pensiero, danza, scrittura e disegno. Un approccio che risveglia la vitalità, le emozioni e la connessione autentica con sè, con l'altro, con l'universo. E che si propone anche attraverso uno sportello di confronto/consulenza individuale e in caffè filosofici aperti alla cittadinanza",
         "specialties": ["Economia e Commercio", "Consulenze Filosofiche"],
-        "experience": "15+ anni",
         "certifications": [
           "Laurea in Storia e Filosofia",
           "Esperto in Economia Sociale"
@@ -366,7 +363,6 @@
           "Tessuto Profondo",
           "Rilascio Miofasciale"
         ],
-        "experience": "10 anni",
         "certifications": [
           "Specialista Massaggio Sportivo",
           "NASM-CPT",
@@ -382,7 +378,6 @@
           "Kinesiologia",
           "Medicina Tradizionale Cinese"
         ],
-        "experience": "8 anni",
         "certifications": [
           "Specialista Naturopatia",
           "Kinesiologo Certificato",
@@ -394,7 +389,6 @@
         "role": "Professionista Olistico Specializzato Multitech",
         "bio": "Da ReLeVi Healing, Giancarlo propone trattamenti personalizzati orientati al riequilibrio e all'ascolto del corpo, con un approccio basato su sensibilità, presenza e tecnica. Le sue competenze includono: Massaggio Decontratturante e Sportivo, Linfodrenaggio metodo Vodder, Massaggio Svedese e Antistress, Massaggio Biodinamico a 4 mani per un'esperienza di profonda connessione corpo-mente, Tecniche orientali come Thai Tradizionale, Ayurvedico Abhyangam, Massaggi con oli essenziali, Hot Stone, Lomi Lomi NUI e Californiano emozionale. Ogni trattamento è adattato ai bisogni della persona in un ambiente accogliente e rispettoso.",
         "specialties": ["Riflessologia", "Massaggio Thai", "Shiatsu"],
-        "experience": "12 anni",
         "certifications": [
           "Riflessologo Certificato",
           "Praticante Massaggio Thai",
@@ -406,7 +400,6 @@
         "role": "Praticante Biodinamico Craniosacrale",
         "bio": "Massimo ha abbracciato e approfondito l'approccio Biodinamico sotto la guida di Mike Boxhall, terapeuta inglese pioniere del settore. Propone una modalità di lavoro e sostegno basata sull'ascolto profondo della persona, integrando corpo- mente-Spirito e sostenendo le intrinseche capacità di autoregolazione innate in ognuno di noi. Affinché la Salute possa nuovamente manifestare il suo potenziale e garantirci vitalità, armonia, serenità e pienezza.",
         "specialties": ["Biodinamica"],
-        "experience": "16 anni",
         "certifications": ["Operatore Craniosacrale", "Praticante Biodinamico"]
       },
       "michelaDolce": {
@@ -414,7 +407,6 @@
         "role": "Operatrice Shiatsu & Craniosacrale",
         "bio": "Michela in ricerca dell'Essenza che la anima, appassionata di cammini e camminate in natura dove la percezione di essa stimola il benessere psicofisico portando leggerezza nella quotidianità e da questo inizia il percorso di conoscenza e approfondimento tramite corsi in natura. Approcciandomi allo shiatsu ho iniziato a comprendere quali fossero le mie qualità, questa disciplina valuta e valorizza le risorse vitali della persona portandone beneficio. Con il cranio sacrale è stata una vera rivelazione, tecnica bio meccanica di ascolto profondo del liquido cefalorachidiano, entrambe le tecniche stimolano il benessere della persona. Ci sono due modi di camminare, uno nel fare e l'altro nell'Essere. Cammina con il cuore è quello che mi caratterizza, il nostro percorrere la terra crea un'impronta per il futuro ed è quello che fa la differenza dal semplice passo. Ragazza in cammino 👣💚",
         "specialties": ["Shiatsu", "Craniosacrale", "Camminate in Natura"],
-        "experience": "7 anni",
         "certifications": [
           "Operatrice Shiatsu",
           "Craniosacrale",
@@ -426,7 +418,6 @@
         "role": "Specialista Ginnastica Ortodinamica",
         "bio": "La sua missione è aiutare le persone a migliorare mobilità, postura e benessere generale, attraverso un approccio mirato e progressivo. Grazie alla sua formazione riconosciuta da Sport e Salute e dal Ministero dello Sport, Paolo guida con professionalità e passione ogni percorso, adattando gli esercizi alle esigenze di ciascun individuo.",
         "specialties": ["Ginnastica Ortodinamica"],
-        "experience": "7 anni",
         "certifications": [
           "Migliora la funzionalità neuro-motoria",
           "Incrementa resistenza e capacità cardio-respiratorie",
@@ -438,7 +429,6 @@
         "role": "Consulente di Immagine",
         "bio": "Amo la natura e i suoi colori, ma anche la moda e il tessile, campo in cui ho sempre lavorato anche grazie al mio diploma da modellista. Da queste passioni è nata la mia attuale professione. Posso aiutarvi a studiare la vostra armocromia, le vostre forme, le vostre potenzialità e il vostro stile in poche e semplici mosse. I colori giusti non cambiano solo l'aspetto, ma il modo in cui ci percepiamo e ci presentiamo al mondo.",
         "specialties": ["Consulente di Immagine Armocromia"],
-        "experience": "7 anni",
         "certifications": ["Consulente di Immagine Armocromia"]
       },
       "tamaraZanchetta": {
@@ -446,7 +436,6 @@
         "role": "Arteterapeuta & Insegnante Yoga",
         "bio": "Tamara è un'insegnante di yoga e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore. Attraverso l'arteterapia, Tamara accompagna le persone in un viaggio di esplorazione di sé, utilizzando l'espressione artistica come strumento per accedere a emozioni profonde e favorire il benessere psicofisico. Presso ReLeVi Healing, Tamara guiderà sessioni di arteterapia, offrendo uno spazio sicuro e accogliente dove esprimersi liberamente e intraprendere un percorso di trasformazione personale.",
         "specialties": ["Arteterapia", "Yoga"],
-        "experience": "7 anni",
         "certifications": ["Insegnante di Yoga", "Arteterapeuta"]
       }
     }

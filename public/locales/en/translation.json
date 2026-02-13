@@ -293,7 +293,6 @@
       "badge": "DIRECTOR"
     },
     "viewProfile": "View Profile",
-    "experienceLabel": "Experience",
     "more": "more",
     "commitment": {
       "title": "Our Commitment to Excellence",
@@ -334,7 +333,6 @@
           "Body Wellness",
           "Wellness Leadership"
         ],
-        "experience": "20+ years",
         "certifications": [
           "Founder of Relevi Healing",
           "Expert in Holistic Therapies",
@@ -347,7 +345,6 @@
         "role": "Philosophical Consultant",
         "bio": "Corrado studied and taught economics and is an entrepreneur in the health and nutrition sector. He holds a degree in history and philosophy, with a thesis in aesthetics on the thought of arts in Paul Valery. He is engaged in social economics and political philosophy under the light of ethics and critical thinking. He accompanies personal research with attention and expression of the language of words, body and emotions, through philosophy and the thought of arts, in workshops of thought, dance, writing and drawing. An approach that awakens vitality, emotions and authentic connection with oneself, with others, with the universe. He also offers individual consultation and philosophical cafés open to the community.",
         "specialties": ["Economics & Commerce", "Philosophical Consulting"],
-        "experience": "15+ years",
         "certifications": [
           "Degree in History and Philosophy",
           "Expert in Social Economy"
@@ -358,7 +355,6 @@
         "role": "Senior Holistic Professional",
         "bio": "Denise specializes in sports massage and injury rehabilitation. Her background as a former athlete gives her unique insight into treating muscle tension and enhancing athletic performance.",
         "specialties": ["Sports Massage", "Deep Tissue", "Myofascial Release"],
-        "experience": "10 years",
         "certifications": [
           "Sports Massage Specialist",
           "NASM-CPT",
@@ -374,7 +370,6 @@
           "Kinesiology",
           "Traditional Chinese Medicine"
         ],
-        "experience": "8 years",
         "certifications": [
           "Specialist in Naturopathy",
           "Certified Kinesiologist",
@@ -390,7 +385,6 @@
           "Lymphatic Drainage",
           "Oriental Massage Techniques"
         ],
-        "experience": "12 years",
         "certifications": [
           "Certified Holistic Professional",
           "Vodder Method Certified",
@@ -402,7 +396,6 @@
         "role": "Craniosacral & Biodynamic Practitioner",
         "bio": "Massimo has embraced and deepened the Biodynamic approach under the guidance of Mike Boxhall, a pioneering English therapist in the field. He proposes a way of working and support based on deep listening to the person, integrating body-mind-spirit and supporting the intrinsic self-regulation capacities innate in each of us. So that Health can once again manifest its potential and guarantee us vitality, harmony, serenity, and fullness.",
         "specialties": ["Biodynamic Therapy"],
-        "experience": "16 years",
         "certifications": [
           "Craniosacral Practitioner",
           "Biodynamic Practitioner"
@@ -413,7 +406,6 @@
         "role": "Shiatsu & Craniosacral Practitioner",
         "bio": "Michela in search of the Essence that animates her, passionate about paths and walks in nature where the perception of it stimulates psychophysical well-being, bringing lightness to daily life and from this begins the path of knowledge and deepening through courses in nature. Approaching shiatsu I began to understand what my qualities were, this discipline evaluates and enhances the vital resources of the person bringing benefit. With craniosacral it was a real revelation, a bio-mechanical technique of deep listening to the cerebrospinal fluid, both techniques stimulate the person's well-being. There are two ways of walking, one in doing and the other in Being. Walking with the heart is what characterizes me, our walking the earth creates an imprint for the future and that's what makes the difference from the simple step. Girl on the road 👣💚",
         "specialties": ["Shiatsu", "Craniosacral", "Nature Walks"],
-        "experience": "7 years",
         "certifications": [
           "Shiatsu Practitioner",
           "Craniosacral",
@@ -425,7 +417,6 @@
         "role": "Orthodynamic Gymnastics Specialist",
         "bio": "His mission is to help people improve mobility, posture, and general well-being through a targeted and progressive approach. Thanks to his training recognized by Sport e Salute and the Ministry of Sport, Paolo guides with professionalism and passion every path, adapting exercises to the needs of each individual.",
         "specialties": ["Orthodynamic Gymnastics"],
-        "experience": "7 years",
         "certifications": [
           "Improves neuro-motor functionality",
           "Increases strength and cardio-respiratory capacity",
@@ -441,7 +432,6 @@
           "Personal Color Analysis",
           "Style & Wardrobe"
         ],
-        "experience": "7 years",
         "certifications": [
           "Image Consultant",
           "Color Analysis Specialist",
@@ -453,7 +443,6 @@
         "role": "Art Therapist & Yoga Instructor",
         "bio": "Tamara is a yoga instructor and art therapist with a personal and professional journey dedicated to awareness and inner growth. Through art therapy, Tamara guides people on a journey of self-exploration, using artistic expression as a tool to access deep emotions and promote psychophysical well-being. At ReLeVi Healing, Tamara will lead art therapy sessions, offering a safe and welcoming space to express yourself freely and embark on a path of personal transformation.",
         "specialties": ["Art Therapy", "Yoga"],
-        "experience": "7 years",
         "certifications": ["Yoga Instructor", "Art Therapist"]
       }
     }

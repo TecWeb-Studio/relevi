@@ -148,10 +148,6 @@ export default function TeamPage() {
                         </span>
                       ))}
                   </div>
-                  <p className="text-gray-500 text-sm mb-6">
-                    {t("team.experienceLabel")}:{" "}
-                    {t("team.members.headmaster.experience")}
-                  </p>
                   <button className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 self-start">
                     {t("team.viewProfile")}
                   </button>
@@ -217,10 +213,6 @@ export default function TeamPage() {
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-500 text-sm">
-                    {t("team.experienceLabel")}:{" "}
-                    {t(`team.members.${member.key}.experience`)}
-                  </p>
                 </div>
               </div>
             ))}
@@ -465,12 +457,6 @@ export default function TeamPage() {
               </div>
 
               <div className="flex items-center justify-between pt-6 border-t border-gray-200">
-                <div>
-                  <p className="text-gray-500">{t("team.experienceLabel")}</p>
-                  <p className="text-olive-800 font-semibold">
-                    {t(`team.members.${selectedMember.key}.experience`)}
-                  </p>
-                </div>
                 <a
                   href={`/prenota?operatore=${selectedMember.key}`}
                   className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 inline-flex items-center gap-2"
