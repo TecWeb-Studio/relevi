@@ -314,10 +314,12 @@ export default function Home() {
 
       <section id="contact" className="py-24 relative overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{
             backgroundImage: "url('/images/imgsfondo1.jpg')",
             zIndex: 0,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <div className="absolute inset-0 bg-white/50 z-5" />
