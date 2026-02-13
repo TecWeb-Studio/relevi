@@ -37,51 +37,11 @@ export const operatorAvailability: OperatorAvailability[] = [
     breakBetweenSessions: 15,
   },
   {
-    key: "deniseDallaPasqua",
-    daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
-    timeSlots: [
-      { start: "09:00", end: "13:00" },
-      { start: "14:00", end: "18:00" },
-    ],
-    sessionDuration: 60,
-    breakBetweenSessions: 15,
-  },
-  {
-    key: "giancarloPavanello",
-    daysOfWeek: [1, 2, 3, 4, 5, 6], // Mon-Sat
-    timeSlots: [
-      { start: "09:00", end: "13:00" },
-      { start: "14:30", end: "19:00" },
-    ],
-    sessionDuration: 60,
-    breakBetweenSessions: 15,
-  },
-  {
-    key: "graziaSferrazzaCallea",
-    daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
-    timeSlots: [
-      { start: "10:00", end: "13:00" },
-      { start: "14:30", end: "17:30" },
-    ],
-    sessionDuration: 60,
-    breakBetweenSessions: 15,
-  },
-  {
     key: "martinaPasut",
     daysOfWeek: [2, 4, 6], // Tue, Thu, Sat
     timeSlots: [
       { start: "09:00", end: "12:00" },
       { start: "16:00", end: "20:00" },
-    ],
-    sessionDuration: 60,
-    breakBetweenSessions: 15,
-  },
-  {
-    key: "martinaRoma",
-    daysOfWeek: [1, 2, 3, 4, 5], // Mon-Fri
-    timeSlots: [
-      { start: "09:00", end: "13:00" },
-      { start: "14:00", end: "18:00" },
     ],
     sessionDuration: 45,
     breakBetweenSessions: 15,

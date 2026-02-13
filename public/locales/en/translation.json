@@ -19,8 +19,8 @@
     "whyChoose": {
       "title": "Why Choose Relevi Healing?",
       "expertTherapists": {
-        "title": "Expert Therapists",
-        "description": "Our certified massage therapists have years of experience and specialized training in various techniques."
+        "title": "Expert Holistic Professionals",
+        "description": "Our certified holistic professionals have years of experience and specialized training in various techniques."
       },
       "tranquilEnvironment": {
         "title": "Tranquil Environment",
@@ -286,7 +286,7 @@
   "team": {
     "hero": {
       "title": "Meet Our Team",
-      "subtitle": "Our dedicated team of certified massage therapists brings years of experience, passion, and expertise to help you achieve optimal wellness and relaxation."
+      "subtitle": "Our dedicated team of certified holistic professionals brings years of experience, passion, and expertise to help you achieve optimal wellness and relaxation."
     },
     "headmaster": {
       "sectionTitle": "Leadership",
@@ -299,7 +299,7 @@
       "title": "Our Commitment to Excellence",
       "certifiedProfessionals": {
         "title": "Certified Professionals",
-        "description": "All our therapists are licensed and certified in their respective specialties, ensuring you receive the highest quality care."
+        "description": "All our holistic professionals are licensed and certified in their respective specialties, ensuring you receive the highest quality care."
       },
       "personalizedCare": {
         "title": "Personalized Care",
@@ -312,7 +312,7 @@
     },
     "stats": {
       "combinedExperience": "Years Combined Experience",
-      "expertTherapists": "Expert Therapists",
+      "expertTherapists": "Expert Holistic Professionals",
       "certifications": "Certifications",
       "happyClients": "Happy Clients"
     },
@@ -355,7 +355,7 @@
       },
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
-        "role": "Senior Massage Therapist",
+        "role": "Senior Holistic Professional",
         "bio": "Denise specializes in sports massage and injury rehabilitation. Her background as a former athlete gives her unique insight into treating muscle tension and enhancing athletic performance.",
         "specialties": ["Sports Massage", "Deep Tissue", "Myofascial Release"],
         "experience": "10 years",
@@ -383,7 +383,7 @@
       },
       "giancarloPavanello": {
         "name": "Giancarlo Pavanello",
-        "role": "Multi-Technique Specialized Masseur",
+        "role": "Multi-Technique Holistic Professional",
         "bio": "At ReLeVi Healing, Giancarlo offers personalized treatments focused on rebalancing and body listening, with an approach based on sensitivity, presence and technique. His skills include: Detoxifying and Sports Massage, Vodder Method Lymphatic Drainage, Swedish and Anti-stress Massage, Four-handed Biodynamic Massage for a profound mind-body connection experience, Oriental techniques such as Traditional Thai, Ayurvedic Abhyangam, Massages with essential oils, Hot Stone, Lomi Lomi NUI and emotional California massage. Each treatment is adapted to the individual's needs in a welcoming and respectful environment.",
         "specialties": [
           "Detoxifying & Sports Massage",
@@ -392,38 +392,10 @@
         ],
         "experience": "12 years",
         "certifications": [
-          "Certified Massage Therapist",
+          "Certified Holistic Professional",
           "Vodder Method Certified",
           "Traditional Thai Massage Practitioner"
         ]
-      },
-      "graziaSferrazzaCallea": {
-        "name": "Grazia Sferrazza Callea",
-        "role": "Spa Coordinator & Therapist",
-        "bio": "I am Grazia Sferrazza Callea. I have studied naturopathy, kinesiology, Traditional Chinese Medicine and Craniosacral Balancing. In 2009 I began studying my own menopause and, thanks to my skills, I made discoveries that allowed me to frame this biological phenomenon in a sense-making way so transformative that I became a Menopause Coach. For about fifteen years I have written a couple of books on the subject and I help women seeking to regain physical and emotional balance.",
-        "specialties": ["Menopause Coaching"],
-        "experience": "6 years",
-        "certifications": ["Menopause Coach"]
-      },
-      "martinaPasut": {
-        "name": "Martina Pasut",
-        "role": "Yoga Instructor",
-        "bio": "My passion for yoga stems from a desire to deepen my connection with myself—mind, body, and emotions—as well as with people and nature, of which we are all a part. Through fluid movement, conscious breathing, and constant attention to my students, my goal is to offer psychophysical well-being. Even in times when anxiety and stress seem to dominate our lives, we can afford to let go and relax deeply. With me, there are no impossible positions or flexibility competitions: yoga is for everyone!",
-        "specialties": ["Yoga"],
-        "experience": "7 years",
-        "certifications": ["Yoga with Anukalana approach"]
-      },
-      "martinaRoma": {
-        "name": "Martina Roma",
-        "role": "Osteopath",
-        "bio": "D.O. in Osteopathy, with specializations in pediatric osteopathy and advanced courses in pregnancy, postpartum, temporomandibular disorders, and kinesiological taping. Her continuous education allows her to offer highly personalized treatments. What enchants me most about osteopathy is the ability to take care of the person in their entirety, listen to their story, and feel the path of the symptom in the patient's body. I am passionate about explaining the anatomical and physiological connections between the symptom and its origin to make people aware of their body. I enjoy noticing connections between osteopathy and nature: purity is the element they share. From this reflection, my interest and passion for neonatal/pediatric treatment was born: the child lets themselves be welcomed by my hands, is free from prejudices, and trusts completely. With my knowledge, continuous training, and sensitivity, I strive to ensure the well-being of the person.",
-        "specialties": [
-          "Osteopathy",
-          "Pediatric Osteopathy",
-          "Osteopathic Massage Therapist"
-        ],
-        "experience": "7 years",
-        "certifications": ["Licensed Massage Therapist"]
       },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
@@ -447,14 +419,6 @@
           "Craniosacral",
           "Nature Walk Guide"
         ]
-      },
-      "monicaBortoluzzi": {
-        "name": "Monica Bortoluzzi",
-        "role": "Counselor & Rebirthing Practitioner",
-        "bio": "REBIRTHING: Rebirthing is a breathing practice that helps us connect with our inner awareness, discovering and freeing ourselves from limiting beliefs that influence our lives. Through this practice, we can gain deep insights and understanding for our psychophysical well-being. COUNSELING SESSIONS: In a counseling session, we explore together the roots of your psychophysical discomfort, discovering thoughts and emotional reactions that stem from the past. As a counselor, I accompany you on a journey of self-discovery, creating a safe and non-judgmental space where you can connect with your deepest self, to evolve and grow authentically.",
-        "specialties": ["Rebirthing", "Counseling"],
-        "experience": "7 years",
-        "certifications": ["Rebirthing Practitioner", "Professional Counselor"]
       },
       "paoloAvella": {
         "name": "Paolo Avella",

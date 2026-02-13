@@ -60,17 +60,16 @@ export default function TeamPage() {
     },
     {
       id: 6,
-      key: "monicaBortoluzzi",
-      image: "/team-photos-crop/MonicaBortoluzzi.jpg",
+      key: "paoloAvella",
+      image: "/team-photos-crop/PaoloAvella.jpg",
     },
-    { id: 7, key: "paoloAvella", image: "/team-photos-crop/PaoloAvella.jpg" },
     {
-      id: 8,
+      id: 7,
       key: "sabrinaPozzobon",
       image: "/team-photos-crop/SabrinaPozzobon.jpg",
     },
     {
-      id: 9,
+      id: 8,
       key: "tamaraZanchetta",
       image: "/team-photos-crop/TamaraZanchetta.jpg",
     },
@@ -82,14 +81,9 @@ export default function TeamPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center reveal">
             <h1 className="text-5xl md:text-6xl font-bold text-olive-800 mb-6">
-              {
-                t("team.hero.title").split(
-                  t("team.hero.title").includes("Team") ? "Team" : "Team",
-                )[0]
-              }
-              <span className="text-gradient">
-                {t("team.hero.title").includes("Team") ? "Team" : "Team"}
-              </span>
+              {t("team.hero.title").split("Team")[0]}
+              <span className="text-gradient">Team</span>
+              {t("team.hero.title").split("Team")[1]}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {t("team.hero.subtitle")}
@@ -169,7 +163,6 @@ export default function TeamPage() {
       </section>
 
       <section className="py-24 bg-white">
-        "
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
