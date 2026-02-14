@@ -10,8 +10,8 @@
   },
   "home": {
     "hero": {
-      "title": "Benvenuti a Relevi Healing",
-      "subtitle": "Dove il relax incontra il ringiovanimento. Vivi il potere curativo del tocco terapeutico nel nostro tranquillo santuario.",
+      "title": "Relevi Healing: Laboratorio Interattivo per il Benessere",
+      "subtitle": "Relevi Healing è un progetto interattivo e laboratorio polifunzionale dedicato al benessere della persona, con esperienze che favoriscono salute fisica, mentale ed emozionale. È uno spazio inclusivo aperto a tutte le età e alle disabilità, con iniziative a sostegno delle persone e delle comunità.",
       "exploreServices": "Esplora i Servizi",
       "meetTeam": "Conosci il Team",
       "viewEvents": "Vedi Eventi"
@@ -23,8 +23,8 @@
         "description": "I nostri professionisti olistici certificati hanno anni di esperienza e formazione specializzata in varie tecniche."
       },
       "tranquilEnvironment": {
-        "title": "Ambiente Tranquillo",
-        "description": "La nostra spa è progettata per essere un rifugio di pace dove puoi fuggire dallo stress della vita quotidiana."
+        "title": "Gli Spazi del Centro",
+        "description": "Spazi versatili e accoglienti: sala di meditazione per la mindfulness, palestra multifunzionale, stanze riservate per terapie individuali, cucina educativa e sala creativa per attivita artistiche."
       },
       "premiumProducts": {
         "title": "Prodotti Premium",
@@ -33,8 +33,8 @@
       "peacefulEnvironment": "Ambiente di Pace"
     },
     "whyChooseUs": {
-      "title": "Che cosa troverai in Relevi",
-      "intro": "Offriamo un approccio personalizzato a ogni individuo, combinando diverse discipline per un benessere completo e autentico.",
+      "title": "La Nostra Visione e il Metodo",
+      "intro": "La nostra visione e creare un ambiente accogliente e dinamico per il benessere psicofisico e la crescita personale. Integriamo tecniche tradizionali e moderne con un approccio olistico e un'equipe di professionisti, consulenti filosofici e medici. Le terapie naturali affiancano la medicina tradizionale per ottimizzare i risultati e migliorare la qualita della vita.",
       "specialization": {
         "title": "Specializzazione",
         "description": "Esperti in diverse discipline olistiche."
@@ -147,6 +147,66 @@
       "bookNow": "Prenota Ora"
     },
     "serviceTypes": {
+      "systematicKinesiology": {
+        "title": "Trattamenti di Kinesiologia Sistematica",
+        "description": "Valutazione e riequilibrio energetico con test muscolari e protocolli personalizzati.",
+        "fullDescription": "Percorsi di kinesiologia sistematica per individuare squilibri e supportare il riequilibrio psicofisico con test muscolari e tecniche mirate.",
+        "benefits": []
+      },
+      "chineseMedicine": {
+        "title": "Medicina Cinese applicata (inclusa cromopuntura)",
+        "description": "Approccio della medicina cinese con stimolazione dei punti energetici e cromopuntura.",
+        "fullDescription": "Trattamenti di medicina cinese applicata, con tecniche di riequilibrio energetico e cromopuntura per favorire il benessere globale.",
+        "benefits": []
+      },
+      "floritherapyPhytotherapy": {
+        "title": "Consulenze di Floriterapia e Fitoterapia",
+        "description": "Consulenze su rimedi floreali e fitoterapici per esigenze fisiche ed emotive.",
+        "fullDescription": "Valutazione personalizzata e consigli su floriterapia e fitoterapia per supportare equilibrio emotivo e benessere fisico.",
+        "benefits": []
+      },
+      "craniosacralReflexology": {
+        "title": "Trattamenti di Terapia Craniosacrale e Riflessologia",
+        "description": "Tecniche delicate per armonizzare il sistema nervoso e stimolare punti riflessi.",
+        "fullDescription": "Sedute di terapia craniosacrale e riflessologia per favorire rilassamento profondo, equilibrio e risposta naturale del corpo.",
+        "benefits": []
+      },
+      "iridologyArmocromia": {
+        "title": "Consulenze di Iridologia e Armocromia",
+        "description": "Analisi dell'iride e consulenza colore per armonia personale e benessere.",
+        "fullDescription": "Consulenze di iridologia per una lettura olistica e armocromia per valorizzare l'immagine in modo coerente con il benessere.",
+        "benefits": []
+      },
+      "connectedBreathing": {
+        "title": "Sessioni di Respirazione Connessa (Rebirthing)",
+        "description": "Respirazione guidata per rilascio emotivo, centratura e vitalita.",
+        "fullDescription": "Sessioni di respirazione connessa (Rebirthing) per favorire rilassamento, consapevolezza e ricarica energetica.",
+        "benefits": []
+      },
+      "yogaPilatesMovement": {
+        "title": "Workshop di Yoga, Pilates e Scienze del Movimento",
+        "description": "Workshop per mobilita, postura, respiro e forza funzionale.",
+        "fullDescription": "Incontri di yoga, pilates e scienze del movimento per migliorare postura, mobilita e consapevolezza corporea.",
+        "benefits": []
+      },
+      "mindfulnessMeditation": {
+        "title": "Mindfulness e Meditazione guidata",
+        "description": "Percorsi di consapevolezza e meditazione per gestire stress e focus.",
+        "fullDescription": "Sessioni guidate di mindfulness e meditazione per coltivare presenza mentale, calma e benessere emotivo.",
+        "benefits": []
+      },
+      "menopauseNutritionCoaching": {
+        "title": "Coaching per la menopausa e Consulenze Nutrizionali",
+        "description": "Supporto mirato alla menopausa e piani nutrizionali personalizzati.",
+        "fullDescription": "Coaching dedicato alla menopausa con indicazioni nutrizionali e stili di vita per migliorare energia e benessere.",
+        "benefits": []
+      },
+      "creativeLabsOrthodynamicPhilosophy": {
+        "title": "Laboratori creativi, Ortodinamica e Consulenza Filosofica",
+        "description": "Percorsi creativi, ortodinamica e dialogo filosofico per crescita personale.",
+        "fullDescription": "Laboratori creativi, ortodinamica e consulenza filosofica per stimolare espressione, movimento consapevole e riflessione.",
+        "benefits": []
+      },
       "swedishMassage": {
         "title": "Massaggio Svedese",
         "description": "Un massaggio delicato e rilassante che utilizza lunghe stesure e impastamenti per promuovere il relax.",
@@ -247,15 +307,10 @@
         ]
       },
       "holisticMassages": {
-        "title": "Massaggi Olistici",
-        "description": "Terapia di massaggio integrata che combina varie tecniche per il completo benessere del corpo e della mente.",
-        "fullDescription": "Il nostro approccio al massaggio olistico integra molteplici tecniche terapeutiche per affrontare il tuo benessere completo. Combinando diversi stili di massaggio e modalità di guarigione, creiamo un trattamento completo che equilibra corpo, mente e spirito.",
-        "benefits": [
-          "Ringiovanimento totale",
-          "Sollievo dallo stress",
-          "Chiarezza mentale",
-          "Equilibrio emotivo"
-        ]
+        "title": "Massaggi Olistici: Svedese, Metamorfico, Biodinamico a 4 mani",
+        "description": "Tecniche olistiche combinate per rilassamento profondo e riequilibrio energetico.",
+        "fullDescription": "Massaggi olistici che integrano approcci svedese, metamorfico e biodinamico a quattro mani per un benessere completo.",
+        "benefits": []
       },
       "iridology": {
         "title": "Iridologia",
@@ -281,6 +336,16 @@
       }
     },
     "durations": {
+      "systematicKinesiology": "Su richiesta",
+      "chineseMedicine": "Su richiesta",
+      "floritherapyPhytotherapy": "Su richiesta",
+      "craniosacralReflexology": "Su richiesta",
+      "iridologyArmocromia": "Su richiesta",
+      "connectedBreathing": "Su richiesta",
+      "yogaPilatesMovement": "Su richiesta",
+      "mindfulnessMeditation": "Su richiesta",
+      "menopauseNutritionCoaching": "Su richiesta",
+      "creativeLabsOrthodynamicPhilosophy": "Su richiesta",
       "naturopathicConsultation": "60-90 minuti",
       "holisticMassages": "60-90 minuti",
       "iridology": "45-60 minuti",
@@ -618,6 +683,8 @@
     "tagline": "Il tuo viaggio verso il relax e il benessere inizia qui. Vivi il potere curativo del tocco.",
     "quickLinks": "Link Rapidi",
     "contactUs": "Contattaci",
+    "patronage": "Con il Patrocinio dell'associazione di categoria UNI-PRO (Legge 4/2013) a garanzia della professionalità degli operatori.",
+    "collaboration": "In collaborazione con HUMAN STUDIES per un approccio di cura fondato su solidi titoli scientifici e culturali.",
     "copyright": "Tutti i diritti riservati. Progettato da",
     "tecweb": "TecWeb Studio"
   },

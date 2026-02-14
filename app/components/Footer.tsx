@@ -86,6 +86,11 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="mt-10 text-sm text-olive-200 space-y-2 text-center">
+          <p>{t('footer.patronage')}</p>
+          <p>{t('footer.collaboration')}</p>
+        </div>
+
         <div className="border-t border-olive-700 mt-8 pt-8 text-center text-olive-300 animate-fadeIn">
           <p>
             &copy; {new Date().getFullYear()} Relevi Healing. {t('footer.copyright')}{" "}

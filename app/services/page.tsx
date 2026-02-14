@@ -36,10 +36,17 @@ export default function ServicesPage() {
   }, []);
 
   const services: Service[] = [
-    { id: 1, key: "naturopathicConsultation", icon: "🌿", recommended: true },
-    { id: 2, key: "holisticMassages", icon: "💆", recommended: true },
-    { id: 3, key: "iridology", icon: "👁️", recommended: false },
-    { id: 4, key: "orthodynamicGymnastics", icon: "🧘", recommended: true },
+    { id: 1, key: "systematicKinesiology", icon: "🧩", recommended: true },
+    { id: 2, key: "chineseMedicine", icon: "🪷", recommended: true },
+    { id: 3, key: "floritherapyPhytotherapy", icon: "🌸", recommended: false },
+    { id: 4, key: "holisticMassages", icon: "💆", recommended: true },
+    { id: 5, key: "craniosacralReflexology", icon: "👐", recommended: true },
+    { id: 6, key: "iridologyArmocromia", icon: "🎨", recommended: false },
+    { id: 7, key: "connectedBreathing", icon: "🌬️", recommended: false },
+    { id: 8, key: "yogaPilatesMovement", icon: "🧘", recommended: true },
+    { id: 9, key: "mindfulnessMeditation", icon: "🧠", recommended: false },
+    { id: 10, key: "menopauseNutritionCoaching", icon: "🥗", recommended: false },
+    { id: 11, key: "creativeLabsOrthodynamicPhilosophy", icon: "🎭", recommended: false },
   ];
 
   const filteredServices = services.filter((service) => {
@@ -356,38 +363,49 @@ export default function ServicesPage() {
                 </p>
               </div>
 
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-olive-800 mb-3">
-                  {t("services.modal.benefits")}
-                </h3>
-                <ul className="grid grid-cols-2 gap-3">
-                  {(
-                    t(`services.serviceTypes.${selectedService.key}.benefits`, {
-                      returnObjects: true,
-                    }) as string[]
-                  ).map((benefit: string) => (
-                    <li
-                      key={benefit}
-                      className="flex items-center gap-2 text-gray-600"
-                    >
-                      <svg
-                        className="w-5 h-5 text-olive-600 flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {(() => {
+                const benefits = t(
+                  `services.serviceTypes.${selectedService.key}.benefits`,
+                  {
+                    returnObjects: true,
+                  },
+                ) as string[];
+
+                if (benefits.length === 0) {
+                  return null;
+                }
+
+                return (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold text-olive-800 mb-3">
+                      {t("services.modal.benefits")}
+                    </h3>
+                    <ul className="grid grid-cols-2 gap-3">
+                      {benefits.map((benefit: string) => (
+                        <li
+                          key={benefit}
+                          className="flex items-center gap-2 text-gray-600"
+                        >
+                          <svg
+                            className="w-5 h-5 text-olive-600 flex-shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })()}
 
               <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-olive-50 rounded-lg">
                 <div>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -8,6 +9,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +52,15 @@ export default function Navigation() {
   };
 
   const currentLang = i18n.language || 'en';
+  const isLinkActive = (href: string) => {
+    const baseHref = href.split('#')[0] || '/';
+
+    if (baseHref === '/') {
+      return pathname === '/';
+    }
+
+    return pathname.startsWith(baseHref);
+  };
 
   return (
     <nav
@@ -75,11 +86,17 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 hover:scale-105 relative group animate-slideIn"
+                className={`text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 hover:scale-105 relative group animate-slideIn ${
+                  isLinkActive(link.href) ? 'text-olive-700' : ''
+                }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-olive-600 transition-all duration-200 group-hover:w-full" />
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-olive-600 transition-all duration-200 ${
+                    isLinkActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
               </Link>
             ))}
             <div className="flex items-center space-x-2">
@@ -140,7 +157,11 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 px-4 py-2"
+                className={`text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 px-4 py-2 ${
+                  isLinkActive(link.href)
+                    ? 'border-l-4 border-olive-600 bg-olive-50 text-olive-700'
+                    : ''
+                }`}
               >
                 {link.label}
               </Link>

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+  const heroTitleParts = t("home.hero.title").split("Relevi Healing");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,11 +48,16 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fadeInDown">
-            <span className="text-olive-800">
-              {t("home.hero.title").split("Relevi Healing")[0]}
-            </span>
-            <br />
+            {heroTitleParts[0] ? (
+              <>
+                <span className="text-olive-800">{heroTitleParts[0]}</span>
+                <br />
+              </>
+            ) : null}
             <span className="text-gradient">Relevi Healing</span>
+            {heroTitleParts[1] ? (
+              <span className="text-olive-800">{heroTitleParts[1]}</span>
+            ) : null}
           </h1>
           <p
             className="text-xl md:text-2xl text-gray-600 mb-8 animate-fadeInUp"

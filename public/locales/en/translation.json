@@ -10,8 +10,8 @@
   },
   "home": {
     "hero": {
-      "title": "Welcome to Relevi Healing",
-      "subtitle": "Where relaxation meets rejuvenation. Experience the healing power of therapeutic touch in our tranquil sanctuary.",
+      "title": "Relevi Healing: Interactive Wellness Lab",
+      "subtitle": "Relevi Healing is an interactive project and multifunctional lab dedicated to personal well-being, offering experiences that support physical, mental, and emotional health. It is an inclusive space for all ages and abilities, with initiatives that support individuals and communities.",
       "exploreServices": "Explore Services",
       "meetTeam": "Meet Our Team",
       "viewEvents": "View Events"
@@ -23,8 +23,8 @@
         "description": "Our certified holistic professionals have years of experience and specialized training in various techniques."
       },
       "tranquilEnvironment": {
-        "title": "Tranquil Environment",
-        "description": "Our spa is designed to be a peaceful sanctuary where you can escape from the stresses of daily life."
+        "title": "Our Spaces",
+        "description": "Versatile, welcoming spaces: a mindfulness meditation room, a multifunctional gym, private therapy rooms, an educational kitchen, and a creative room for artistic activities."
       },
       "premiumProducts": {
         "title": "Premium Products",
@@ -33,8 +33,8 @@
       "peacefulEnvironment": "Peaceful Environment"
     },
     "whyChooseUs": {
-      "title": "What You'll Find in Relevi",
-      "intro": "We offer a personalized approach to every individual, combining different disciplines for complete and authentic well-being.",
+      "title": "Our Vision and Method",
+      "intro": "Our vision is a welcoming, dynamic environment for psychophysical well-being and personal growth. We integrate traditional and modern techniques through a holistic team of professionals, philosophical consultants, and medical doctors. Natural therapies complement conventional medicine to optimize outcomes and improve quality of life.",
       "specialization": {
         "title": "Specialization",
         "description": "Experts in various holistic disciplines."
@@ -143,6 +143,66 @@
       "bookNow": "Book Now"
     },
     "serviceTypes": {
+      "systematicKinesiology": {
+        "title": "Systematic Kinesiology Treatments",
+        "description": "Assessment and energy rebalancing through muscle testing and tailored protocols.",
+        "fullDescription": "Systematic kinesiology sessions to identify imbalances and support psychophysical balance with muscle testing and targeted techniques.",
+        "benefits": []
+      },
+      "chineseMedicine": {
+        "title": "Applied Chinese Medicine (including chromopuncture)",
+        "description": "Chinese medicine approach with energy point stimulation and chromopuncture.",
+        "fullDescription": "Applied Chinese medicine treatments using energetic rebalancing techniques and chromopuncture to support overall well-being.",
+        "benefits": []
+      },
+      "floritherapyPhytotherapy": {
+        "title": "Floritherapy and Phytotherapy Consultations",
+        "description": "Consultations on flower remedies and herbal support for physical and emotional needs.",
+        "fullDescription": "Personalized floritherapy and phytotherapy guidance to support emotional balance and physical well-being.",
+        "benefits": []
+      },
+      "craniosacralReflexology": {
+        "title": "Craniosacral Therapy and Reflexology Treatments",
+        "description": "Gentle techniques to harmonize the nervous system and stimulate reflex points.",
+        "fullDescription": "Craniosacral therapy and reflexology sessions designed to encourage deep relaxation and natural balance.",
+        "benefits": []
+      },
+      "iridologyArmocromia": {
+        "title": "Iridology and Color Analysis Consultations",
+        "description": "Iris analysis and color consultation for personal harmony and well-being.",
+        "fullDescription": "Iridology for holistic insight and color analysis to enhance personal image in alignment with well-being.",
+        "benefits": []
+      },
+      "connectedBreathing": {
+        "title": "Connected Breathing (Rebirthing) Sessions",
+        "description": "Guided breathing for emotional release, grounding, and renewed vitality.",
+        "fullDescription": "Connected breathing (Rebirthing) sessions to foster relaxation, awareness, and energetic recharge.",
+        "benefits": []
+      },
+      "yogaPilatesMovement": {
+        "title": "Yoga, Pilates, and Movement Science Workshops",
+        "description": "Workshops focused on mobility, posture, breath, and functional strength.",
+        "fullDescription": "Yoga, Pilates, and movement science sessions to improve posture, mobility, and body awareness.",
+        "benefits": []
+      },
+      "mindfulnessMeditation": {
+        "title": "Mindfulness and Guided Meditation",
+        "description": "Awareness and meditation paths to manage stress and sharpen focus.",
+        "fullDescription": "Guided mindfulness and meditation sessions to cultivate presence, calm, and emotional well-being.",
+        "benefits": []
+      },
+      "menopauseNutritionCoaching": {
+        "title": "Menopause Coaching and Nutritional Consultations",
+        "description": "Targeted menopause support with personalized nutritional plans.",
+        "fullDescription": "Menopause coaching with nutrition and lifestyle guidance to improve energy and daily well-being.",
+        "benefits": []
+      },
+      "creativeLabsOrthodynamicPhilosophy": {
+        "title": "Creative Labs, Orthodynamic Gymnastics, and Philosophical Consulting",
+        "description": "Creative paths, orthodynamic movement, and philosophical dialogue for personal growth.",
+        "fullDescription": "Creative labs, orthodynamic gymnastics, and philosophical consulting to support expression, mindful movement, and reflection.",
+        "benefits": []
+      },
       "swedishMassage": {
         "title": "Swedish Massage",
         "description": "A gentle, relaxing massage that uses long strokes and kneading to promote relaxation.",
@@ -243,15 +303,10 @@
         ]
       },
       "holisticMassages": {
-        "title": "Holistic Massages",
-        "description": "Integrated massage therapy combining various techniques for complete body and mind wellness.",
-        "fullDescription": "Our holistic massage approach integrates multiple therapeutic techniques to address your complete well-being. By combining different massage styles and healing modalities, we create a comprehensive treatment that balances body, mind, and spirit.",
-        "benefits": [
-          "Full-body rejuvenation",
-          "Stress relief",
-          "Mental clarity",
-          "Emotional balance"
-        ]
+        "title": "Holistic Massages: Swedish, Metamorphic, Four-handed Biodynamic",
+        "description": "Combined holistic techniques for deep relaxation and energetic balance.",
+        "fullDescription": "Holistic massages integrating Swedish, Metamorphic, and four-handed Biodynamic approaches for complete well-being.",
+        "benefits": []
       },
       "iridology": {
         "title": "Iridology",
@@ -277,6 +332,16 @@
       }
     },
     "durations": {
+      "systematicKinesiology": "By appointment",
+      "chineseMedicine": "By appointment",
+      "floritherapyPhytotherapy": "By appointment",
+      "craniosacralReflexology": "By appointment",
+      "iridologyArmocromia": "By appointment",
+      "connectedBreathing": "By appointment",
+      "yogaPilatesMovement": "By appointment",
+      "mindfulnessMeditation": "By appointment",
+      "menopauseNutritionCoaching": "By appointment",
+      "creativeLabsOrthodynamicPhilosophy": "By appointment",
       "naturopathicConsultation": "60-90 minutes",
       "holisticMassages": "60-90 minutes",
       "iridology": "45-60 minutes",
@@ -625,6 +690,8 @@
     "tagline": "Your journey to relaxation and wellness begins here. Experience the healing power of touch.",
     "quickLinks": "Quick Links",
     "contactUs": "Contact Us",
+    "patronage": "With the patronage of the UNI-PRO professional association (Law 4/2013) guaranteeing the operators' professionalism.",
+    "collaboration": "In collaboration with HUMAN STUDIES for a care approach grounded in solid scientific and cultural credentials.",
     "copyright": "All rights reserved. Designed by",
     "tecweb": "TecWeb Studio"
   },
