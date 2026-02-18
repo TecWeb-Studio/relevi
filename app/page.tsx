@@ -211,7 +211,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-olive-400 rounded-2xl -z-10 animate-float" />
+              <div className="hidden md:block absolute -bottom-6 -right-6 w-48 h-48 bg-olive-400 rounded-2xl -z-10 animate-float" />
             </div>
           </div>
         </div>

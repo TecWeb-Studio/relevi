@@ -417,13 +417,18 @@
       },
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
-        "role": "Senior Holistic Professional",
-        "bio": "Denise specializes in sports massage and injury rehabilitation. Her background as a former athlete gives her unique insight into treating muscle tension and enhancing athletic performance.",
-        "specialties": ["Sports Massage", "Deep Tissue", "Myofascial Release"],
+        "role": "Holistic Practitioner",
+        "bio": "Denise guides people through pathways of wellbeing and bodily rebalancing, with targeted treatments that help relax the body, release tensions and improve self-awareness.\n\nTreatments and their main benefits:\n• Reiki — Promotes deep relaxation, stress reduction and a sense of inner calm. Helps release physical and mental tensions, supporting a natural and immediate sense of wellbeing.\n• Craniosacral Technique — Gentle interventions on the skull, spine and fascial system help release stiffness and muscle tension, improve mobility and support the nervous system. Brings calm, lightness and a greater sense of bodily freedom.\n• Foot Reflexology — Stimulation of reflex points on the feet supports the balance of body systems, improves circulation and relieves stress and fatigue. Provides immediate relaxation, lightness and a pleasant feeling of widespread wellbeing.\n\nEach treatment is designed to offer a safe and welcoming moment where the person can relax, reconnect with their body and restore balance and natural energy.",
+        "specialties": [
+          "Reiki",
+          "Craniosacral Technique",
+          "Foot Reflexology"
+        ],
         "certifications": [
-          "Sports Massage Specialist",
-          "NASM-CPT",
-          "Kinesiology Certification"
+          "Professional Holistic Practitioner",
+          "Reiki Usui Method",
+          "Craniosacral Technique – Certified",
+          "Foot Reflexology – Certified"
         ]
       },
       "francescaTonon": {

@@ -53,7 +53,18 @@ export default function Navigation() {
 
   const currentLang = i18n.language || 'en';
   const isLinkActive = (href: string) => {
-    const baseHref = href.split('#')[0] || '/';
+    const parts = href.split('#');
+    const baseHref = parts[0] || '/';
+    const hash = parts[1] ? `#${parts[1]}` : '';
+
+    // If link contains a hash (like '/#contact'), only mark active when
+    // we're on the same pathname and the location.hash matches.
+    if (hash) {
+      if (typeof window !== 'undefined') {
+        return pathname === baseHref && window.location.hash === hash;
+      }
+      return false;
+    }
 
     if (baseHref === '/') {
       return pathname === '/';
@@ -148,7 +159,7 @@ export default function Navigation() {
         </div>
 
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-y-0 opacity-100 scale-100 mt-4 pointer-events-auto' : '-translate-y-2 opacity-0 scale-95 pointer-events-none'
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-y-0 opacity-100 scale-100 pointer-events-auto' : '-translate-y-2 opacity-0 scale-95 pointer-events-none'
             } will-change-transform bg-white/95 backdrop-blur-md absolute top-full left-0 right-0 border-t border-olive-100 shadow-lg`}
         >
           <div className="flex flex-col space-y-4 py-4">
