@@ -44,6 +44,9 @@
         "description": "Treatments tailored to your specific needs."
       }
     },
+    "gallery": {
+      "title": "Our Gallery"
+    },
     "uniPro": {
       "title": "UNI-PRO Patronage",
       "subtitle": "Collaboration and professional guarantees",

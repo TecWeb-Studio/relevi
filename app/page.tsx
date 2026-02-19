@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import ImageCarousel from "./components/ImageCarousel";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -106,6 +107,8 @@ export default function Home() {
           </svg>
         </div>
       </section>
+
+      <ImageCarousel />
 
       <section className="py-24 bg-gradient-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

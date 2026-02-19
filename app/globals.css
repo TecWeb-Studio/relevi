@@ -51,7 +51,7 @@
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(22px);
     }
     to {
       opacity: 1;
@@ -126,7 +126,7 @@
   }
 
   .animate-fadeInUp {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   .animate-fadeInDown {
@@ -187,5 +187,75 @@
 
   .bg-gradient-light {
     background: linear-gradient(180deg, #f7f8f4 0%, #eef0e6 100%);
+  }
+
+  /* ── Carousel ── */
+
+  .carousel-section {
+    perspective: 1200px;
+  }
+
+  .carousel-slide {
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .carousel-image-active img {
+    animation: kenBurns 8s ease-out forwards;
+  }
+
+  @keyframes kenBurns {
+    0% {
+      transform: scale(1) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.08) translate(-1%, -1%);
+    }
+  }
+
+  .carousel-shine {
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.12) 45%,
+      rgba(255, 255, 255, 0.06) 50%,
+      transparent 55%
+    );
+    animation: carouselShine 4s ease-in-out infinite;
+  }
+
+  @keyframes carouselShine {
+    0% {
+      transform: translateX(-150%);
+    }
+    60%, 100% {
+      transform: translateX(250%);
+    }
+  }
+
+  .carousel-progress {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-progress::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: progressShimmer 2s ease-in-out infinite;
+  }
+
+  @keyframes progressShimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
 }
