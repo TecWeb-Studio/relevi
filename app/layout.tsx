@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Relevi Healing - Massage Center",
-  description: "Experience relaxation and rejuvenation at Relevi Healing Massage Center. Professional massage services in a tranquil environment.",
+  title: "Relevi Healing - Laboratorio Interattivo per il Benessere",
+  description: "Relevi Healing è un progetto interattivo e laboratorio polifunzionale dedicato al benessere della persona, con esperienze che favoriscono salute fisica, mentale ed emozionale.",
 };
 
 export default function RootLayout({
