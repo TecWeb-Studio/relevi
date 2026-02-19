@@ -516,6 +516,26 @@ export default function TeamPage() {
                 </ul>
               </div>
 
+              {selectedMember.key === "headmaster" && (
+                <div className="mb-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 bg-olive-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-olive-800">Attestati</h3>
+                  </div>
+                  <div className="rounded-2xl overflow-hidden border border-olive-100 shadow-md">
+                    <img
+                      src="/images/certificates/mayerattestato.jpg"
+                      alt="Attestato Francesca Mayer"
+                      className="w-full object-contain"
+                    />
+                  </div>
+                </div>
+              )}
+
               <div className="flex items-center justify-between pt-6 border-t border-gray-200">
                 <a
                   href={`/prenota?operatore=${selectedMember.key}`}
