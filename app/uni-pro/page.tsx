@@ -55,6 +55,17 @@ export default function UniProPage() {
         </div>
       </section>
 
+      {/* Attestazione Relevi */}
+      <section className="py-10 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+          <img
+            src="/images/certificates/attestazioneRelevi.png"
+            alt="Attestazione Relevi"
+            className="mx-auto rounded-2xl shadow-lg w-full"
+          />
+        </div>
+      </section>
+
       {/* Summary + Highlights */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
