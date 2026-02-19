@@ -109,7 +109,10 @@
       "wellnessStarter": {
         "name": "Benessere Starter",
         "description": "Perfetto per chi inizia",
-        "services": ["Massaggio Svedese", "Consulenza Aromaterapia"]
+        "services": [
+          "Massaggio Svedese",
+          "Consulenza Aromaterapia"
+        ]
       },
       "healingRetreat": {
         "name": "Ritiro di Guarigione",
@@ -413,7 +416,10 @@
         "name": "Corrado Zamboni",
         "role": "Consulente Filosofico",
         "bio": "Corrado ha studiato e insegnato economia ed è un imprenditore nel settore della salute e della nutrizione. Si è laureato in storia e filosofia, con una tesi in estetica sul pensiero delle arti in Paul Valery, si occupa di economia sociale e filosofia politica sotto il cielo dell'etica e del pensiero critico. Accompagna la ricerca personale con l'attenzione e l'espressione del linguaggio della parola, del corpo e delle emozioni, quindi la filosofia e il pensiero delle arti, in laboratori di pensiero, danza, scrittura e disegno. Un approccio che risveglia la vitalità, le emozioni e la connessione autentica con sè, con l'altro, con l'universo. E che si propone anche attraverso uno sportello di confronto/consulenza individuale e in caffè filosofici aperti alla cittadinanza",
-        "specialties": ["Economia e Commercio", "Consulenze Filosofiche"],
+        "specialties": [
+          "Economia e Commercio",
+          "Consulenze Filosofiche"
+        ],
         "certifications": [
           "Laurea in Storia e Filosofia",
           "Esperto in Economia Sociale"
@@ -422,7 +428,21 @@
       "deniseDallaPasqua": {
         "name": "Denise Dalla Pasqua",
         "role": "Operatrice Olistica",
-        "bio": "Denise accompagna le persone in percorsi di benessere e riequilibrio corporeo, con trattamenti mirati che aiutano a rilassare il corpo, sciogliere tensioni e migliorare la percezione di sé.\n\nI trattamenti e i loro benefici principali:\n• Reiki — Favorisce rilassamento profondo, riduzione dello stress e senso di calma interiore. Aiuta a liberare tensioni fisiche e mentali, sostenendo una sensazione di benessere naturale e immediata.\n• Tecnica Cranio-Sacrale — Interventi delicati su cranio, colonna e fascia corporea aiutano a sciogliere rigidità e tensioni muscolari, migliorare la mobilità e sostenere il sistema nervoso. Dona calma, leggerezza e una sensazione di maggiore libertà corporea.\n• Riflessologia Plantare — La stimolazione dei punti riflessi sui piedi supporta l’equilibrio dei sistemi corporei, favorisce la circolazione e allevia stress e affaticamento. Regala rilassamento immediato, leggerezza e una piacevole sensazione di benessere diffuso.\n\nOgni trattamento è pensato per offrire un momento sicuro e accogliente, dove la persona può rilassarsi, riconnettersi al proprio corpo e ritrovare equilibrio e energia naturale.",
+        "bio": "Denise accompagna le persone in percorsi di benessere e riequilibrio corporeo, con trattamenti mirati che aiutano a rilassare il corpo, sciogliere tensioni e migliorare la percezione di sé.\n\nOgni trattamento è pensato per offrire un momento sicuro e accogliente, dove la persona può rilassarsi, riconnettersi al proprio corpo e ritrovare equilibrio e energia naturale.",
+        "treatments": [
+          {
+            "name": "Reiki",
+            "description": "Favorisce rilassamento profondo, riduzione dello stress e senso di calma interiore. Aiuta a liberare tensioni fisiche e mentali, sostenendo una sensazione di benessere naturale e immediata."
+          },
+          {
+            "name": "Tecnica Cranio-Sacrale",
+            "description": "Interventi delicati su cranio, colonna e fascia corporea aiutano a sciogliere rigidità e tensioni muscolari, migliorare la mobilità e sostenere il sistema nervoso. Dona calma, leggerezza e una sensazione di maggiore libertà corporea."
+          },
+          {
+            "name": "Riflessologia Plantare",
+            "description": "La stimolazione dei punti riflessi sui piedi supporta l'equilibrio dei sistemi corporei, favorisce la circolazione e allevia stress e affaticamento. Regala rilassamento immediato, leggerezza e una piacevole sensazione di benessere diffuso."
+          }
+        ],
         "specialties": [
           "Reiki",
           "Tecnica Cranio-Sacrale",
@@ -454,7 +474,11 @@
         "name": "Giancarlo Pavanello",
         "role": "Professionista Olistico Specializzato Multitech",
         "bio": "Da ReLeVi Healing, Giancarlo propone trattamenti personalizzati orientati al riequilibrio e all'ascolto del corpo, con un approccio basato su sensibilità, presenza e tecnica. Le sue competenze includono: Massaggio Decontratturante e Sportivo, Linfodrenaggio metodo Vodder, Massaggio Svedese e Antistress, Massaggio Biodinamico a 4 mani per un'esperienza di profonda connessione corpo-mente, Tecniche orientali come Thai Tradizionale, Ayurvedico Abhyangam, Massaggi con oli essenziali, Hot Stone, Lomi Lomi NUI e Californiano emozionale. Ogni trattamento è adattato ai bisogni della persona in un ambiente accogliente e rispettoso.",
-        "specialties": ["Riflessologia", "Massaggio Thai", "Shiatsu"],
+        "specialties": [
+          "Riflessologia",
+          "Massaggio Thai",
+          "Shiatsu"
+        ],
         "certifications": [
           "Riflessologo Certificato",
           "Praticante Massaggio Thai",
@@ -465,14 +489,23 @@
         "name": "Massimo Gnesotto",
         "role": "Praticante Biodinamico Craniosacrale",
         "bio": "Massimo ha abbracciato e approfondito l'approccio Biodinamico sotto la guida di Mike Boxhall, terapeuta inglese pioniere del settore. Propone una modalità di lavoro e sostegno basata sull'ascolto profondo della persona, integrando corpo- mente-Spirito e sostenendo le intrinseche capacità di autoregolazione innate in ognuno di noi. Affinché la Salute possa nuovamente manifestare il suo potenziale e garantirci vitalità, armonia, serenità e pienezza.",
-        "specialties": ["Biodinamica"],
-        "certifications": ["Operatore Craniosacrale", "Praticante Biodinamico"]
+        "specialties": [
+          "Biodinamica"
+        ],
+        "certifications": [
+          "Operatore Craniosacrale",
+          "Praticante Biodinamico"
+        ]
       },
       "michelaDolce": {
         "name": "Michela Dolce",
         "role": "Operatrice Shiatsu & Craniosacrale",
         "bio": "Michela in ricerca dell'Essenza che la anima, appassionata di cammini e camminate in natura dove la percezione di essa stimola il benessere psicofisico portando leggerezza nella quotidianità e da questo inizia il percorso di conoscenza e approfondimento tramite corsi in natura. Approcciandomi allo shiatsu ho iniziato a comprendere quali fossero le mie qualità, questa disciplina valuta e valorizza le risorse vitali della persona portandone beneficio. Con il cranio sacrale è stata una vera rivelazione, tecnica bio meccanica di ascolto profondo del liquido cefalorachidiano, entrambe le tecniche stimolano il benessere della persona. Ci sono due modi di camminare, uno nel fare e l'altro nell'Essere. Cammina con il cuore è quello che mi caratterizza, il nostro percorrere la terra crea un'impronta per il futuro ed è quello che fa la differenza dal semplice passo. Ragazza in cammino 👣💚",
-        "specialties": ["Shiatsu", "Craniosacrale", "Camminate in Natura"],
+        "specialties": [
+          "Shiatsu",
+          "Craniosacrale",
+          "Camminate in Natura"
+        ],
         "certifications": [
           "Operatrice Shiatsu",
           "Craniosacrale",
@@ -483,7 +516,9 @@
         "name": "Paolo Avella",
         "role": "Specialista Ginnastica Ortodinamica",
         "bio": "La sua missione è aiutare le persone a migliorare mobilità, postura e benessere generale, attraverso un approccio mirato e progressivo. Grazie alla sua formazione riconosciuta da Sport e Salute e dal Ministero dello Sport, Paolo guida con professionalità e passione ogni percorso, adattando gli esercizi alle esigenze di ciascun individuo.",
-        "specialties": ["Ginnastica Ortodinamica"],
+        "specialties": [
+          "Ginnastica Ortodinamica"
+        ],
         "certifications": [
           "Migliora la funzionalità neuro-motoria",
           "Incrementa resistenza e capacità cardio-respiratorie",
@@ -494,13 +529,39 @@
         "name": "Sabrina Pozzobon",
         "role": "Consulente di Immagine",
         "bio": "Amo la natura e i suoi colori, ma anche la moda e il tessile, campo in cui ho sempre lavorato anche grazie al mio diploma da modellista. Da queste passioni è nata la mia attuale professione. Posso aiutarvi a studiare la vostra armocromia, le vostre forme, le vostre potenzialità e il vostro stile in poche e semplici mosse. I colori giusti non cambiano solo l'aspetto, ma il modo in cui ci percepiamo e ci presentiamo al mondo.",
-        "specialties": ["Consulente di Immagine Armocromia"],
-        "certifications": ["Consulente di Immagine Armocromia"]
+        "specialties": [
+          "Consulente di Immagine Armocromia"
+        ],
+        "certifications": [
+          "Consulente di Immagine Armocromia"
+        ]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
         "role": "Insegnante di Yoga · Life and Spiritual Coach · Arteterapeuta",
-        "bio": "Insegnante di Yoga\nLife and Spiritual Coach\nArteterapeuta\n\nTamara è insegnante di yoga, Life Coach e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore.\n\nTi accompagna a ritrovare la tua serenità e a riportare armonia nella tua vita utilizzando pratiche di respiro e di meditazione. Nei suoi percorsi vieni guidato in un viaggio di esplorazione di te stesso. Attraverso il lavoro sul corpo e l’espressione artistica potrai entrare in contatto profondamente con le tue emozioni per raggiungere uno stato di maggiore consapevolezza e benessere.\n\nPresso ReLeVi Healing, Tamara conduce sessioni individuali e di gruppo di meditazione e di yoga (Hatha Yoga, Yin Yoga e Yoga Nidra), percorsi di coaching e di arteterapia.\n\nOffre:\n• Lezione individuale di yoga\n• Corso di yoga di gruppo — pacchetto 3 mesi\n• Percorso Shayana (9 incontri) — Yoga Nidra e tecniche per insonnia per riposare e rilassarti al meglio\n• Percorso InLight — coaching individuale, 12 sessioni, per te che stai attraversando la tempesta e desideri riportare equilibrio e chiarezza nella tua vita.\n• Percorso La via dei Mandala — 6 incontri di arteterapia individuale o in piccolo gruppo: un viaggio di esplorazione a tappe nella tua Vita, paesaggio ricco di colori ed emozioni.",
+        "bio": "Tamara è insegnante di yoga, Life Coach e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore.\n\nTi accompagna a ritrovare la tua serenità e a riportare armonia nella tua vita utilizzando pratiche di respiro e di meditazione. Nei suoi percorsi vieni guidato in un viaggio di esplorazione di te stesso. Attraverso il lavoro sul corpo e l'espressione artistica potrai entrare in contatto profondamente con le tue emozioni per raggiungere uno stato di maggiore consapevolezza e benessere.\n\nPresso ReLeVi Healing, Tamara conduce sessioni individuali e di gruppo di meditazione e di yoga.",
+        "programs": [
+          {
+            "name": "Lezione individuale di yoga",
+            "description": ""
+          },
+          {
+            "name": "Corso di yoga di gruppo — pacchetto 3 mesi",
+            "description": ""
+          },
+          {
+            "name": "Percorso Shayana (9 incontri)",
+            "description": "Yoga Nidra e tecniche per insonnia per riposare e rilassarti al meglio"
+          },
+          {
+            "name": "Percorso InLight",
+            "description": "Coaching individuale, 12 sessioni, per te che stai attraversando la tempesta e desideri riportare equilibrio e chiarezza nella tua vita."
+          },
+          {
+            "name": "Percorso La via dei Mandala",
+            "description": "6 incontri di arteterapia individuale o in piccolo gruppo: un viaggio di esplorazione a tappe nella tua Vita, paesaggio ricco di colori ed emozioni."
+          }
+        ],
         "specialties": [
           "Hatha Yoga",
           "Yin Yoga",
@@ -619,7 +680,10 @@
           "12:30 – Pranzo a buffet",
           "14:00 – Sessione pratica (circa 3 ore)"
         ],
-        "cost": ["Evento gratuito", "Contributo di €20 per pranzo e buffet"],
+        "cost": [
+          "Evento gratuito",
+          "Contributo di €20 per pranzo e buffet"
+        ],
         "reservations": "Posti limitati – prenotazione obbligatoria. Telefono: 351 7471159"
       }
     },

@@ -403,6 +403,66 @@ export default function TeamPage() {
                 </p>
               </div>
 
+              {/* Treatments section for Denise */}
+              {selectedMember.key === "deniseDallaPasqua" && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-olive-800 mb-4">
+                    I Trattamenti
+                  </h3>
+                  <div className="space-y-4">
+                    {(
+                      t(`team.members.${selectedMember.key}.treatments`, {
+                        returnObjects: true,
+                      }) as Array<{ name: string; description: string }>
+                    ).map(
+                      (treatment: { name: string; description: string }) => (
+                        <div
+                          key={treatment.name}
+                          className="border-l-4 border-olive-600 pl-4"
+                        >
+                          <h4 className="font-semibold text-olive-700 mb-1">
+                            {treatment.name}
+                          </h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {treatment.description}
+                          </p>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Programs section for Tamara */}
+              {selectedMember.key === "tamaraZanchetta" && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-olive-800 mb-4">
+                    Corsi e Percorsi
+                  </h3>
+                  <div className="space-y-4">
+                    {(
+                      t(`team.members.${selectedMember.key}.programs`, {
+                        returnObjects: true,
+                      }) as Array<{ name: string; description: string }>
+                    ).map((program: { name: string; description: string }) => (
+                      <div
+                        key={program.name}
+                        className="border-l-4 border-olive-600 pl-4"
+                      >
+                        <h4 className="font-semibold text-olive-700 mb-1">
+                          {program.name}
+                        </h4>
+                        {program.description && (
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {program.description}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="mb-6">
                 <h3 className="text-lg font-semibold text-olive-800 mb-2">
                   {t("team.modal.specialties")}
