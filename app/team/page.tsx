@@ -407,7 +407,7 @@ export default function TeamPage() {
               {selectedMember.key === "deniseDallaPasqua" && (
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold text-olive-800 mb-4">
-                    I Trattamenti
+                    {t("team.modal.treatments")}
                   </h3>
                   <div className="space-y-4">
                     {(
@@ -437,7 +437,7 @@ export default function TeamPage() {
               {selectedMember.key === "tamaraZanchetta" && (
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold text-olive-800 mb-4">
-                    Corsi e Percorsi
+                    {t("team.modal.programs")}
                   </h3>
                   <div className="space-y-4">
                     {(
