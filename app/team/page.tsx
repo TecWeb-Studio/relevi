@@ -454,6 +454,15 @@ export default function TeamPage() {
                     </li>
                   ))}
                 </ul>
+                {selectedMember.key === "headmaster" && (
+                  <div className="mt-6">
+                    <img
+                      src="/images/certificates/mayerattestato.jpg"
+                      alt="Attestato Francesca Mayer"
+                      className="w-full rounded-2xl shadow-md"
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center justify-between pt-6 border-t border-gray-200">
