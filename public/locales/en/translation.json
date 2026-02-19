@@ -419,11 +419,7 @@
         "name": "Denise Dalla Pasqua",
         "role": "Holistic Practitioner",
         "bio": "Denise guides people through pathways of wellbeing and bodily rebalancing, with targeted treatments that help relax the body, release tensions and improve self-awareness.\n\nTreatments and their main benefits:\n• Reiki — Promotes deep relaxation, stress reduction and a sense of inner calm. Helps release physical and mental tensions, supporting a natural and immediate sense of wellbeing.\n• Craniosacral Technique — Gentle interventions on the skull, spine and fascial system help release stiffness and muscle tension, improve mobility and support the nervous system. Brings calm, lightness and a greater sense of bodily freedom.\n• Foot Reflexology — Stimulation of reflex points on the feet supports the balance of body systems, improves circulation and relieves stress and fatigue. Provides immediate relaxation, lightness and a pleasant feeling of widespread wellbeing.\n\nEach treatment is designed to offer a safe and welcoming moment where the person can relax, reconnect with their body and restore balance and natural energy.",
-        "specialties": [
-          "Reiki",
-          "Craniosacral Technique",
-          "Foot Reflexology"
-        ],
+        "specialties": ["Reiki", "Craniosacral Technique", "Foot Reflexology"],
         "certifications": [
           "Professional Holistic Practitioner",
           "Reiki Usui Method",
@@ -510,10 +506,21 @@
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
-        "role": "Art Therapist & Yoga Instructor",
-        "bio": "Tamara is a yoga instructor and art therapist with a personal and professional journey dedicated to awareness and inner growth. Through art therapy, Tamara guides people on a journey of self-exploration, using artistic expression as a tool to access deep emotions and promote psychophysical well-being. At ReLeVi Healing, Tamara will lead art therapy sessions, offering a safe and welcoming space to express yourself freely and embark on a path of personal transformation.",
-        "specialties": ["Art Therapy", "Yoga"],
-        "certifications": ["Yoga Instructor", "Art Therapist"]
+        "role": "Yoga Instructor · Life and Spiritual Coach · Art Therapist",
+        "bio": "Yoga Instructor\nLife and Spiritual Coach\nArt Therapist\n\nTamara is a yoga instructor, Life Coach, and art therapist with a personal and professional journey dedicated to awareness and inner growth.\n\nShe guides you to rediscover your serenity and restore harmony in your life using breathing and meditation practices. In her programs, you are guided on a journey of self-exploration. Through work on your body and artistic expression, you can connect deeply with your emotions to achieve greater awareness and well-being.\n\nAt ReLeVi Healing, Tamara conducts individual and group sessions of meditation and yoga (Hatha Yoga, Yin Yoga, and Yoga Nidra), coaching programs, and art therapy.\n\nShe offers:\n• Individual yoga lessons\n• Group yoga course — 3-month package\n• Shayana Path (9 sessions) — Yoga Nidra and insomnia techniques to rest and relax better\n• InLight Path — individual coaching, 12 sessions, for those going through a storm and wishing to restore balance and clarity to their lives\n• The Way of Mandalas Path — 6 sessions of individual or small group art therapy: a step-by-step journey of exploration through your Life, a landscape rich in colors and emotions.",
+        "specialties": [
+          "Hatha Yoga",
+          "Yin Yoga",
+          "Yoga Nidra",
+          "Meditation",
+          "Art Therapy",
+          "Individual Coaching"
+        ],
+        "certifications": [
+          "Yoga Instructor",
+          "Life and Spiritual Coach",
+          "Art Therapist"
+        ]
       }
     }
   },

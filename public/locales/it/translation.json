@@ -499,10 +499,21 @@
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
-        "role": "Arteterapeuta & Insegnante Yoga",
-        "bio": "Tamara è un'insegnante di yoga e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore. Attraverso l'arteterapia, Tamara accompagna le persone in un viaggio di esplorazione di sé, utilizzando l'espressione artistica come strumento per accedere a emozioni profonde e favorire il benessere psicofisico. Presso ReLeVi Healing, Tamara guiderà sessioni di arteterapia, offrendo uno spazio sicuro e accogliente dove esprimersi liberamente e intraprendere un percorso di trasformazione personale.",
-        "specialties": ["Arteterapia", "Yoga"],
-        "certifications": ["Insegnante di Yoga", "Arteterapeuta"]
+        "role": "Insegnante di Yoga · Life and Spiritual Coach · Arteterapeuta",
+        "bio": "Insegnante di Yoga\nLife and Spiritual Coach\nArteterapeuta\n\nTamara è insegnante di yoga, Life Coach e arteterapeuta con un percorso personale e professionale dedicato alla consapevolezza e alla crescita interiore.\n\nTi accompagna a ritrovare la tua serenità e a riportare armonia nella tua vita utilizzando pratiche di respiro e di meditazione. Nei suoi percorsi vieni guidato in un viaggio di esplorazione di te stesso. Attraverso il lavoro sul corpo e l’espressione artistica potrai entrare in contatto profondamente con le tue emozioni per raggiungere uno stato di maggiore consapevolezza e benessere.\n\nPresso ReLeVi Healing, Tamara conduce sessioni individuali e di gruppo di meditazione e di yoga (Hatha Yoga, Yin Yoga e Yoga Nidra), percorsi di coaching e di arteterapia.\n\nOffre:\n• Lezione individuale di yoga\n• Corso di yoga di gruppo — pacchetto 3 mesi\n• Percorso Shayana (9 incontri) — Yoga Nidra e tecniche per insonnia per riposare e rilassarti al meglio\n• Percorso InLight — coaching individuale, 12 sessioni, per te che stai attraversando la tempesta e desideri riportare equilibrio e chiarezza nella tua vita.\n• Percorso La via dei Mandala — 6 incontri di arteterapia individuale o in piccolo gruppo: un viaggio di esplorazione a tappe nella tua Vita, paesaggio ricco di colori ed emozioni.",
+        "specialties": [
+          "Hatha Yoga",
+          "Yin Yoga",
+          "Yoga Nidra",
+          "Meditazione",
+          "Arteterapia",
+          "Coaching Individuale"
+        ],
+        "certifications": [
+          "Insegnante di Yoga",
+          "Life and Spiritual Coach",
+          "Arteterapeuta"
+        ]
       }
     }
   },
