@@ -456,19 +456,6 @@ export default function TeamPage() {
                 </ul>
               </div>
 
-              {selectedMember.key === "headmaster" && (
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-olive-800 mb-4">
-                    {t("team.modal.certificate")}
-                  </h3>
-                  <img
-                    src="/images/certifications/mayerattestato.jpg"
-                    alt="Attestato Francesca Mayer"
-                    className="rounded-2xl shadow-md max-w-full h-auto"
-                  />
-                </div>
-              )}
-
               <div className="flex items-center justify-between pt-6 border-t border-gray-200">
                 <a
                   href={`/prenota?operatore=${selectedMember.key}`}
