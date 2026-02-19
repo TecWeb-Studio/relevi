@@ -99,6 +99,13 @@ function BookingContent() {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [isConfirming, setIsConfirming] = useState(false);
   const [animateCalendar, setAnimateCalendar] = useState(false);
+  const [bookedSlots, setBookedSlots] = useState<string[]>([]);
+  const [clientName, setClientName] = useState("");
+  const [clientPhone, setClientPhone] = useState("");
+  const [clientEmail, setClientEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
 
   const dayNames = lang === "it" ? DAY_NAMES_IT : DAY_NAMES_EN;
   const fullDayNames = lang === "it" ? FULL_DAY_NAMES_IT : FULL_DAY_NAMES_EN;
@@ -115,7 +122,22 @@ function BookingContent() {
   const handleSelectDate = useCallback((date: Date) => {
     setSelectedDate(date);
     setSelectedSlot(null);
+    setBookingSuccess(false);
+    setBookingError(null);
   }, []);
+
+  // Fetch booked slots whenever operator or date changes
+  useEffect(() => {
+    if (!selectedOperator || !selectedDate) {
+      setBookedSlots([]);
+      return;
+    }
+    const dateStr = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`;
+    fetch(`/api/bookings/slots?operator=${selectedOperator}&date=${dateStr}`)
+      .then((res) => res.json())
+      .then((data) => setBookedSlots(data.bookedSlots || []))
+      .catch(() => setBookedSlots([]));
+  }, [selectedOperator, selectedDate]);
 
   // Scroll to calendar when operator is pre-selected
   useEffect(() => {
@@ -189,8 +211,9 @@ function BookingContent() {
 
   const availableSlots = useMemo(() => {
     if (!selectedOperator || !selectedDate) return [];
-    return getAvailableSlots(selectedOperator, selectedDate);
-  }, [selectedOperator, selectedDate]);
+    const allSlots = getAvailableSlots(selectedOperator, selectedDate);
+    return allSlots.filter((slot) => !bookedSlots.includes(slot));
+  }, [selectedOperator, selectedDate, bookedSlots]);
 
   const scheduleSummary = useMemo(() => {
     if (!selectedOperator) return null;
@@ -233,19 +256,54 @@ function BookingContent() {
     return `${fullDayNames[date.getDay()]} ${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
   };
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (!selectedOperator || !selectedDate || !selectedSlot) return;
-    const operatorName = t(`team.members.${selectedOperator}.name`);
-    const dateStr = formatDate(selectedDate);
-    const message =
-      lang === "it"
-        ? `Salve, vorrei prenotare una sessione con ${operatorName} il ${dateStr} alle ${selectedSlot}. Grazie!`
-        : `Hello, I would like to book a session with ${operatorName} on ${dateStr} at ${selectedSlot}. Thank you!`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(
-      `https://api.whatsapp.com/send?phone=393517471159&text=${encodedMessage}`,
-      "_blank",
-    );
+    if (!clientName.trim() || !clientPhone.trim()) {
+      setBookingError(
+        lang === "it"
+          ? "Per favore inserisci nome e telefono."
+          : "Please enter your name and phone number."
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+    setBookingError(null);
+
+    const dateStr = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`;
+
+    try {
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          operator_key: selectedOperator,
+          client_name: clientName.trim(),
+          client_phone: clientPhone.trim(),
+          client_email: clientEmail.trim(),
+          booking_date: dateStr,
+          time_slot: selectedSlot,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Booking failed");
+      }
+
+      setBookingSuccess(true);
+      setIsConfirming(false);
+      // Refresh booked slots
+      setBookedSlots((prev) => [...prev, selectedSlot]);
+      setSelectedSlot(null);
+      setClientName("");
+      setClientPhone("");
+      setClientEmail("");
+    } catch (err) {
+      setBookingError(err instanceof Error ? err.message : "Booking failed");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const canGoBack =
@@ -688,8 +746,25 @@ function BookingContent() {
                   </div>
                 )}
 
+                {/* Success Message */}
+                {bookingSuccess && (
+                  <div className="mt-6 bg-green-50 border-2 border-green-300 rounded-2xl p-6 text-center animate-fadeInUp">
+                    <svg className="w-16 h-16 mx-auto mb-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4 className="text-xl font-bold text-green-800 mb-2">
+                      {lang === "it" ? "Prenotazione confermata!" : "Booking confirmed!"}
+                    </h4>
+                    <p className="text-green-600 text-sm">
+                      {lang === "it"
+                        ? "Riceverai una conferma. Grazie!"
+                        : "You will receive a confirmation. Thank you!"}
+                    </p>
+                  </div>
+                )}
+
                 {/* Booking Summary + CTA */}
-                {selectedSlot && selectedDate && (
+                {selectedSlot && selectedDate && !bookingSuccess && (
                   <div className="mt-6 bg-gradient-to-br from-olive-600 to-olive-700 rounded-2xl p-6 text-white shadow-xl animate-fadeInUp">
                     <h4 className="font-bold text-lg mb-4">
                       {t("booking.summary.title")}
@@ -721,23 +796,47 @@ function BookingContent() {
                       <hr className="border-olive-500/40" />
                     </div>
 
+                    {/* Client Info Form */}
+                    <div className="mt-4 space-y-3">
+                      <input
+                        type="text"
+                        placeholder={lang === "it" ? "Il tuo nome *" : "Your name *"}
+                        value={clientName}
+                        onChange={(e) => setClientName(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-olive-200 focus:outline-none focus:ring-2 focus:ring-white/40"
+                      />
+                      <input
+                        type="tel"
+                        placeholder={lang === "it" ? "Telefono *" : "Phone *"}
+                        value={clientPhone}
+                        onChange={(e) => setClientPhone(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-olive-200 focus:outline-none focus:ring-2 focus:ring-white/40"
+                      />
+                      <input
+                        type="email"
+                        placeholder={lang === "it" ? "Email (opzionale)" : "Email (optional)"}
+                        value={clientEmail}
+                        onChange={(e) => setClientEmail(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-olive-200 focus:outline-none focus:ring-2 focus:ring-white/40"
+                      />
+                    </div>
+
+                    {bookingError && (
+                      <p className="mt-3 text-red-200 text-sm text-center bg-red-900/30 rounded-lg p-2">
+                        {bookingError}
+                      </p>
+                    )}
+
                     <button
                       onClick={() => setIsConfirming(true)}
-                      className="w-full mt-5 bg-white text-olive-700 py-3.5 rounded-xl font-bold text-lg hover:bg-olive-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                      className="w-full mt-5 bg-white text-olive-700 py-3.5 rounded-xl font-bold text-lg hover:bg-olive-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      {t("booking.summary.bookViaWhatsApp")}
+                      {lang === "it" ? "Conferma Prenotazione" : "Confirm Booking"}
                     </button>
-
-                    <p className="text-center text-olive-200 text-xs mt-3">
-                      {t("booking.summary.whatsappNote")}
-                    </p>
                   </div>
                 )}
               </div>
@@ -886,21 +985,31 @@ function BookingContent() {
                 </button>
                 <button
                   onClick={() => {
-                    setIsConfirming(false);
                     handleBooking();
                   }}
-                  className="flex-1 py-3 bg-olive-600 text-white rounded-xl font-semibold hover:bg-olive-700 transition-all flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="flex-1 py-3 bg-olive-600 text-white rounded-xl font-semibold hover:bg-olive-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                  </svg>
-                  {t("booking.confirm.confirm")}
+                  {isSubmitting ? (
+                    <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                  {isSubmitting
+                    ? (lang === "it" ? "Invio..." : "Sending...")
+                    : t("booking.confirm.confirm")}
                 </button>
               </div>
+              {bookingError && (
+                <p className="mt-3 text-red-500 text-sm text-center">
+                  {bookingError}
+                </p>
+              )}
             </div>
           </div>
         </div>
