@@ -3,15 +3,18 @@
 import { useEffect, useState, useMemo, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
-import {
-  getAvailableSlots,
-  hasAvailability,
-  getOperatorScheduleSummary,
-} from "../lib/availability";
+// availability lib is kept as reference; actual data comes from /api/availability/compute
 
 interface OperatorInfo {
   key: string;
   image: string;
+}
+
+interface ScheduleInfo {
+  daysOfWeek: number[];
+  timeSlots: { start: string; end: string }[];
+  sessionDuration: number;
+  breakBetweenSessions: number;
 }
 
 const allOperators: OperatorInfo[] = [
@@ -106,6 +109,8 @@ function BookingContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [bookingError, setBookingError] = useState<string | null>(null);
+  const [scheduleInfo, setScheduleInfo] = useState<ScheduleInfo | null>(null);
+  const [loadingSchedule, setLoadingSchedule] = useState(false);
 
   const dayNames = lang === "it" ? DAY_NAMES_IT : DAY_NAMES_EN;
   const fullDayNames = lang === "it" ? FULL_DAY_NAMES_IT : FULL_DAY_NAMES_EN;
@@ -115,9 +120,31 @@ function BookingContent() {
     setSelectedOperator(key);
     setSelectedDate(null);
     setSelectedSlot(null);
+    setScheduleInfo(null);
     setAnimateCalendar(true);
     setTimeout(() => setAnimateCalendar(false), 400);
   }, []);
+
+  // Fetch schedule info from API when operator changes
+  useEffect(() => {
+    if (!selectedOperator) {
+      setScheduleInfo(null);
+      return;
+    }
+    setLoadingSchedule(true);
+    fetch(`/api/availability/compute?operator=${selectedOperator}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setScheduleInfo({
+          daysOfWeek: data.daysOfWeek || [],
+          timeSlots: data.timeSlots || [],
+          sessionDuration: data.sessionDuration || 60,
+          breakBetweenSessions: data.breakBetweenSessions || 15,
+        });
+      })
+      .catch(() => setScheduleInfo(null))
+      .finally(() => setLoadingSchedule(false));
+  }, [selectedOperator]);
 
   const handleSelectDate = useCallback((date: Date) => {
     setSelectedDate(date);
@@ -126,14 +153,14 @@ function BookingContent() {
     setBookingError(null);
   }, []);
 
-  // Fetch booked slots whenever operator or date changes
+  // Fetch available slots (computed server-side) whenever operator or date changes
   useEffect(() => {
     if (!selectedOperator || !selectedDate) {
       setBookedSlots([]);
       return;
     }
     const dateStr = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`;
-    fetch(`/api/bookings/slots?operator=${selectedOperator}&date=${dateStr}`)
+    fetch(`/api/availability/compute?operator=${selectedOperator}&date=${dateStr}`)
       .then((res) => res.json())
       .then((data) => setBookedSlots(data.bookedSlots || []))
       .catch(() => setBookedSlots([]));
@@ -210,15 +237,34 @@ function BookingContent() {
   }, [dayNames]);
 
   const availableSlots = useMemo(() => {
-    if (!selectedOperator || !selectedDate) return [];
-    const allSlots = getAvailableSlots(selectedOperator, selectedDate);
-    return allSlots.filter((slot) => !bookedSlots.includes(slot));
-  }, [selectedOperator, selectedDate, bookedSlots]);
+    if (!selectedOperator || !selectedDate || !scheduleInfo) return [];
+    // Use client-side getAvailableSlots as fallback, but filter with DB-fetched booked slots
+    // If scheduleInfo is from API, compute slots client-side from the dynamic schedule
+    const slots: string[] = [];
+    for (const range of scheduleInfo.timeSlots) {
+      const [startH, startM] = range.start.split(":").map(Number);
+      const [endH, endM] = range.end.split(":").map(Number);
+      let currentMinutes = startH * 60 + startM;
+      const endMinutes = endH * 60 + endM;
+      while (currentMinutes + scheduleInfo.sessionDuration <= endMinutes) {
+        const h = Math.floor(currentMinutes / 60);
+        const m = currentMinutes % 60;
+        slots.push(`${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`);
+        currentMinutes += scheduleInfo.sessionDuration + scheduleInfo.breakBetweenSessions;
+      }
+    }
+    // Check day of week
+    if (!scheduleInfo.daysOfWeek.includes(selectedDate.getDay())) return [];
+    return slots.filter((slot) => !bookedSlots.includes(slot));
+  }, [selectedOperator, selectedDate, bookedSlots, scheduleInfo]);
 
   const scheduleSummary = useMemo(() => {
-    if (!selectedOperator) return null;
-    return getOperatorScheduleSummary(selectedOperator);
-  }, [selectedOperator]);
+    if (!selectedOperator || !scheduleInfo) return null;
+    return {
+      daysOfWeek: scheduleInfo.daysOfWeek,
+      timeSlots: scheduleInfo.timeSlots,
+    };
+  }, [selectedOperator, scheduleInfo]);
 
   const selectedOperatorInfo = useMemo(() => {
     return allOperators.find((op) => op.key === selectedOperator) || null;
@@ -234,11 +280,11 @@ function BookingContent() {
 
   const isDateAvailable = useCallback(
     (date: Date) => {
-      if (!selectedOperator) return false;
+      if (!selectedOperator || !scheduleInfo) return false;
       if (date < today) return false;
-      return hasAvailability(selectedOperator, date);
+      return scheduleInfo.daysOfWeek.includes(date.getDay());
     },
-    [selectedOperator, today],
+    [selectedOperator, today, scheduleInfo],
   );
 
   const isSameDate = (a: Date | null, b: Date | null) => {

@@ -20,6 +20,18 @@ export async function initializeDatabase() {
       args: [],
     },
     {
+      sql: `CREATE TABLE IF NOT EXISTS operator_availability (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        operator_key TEXT NOT NULL UNIQUE,
+        days_of_week TEXT NOT NULL DEFAULT '[]',
+        time_slots TEXT NOT NULL DEFAULT '[]',
+        session_duration INTEGER NOT NULL DEFAULT 60,
+        break_between INTEGER NOT NULL DEFAULT 15,
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )`,
+      args: [],
+    },
+    {
       sql: `CREATE INDEX IF NOT EXISTS idx_bookings_operator_date 
             ON bookings(operator_key, booking_date)`,
       args: [],
@@ -32,6 +44,11 @@ export async function initializeDatabase() {
     {
       sql: `CREATE INDEX IF NOT EXISTS idx_bookings_date 
             ON bookings(booking_date)`,
+      args: [],
+    },
+    {
+      sql: `CREATE UNIQUE INDEX IF NOT EXISTS idx_availability_operator
+            ON operator_availability(operator_key)`,
       args: [],
     },
   ]);

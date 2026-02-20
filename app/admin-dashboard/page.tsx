@@ -17,6 +17,20 @@ interface Booking {
   updated_at: string;
 }
 
+interface TimeSlotRange {
+  start: string;
+  end: string;
+}
+
+interface AvailabilityData {
+  key: string;
+  daysOfWeek: number[];
+  timeSlots: TimeSlotRange[];
+  sessionDuration: number;
+  breakBetweenSessions: number;
+  source?: string;
+}
+
 const OPERATOR_NAMES: Record<string, string> = {
   headmaster: "Francesca Mayer",
   corradoZamboni: "Corrado Zamboni",
@@ -38,6 +52,304 @@ const STATUS_COLORS: Record<string, string> = {
   "no-show": "bg-yellow-100 text-yellow-800 border-yellow-300",
 };
 
+const DAY_NAMES = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
+const DAY_FULL = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+
+// ─── Availability Editor Sub-component ──────────────────────────
+function AvailabilityEditor({ secret }: { secret: string }) {
+  const [allAvailability, setAllAvailability] = useState<AvailabilityData[]>([]);
+  const [selectedOp, setSelectedOp] = useState<string>("");
+  const [editData, setEditData] = useState<AvailabilityData | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveMsg, setSaveMsg] = useState<{ type: "ok" | "err"; text: string } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchAll = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/availability");
+      const data = await res.json();
+      setAllAvailability(data.availability || []);
+    } catch {
+      console.error("Failed to fetch availability");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchAll(); }, [fetchAll]);
+
+  useEffect(() => {
+    if (!selectedOp) { setEditData(null); return; }
+    const existing = allAvailability.find((a) => a.key === selectedOp);
+    if (existing) {
+      setEditData({ ...existing, timeSlots: existing.timeSlots.map((s) => ({ ...s })) });
+    } else {
+      setEditData({
+        key: selectedOp, daysOfWeek: [],
+        timeSlots: [{ start: "09:00", end: "13:00" }],
+        sessionDuration: 60, breakBetweenSessions: 15,
+      });
+    }
+    setSaveMsg(null);
+  }, [selectedOp, allAvailability]);
+
+  const toggleDay = (day: number) => {
+    if (!editData) return;
+    const days = editData.daysOfWeek.includes(day)
+      ? editData.daysOfWeek.filter((d) => d !== day)
+      : [...editData.daysOfWeek, day].sort((a, b) => a - b);
+    setEditData({ ...editData, daysOfWeek: days });
+  };
+
+  const updateSlot = (idx: number, field: "start" | "end", value: string) => {
+    if (!editData) return;
+    const newSlots = [...editData.timeSlots];
+    newSlots[idx] = { ...newSlots[idx], [field]: value };
+    setEditData({ ...editData, timeSlots: newSlots });
+  };
+
+  const addSlot = () => {
+    if (!editData) return;
+    setEditData({ ...editData, timeSlots: [...editData.timeSlots, { start: "14:00", end: "18:00" }] });
+  };
+
+  const removeSlot = (idx: number) => {
+    if (!editData || editData.timeSlots.length <= 1) return;
+    setEditData({ ...editData, timeSlots: editData.timeSlots.filter((_, i) => i !== idx) });
+  };
+
+  const handleSave = async () => {
+    if (!editData) return;
+    if (editData.daysOfWeek.length === 0) { setSaveMsg({ type: "err", text: "Seleziona almeno un giorno" }); return; }
+    for (const slot of editData.timeSlots) {
+      if (!slot.start || !slot.end) { setSaveMsg({ type: "err", text: "Compila tutti gli orari" }); return; }
+      if (slot.start >= slot.end) { setSaveMsg({ type: "err", text: `Orario non valido: ${slot.start} deve essere prima di ${slot.end}` }); return; }
+    }
+    if (editData.sessionDuration < 10 || editData.sessionDuration > 240) { setSaveMsg({ type: "err", text: "Durata sessione deve essere tra 10 e 240 minuti" }); return; }
+
+    setSaving(true); setSaveMsg(null);
+    try {
+      const res = await fetch("/api/availability", {
+        method: "PUT", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          secret, operator_key: editData.key,
+          days_of_week: editData.daysOfWeek, time_slots: editData.timeSlots,
+          session_duration: editData.sessionDuration, break_between: editData.breakBetweenSessions,
+        }),
+      });
+      if (res.ok) { setSaveMsg({ type: "ok", text: "Disponibilità salvata!" }); fetchAll(); }
+      else { const d = await res.json(); setSaveMsg({ type: "err", text: d.error || "Errore nel salvataggio" }); }
+    } catch { setSaveMsg({ type: "err", text: "Errore di connessione" }); }
+    finally { setSaving(false); }
+  };
+
+  const handleReset = async () => {
+    if (!selectedOp || !confirm("Ripristinare gli orari predefiniti per questo operatore?")) return;
+    try {
+      await fetch("/api/availability", {
+        method: "DELETE", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret, operator_key: selectedOp }),
+      });
+      setSaveMsg({ type: "ok", text: "Ripristinato ai valori predefiniti" }); fetchAll();
+    } catch { setSaveMsg({ type: "err", text: "Errore nel ripristino" }); }
+  };
+
+  // Preview slots
+  const previewSlots = editData ? (() => {
+    const slots: string[] = [];
+    for (const range of editData.timeSlots) {
+      const [sH, sM] = range.start.split(":").map(Number);
+      const [eH, eM] = range.end.split(":").map(Number);
+      let cur = sH * 60 + sM; const end = eH * 60 + eM;
+      while (cur + editData.sessionDuration <= end) {
+        const h = Math.floor(cur / 60); const m = cur % 60;
+        slots.push(`${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`);
+        cur += editData.sessionDuration + editData.breakBetweenSessions;
+      }
+    }
+    return slots;
+  })() : [];
+
+  if (loading) return (
+    <div className="flex justify-center py-12">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-olive-600" />
+    </div>
+  );
+
+  return (
+    <div className="space-y-6">
+      {/* Operator overview grid */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <svg className="w-5 h-5 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Panoramica Disponibilità
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {Object.entries(OPERATOR_NAMES).map(([key, name]) => {
+            const avail = allAvailability.find((a) => a.key === key);
+            const isSelected = selectedOp === key;
+            const hasDays = avail && avail.daysOfWeek.length > 0;
+            return (
+              <button key={key} onClick={() => setSelectedOp(key)}
+                className={`p-3 rounded-xl border-2 text-left transition-all duration-200 ${
+                  isSelected ? "border-olive-500 bg-olive-50 shadow-md" : "border-gray-100 hover:border-olive-300 hover:bg-gray-50"
+                }`}>
+                <div className="flex items-center justify-between mb-2">
+                  <span className={`font-semibold text-sm ${isSelected ? "text-olive-800" : "text-gray-800"}`}>{name}</span>
+                  {avail?.source === "db" && (
+                    <span className="px-1.5 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-medium rounded-full">Personalizzato</span>
+                  )}
+                </div>
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5, 6, 0].map((d) => (
+                    <span key={d} className={`w-7 h-6 flex items-center justify-center rounded text-[10px] font-medium ${
+                      hasDays && avail.daysOfWeek.includes(d) ? "bg-olive-500 text-white" : "bg-gray-100 text-gray-400"
+                    }`}>{DAY_NAMES[d]}</span>
+                  ))}
+                </div>
+                {avail && avail.timeSlots.length > 0 && (
+                  <div className="mt-1.5 text-[11px] text-gray-500">
+                    {avail.timeSlots.map((s, i) => (<span key={i}>{i > 0 && " | "}{s.start}-{s.end}</span>))}
+                    {" · "}{avail.sessionDuration}min
+                  </div>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Editor */}
+      {selectedOp && editData && (
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="bg-olive-600 text-white p-5 flex items-center justify-between">
+            <div>
+              <h3 className="font-bold text-lg">{OPERATOR_NAMES[selectedOp]}</h3>
+              <p className="text-olive-100 text-sm">Modifica disponibilità</p>
+            </div>
+            <button onClick={() => setSelectedOp("")} className="p-2 hover:bg-olive-500 rounded-lg transition-colors">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="p-5 space-y-6">
+            {/* Days of week */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-3">Giorni lavorativi</label>
+              <div className="flex flex-wrap gap-2">
+                {[1, 2, 3, 4, 5, 6, 0].map((d) => (
+                  <button key={d} onClick={() => toggleDay(d)}
+                    className={`px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 border-2 min-w-[90px] ${
+                      editData.daysOfWeek.includes(d)
+                        ? "bg-olive-600 text-white border-olive-600 shadow-md"
+                        : "bg-white text-gray-500 border-gray-200 hover:border-olive-300 hover:text-olive-700"
+                    }`}>{DAY_FULL[d]}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Time slots */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-3">Fasce orarie</label>
+              <div className="space-y-3">
+                {editData.timeSlots.map((slot, idx) => (
+                  <div key={idx} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
+                    <div className="flex items-center gap-2 flex-1">
+                      <span className="text-xs text-gray-500 w-10">Dalle</span>
+                      <input type="time" value={slot.start} onChange={(e) => updateSlot(idx, "start", e.target.value)}
+                        className="px-3 py-2 rounded-lg border border-gray-200 text-sm font-mono focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                    </div>
+                    <div className="flex items-center gap-2 flex-1">
+                      <span className="text-xs text-gray-500 w-10">Alle</span>
+                      <input type="time" value={slot.end} onChange={(e) => updateSlot(idx, "end", e.target.value)}
+                        className="px-3 py-2 rounded-lg border border-gray-200 text-sm font-mono focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                    </div>
+                    <button onClick={() => removeSlot(idx)} disabled={editData.timeSlots.length <= 1}
+                      className={`p-2 rounded-lg transition-colors ${editData.timeSlots.length <= 1 ? "text-gray-300 cursor-not-allowed" : "text-red-400 hover:text-red-600 hover:bg-red-50"}`}>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    </button>
+                  </div>
+                ))}
+                <button onClick={addSlot}
+                  className="w-full py-2.5 border-2 border-dashed border-olive-300 rounded-xl text-olive-600 font-medium text-sm hover:bg-olive-50 hover:border-olive-400 transition-colors flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  Aggiungi fascia oraria
+                </button>
+              </div>
+            </div>
+
+            {/* Duration sliders */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Durata sessione (min)</label>
+                <div className="flex items-center gap-2">
+                  <input type="range" min={15} max={120} step={5} value={editData.sessionDuration}
+                    onChange={(e) => setEditData({ ...editData, sessionDuration: Number(e.target.value) })} className="flex-1 accent-olive-600" />
+                  <span className="text-lg font-bold text-olive-700 w-14 text-center bg-olive-50 rounded-lg py-1">{editData.sessionDuration}</span>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Pausa tra sessioni (min)</label>
+                <div className="flex items-center gap-2">
+                  <input type="range" min={0} max={60} step={5} value={editData.breakBetweenSessions}
+                    onChange={(e) => setEditData({ ...editData, breakBetweenSessions: Number(e.target.value) })} className="flex-1 accent-olive-600" />
+                  <span className="text-lg font-bold text-olive-700 w-14 text-center bg-olive-50 rounded-lg py-1">{editData.breakBetweenSessions}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Preview */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-3">
+                Anteprima slot disponibili ({previewSlots.length} sessioni/giorno)
+              </label>
+              {previewSlots.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {previewSlots.map((slot) => (
+                    <span key={slot} className="px-3 py-1.5 bg-olive-50 text-olive-700 rounded-lg text-sm font-mono border border-olive-200">{slot}</span>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-400 text-sm italic">Nessuno slot — aggiungi una fascia oraria</p>
+              )}
+            </div>
+
+            {saveMsg && (
+              <div className={`p-3 rounded-xl text-sm font-medium ${saveMsg.type === "ok" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
+                {saveMsg.text}
+              </div>
+            )}
+
+            {/* Actions */}
+            <div className="flex gap-3 pt-2">
+              <button onClick={handleSave} disabled={saving}
+                className="flex-1 py-3 bg-olive-600 text-white rounded-xl font-semibold hover:bg-olive-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-50">
+                {saving ? <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                  : <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>}
+                {saving ? "Salvataggio..." : "Salva modifiche"}
+              </button>
+              <button onClick={handleReset}
+                className="px-4 py-3 border-2 border-gray-200 text-gray-500 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-300 transition-colors text-sm">
+                Ripristina default
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Main Admin Page ─────────────────────────────────────────────
 export default function AdminPage() {
   const [secret, setSecret] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,7 +363,8 @@ export default function AdminPage() {
   const [dbInitialized, setDbInitialized] = useState(false);
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState("");
-  const [view, setView] = useState<"table" | "calendar">("table");
+  const [bookingView, setBookingView] = useState<"table" | "calendar">("table");
+  const [activeTab, setActiveTab] = useState<"bookings" | "availability">("bookings");
 
   // Initialize DB on first auth
   const initDb = useCallback(async (sec: string) => {
@@ -242,10 +555,11 @@ export default function AdminPage() {
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-800">Relevi Admin</h1>
-              <p className="text-xs text-gray-500">Gestione Prenotazioni</p>
+              <p className="text-xs text-gray-500">Gestione Prenotazioni & Disponibilità</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
+            {activeTab === "bookings" && (
             <button
               onClick={fetchBookings}
               className="px-4 py-2 bg-olive-100 text-olive-700 rounded-lg hover:bg-olive-200 transition-colors text-sm font-medium flex items-center gap-2"
@@ -255,6 +569,7 @@ export default function AdminPage() {
               </svg>
               Aggiorna
             </button>
+            )}
             <button
               onClick={handleLogout}
               className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
@@ -266,6 +581,33 @@ export default function AdminPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Tab Navigation */}
+        <div className="flex gap-1 bg-gray-100 rounded-xl p-1 mb-8 max-w-md">
+          <button onClick={() => setActiveTab("bookings")}
+            className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-sm transition-all flex items-center justify-center gap-2 ${
+              activeTab === "bookings" ? "bg-white text-olive-700 shadow-sm" : "text-gray-500 hover:text-gray-700"
+            }`}>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Prenotazioni
+          </button>
+          <button onClick={() => setActiveTab("availability")}
+            className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-sm transition-all flex items-center justify-center gap-2 ${
+              activeTab === "availability" ? "bg-white text-olive-700 shadow-sm" : "text-gray-500 hover:text-gray-700"
+            }`}>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Disponibilità
+          </button>
+        </div>
+
+        {/* Availability Tab */}
+        {activeTab === "availability" && <AvailabilityEditor secret={secret} />}
+
+        {/* Bookings Tab */}
+        {activeTab === "bookings" && (<>
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
@@ -387,14 +729,14 @@ export default function AdminPage() {
         {/* View Toggle */}
         <div className="flex gap-2 mb-6">
           <button
-            onClick={() => setView("table")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${view === "table" ? "bg-olive-600 text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}
+            onClick={() => setBookingView("table")}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${bookingView === "table" ? "bg-olive-600 text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}
           >
             Tabella
           </button>
           <button
-            onClick={() => setView("calendar")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${view === "calendar" ? "bg-olive-600 text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}
+            onClick={() => setBookingView("calendar")}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${bookingView === "calendar" ? "bg-olive-600 text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}
           >
             Per Data
           </button>
@@ -413,7 +755,7 @@ export default function AdminPage() {
             <h3 className="text-lg font-semibold text-gray-600 mb-2">Nessuna prenotazione</h3>
             <p className="text-gray-400">Le prenotazioni appariranno qui quando verranno create.</p>
           </div>
-        ) : view === "table" ? (
+        ) : bookingView === "table" ? (
           /* Table View */
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="overflow-x-auto">
@@ -580,6 +922,7 @@ export default function AdminPage() {
               })}
           </div>
         )}
+        </>)}
       </div>
     </div>
   );
