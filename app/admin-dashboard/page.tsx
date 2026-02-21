@@ -22,13 +22,28 @@ interface TimeSlotRange {
   end: string;
 }
 
+interface DaySchedule {
+  enabled: boolean;
+  timeSlots: TimeSlotRange[];
+}
+
+type WeekSchedule = Record<string, DaySchedule>;
+
 interface AvailabilityData {
   key: string;
+  schedule: WeekSchedule;
   daysOfWeek: number[];
-  timeSlots: TimeSlotRange[];
   sessionDuration: number;
   breakBetweenSessions: number;
   source?: string;
+}
+
+interface VacationPeriod {
+  id?: number;
+  operator_key: string;
+  start_date: string;
+  end_date: string;
+  note: string;
 }
 
 const OPERATOR_NAMES: Record<string, string> = {
@@ -55,21 +70,41 @@ const STATUS_COLORS: Record<string, string> = {
 const DAY_NAMES = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
 const DAY_FULL = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
 
+// Build a default empty schedule for all 7 days
+function emptySchedule(): WeekSchedule {
+  const s: WeekSchedule = {};
+  for (let d = 0; d <= 6; d++) {
+    s[d] = { enabled: false, timeSlots: [{ start: "09:00", end: "13:00" }] };
+  }
+  return s;
+}
+
 // ─── Availability Editor Sub-component ──────────────────────────
 function AvailabilityEditor({ secret }: { secret: string }) {
   const [allAvailability, setAllAvailability] = useState<AvailabilityData[]>([]);
+  const [allVacations, setAllVacations] = useState<Record<string, VacationPeriod[]>>({});
   const [selectedOp, setSelectedOp] = useState<string>("");
-  const [editData, setEditData] = useState<AvailabilityData | null>(null);
+  const [editSchedule, setEditSchedule] = useState<WeekSchedule>(emptySchedule());
+  const [editSessionDuration, setEditSessionDuration] = useState(60);
+  const [editBreakBetween, setEditBreakBetween] = useState(15);
+  const [expandedDay, setExpandedDay] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState<{ type: "ok" | "err"; text: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Vacation form state
+  const [vacStart, setVacStart] = useState("");
+  const [vacEnd, setVacEnd] = useState("");
+  const [vacNote, setVacNote] = useState("");
+  const [vacSaving, setVacSaving] = useState(false);
+
   const fetchAll = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/availability");
+      const res = await fetch("/api/availability?vacations=1");
       const data = await res.json();
       setAllAvailability(data.availability || []);
+      setAllVacations(data.vacations || {});
     } catch {
       console.error("Failed to fetch availability");
     } finally {
@@ -79,97 +114,220 @@ function AvailabilityEditor({ secret }: { secret: string }) {
 
   useEffect(() => { fetchAll(); }, [fetchAll]);
 
+  // When an operator is selected, populate the edit form
   useEffect(() => {
-    if (!selectedOp) { setEditData(null); return; }
+    if (!selectedOp) { return; }
     const existing = allAvailability.find((a) => a.key === selectedOp);
-    if (existing) {
-      setEditData({ ...existing, timeSlots: existing.timeSlots.map((s) => ({ ...s })) });
+    if (existing && existing.schedule) {
+      // Deep copy the schedule
+      const copy: WeekSchedule = {};
+      for (let d = 0; d <= 6; d++) {
+        const day = existing.schedule[d];
+        if (day) {
+          copy[d] = { enabled: day.enabled, timeSlots: day.timeSlots.map((s) => ({ ...s })) };
+        } else {
+          copy[d] = { enabled: false, timeSlots: [{ start: "09:00", end: "13:00" }] };
+        }
+      }
+      setEditSchedule(copy);
+      setEditSessionDuration(existing.sessionDuration);
+      setEditBreakBetween(existing.breakBetweenSessions);
     } else {
-      setEditData({
-        key: selectedOp, daysOfWeek: [],
-        timeSlots: [{ start: "09:00", end: "13:00" }],
-        sessionDuration: 60, breakBetweenSessions: 15,
-      });
+      setEditSchedule(emptySchedule());
+      setEditSessionDuration(60);
+      setEditBreakBetween(15);
     }
     setSaveMsg(null);
+    setExpandedDay(null);
   }, [selectedOp, allAvailability]);
 
   const toggleDay = (day: number) => {
-    if (!editData) return;
-    const days = editData.daysOfWeek.includes(day)
-      ? editData.daysOfWeek.filter((d) => d !== day)
-      : [...editData.daysOfWeek, day].sort((a, b) => a - b);
-    setEditData({ ...editData, daysOfWeek: days });
+    setEditSchedule((prev) => {
+      const copy = { ...prev };
+      copy[day] = { ...copy[day], enabled: !copy[day].enabled };
+      return copy;
+    });
   };
 
-  const updateSlot = (idx: number, field: "start" | "end", value: string) => {
-    if (!editData) return;
-    const newSlots = [...editData.timeSlots];
-    newSlots[idx] = { ...newSlots[idx], [field]: value };
-    setEditData({ ...editData, timeSlots: newSlots });
+  const updateDaySlot = (day: number, idx: number, field: "start" | "end", value: string) => {
+    setEditSchedule((prev) => {
+      const copy = { ...prev };
+      const slots = [...copy[day].timeSlots];
+      slots[idx] = { ...slots[idx], [field]: value };
+      copy[day] = { ...copy[day], timeSlots: slots };
+      return copy;
+    });
   };
 
-  const addSlot = () => {
-    if (!editData) return;
-    setEditData({ ...editData, timeSlots: [...editData.timeSlots, { start: "14:00", end: "18:00" }] });
+  const addDaySlot = (day: number) => {
+    setEditSchedule((prev) => {
+      const copy = { ...prev };
+      copy[day] = { ...copy[day], timeSlots: [...copy[day].timeSlots, { start: "14:00", end: "18:00" }] };
+      return copy;
+    });
   };
 
-  const removeSlot = (idx: number) => {
-    if (!editData || editData.timeSlots.length <= 1) return;
-    setEditData({ ...editData, timeSlots: editData.timeSlots.filter((_, i) => i !== idx) });
+  const removeDaySlot = (day: number, idx: number) => {
+    setEditSchedule((prev) => {
+      if (prev[day].timeSlots.length <= 1) return prev;
+      const copy = { ...prev };
+      copy[day] = { ...copy[day], timeSlots: copy[day].timeSlots.filter((_, i) => i !== idx) };
+      return copy;
+    });
+  };
+
+  // Copy schedule from one day to others
+  const copyDayToAll = (sourceDay: number) => {
+    setEditSchedule((prev) => {
+      const source = prev[sourceDay];
+      const copy = { ...prev };
+      for (let d = 0; d <= 6; d++) {
+        if (d !== sourceDay && copy[d].enabled) {
+          copy[d] = { enabled: true, timeSlots: source.timeSlots.map((s) => ({ ...s })) };
+        }
+      }
+      return copy;
+    });
   };
 
   const handleSave = async () => {
-    if (!editData) return;
-    if (editData.daysOfWeek.length === 0) { setSaveMsg({ type: "err", text: "Seleziona almeno un giorno" }); return; }
-    for (const slot of editData.timeSlots) {
-      if (!slot.start || !slot.end) { setSaveMsg({ type: "err", text: "Compila tutti gli orari" }); return; }
-      if (slot.start >= slot.end) { setSaveMsg({ type: "err", text: `Orario non valido: ${slot.start} deve essere prima di ${slot.end}` }); return; }
+    // Validate enabled days have valid time slots
+    for (let d = 0; d <= 6; d++) {
+      const day = editSchedule[d];
+      if (!day.enabled) continue;
+      for (const slot of day.timeSlots) {
+        if (!slot.start || !slot.end) {
+          setSaveMsg({ type: "err", text: `${DAY_FULL[d]}: compila tutti gli orari` });
+          return;
+        }
+        if (slot.start >= slot.end) {
+          setSaveMsg({ type: "err", text: `${DAY_FULL[d]}: ${slot.start} deve essere prima di ${slot.end}` });
+          return;
+        }
+      }
     }
-    if (editData.sessionDuration < 10 || editData.sessionDuration > 240) { setSaveMsg({ type: "err", text: "Durata sessione deve essere tra 10 e 240 minuti" }); return; }
+
+    const hasAnyDay = Object.values(editSchedule).some((d) => d.enabled);
+    if (!hasAnyDay) {
+      setSaveMsg({ type: "err", text: "Seleziona almeno un giorno" });
+      return;
+    }
+
+    if (editSessionDuration < 10 || editSessionDuration > 240) {
+      setSaveMsg({ type: "err", text: "Durata sessione deve essere tra 10 e 240 minuti" });
+      return;
+    }
 
     setSaving(true); setSaveMsg(null);
     try {
       const res = await fetch("/api/availability", {
-        method: "PUT", headers: { "Content-Type": "application/json" },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          secret, operator_key: editData.key,
-          days_of_week: editData.daysOfWeek, time_slots: editData.timeSlots,
-          session_duration: editData.sessionDuration, break_between: editData.breakBetweenSessions,
+          secret,
+          operator_key: selectedOp,
+          schedule: editSchedule,
+          session_duration: editSessionDuration,
+          break_between: editBreakBetween,
         }),
       });
-      if (res.ok) { setSaveMsg({ type: "ok", text: "Disponibilità salvata!" }); fetchAll(); }
-      else { const d = await res.json(); setSaveMsg({ type: "err", text: d.error || "Errore nel salvataggio" }); }
-    } catch { setSaveMsg({ type: "err", text: "Errore di connessione" }); }
-    finally { setSaving(false); }
+      if (res.ok) {
+        setSaveMsg({ type: "ok", text: "Disponibilità salvata!" });
+        fetchAll();
+      } else {
+        const d = await res.json();
+        setSaveMsg({ type: "err", text: d.error || "Errore nel salvataggio" });
+      }
+    } catch {
+      setSaveMsg({ type: "err", text: "Errore di connessione" });
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleReset = async () => {
     if (!selectedOp || !confirm("Ripristinare gli orari predefiniti per questo operatore?")) return;
     try {
       await fetch("/api/availability", {
-        method: "DELETE", headers: { "Content-Type": "application/json" },
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ secret, operator_key: selectedOp }),
       });
-      setSaveMsg({ type: "ok", text: "Ripristinato ai valori predefiniti" }); fetchAll();
-    } catch { setSaveMsg({ type: "err", text: "Errore nel ripristino" }); }
+      setSaveMsg({ type: "ok", text: "Ripristinato ai valori predefiniti" });
+      fetchAll();
+    } catch {
+      setSaveMsg({ type: "err", text: "Errore nel ripristino" });
+    }
   };
 
-  // Preview slots
-  const previewSlots = editData ? (() => {
+  // Add vacation
+  const addVacation = async () => {
+    if (!selectedOp || !vacStart || !vacEnd) return;
+    if (vacStart > vacEnd) {
+      setSaveMsg({ type: "err", text: "La data di inizio ferie deve essere prima della data di fine" });
+      return;
+    }
+    setVacSaving(true);
+    try {
+      const res = await fetch("/api/availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          secret,
+          action: "add_vacation",
+          operator_key: selectedOp,
+          start_date: vacStart,
+          end_date: vacEnd,
+          note: vacNote,
+        }),
+      });
+      if (res.ok) {
+        setVacStart(""); setVacEnd(""); setVacNote("");
+        fetchAll();
+      }
+    } catch {
+      setSaveMsg({ type: "err", text: "Errore aggiunta ferie" });
+    } finally {
+      setVacSaving(false);
+    }
+  };
+
+  // Delete vacation
+  const deleteVacation = async (vacId: number) => {
+    if (!confirm("Eliminare questo periodo di ferie?")) return;
+    try {
+      await fetch("/api/availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret, action: "delete_vacation", vacation_id: vacId }),
+      });
+      fetchAll();
+    } catch {
+      setSaveMsg({ type: "err", text: "Errore eliminazione ferie" });
+    }
+  };
+
+  // Compute preview slots for a given day
+  const computePreview = (day: number): string[] => {
+    const daySchedule = editSchedule[day];
+    if (!daySchedule || !daySchedule.enabled) return [];
     const slots: string[] = [];
-    for (const range of editData.timeSlots) {
+    for (const range of daySchedule.timeSlots) {
       const [sH, sM] = range.start.split(":").map(Number);
       const [eH, eM] = range.end.split(":").map(Number);
-      let cur = sH * 60 + sM; const end = eH * 60 + eM;
-      while (cur + editData.sessionDuration <= end) {
-        const h = Math.floor(cur / 60); const m = cur % 60;
+      let cur = sH * 60 + sM;
+      const end = eH * 60 + eM;
+      while (cur + editSessionDuration <= end) {
+        const h = Math.floor(cur / 60);
+        const m = cur % 60;
         slots.push(`${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`);
-        cur += editData.sessionDuration + editData.breakBetweenSessions;
+        cur += editSessionDuration + editBreakBetween;
       }
     }
     return slots;
-  })() : [];
+  };
+
+  const opVacations = selectedOp ? (allVacations[selectedOp] || []) : [];
 
   if (loading) return (
     <div className="flex justify-center py-12">
@@ -191,7 +349,8 @@ function AvailabilityEditor({ secret }: { secret: string }) {
           {Object.entries(OPERATOR_NAMES).map(([key, name]) => {
             const avail = allAvailability.find((a) => a.key === key);
             const isSelected = selectedOp === key;
-            const hasDays = avail && avail.daysOfWeek.length > 0;
+            const enabledDays = avail?.daysOfWeek || [];
+            const vacCount = (allVacations[key] || []).length;
             return (
               <button key={key} onClick={() => setSelectedOp(key)}
                 className={`p-3 rounded-xl border-2 text-left transition-all duration-200 ${
@@ -199,21 +358,25 @@ function AvailabilityEditor({ secret }: { secret: string }) {
                 }`}>
                 <div className="flex items-center justify-between mb-2">
                   <span className={`font-semibold text-sm ${isSelected ? "text-olive-800" : "text-gray-800"}`}>{name}</span>
-                  {avail?.source === "db" && (
-                    <span className="px-1.5 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-medium rounded-full">Personalizzato</span>
-                  )}
+                  <div className="flex gap-1">
+                    {avail?.source === "db" && (
+                      <span className="px-1.5 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-medium rounded-full">Personalizzato</span>
+                    )}
+                    {vacCount > 0 && (
+                      <span className="px-1.5 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-medium rounded-full">Ferie ({vacCount})</span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex gap-1">
                   {[1, 2, 3, 4, 5, 6, 0].map((d) => (
                     <span key={d} className={`w-7 h-6 flex items-center justify-center rounded text-[10px] font-medium ${
-                      hasDays && avail.daysOfWeek.includes(d) ? "bg-olive-500 text-white" : "bg-gray-100 text-gray-400"
+                      enabledDays.includes(d) ? "bg-olive-500 text-white" : "bg-gray-100 text-gray-400"
                     }`}>{DAY_NAMES[d]}</span>
                   ))}
                 </div>
-                {avail && avail.timeSlots.length > 0 && (
+                {avail && avail.schedule && (
                   <div className="mt-1.5 text-[11px] text-gray-500">
-                    {avail.timeSlots.map((s, i) => (<span key={i}>{i > 0 && " | "}{s.start}-{s.end}</span>))}
-                    {" · "}{avail.sessionDuration}min
+                    {avail.sessionDuration}min · {enabledDays.length} giorni/sett
                   </div>
                 )}
               </button>
@@ -223,12 +386,12 @@ function AvailabilityEditor({ secret }: { secret: string }) {
       </div>
 
       {/* Editor */}
-      {selectedOp && editData && (
+      {selectedOp && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="bg-olive-600 text-white p-5 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-lg">{OPERATOR_NAMES[selectedOp]}</h3>
-              <p className="text-olive-100 text-sm">Modifica disponibilità</p>
+              <p className="text-olive-100 text-sm">Modifica disponibilità per giorno</p>
             </div>
             <button onClick={() => setSelectedOp("")} className="p-2 hover:bg-olive-500 rounded-lg transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,52 +401,114 @@ function AvailabilityEditor({ secret }: { secret: string }) {
           </div>
 
           <div className="p-5 space-y-6">
-            {/* Days of week */}
+            {/* Per-Day Schedule */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">Giorni lavorativi</label>
-              <div className="flex flex-wrap gap-2">
-                {[1, 2, 3, 4, 5, 6, 0].map((d) => (
-                  <button key={d} onClick={() => toggleDay(d)}
-                    className={`px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 border-2 min-w-[90px] ${
-                      editData.daysOfWeek.includes(d)
-                        ? "bg-olive-600 text-white border-olive-600 shadow-md"
-                        : "bg-white text-gray-500 border-gray-200 hover:border-olive-300 hover:text-olive-700"
-                    }`}>{DAY_FULL[d]}</button>
-                ))}
-              </div>
-            </div>
+              <label className="block text-sm font-semibold text-gray-700 mb-3">Orari per giorno</label>
+              <div className="space-y-2">
+                {[1, 2, 3, 4, 5, 6, 0].map((d) => {
+                  const dayData = editSchedule[d];
+                  const isExpanded = expandedDay === d;
+                  const preview = computePreview(d);
+                  return (
+                    <div key={d} className={`border-2 rounded-xl overflow-hidden transition-all duration-200 ${
+                      dayData.enabled ? "border-olive-200 bg-olive-50/30" : "border-gray-100 bg-gray-50/50"
+                    }`}>
+                      {/* Day header row */}
+                      <div className="flex items-center gap-3 p-3">
+                        {/* Toggle enabled */}
+                        <button onClick={() => toggleDay(d)}
+                          className={`w-10 h-6 rounded-full relative transition-colors duration-200 flex-shrink-0 ${
+                            dayData.enabled ? "bg-olive-500" : "bg-gray-300"
+                          }`}>
+                          <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${
+                            dayData.enabled ? "translate-x-4.5 left-0" : "left-0.5"
+                          }`} />
+                        </button>
+                        {/* Day name */}
+                        <button onClick={() => dayData.enabled && setExpandedDay(isExpanded ? null : d)}
+                          className={`flex-1 text-left font-semibold text-sm ${dayData.enabled ? "text-gray-800 cursor-pointer" : "text-gray-400 cursor-default"}`}>
+                          {DAY_FULL[d]}
+                        </button>
+                        {/* Summary */}
+                        {dayData.enabled && (
+                          <div className="flex items-center gap-2">
+                            <span className="text-[11px] text-gray-500">
+                              {dayData.timeSlots.map((s, i) => (
+                                <span key={i}>{i > 0 && " | "}{s.start}-{s.end}</span>
+                              ))}
+                            </span>
+                            <span className="text-[10px] bg-olive-100 text-olive-700 px-1.5 py-0.5 rounded-full font-medium">
+                              {preview.length} slot
+                            </span>
+                            <button onClick={() => setExpandedDay(isExpanded ? null : d)}
+                              className="p-1 hover:bg-olive-100 rounded-lg transition-colors">
+                              <svg className={`w-4 h-4 text-gray-400 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
+                          </div>
+                        )}
+                      </div>
 
-            {/* Time slots */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">Fasce orarie</label>
-              <div className="space-y-3">
-                {editData.timeSlots.map((slot, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
-                    <div className="flex items-center gap-2 flex-1">
-                      <span className="text-xs text-gray-500 w-10">Dalle</span>
-                      <input type="time" value={slot.start} onChange={(e) => updateSlot(idx, "start", e.target.value)}
-                        className="px-3 py-2 rounded-lg border border-gray-200 text-sm font-mono focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                      {/* Expanded time slot editor */}
+                      {dayData.enabled && isExpanded && (
+                        <div className="px-4 pb-4 space-y-3 border-t border-olive-100">
+                          <div className="pt-3 space-y-2">
+                            {dayData.timeSlots.map((slot, idx) => (
+                              <div key={idx} className="flex items-center gap-3 bg-white rounded-lg p-2.5 border border-gray-100">
+                                <div className="flex items-center gap-2 flex-1">
+                                  <span className="text-xs text-gray-500 w-10">Dalle</span>
+                                  <input type="time" value={slot.start} onChange={(e) => updateDaySlot(d, idx, "start", e.target.value)}
+                                    className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm font-mono focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                                </div>
+                                <div className="flex items-center gap-2 flex-1">
+                                  <span className="text-xs text-gray-500 w-10">Alle</span>
+                                  <input type="time" value={slot.end} onChange={(e) => updateDaySlot(d, idx, "end", e.target.value)}
+                                    className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm font-mono focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                                </div>
+                                <button onClick={() => removeDaySlot(d, idx)} disabled={dayData.timeSlots.length <= 1}
+                                  className={`p-1.5 rounded-lg transition-colors ${dayData.timeSlots.length <= 1 ? "text-gray-300 cursor-not-allowed" : "text-red-400 hover:text-red-600 hover:bg-red-50"}`}>
+                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                  </svg>
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="flex gap-2">
+                            <button onClick={() => addDaySlot(d)}
+                              className="flex-1 py-2 border-2 border-dashed border-olive-300 rounded-lg text-olive-600 font-medium text-xs hover:bg-olive-50 hover:border-olive-400 transition-colors flex items-center justify-center gap-1">
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                              </svg>
+                              Aggiungi fascia
+                            </button>
+                            <button onClick={() => copyDayToAll(d)}
+                              className="px-3 py-2 border border-gray-200 rounded-lg text-gray-500 text-xs hover:bg-gray-50 hover:border-gray-300 transition-colors flex items-center gap-1"
+                              title="Copia questi orari su tutti i giorni attivi">
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                              </svg>
+                              Copia su tutti i giorni attivi
+                            </button>
+                          </div>
+                          {/* Day-level preview */}
+                          {preview.length > 0 && (
+                            <div>
+                              <p className="text-[11px] text-gray-500 mb-1">{preview.length} slot generati:</p>
+                              <div className="flex flex-wrap gap-1">
+                                {preview.map((s) => (
+                                  <span key={s} className="px-2 py-0.5 bg-olive-50 text-olive-700 rounded text-[11px] font-mono border border-olive-200">{s}</span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
-                    <div className="flex items-center gap-2 flex-1">
-                      <span className="text-xs text-gray-500 w-10">Alle</span>
-                      <input type="time" value={slot.end} onChange={(e) => updateSlot(idx, "end", e.target.value)}
-                        className="px-3 py-2 rounded-lg border border-gray-200 text-sm font-mono focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
-                    </div>
-                    <button onClick={() => removeSlot(idx)} disabled={editData.timeSlots.length <= 1}
-                      className={`p-2 rounded-lg transition-colors ${editData.timeSlots.length <= 1 ? "text-gray-300 cursor-not-allowed" : "text-red-400 hover:text-red-600 hover:bg-red-50"}`}>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                      </svg>
-                    </button>
-                  </div>
-                ))}
-                <button onClick={addSlot}
-                  className="w-full py-2.5 border-2 border-dashed border-olive-300 rounded-xl text-olive-600 font-medium text-sm hover:bg-olive-50 hover:border-olive-400 transition-colors flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                  Aggiungi fascia oraria
-                </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -292,35 +517,89 @@ function AvailabilityEditor({ secret }: { secret: string }) {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Durata sessione (min)</label>
                 <div className="flex items-center gap-2">
-                  <input type="range" min={15} max={120} step={5} value={editData.sessionDuration}
-                    onChange={(e) => setEditData({ ...editData, sessionDuration: Number(e.target.value) })} className="flex-1 accent-olive-600" />
-                  <span className="text-lg font-bold text-olive-700 w-14 text-center bg-olive-50 rounded-lg py-1">{editData.sessionDuration}</span>
+                  <input type="range" min={15} max={120} step={5} value={editSessionDuration}
+                    onChange={(e) => setEditSessionDuration(Number(e.target.value))} className="flex-1 accent-olive-600" />
+                  <span className="text-lg font-bold text-olive-700 w-14 text-center bg-olive-50 rounded-lg py-1">{editSessionDuration}</span>
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Pausa tra sessioni (min)</label>
                 <div className="flex items-center gap-2">
-                  <input type="range" min={0} max={60} step={5} value={editData.breakBetweenSessions}
-                    onChange={(e) => setEditData({ ...editData, breakBetweenSessions: Number(e.target.value) })} className="flex-1 accent-olive-600" />
-                  <span className="text-lg font-bold text-olive-700 w-14 text-center bg-olive-50 rounded-lg py-1">{editData.breakBetweenSessions}</span>
+                  <input type="range" min={0} max={60} step={5} value={editBreakBetween}
+                    onChange={(e) => setEditBreakBetween(Number(e.target.value))} className="flex-1 accent-olive-600" />
+                  <span className="text-lg font-bold text-olive-700 w-14 text-center bg-olive-50 rounded-lg py-1">{editBreakBetween}</span>
                 </div>
               </div>
             </div>
 
-            {/* Preview */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
-                Anteprima slot disponibili ({previewSlots.length} sessioni/giorno)
+            {/* Vacations / Ferie */}
+            <div className="border-t border-gray-100 pt-5">
+              <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                </svg>
+                Ferie / Periodi di assenza
               </label>
-              {previewSlots.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {previewSlots.map((slot) => (
-                    <span key={slot} className="px-3 py-1.5 bg-olive-50 text-olive-700 rounded-lg text-sm font-mono border border-olive-200">{slot}</span>
-                  ))}
+
+              {/* Existing vacations */}
+              {opVacations.length > 0 && (
+                <div className="space-y-2 mb-4">
+                  {opVacations.map((vac) => {
+                    const startD = new Date(vac.start_date + "T00:00:00");
+                    const endD = new Date(vac.end_date + "T00:00:00");
+                    const isPast = vac.end_date < new Date().toISOString().split("T")[0];
+                    return (
+                      <div key={vac.id} className={`flex items-center gap-3 p-3 rounded-lg border ${isPast ? "bg-gray-50 border-gray-200 opacity-60" : "bg-amber-50 border-amber-200"}`}>
+                        <div className="flex-1">
+                          <span className="font-medium text-sm text-gray-800">
+                            {startD.toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" })}
+                            {" → "}
+                            {endD.toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" })}
+                          </span>
+                          {vac.note && <span className="ml-2 text-xs text-gray-500">({vac.note})</span>}
+                          {isPast && <span className="ml-2 text-[10px] text-gray-400 font-medium">PASSATO</span>}
+                        </div>
+                        <button onClick={() => vac.id && deleteVacation(vac.id)}
+                          className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
-              ) : (
-                <p className="text-gray-400 text-sm italic">Nessuno slot — aggiungi una fascia oraria</p>
               )}
+
+              {/* Add vacation form */}
+              <div className="flex flex-wrap items-end gap-3 bg-gray-50 rounded-lg p-3">
+                <div className="flex-1 min-w-[130px]">
+                  <label className="block text-[11px] text-gray-500 mb-1">Dal</label>
+                  <input type="date" value={vacStart} onChange={(e) => setVacStart(e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-sm focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                </div>
+                <div className="flex-1 min-w-[130px]">
+                  <label className="block text-[11px] text-gray-500 mb-1">Al</label>
+                  <input type="date" value={vacEnd} onChange={(e) => setVacEnd(e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-sm focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                </div>
+                <div className="flex-1 min-w-[130px]">
+                  <label className="block text-[11px] text-gray-500 mb-1">Note (opzionale)</label>
+                  <input type="text" value={vacNote} onChange={(e) => setVacNote(e.target.value)} placeholder="Es. Vacanze estive"
+                    className="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-sm focus:border-olive-500 focus:outline-none text-gray-800 bg-white" />
+                </div>
+                <button onClick={addVacation} disabled={vacSaving || !vacStart || !vacEnd}
+                  className="px-4 py-1.5 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors disabled:opacity-50 flex items-center gap-1.5">
+                  {vacSaving ? (
+                    <div className="animate-spin rounded-full h-3.5 w-3.5 border-b-2 border-white" />
+                  ) : (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                  )}
+                  Aggiungi ferie
+                </button>
+              </div>
             </div>
 
             {saveMsg && (

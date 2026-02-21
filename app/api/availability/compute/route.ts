@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 import { initializeDatabase } from "@/lib/schema";
-import { operatorAvailability as defaults } from "@/app/lib/availability";
+import {
+  operatorAvailability as defaults,
+  convertLegacyToSchedule,
+  getEnabledDays,
+  type WeekSchedule,
+  type TimeSlot,
+  type DaySchedule,
+} from "@/app/lib/availability";
 
 let initialized = false;
 async function ensureDb() {
@@ -9,11 +16,6 @@ async function ensureDb() {
     await initializeDatabase();
     initialized = true;
   }
-}
-
-interface TimeSlot {
-  start: string;
-  end: string;
 }
 
 function computeSlots(
@@ -40,7 +42,7 @@ function computeSlots(
 }
 
 // GET /api/availability/compute?operator=KEY&date=YYYY-MM-DD
-// Returns { allSlots, bookedSlots, availableSlots, daysOfWeek, timeSlots, sessionDuration, breakBetweenSessions }
+// Returns { allSlots, bookedSlots, availableSlots, daysOfWeek, schedule, sessionDuration, breakBetweenSessions, onVacation }
 export async function GET(request: Request) {
   await ensureDb();
 
@@ -59,66 +61,98 @@ export async function GET(request: Request) {
       args: [operatorKey],
     });
 
-    let daysOfWeek: number[];
-    let timeSlots: TimeSlot[];
+    let schedule: WeekSchedule;
     let sessionDuration: number;
     let breakBetween: number;
 
     if (dbResult.rows.length > 0) {
       const row = dbResult.rows[0];
-      daysOfWeek = JSON.parse(row.days_of_week as string);
-      timeSlots = JSON.parse(row.time_slots as string);
+      const scheduleRaw = row.schedule_json as string | null;
       sessionDuration = row.session_duration as number;
       breakBetween = row.break_between as number;
+
+      if (scheduleRaw) {
+        schedule = JSON.parse(scheduleRaw);
+      } else {
+        // Legacy format
+        const daysOfWeek: number[] = JSON.parse(row.days_of_week as string);
+        const timeSlots: TimeSlot[] = JSON.parse(row.time_slots as string);
+        schedule = convertLegacyToSchedule(daysOfWeek, timeSlots);
+      }
     } else {
       const fallback = defaults.find((d) => d.key === operatorKey);
       if (!fallback) {
         return NextResponse.json({
           daysOfWeek: [],
-          timeSlots: [],
+          schedule: {},
           sessionDuration: 60,
           breakBetweenSessions: 15,
           allSlots: [],
           bookedSlots: [],
           availableSlots: [],
+          onVacation: false,
         });
       }
-      daysOfWeek = fallback.daysOfWeek;
-      timeSlots = fallback.timeSlots;
+      schedule = fallback.schedule;
       sessionDuration = fallback.sessionDuration;
       breakBetween = fallback.breakBetweenSessions;
     }
+
+    const daysOfWeek = getEnabledDays(schedule);
 
     // If no date provided, just return schedule info
     if (!date) {
       return NextResponse.json({
         daysOfWeek,
-        timeSlots,
+        schedule,
         sessionDuration,
         breakBetweenSessions: breakBetween,
       });
     }
 
-    // 2. Check if the day of week matches
-    const dateObj = new Date(date + "T00:00:00");
-    const dayOfWeek = dateObj.getDay();
+    // 2. Check if the operator is on vacation for this date
+    const vacResult = await db.execute({
+      sql: `SELECT COUNT(*) as cnt FROM operator_vacations 
+            WHERE operator_key = ? AND start_date <= ? AND end_date >= ?`,
+      args: [operatorKey, date, date],
+    });
+    const onVacation = (vacResult.rows[0].cnt as number) > 0;
 
-    if (!daysOfWeek.includes(dayOfWeek)) {
+    if (onVacation) {
       return NextResponse.json({
         daysOfWeek,
-        timeSlots,
+        schedule,
         sessionDuration,
         breakBetweenSessions: breakBetween,
         allSlots: [],
         bookedSlots: [],
         availableSlots: [],
+        onVacation: true,
       });
     }
 
-    // 3. Compute all possible slots
-    const allSlots = computeSlots(timeSlots, sessionDuration, breakBetween);
+    // 3. Check if the day of week matches (per-day schedule)
+    const dateObj = new Date(date + "T00:00:00");
+    const dayOfWeek = dateObj.getDay();
+    const daySchedule: DaySchedule | undefined = schedule[dayOfWeek];
 
-    // 4. Get booked slots
+    if (!daySchedule || !daySchedule.enabled) {
+      return NextResponse.json({
+        daysOfWeek,
+        schedule,
+        sessionDuration,
+        breakBetweenSessions: breakBetween,
+        allSlots: [],
+        bookedSlots: [],
+        availableSlots: [],
+        onVacation: false,
+      });
+    }
+
+    // 4. Compute all possible slots for THIS day's schedule
+    const allSlots = computeSlots(daySchedule.timeSlots, sessionDuration, breakBetween);
+
+    // 5. Get booked slots
     const bookedResult = await db.execute({
       sql: `SELECT time_slot FROM bookings 
             WHERE operator_key = ? AND booking_date = ? AND status != 'cancelled'
@@ -127,17 +161,18 @@ export async function GET(request: Request) {
     });
     const bookedSlots = bookedResult.rows.map((r) => r.time_slot as string);
 
-    // 5. Filter
+    // 6. Filter
     const availableSlots = allSlots.filter((s) => !bookedSlots.includes(s));
 
     return NextResponse.json({
       daysOfWeek,
-      timeSlots,
+      schedule,
       sessionDuration,
       breakBetweenSessions: breakBetween,
       allSlots,
       bookedSlots,
       availableSlots,
+      onVacation: false,
     });
   } catch (error) {
     console.error("Error computing availability:", error);

@@ -27,7 +27,19 @@ export async function initializeDatabase() {
         time_slots TEXT NOT NULL DEFAULT '[]',
         session_duration INTEGER NOT NULL DEFAULT 60,
         break_between INTEGER NOT NULL DEFAULT 15,
+        schedule_json TEXT DEFAULT NULL,
         updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )`,
+      args: [],
+    },
+    {
+      sql: `CREATE TABLE IF NOT EXISTS operator_vacations (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        operator_key TEXT NOT NULL,
+        start_date TEXT NOT NULL,
+        end_date TEXT NOT NULL,
+        note TEXT DEFAULT '',
+        created_at TEXT NOT NULL DEFAULT (datetime('now'))
       )`,
       args: [],
     },
@@ -51,5 +63,24 @@ export async function initializeDatabase() {
             ON operator_availability(operator_key)`,
       args: [],
     },
+    {
+      sql: `CREATE INDEX IF NOT EXISTS idx_vacations_operator
+            ON operator_vacations(operator_key)`,
+      args: [],
+    },
+    {
+      sql: `CREATE INDEX IF NOT EXISTS idx_vacations_dates
+            ON operator_vacations(start_date, end_date)`,
+      args: [],
+    },
   ]);
+
+  // Migration: add schedule_json column if it doesn't exist (safe for existing DBs)
+  try {
+    await db.execute({ sql: `ALTER TABLE operator_availability ADD COLUMN schedule_json TEXT DEFAULT NULL`, args: [] });
+  } catch {
+    // Column already exists — ignore
+  }
+
+  // Migration: create operator_vacations if not exists (already handled by CREATE TABLE IF NOT EXISTS above)
 }

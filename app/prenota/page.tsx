@@ -10,9 +10,14 @@ interface OperatorInfo {
   image: string;
 }
 
+interface DayScheduleInfo {
+  enabled: boolean;
+  timeSlots: { start: string; end: string }[];
+}
+
 interface ScheduleInfo {
   daysOfWeek: number[];
-  timeSlots: { start: string; end: string }[];
+  schedule: Record<string, DayScheduleInfo>;
   sessionDuration: number;
   breakBetweenSessions: number;
 }
@@ -102,7 +107,9 @@ function BookingContent() {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [isConfirming, setIsConfirming] = useState(false);
   const [animateCalendar, setAnimateCalendar] = useState(false);
+  const [computedAvailableSlots, setComputedAvailableSlots] = useState<string[]>([]);
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
+  const [onVacation, setOnVacation] = useState(false);
   const [clientName, setClientName] = useState("");
   const [clientPhone, setClientPhone] = useState("");
   const [clientEmail, setClientEmail] = useState("");
@@ -111,6 +118,7 @@ function BookingContent() {
   const [bookingError, setBookingError] = useState<string | null>(null);
   const [scheduleInfo, setScheduleInfo] = useState<ScheduleInfo | null>(null);
   const [loadingSchedule, setLoadingSchedule] = useState(false);
+  const [loadingSlots, setLoadingSlots] = useState(false);
 
   const dayNames = lang === "it" ? DAY_NAMES_IT : DAY_NAMES_EN;
   const fullDayNames = lang === "it" ? FULL_DAY_NAMES_IT : FULL_DAY_NAMES_EN;
@@ -137,7 +145,7 @@ function BookingContent() {
       .then((data) => {
         setScheduleInfo({
           daysOfWeek: data.daysOfWeek || [],
-          timeSlots: data.timeSlots || [],
+          schedule: data.schedule || {},
           sessionDuration: data.sessionDuration || 60,
           breakBetweenSessions: data.breakBetweenSessions || 15,
         });
@@ -157,13 +165,25 @@ function BookingContent() {
   useEffect(() => {
     if (!selectedOperator || !selectedDate) {
       setBookedSlots([]);
+      setComputedAvailableSlots([]);
+      setOnVacation(false);
       return;
     }
     const dateStr = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`;
+    setLoadingSlots(true);
     fetch(`/api/availability/compute?operator=${selectedOperator}&date=${dateStr}`)
       .then((res) => res.json())
-      .then((data) => setBookedSlots(data.bookedSlots || []))
-      .catch(() => setBookedSlots([]));
+      .then((data) => {
+        setBookedSlots(data.bookedSlots || []);
+        setComputedAvailableSlots(data.availableSlots || []);
+        setOnVacation(data.onVacation || false);
+      })
+      .catch(() => {
+        setBookedSlots([]);
+        setComputedAvailableSlots([]);
+        setOnVacation(false);
+      })
+      .finally(() => setLoadingSlots(false));
   }, [selectedOperator, selectedDate]);
 
   // Scroll to calendar when operator is pre-selected
@@ -236,33 +256,18 @@ function BookingContent() {
     return names;
   }, [dayNames]);
 
+  // Use server-computed available slots directly (handles per-day schedules & vacations)
   const availableSlots = useMemo(() => {
     if (!selectedOperator || !selectedDate || !scheduleInfo) return [];
-    // Use client-side getAvailableSlots as fallback, but filter with DB-fetched booked slots
-    // If scheduleInfo is from API, compute slots client-side from the dynamic schedule
-    const slots: string[] = [];
-    for (const range of scheduleInfo.timeSlots) {
-      const [startH, startM] = range.start.split(":").map(Number);
-      const [endH, endM] = range.end.split(":").map(Number);
-      let currentMinutes = startH * 60 + startM;
-      const endMinutes = endH * 60 + endM;
-      while (currentMinutes + scheduleInfo.sessionDuration <= endMinutes) {
-        const h = Math.floor(currentMinutes / 60);
-        const m = currentMinutes % 60;
-        slots.push(`${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`);
-        currentMinutes += scheduleInfo.sessionDuration + scheduleInfo.breakBetweenSessions;
-      }
-    }
-    // Check day of week
-    if (!scheduleInfo.daysOfWeek.includes(selectedDate.getDay())) return [];
-    return slots.filter((slot) => !bookedSlots.includes(slot));
-  }, [selectedOperator, selectedDate, bookedSlots, scheduleInfo]);
+    if (onVacation) return [];
+    return computedAvailableSlots;
+  }, [selectedOperator, selectedDate, scheduleInfo, computedAvailableSlots, onVacation]);
 
   const scheduleSummary = useMemo(() => {
     if (!selectedOperator || !scheduleInfo) return null;
     return {
       daysOfWeek: scheduleInfo.daysOfWeek,
-      timeSlots: scheduleInfo.timeSlots,
+      schedule: scheduleInfo.schedule,
     };
   }, [selectedOperator, scheduleInfo]);
 
@@ -563,11 +568,9 @@ function BookingContent() {
                     <p className="text-xs text-gray-500">
                       {t("booking.sessionInfo")}
                     </p>
-                    {scheduleSummary && (
+                    {scheduleInfo && (
                       <p className="text-sm font-medium text-olive-700">
-                        {scheduleSummary.timeSlots
-                          .map((s) => `${s.start} - ${s.end}`)
-                          .join(" | ")}
+                        {scheduleInfo.sessionDuration} min
                       </p>
                     )}
                   </div>
@@ -713,7 +716,37 @@ function BookingContent() {
                     </div>
 
                     <div className="p-5">
-                      {availableSlots.length > 0 ? (
+                      {loadingSlots ? (
+                        <div className="flex justify-center py-8">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-olive-600" />
+                        </div>
+                      ) : onVacation ? (
+                        <div className="text-center py-8 text-amber-500">
+                          <svg
+                            className="w-12 h-12 mx-auto mb-3 text-amber-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                            />
+                          </svg>
+                          <p className="font-medium">
+                            {lang === "it"
+                              ? "Professionista in ferie in questa data"
+                              : "Professional on vacation on this date"}
+                          </p>
+                          <p className="text-gray-400 text-sm mt-1">
+                            {lang === "it"
+                              ? "Seleziona un'altra data"
+                              : "Please select another date"}
+                          </p>
+                        </div>
+                      ) : availableSlots.length > 0 ? (
                         <>
                           <p className="text-sm text-gray-500 mb-4">
                             {availableSlots.length}{" "}
