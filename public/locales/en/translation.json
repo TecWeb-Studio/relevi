@@ -107,30 +107,52 @@
     "viewDetails": "View Details",
     "recommended": "Recommended",
     "packages": {
-      "title": "Start your wellness journey",
-      "subtitle": "Contact us today for a personalized consultation and discover how we can help you find harmony between body and mind.",
-      "wellnessStarter": {
-        "name": "Wellness Starter",
-        "description": "Perfect for beginners",
-        "services": ["Swedish Massage", "Aromatherapy Consultation"]
+      "title": "Our Wellness Packs",
+      "subtitle": "Curated journeys designed to restore your body, mind, and spirit. Choose the path that speaks to you.",
+      "heroTagline": "Discover your path to balance",
+      "p1": {
+        "name": "Women's Balance",
+        "tagline": "Align. Release. Restore.",
+        "description": "A deep reset combining kinesiology and holistic massage to release tension and restore natural balance.",
+        "services": ["Systematic Kinesiology", "Holistic Massage", "Energy Rebalancing"]
       },
-      "healingRetreat": {
-        "name": "Healing Retreat",
-        "description": "Our most popular package",
-        "services": ["Deep Tissue", "Hot Stone Therapy", "Reflexology"]
+      "p2": {
+        "name": "Self-Esteem",
+        "tagline": "Recharge your vital energy.",
+        "description": "Revitalise through Chinese medicine techniques and craniosacral therapy for complete energetic renewal.",
+        "services": ["Applied Chinese Medicine", "Craniosacral Therapy", "Chromopuncture"]
       },
-      "premiumRejuvenation": {
-        "name": "Premium Rejuvenation",
-        "description": "The ultimate experience",
-        "services": [
-          "Swedish Massage",
-          "Hot Stone Therapy",
-          "Aromatherapy",
-          "Reflexology"
-        ]
+      "p3": {
+        "name": "Revitalising Energy",
+        "tagline": "Find your center.",
+        "description": "Harmonise emotions and mind through flower remedies, herbal support, and guided mindfulness practices.",
+        "services": ["Floritherapy Consultation", "Phytotherapy", "Guided Mindfulness"]
+      },
+      "p4": {
+        "name": "Wellness & Relax",
+        "tagline": "Breathe. Move. Transform.",
+        "description": "Awaken your body with conscious movement, connected breathing, and functional strength practices.",
+        "services": ["Yoga & Pilates Workshop", "Connected Breathing", "Movement Science"]
+      },
+      "p5": {
+        "name": "Physical Fitness",
+        "tagline": "The complete experience.",
+        "description": "Our most comprehensive package — a full spectrum of holistic therapies for profound transformation.",
+        "services": ["Kinesiology", "Chinese Medicine", "Holistic Massage", "Mindfulness", "Reflexology"]
+      },
+      "p6": {
+        "name": "Detox",
+        "tagline": "Know yourself deeply.",
+        "description": "Uncover your unique profile through iridology, colour analysis, and personalised coaching sessions.",
+        "services": ["Iridology", "Colour Analysis", "Menopause Coaching", "Nutritional Guidance"]
       },
       "bestValue": "BEST VALUE",
-      "bookPackage": "Book Now"
+      "bookPackage": "Book Now",
+      "learnMore": "Learn More",
+      "paymentTitle": "Your Journey Starts Here",
+      "paymentSubtitle": "Every great transformation begins with a single step. Let us guide you towards the balance you deserve — because you are worth it.",
+      "paymentBadge": "Start Today",
+      "paymentCta": "Begin Your Journey"
     },
     "cta": {
       "title": "Ready to Book Your Service?",

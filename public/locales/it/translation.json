@@ -107,34 +107,52 @@
     "viewDetails": "Vedi Dettagli",
     "recommended": "Consigliato",
     "packages": {
-      "title": "Inizia il tuo percorso verso il benessere",
-      "subtitle": "Contattaci oggi per una consulenza personalizzata e scopri come possiamo aiutarti a ritrovare l'armonia tra corpo e mente.",
-      "wellnessStarter": {
-        "name": "Benessere Starter",
-        "description": "Perfetto per chi inizia",
-        "services": ["Massaggio Svedese", "Consulenza Aromaterapia"]
+      "title": "I Nostri Percorsi Benessere",
+      "subtitle": "Percorsi pensati per ristabilire l'armonia tra corpo, mente e spirito. Scegli quello che risuona con te.",
+      "heroTagline": "Scopri il tuo percorso verso l'equilibrio",
+      "p1": {
+        "name": "Equilibrio Donna",
+        "tagline": "Allinea. Libera. Ristabilisci.",
+        "description": "Un reset profondo che combina kinesiologia e massaggio olistico per sciogliere le tensioni e ristabilire l'equilibrio naturale.",
+        "services": ["Kinesiologia Sistematica", "Massaggio Olistico", "Riequilibrio Energetico"]
       },
-      "healingRetreat": {
-        "name": "Ritiro di Guarigione",
-        "description": "Il nostro pacchetto più popolare",
-        "services": [
-          "Tessuto Profondo",
-          "Terapia con Pietre Calde",
-          "Riflessologia"
-        ]
+      "p2": {
+        "name": "Autostima",
+        "tagline": "Ricarica la tua energia vitale.",
+        "description": "Rivitalizzati con tecniche di medicina cinese e terapia craniosacrale per un rinnovamento energetico completo.",
+        "services": ["Medicina Cinese Applicata", "Terapia Craniosacrale", "Cromopuntura"]
       },
-      "premiumRejuvenation": {
-        "name": "Ringiovanimento Premium",
-        "description": "L'esperienza definitiva",
-        "services": [
-          "Massaggio Svedese",
-          "Terapia con Pietre Calde",
-          "Aromaterapia",
-          "Riflessologia"
-        ]
+      "p3": {
+        "name": "Energia Rivitalizzante",
+        "tagline": "Trova il tuo centro.",
+        "description": "Armonizza emozioni e mente attraverso rimedi floreali, supporto fitoterapico e pratiche di mindfulness guidata.",
+        "services": ["Consulenza Floriterapia", "Fitoterapia", "Mindfulness Guidata"]
+      },
+      "p4": {
+        "name": "Benessere Relax",
+        "tagline": "Respira. Muoviti. Trasformati.",
+        "description": "Risveglia il corpo con movimento consapevole, respirazione connessa e pratiche di forza funzionale.",
+        "services": ["Workshop Yoga e Pilates", "Respirazione Connessa", "Scienze del Movimento"]
+      },
+      "p5": {
+        "name": "Forma Fisica",
+        "tagline": "L'esperienza completa.",
+        "description": "Il nostro pacchetto più completo — uno spettro completo di terapie olistiche per una trasformazione profonda.",
+        "services": ["Kinesiologia", "Medicina Cinese", "Massaggio Olistico", "Mindfulness", "Riflessologia"]
+      },
+      "p6": {
+        "name": "Detox",
+        "tagline": "Conosci te stesso profondamente.",
+        "description": "Scopri il tuo profilo unico attraverso iridologia, armocromia e sessioni di coaching personalizzate.",
+        "services": ["Iridologia", "Armocromia", "Coaching Menopausa", "Consulenza Nutrizionale"]
       },
       "bestValue": "MIGLIOR VALORE",
-      "bookPackage": "Prenota Ora"
+      "bookPackage": "Prenota Ora",
+      "learnMore": "Scopri di Più",
+      "paymentTitle": "Il Tuo Percorso Inizia Qui",
+      "paymentSubtitle": "Ogni grande trasformazione inizia con un singolo passo. Lasciati guidare verso l'equilibrio che meriti — perché tu ne vali la pena.",
+      "paymentBadge": "Inizia Oggi",
+      "paymentCta": "Inizia il Tuo Percorso"
     },
     "cta": {
       "title": "Pronto a Prenotare il Tuo Servizio?",
