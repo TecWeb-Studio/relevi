@@ -73,6 +73,10 @@
         ]
       }
     },
+    "partners": {
+      "title": "Our Partners",
+      "subtitle": "We collaborate with trusted partners to guarantee the highest quality and professionalism."
+    },
     "contact": {
       "title": "Get In Touch",
       "subtitle": "Ready to start your journey to relaxation? Contact us today to book your appointment.",
@@ -678,6 +682,19 @@
       "registrationMessage": "Registration coming soon!"
     },
     "eventList": {
+      "studyDaysEvent": {
+        "title": "Study Days: In-depth Holistic Learning",
+        "description": "Study days dedicated to holistic disciplines, featuring theoretical and practical sessions led by expert professionals. A unique opportunity to learn and grow in the field of well-being.",
+        "price": "",
+        "programme": [
+          "09:30 – Welcome and introduction",
+          "10:00 – Morning theoretical session",
+          "12:00 – Shared lunch",
+          "13:30 – Afternoon practical session",
+          "16:00 – Discussion and conclusions"
+        ],
+        "reservations": "Limited places – reservations required. Telephone: 351 7471159"
+      },
       "allergiesEvent": {
         "title": "ALLERGIES: immune response and nutrition",
         "description": "Educational event dedicated to allergies, with insights into the immune system, nutrition, the gut microbiome and phytotherapy. The day will include presentations by doctors and a practical session in the afternoon.",
@@ -694,6 +711,14 @@
       }
     },
     "eventDetails": {
+      "studyDaysEvent": {
+        "date": "2026-04-01",
+        "dateDisplay": "1 April – 20 June 2026",
+        "time": "9:30 a.m. - 4:30 p.m.",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
       "allergiesEvent": {
         "date": "2026-02-28",
         "time": "10:00 a.m. - 5:00 p.m.",

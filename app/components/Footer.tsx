@@ -81,7 +81,7 @@ export default function Footer() {
             <ul className="space-y-2 text-olive-200">
               <li>{t('home.contact.addressValue')}</li>
               <li>{t('home.contact.phoneValue')}</li>
-              <li>info@revelihealing.com</li>
+              <li>relevihealing@gmail.com</li>
             </ul>
             <div className="mt-4 space-y-2">
               <a

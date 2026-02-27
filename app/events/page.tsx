@@ -7,10 +7,12 @@ interface Event {
   id: number;
   key: string;
   type: 'workshop' | 'retreat' | 'special' | 'class';
+  image: string;
 }
 
 interface EventDetail {
   date: string;
+  dateDisplay?: string;
   time: string;
   location: string;
   spots: number;
@@ -45,7 +47,8 @@ export default function EventsPage() {
   }, [filter]);
 
   const events: Event[] = [
-    { id: 1, key: 'allergiesEvent', type: 'workshop' },
+    { id: 1, key: 'allergiesEvent', type: 'workshop', image: '/images/events/allergie.png' },
+    { id: 2, key: 'studyDaysEvent', type: 'workshop', image: '/images/events/studydays.jpeg' },
   ];
 
   const filteredEvents =
@@ -134,6 +137,13 @@ export default function EventsPage() {
                   className="reveal bg-white rounded-3xl overflow-hidden shadow-lg hover-lift transition-all duration-300 border border-olive-100 flex flex-col"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
+                  <div className="w-full h-20 overflow-hidden">
+                    <img
+                      src={event.image}
+                      alt={t(`events.eventList.${event.key}.title`)}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
                   <div className="p-8 flex-grow">
                     <div className="flex items-center justify-between mb-4">
                       <span
@@ -155,7 +165,7 @@ export default function EventsPage() {
                         <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span>{formatDate(details.date)}</span>
+                        <span>{details.dateDisplay ?? formatDate(details.date)}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,6 +184,7 @@ export default function EventsPage() {
                     <p className="text-gray-600 text-sm line-clamp-3 mb-4">
                       {t(`events.eventList.${event.key}.description`)}
                     </p>
+                    {event.key !== 'studyDaysEvent' && (
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                       <div className="text-sm">
                         <span className="text-gray-500">{t('events.spotsAvailable')}: </span>
@@ -187,6 +198,7 @@ export default function EventsPage() {
                         </span>
                       </div>
                     </div>
+                    )}
                   </div>
                   <div className="p-6 pt-0">
                     <button
@@ -342,14 +354,33 @@ export default function EventsPage() {
           onClick={() => setSelectedEvent(null)}
         >
           <div
-            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-scaleIn"
+            className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-scaleIn"
             onClick={(e) => e.stopPropagation()}
           >
+            {selectedEvent.key === 'studyDaysEvent' ? (
+              <div className="relative">
+                <img
+                  src={selectedEvent.image}
+                  alt={t(`events.eventList.${selectedEvent.key}.title`)}
+                  className="w-full h-auto rounded-3xl"
+                />
+                <button
+                  onClick={() => setSelectedEvent(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-olive-700 transition-colors shadow-lg"
+                  aria-label="Close"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+            <>
             <div className="relative">
               <div className="relative w-full aspect-[42/9] sm:aspect-[42/9] overflow-hidden bg-olive-100">
                 <img
-                  src="/images/events/allergie.png"
-                  alt="Event banner"
+                  src={selectedEvent.image}
+                  alt={t(`events.eventList.${selectedEvent.key}.title`)}
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
@@ -493,6 +524,8 @@ export default function EventsPage() {
                 );
               })()}
             </div>
+            </>
+            )}
           </div>
         </div>
       )}

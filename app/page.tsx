@@ -321,6 +321,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 reveal">
+            <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
+              {t("home.partners.title")}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {t("home.partners.subtitle")}
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-16 reveal">
+            <a href="/uni-pro" className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <img
+                src="/images/partners/unipro.png"
+                alt="UNI-PRO"
+                className="h-24 object-contain"
+              />
+            </a>
+            <a href="https://www.villamaternini.com/" className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <img
+                src="/images/partners/villaMaternini.jpg.jpeg"
+                alt="Villa Maternini"
+                className="h-24 object-contain"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="py-24 relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
@@ -424,7 +453,7 @@ export default function Home() {
                     <p className="text-gray-800 font-medium">
                       {t("home.contact.email")}
                     </p>
-                    <p className="text-gray-600">info@revelihealing.com</p>
+                    <p className="text-gray-600">relevihealing@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

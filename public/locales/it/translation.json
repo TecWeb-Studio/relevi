@@ -73,6 +73,10 @@
         ]
       }
     },
+    "partners": {
+      "title": "I Nostri Partner",
+      "subtitle": "Collaboriamo con partner di fiducia per garantirti la massima qualità e professionalità."
+    },
     "contact": {
       "title": "Contattaci",
       "subtitle": "Pronto per iniziare il tuo viaggio verso il relax? Contattaci oggi per prenotare il tuo appuntamento.",
@@ -667,6 +671,19 @@
       "registrationMessage": "Iscrizioni in arrivo!"
     },
     "eventList": {
+      "studyDaysEvent": {
+        "title": "Studio Days: Giornate di Approfondimento Olistico",
+        "description": "Giornate di studio e approfondimento sulle discipline olistiche, con sessioni teoriche e pratiche guidate da professionisti esperti. Un'occasione unica per imparare e crescere nel benessere.",
+        "price": "",
+        "programme": [
+          "09:30 – Accoglienza e introduzione",
+          "10:00 – Sessione teorica mattutina",
+          "12:00 – Pranzo condiviso",
+          "13:30 – Sessione pratica pomeridiana",
+          "16:00 – Discussione e conclusioni"
+        ],
+        "reservations": "Posti limitati – prenotazione obbligatoria. Telefono: 351 7471159"
+      },
       "allergiesEvent": {
         "title": "ALLERGIE: risposta immunitaria e nutrizione",
         "description": "Evento formativo dedicato alle allergie, con approfondimenti sul sistema immunitario, l'alimentazione, il microbioma intestinale e la fitoterapia. La giornata prevede interventi di medici e un momento pratico nel pomeriggio.",
@@ -683,6 +700,14 @@
       }
     },
     "eventDetails": {
+      "studyDaysEvent": {
+        "date": "2026-04-01",
+        "dateDisplay": "1 Aprile – 20 Giugno 2026",
+        "time": "09:30 - 16:30",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
       "allergiesEvent": {
         "date": "2026-02-28",
         "time": "10:00 - 17:00",

@@ -110,6 +110,11 @@ function BookingContent() {
     setSelectedSlot(null);
     setAnimateCalendar(true);
     setTimeout(() => setAnimateCalendar(false), 400);
+    setTimeout(() => {
+      document
+        .getElementById("calendar-section")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
   }, []);
 
   const handleSelectDate = useCallback((date: Date) => {
