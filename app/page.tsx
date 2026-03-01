@@ -350,6 +350,26 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 bg-olive-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 reveal">
+            <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
+              {t("home.reviews.title")}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {t("home.reviews.subtitle")}
+            </p>
+          </div>
+          <div className="flex justify-center reveal">
+            <img
+              src="/images/feedback/feed1.jpg"
+              alt="Recensioni clienti"
+              className="rounded-3xl shadow-xl max-w-full w-full md:max-w-2xl object-contain"
+            />
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="py-24 relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
