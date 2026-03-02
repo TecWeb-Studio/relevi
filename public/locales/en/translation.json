@@ -122,37 +122,64 @@
         "name": "Women's Balance",
         "tagline": "Align. Release. Restore.",
         "description": "A deep reset combining kinesiology and holistic massage to release tension and restore natural balance.",
-        "services": ["Systematic Kinesiology", "Holistic Massage", "Energy Rebalancing"]
+        "services": [
+          "Systematic Kinesiology",
+          "Holistic Massage",
+          "Energy Rebalancing"
+        ]
       },
       "p2": {
         "name": "Self-Esteem",
         "tagline": "Recharge your vital energy.",
         "description": "Revitalise through Chinese medicine techniques and craniosacral therapy for complete energetic renewal.",
-        "services": ["Applied Chinese Medicine", "Craniosacral Therapy", "Chromopuncture"]
+        "services": [
+          "Applied Chinese Medicine",
+          "Craniosacral Therapy",
+          "Chromopuncture"
+        ]
       },
       "p3": {
         "name": "Revitalising Energy",
         "tagline": "Find your center.",
         "description": "Harmonise emotions and mind through flower remedies, herbal support, and guided mindfulness practices.",
-        "services": ["Floritherapy Consultation", "Phytotherapy", "Guided Mindfulness"]
+        "services": [
+          "Floritherapy Consultation",
+          "Phytotherapy",
+          "Guided Mindfulness"
+        ]
       },
       "p4": {
         "name": "Wellness & Relax",
         "tagline": "Breathe. Move. Transform.",
         "description": "Awaken your body with conscious movement, connected breathing, and functional strength practices.",
-        "services": ["Yoga & Pilates Workshop", "Connected Breathing", "Movement Science"]
+        "services": [
+          "Yoga & Pilates Workshop",
+          "Connected Breathing",
+          "Movement Science"
+        ]
       },
       "p5": {
         "name": "Physical Fitness",
         "tagline": "The complete experience.",
         "description": "Our most comprehensive package — a full spectrum of holistic therapies for profound transformation.",
-        "services": ["Kinesiology", "Chinese Medicine", "Holistic Massage", "Mindfulness", "Reflexology"]
+        "services": [
+          "Kinesiology",
+          "Chinese Medicine",
+          "Holistic Massage",
+          "Mindfulness",
+          "Reflexology"
+        ]
       },
       "p6": {
         "name": "Detox",
         "tagline": "Know yourself deeply.",
         "description": "Uncover your unique profile through iridology, colour analysis, and personalised coaching sessions.",
-        "services": ["Iridology", "Colour Analysis", "Menopause Coaching", "Nutritional Guidance"]
+        "services": [
+          "Iridology",
+          "Colour Analysis",
+          "Menopause Coaching",
+          "Nutritional Guidance"
+        ]
       },
       "bestValue": "BEST VALUE",
       "bookPackage": "Book Now",
@@ -639,6 +666,15 @@
     },
     "spotsAvailable": "Spots available",
     "learnMore": "Learn More",
+    "eventPassed": "Passed",
+    "passedEvents": {
+      "title": "Past Events",
+      "subtitle": "Events that have already taken place"
+    },
+    "upcomingEvents": {
+      "title": "Upcoming Events",
+      "subtitle": "Join us for upcoming workshops, retreats, and special events"
+    },
     "noEvents": {
       "title": "No events found",
       "subtitle": "Check back soon for new events in this category."
@@ -718,14 +754,16 @@
       "studyDaysEvent": {
         "date": "2026-04-01",
         "dateDisplay": "1 April – 20 June 2026",
-        "time": "9:30 a.m. - 4:30 p.m.",
+        "time": "9:30 a.m.",
+        "endTime": "16:30",
         "location": "Via Campagna 46, San Polo di Piave (TV)",
         "spots": 0,
         "spotsLeft": 0
       },
       "allergiesEvent": {
         "date": "2026-02-28",
-        "time": "10:00 a.m. - 5:00 p.m.",
+        "time": "10:00 a.m.",
+        "endTime": "17:00",
         "location": "Via Campagna 46, San Polo di Piave (TV)",
         "spots": 30,
         "spotsLeft": 30
