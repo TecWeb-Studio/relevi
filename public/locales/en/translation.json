@@ -651,6 +651,18 @@
       "description": "We're preparing valuable content for you. Check back soon to download our lessons."
     },
     "lessons": {},
+    "showcases": {
+      "title": "Cultural Encounters",
+      "subtitle": "Discover our curated collections of stories, insights, and cultural reflections",
+      "terziani": {
+        "title": "La Vita è Urgente - Terziani",
+        "description": "A compelling collection of moments and reflections on life, presented through a series of meaningful encounters and discussions."
+      },
+      "zanatta": {
+        "title": "Te lo Prometto! - Rudi Zanatta",
+        "description": "A space dedicated to promises, commitments, and authentic human connections, explored through visual encounters and profound conversations."
+      }
+    },
     "cta": {
       "title": "Have Questions?",
       "subtitle": "Get in touch to learn more about our cultural insights and educational materials.",

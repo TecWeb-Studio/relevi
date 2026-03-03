@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 interface PDFFile {
@@ -18,11 +19,159 @@ interface CulturalLesson {
   category: string;
 }
 
+interface CulturalShowcase {
+  id: string;
+  key: string;
+  cover: string;
+  images: string[];
+}
+
+interface CulturalImageCarouselProps {
+  images: string[];
+  alt: string;
+  className?: string;
+}
+
+function CulturalImageCarousel({
+  images,
+  alt,
+  className = "",
+}: CulturalImageCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [images]);
+
+  useEffect(() => {
+    images.forEach((src) => {
+      const preloadedImage = new window.Image();
+      preloadedImage.src = src;
+    });
+  }, [images]);
+
+  if (images.length <= 1) {
+    return (
+      <div className={`relative w-full h-full bg-olive-50 ${className}`}>
+        <Image
+          src={images[0]}
+          alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-contain object-center"
+          priority
+        />
+      </div>
+    );
+  }
+
+  const previousImage = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const nextImage = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  return (
+    <div className={`relative w-full h-full bg-olive-50 ${className}`}>
+      <div className="w-full h-full overflow-hidden">
+        <div
+          className="flex h-full transition-transform duration-500 ease-out"
+          style={{
+            width: `${images.length * 100}%`,
+            transform: `translateX(-${(currentIndex * 100) / images.length}%)`,
+          }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={image}
+              className="relative h-full"
+              style={{ width: `${100 / images.length}%` }}
+            >
+              <Image
+                src={image}
+                alt={`${alt} ${index + 1}`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-contain object-center"
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={previousImage}
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 text-white flex items-center justify-center hover:bg-black/60 transition-colors"
+        aria-label="Previous image"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        onClick={nextImage}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 text-white flex items-center justify-center hover:bg-black/60 transition-colors"
+        aria-label="Next image"
+      >
+        ›
+      </button>
+
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              setCurrentIndex(index);
+            }}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              currentIndex === index ? "bg-white" : "bg-white/50"
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CulturalInsightsPage() {
   const [filter, setFilter] = useState<string>("all");
   const [lessons, setLessons] = useState<CulturalLesson[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedShowcase, setSelectedShowcase] =
+    useState<CulturalShowcase | null>(null);
   const { t } = useTranslation();
+
+  const showcases: CulturalShowcase[] = [
+    {
+      id: "terziani",
+      key: "terziani",
+      cover: "/images/cultural/terziani/laVitaCover.jpeg",
+      images: [
+        "/images/cultural/terziani/laVitaCover.jpeg",
+        "/images/cultural/terziani/incontroTerziani-1.jpeg",
+        "/images/cultural/terziani/incontroTerziani-2.jpeg",
+        "/images/cultural/terziani/incontroTerziani-3.jpeg",
+      ],
+    },
+    {
+      id: "zanatta",
+      key: "zanatta",
+      cover: "/images/cultural/zanatta/teLoPromettoCover.jpeg",
+      images: [
+        "/images/cultural/zanatta/teLoPromettoCover.jpeg",
+        "/images/cultural/zanatta/incontroZanatta-1.jpeg",
+        "/images/cultural/zanatta/incontroZanatta-2.jpeg",
+      ],
+    },
+  ];
 
   // Fetch PDFs from the API
   useEffect(() => {
@@ -139,28 +288,65 @@ export default function CulturalInsightsPage() {
               </p>
             </div>
           ) : filteredLessons.length === 0 ? (
-            <div className="text-center py-16">
-              <div className="w-24 h-24 bg-olive-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-12 h-12 text-olive-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
+            <div>
+              <div className="reveal text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
+                  {t("culturalInsights.showcases.title")}
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  {t("culturalInsights.showcases.subtitle")}
+                </p>
               </div>
-              <h2 className="text-2xl font-bold text-olive-800 mb-4">
-                {t("culturalInsights.noLessons.title")}
-              </h2>
-              <p className="text-gray-600 max-w-md mx-auto">
-                {t("culturalInsights.noLessons.description")}
-              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {showcases.map((showcase, index) => (
+                  <div
+                    key={showcase.id}
+                    className="reveal bg-white rounded-3xl overflow-hidden shadow-xl hover-lift transition-all duration-300 border border-olive-100 cursor-pointer group"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    onClick={() => setSelectedShowcase(showcase)}
+                  >
+                    <div className="relative w-full h-64 overflow-hidden bg-olive-100">
+                      <img
+                        src={showcase.cover}
+                        alt={t(
+                          `culturalInsights.showcases.${showcase.key}.title`,
+                        )}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <svg
+                            className="w-12 h-12 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M4 6h16M4 12h16M4 18h16"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-8">
+                      <h3 className="text-2xl font-bold text-olive-800 mb-3">
+                        {t(`culturalInsights.showcases.${showcase.key}.title`)}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {t(
+                          `culturalInsights.showcases.${showcase.key}.description`,
+                        )}
+                      </p>
+                      <button className="mt-6 inline-block text-olive-600 font-semibold hover:text-olive-700 transition-colors">
+                        Scopri di Più →
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -231,6 +417,58 @@ export default function CulturalInsightsPage() {
           )}
         </div>
       </section>
+
+      {selectedShowcase && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+          onClick={() => setSelectedShowcase(null)}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden flex flex-col animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative flex-shrink-0">
+              <div className="relative w-full h-80 overflow-hidden bg-olive-100">
+                <CulturalImageCarousel
+                  images={selectedShowcase.images}
+                  alt={t(
+                    `culturalInsights.showcases.${selectedShowcase.key}.title`,
+                  )}
+                />
+              </div>
+              <button
+                onClick={() => setSelectedShowcase(null)}
+                className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-olive-700 transition-colors shadow-lg z-10"
+                aria-label="Close"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="overflow-y-auto flex-1 p-8">
+              <h2 className="text-2xl font-bold text-olive-800 mb-3">
+                {t(`culturalInsights.showcases.${selectedShowcase.key}.title`)}
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                {t(
+                  `culturalInsights.showcases.${selectedShowcase.key}.description`,
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section className="py-16 bg-olive-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

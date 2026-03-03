@@ -640,6 +640,18 @@
       "description": "Stiamo preparando contenuti preziosi per te. Torna presto per scaricare le nostre lezioni."
     },
     "lessons": {},
+    "showcases": {
+      "title": "Incontri Culturali",
+      "subtitle": "Scopri le nostre collezioni curate di storie, intuizioni e riflessioni culturali",
+      "terziani": {
+        "title": "La Vita è Urgente - Giorgio Terziani",
+        "description": "Una raccolta affascinante di momenti e riflessioni sulla vita, presentata attraverso una serie di incontri e discussioni significativi."
+      },
+      "zanatta": {
+        "title": "Te lo Prometto! - Rudi Zanatta",
+        "description": "Uno spazio dedicato a promesse, impegni e connessioni umane autentiche, esplorato attraverso incontri visivi e conversazioni profonde."
+      }
+    },
     "cta": {
       "title": "Hai Domande?",
       "subtitle": "Contattaci per saperne di più sui nostri approfondimenti culturali e sui materiali didattici.",
