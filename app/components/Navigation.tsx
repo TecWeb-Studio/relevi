@@ -2,12 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
+  const partnersCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const { t, i18n } = useTranslation();
   const pathname = usePathname();
 
@@ -31,6 +35,31 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    return () => {
+      if (partnersCloseTimeoutRef.current) {
+        clearTimeout(partnersCloseTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const openPartnersMenu = () => {
+    if (partnersCloseTimeoutRef.current) {
+      clearTimeout(partnersCloseTimeoutRef.current);
+      partnersCloseTimeoutRef.current = null;
+    }
+    setIsPartnersOpen(true);
+  };
+
+  const closePartnersMenuWithDelay = () => {
+    if (partnersCloseTimeoutRef.current) {
+      clearTimeout(partnersCloseTimeoutRef.current);
+    }
+    partnersCloseTimeoutRef.current = setTimeout(() => {
+      setIsPartnersOpen(false);
+    }, 250);
+  };
+
   const navLinks = [
     { href: '/', label: t('nav.home') },
     { href: '/services', label: t('nav.services') },
@@ -39,6 +68,11 @@ export default function Navigation() {
     { href: '/events', label: t('nav.events') },
     { href: '/approfondimenti-culturali', label: t('nav.culturalInsights') },
     { href: '/#contact', label: t('nav.contact') },
+  ];
+
+  const partnerLinks = [
+    { href: '/uni-pro', label: t('nav.uniPro') },
+    { href: '/villa-maternini', label: t('nav.villaMaternini') },
   ];
 
   const languages = [
@@ -110,6 +144,51 @@ export default function Navigation() {
                 />
               </Link>
             ))}
+
+            {/* Partners dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={openPartnersMenu}
+              onMouseLeave={closePartnersMenuWithDelay}
+            >
+              <button
+                onClick={() => setIsPartnersOpen((prev) => !prev)}
+                className={`text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 flex items-center gap-1 relative group ${
+                  partnerLinks.some((p) => pathname.startsWith(p.href)) ? 'text-olive-700' : ''
+                }`}
+              >
+                {t('nav.partners')}
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${isPartnersOpen ? 'rotate-180' : ''}`}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-olive-600 transition-all duration-200 ${
+                    partnerLinks.some((p) => pathname.startsWith(p.href)) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </button>
+              <div
+                className={`absolute top-full left-0 w-44 bg-white rounded-xl shadow-xl border border-olive-100 py-1 transition-all duration-200 ${
+                  isPartnersOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'
+                }`}
+              >
+                {partnerLinks.map((p) => (
+                  <Link
+                    key={p.href}
+                    href={p.href}
+                    onClick={() => setIsPartnersOpen(false)}
+                    className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 hover:bg-olive-50 hover:text-olive-700 ${
+                      pathname.startsWith(p.href) ? 'text-olive-700 bg-olive-50' : 'text-gray-700'
+                    }`}
+                  >
+                    {p.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <div className="flex items-center space-x-2">
               {languages.map((l) => (
                 <button
@@ -177,6 +256,24 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            {/* Partners mobile */}
+            <div className="px-4">
+              <p className="text-xs font-semibold uppercase tracking-widest text-olive-500 mb-1 py-2">
+                {t('nav.partners')}
+              </p>
+              {partnerLinks.map((p) => (
+                <Link
+                  key={p.href}
+                  href={p.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block py-2 pl-3 text-gray-700 hover:text-olive-600 font-medium transition-colors duration-200 ${
+                    pathname.startsWith(p.href) ? 'text-olive-700' : ''
+                  }`}
+                >
+                  {p.label}
+                </Link>
+              ))}
+            </div>
             <div className="flex gap-2 px-4">
               {languages.map((l) => (
                 <button

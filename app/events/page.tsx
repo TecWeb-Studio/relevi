@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 interface Event {
@@ -8,6 +8,7 @@ interface Event {
   key: string;
   type: "workshop" | "retreat" | "special" | "class";
   image: string;
+  images?: string[];
 }
 
 interface EventDetail {
@@ -18,6 +19,84 @@ interface EventDetail {
   location: string;
   spots: number;
   spotsLeft: number;
+}
+
+interface EventImageCarouselProps {
+  images: string[];
+  alt: string;
+  className?: string;
+}
+
+function EventImageCarousel({ images, alt, className = "" }: EventImageCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [images]);
+
+  if (images.length <= 1) {
+    return (
+      <img
+        src={images[0]}
+        alt={alt}
+        className={`w-full h-full object-cover object-center ${className}`}
+      />
+    );
+  }
+
+  const previousImage = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const nextImage = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  return (
+    <div className={`relative w-full h-full ${className}`}>
+      <img
+        src={images[currentIndex]}
+        alt={`${alt} ${currentIndex + 1}`}
+        className="w-full h-full object-cover object-center"
+      />
+
+      <button
+        type="button"
+        onClick={previousImage}
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 text-white flex items-center justify-center hover:bg-black/60 transition-colors"
+        aria-label="Previous image"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        onClick={nextImage}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 text-white flex items-center justify-center hover:bg-black/60 transition-colors"
+        aria-label="Next image"
+      >
+        ›
+      </button>
+
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              setCurrentIndex(index);
+            }}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              currentIndex === index ? "bg-white" : "bg-white/50"
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function EventsPage() {
@@ -64,6 +143,19 @@ export default function EventsPage() {
       key: "studyDaysEvent",
       type: "workshop",
       image: "/images/events/studydays.jpeg",
+    },
+    {
+      id: 3,
+      key: "equilibrioDonnaEvent",
+      type: "special",
+      image: "/images/events/equilibrio-donna/donna.avif",
+      images: [
+        "/images/events/equilibrio-donna/1.png",
+        "/images/events/equilibrio-donna/2.png",
+        "/images/events/equilibrio-donna/3.png",
+        "/images/events/equilibrio-donna/4.png",
+        "/images/events/equilibrio-donna/5.png",
+      ],
     },
   ];
 
@@ -182,119 +274,82 @@ export default function EventsPage() {
                       className="reveal bg-white rounded-3xl overflow-hidden shadow-lg hover-lift transition-all duration-300 border border-olive-100 flex flex-col"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
-                      <div className="w-full h-20 overflow-hidden">
-                        <img
-                          src={event.image}
-                          alt={t(`events.eventList.${event.key}.title`)}
-                          className="w-full h-full object-cover object-top"
-                        />
-                      </div>
-                      <div className="p-8 flex-grow">
-                        <div className="flex items-center justify-between mb-4">
-                          <span
-                            className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(
-                              event.type,
-                            )}`}
-                          >
-                            {t(`events.filters.${event.type}`)}
-                          </span>
-                          <span className="text-olive-600 font-bold">
-                            {t(`events.eventList.${event.key}.price`)}
-                          </span>
+                      <>
+                        <div
+                          className={`w-full overflow-hidden ${
+                            event.key === "equilibrioDonnaEvent"
+                              ? "h-28"
+                              : "h-20"
+                          }`}
+                        >
+                          <img
+                            src={event.image}
+                            alt={t(`events.eventList.${event.key}.title`)}
+                            className={`w-full h-full ${
+                              event.key === "equilibrioDonnaEvent"
+                                ? "object-cover object-center"
+                                : "object-cover object-top"
+                            }`}
+                          />
                         </div>
-                        <h3 className="text-xl font-bold text-olive-800 mb-3">
-                          {t(`events.eventList.${event.key}.title`)}
-                        </h3>
-                        <div className="space-y-2 text-sm text-gray-600 mb-4">
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
+                        <div className="p-8 grow">
+                          <div className="flex items-center justify-between mb-4">
+                            <span
+                              className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(event.type)}`}
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              />
-                            </svg>
-                            <span>
-                              {details.dateDisplay ?? formatDate(details.date)}
+                              {t(`events.filters.${event.type}`)}
+                            </span>
+                            <span className="text-olive-600 font-bold">
+                              {t(`events.eventList.${event.key}.price`)}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span>
-                              {details.time} - {details.endTime}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                            </svg>
-                            <span>{details.location}</span>
-                          </div>
-                        </div>
-                        <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                          {t(`events.eventList.${event.key}.description`)}
-                        </p>
-                        {event.key !== "studyDaysEvent" && (
-                          <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div className="text-sm">
-                              <span className="text-gray-500">
-                                {t("events.spotsAvailable")}:{" "}
-                              </span>
-                              <span
-                                className={`font-semibold ${
-                                  details.spotsLeft <= 3
-                                    ? "text-red-500"
-                                    : "text-olive-600"
-                                }`}
-                              >
-                                {details.spotsLeft}/{details.spots}
-                              </span>
+                          <h3 className="text-xl font-bold text-olive-800 mb-3">
+                            {t(`events.eventList.${event.key}.title`)}
+                          </h3>
+                          <div className="space-y-2 text-sm text-gray-600 mb-4">
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              </svg>
+                              <span>{details.dateDisplay ?? formatDate(details.date)}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span>{details.time} - {details.endTime}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
+                              <span>{details.location}</span>
                             </div>
                           </div>
-                        )}
-                      </div>
-                      <div className="p-6 pt-0">
-                        <button
-                          onClick={() => setSelectedEvent(event)}
-                          className="w-full bg-olive-600 text-white py-3 rounded-xl font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02]"
-                        >
-                          {t("events.learnMore")}
-                        </button>
-                      </div>
+                          <p className="text-gray-600 text-sm line-clamp-3 mb-4">
+                            {t(`events.eventList.${event.key}.description`)}
+                          </p>
+                          {event.key !== "studyDaysEvent" && (
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                              <div className="text-sm">
+                                <span className="text-gray-500">{t("events.spotsAvailable")}:{" "}</span>
+                                <span className={`font-semibold ${details.spotsLeft <= 3 ? "text-red-500" : "text-olive-600"}`}>
+                                  {details.spotsLeft}/{details.spots}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-6 pt-0">
+                          <button
+                            onClick={() => setSelectedEvent(event)}
+                            className="w-full bg-olive-600 text-white py-3 rounded-xl font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02]"
+                          >
+                            {t("events.learnMore")}
+                          </button>
+                        </div>
+                      </>
                     </div>
                   );
                 })}
@@ -321,106 +376,72 @@ export default function EventsPage() {
                       className="reveal bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-300 border border-olive-100 flex flex-col opacity-60"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
-                      <div className="w-full h-20 overflow-hidden relative">
-                        <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">
-                            {t("events.eventPassed")}
-                          </span>
-                        </div>
-                        <img
-                          src={event.image}
-                          alt={t(`events.eventList.${event.key}.title`)}
-                          className="w-full h-full object-cover object-top"
-                        />
-                      </div>
-                      <div className="p-8 flex-grow">
-                        <div className="flex items-center justify-between mb-4">
-                          <span
-                            className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(
-                              event.type,
-                            )}`}
-                          >
-                            {t(`events.filters.${event.type}`)}
-                          </span>
-                          <span className="text-olive-600 font-bold">
-                            {t(`events.eventList.${event.key}.price`)}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-bold text-olive-800 mb-3">
-                          {t(`events.eventList.${event.key}.title`)}
-                        </h3>
-                        <div className="space-y-2 text-sm text-gray-600 mb-4">
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              />
-                            </svg>
-                            <span>
-                              {details.dateDisplay ?? formatDate(details.date)}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span>
-                              {details.time} - {details.endTime}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                            </svg>
-                            <span>{details.location}</span>
-                          </div>
-                        </div>
-                        <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                          {t(`events.eventList.${event.key}.description`)}
-                        </p>
-                      </div>
-                      <div className="p-6 pt-0">
-                        <button
-                          disabled
-                          className="w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-semibold cursor-not-allowed"
+                      <>
+                        <div
+                          className={`w-full overflow-hidden relative ${
+                            event.key === "equilibrioDonnaEvent"
+                              ? "h-28"
+                              : "h-20"
+                          }`}
                         >
-                          {t("events.eventPassed")}
-                        </button>
-                      </div>
+                          <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
+                            <span className="text-white font-bold text-lg">
+                              {t("events.eventPassed")}
+                            </span>
+                          </div>
+                          <img
+                            src={event.image}
+                            alt={t(`events.eventList.${event.key}.title`)}
+                            className={`w-full h-full ${
+                              event.key === "equilibrioDonnaEvent"
+                                ? "object-cover object-center"
+                                : "object-cover object-top"
+                            }`}
+                          />
+                        </div>
+                        <div className="p-8 grow">
+                          <div className="flex items-center justify-between mb-4">
+                            <span className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(event.type)}`}>
+                              {t(`events.filters.${event.type}`)}
+                            </span>
+                            <span className="text-olive-600 font-bold">
+                              {t(`events.eventList.${event.key}.price`)}
+                            </span>
+                          </div>
+                          <h3 className="text-xl font-bold text-olive-800 mb-3">
+                            {t(`events.eventList.${event.key}.title`)}
+                          </h3>
+                          <div className="space-y-2 text-sm text-gray-600 mb-4">
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              </svg>
+                              <span>{details.dateDisplay ?? formatDate(details.date)}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span>{details.time} - {details.endTime}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
+                              <span>{details.location}</span>
+                            </div>
+                          </div>
+                          <p className="text-gray-600 text-sm line-clamp-3 mb-4">
+                            {t(`events.eventList.${event.key}.description`)}
+                          </p>
+                        </div>
+                        <div className="p-6 pt-0">
+                          <button disabled className="w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-semibold cursor-not-allowed">
+                            {t("events.eventPassed")}
+                          </button>
+                        </div>
+                      </>
                     </div>
                   );
                 })}
@@ -649,7 +670,7 @@ export default function EventsPage() {
             ) : (
               <>
                 <div className="relative">
-                  <div className="relative w-full aspect-[42/9] sm:aspect-[42/9] overflow-hidden bg-olive-100">
+                  <div className="relative w-full h-36 overflow-hidden bg-olive-100">
                     <img
                       src={selectedEvent.image}
                       alt={t(`events.eventList.${selectedEvent.key}.title`)}
@@ -778,9 +799,22 @@ export default function EventsPage() {
                           </p>
                         </div>
 
-                        {t(`events.eventList.${selectedEvent.key}.programme`, {
-                          returnObjects: true,
-                        }) && (
+                        {selectedEvent.images && selectedEvent.images.length > 1 && (
+                          <div className="mb-6">
+                            <div className="w-full h-[32rem] rounded-2xl overflow-hidden">
+                              <EventImageCarousel
+                                images={selectedEvent.images}
+                                alt={t(`events.eventList.${selectedEvent.key}.title`)}
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        {Array.isArray(
+                          t(`events.eventList.${selectedEvent.key}.programme`, {
+                            returnObjects: true,
+                          }),
+                        ) && (
                           <div className="mb-6">
                             <h3 className="text-lg font-semibold text-olive-800 mb-2">
                               {t("events.modal.programme")}
@@ -804,9 +838,11 @@ export default function EventsPage() {
                           </div>
                         )}
 
-                        {t(`events.eventList.${selectedEvent.key}.cost`, {
-                          returnObjects: true,
-                        }) && (
+                        {Array.isArray(
+                          t(`events.eventList.${selectedEvent.key}.cost`, {
+                            returnObjects: true,
+                          }),
+                        ) && (
                           <div className="mb-6">
                             <h3 className="text-lg font-semibold text-olive-800 mb-2">
                               {t("events.modal.cost")}

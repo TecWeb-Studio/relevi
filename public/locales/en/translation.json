@@ -6,7 +6,10 @@
     "booking": "Book Now",
     "events": "Events",
     "culturalInsights": "Cultural Insights",
-    "contact": "Contact"
+    "contact": "Contact",
+    "partners": "Partners",
+    "uniPro": "UNI-PRO",
+    "villaMaternini": "Villa Maternini"
   },
   "home": {
     "hero": {
@@ -735,6 +738,17 @@
         ],
         "reservations": "Limited places – reservations required. Telephone: 351 7471159"
       },
+      "equilibrioDonnaEvent": {
+        "title": "Equilibrio Donna",
+        "description": "A special event dedicated to women's wellbeing: a full day of listening, practice and sharing to restore balance, vitality and harmony.",
+        "price": "Free entry",
+        "programme": [
+          "Welcome and introduction to the event journey",
+          "Experiential sessions focused on women's wellbeing",
+          "Final space for discussion and questions"
+        ],
+        "reservations": "For details and reservations, contact us on WhatsApp at 351 7471159"
+      },
       "allergiesEvent": {
         "title": "ALLERGIES: immune response and nutrition",
         "description": "Educational event dedicated to allergies, with insights into the immune system, nutrition, the gut microbiome and phytotherapy. The day will include presentations by doctors and a practical session in the afternoon.",
@@ -759,6 +773,14 @@
         "location": "Via Campagna 46, San Polo di Piave (TV)",
         "spots": 0,
         "spotsLeft": 0
+      },
+      "equilibrioDonnaEvent": {
+        "date": "2026-03-08",
+        "time": "9:30 a.m.",
+        "endTime": "5:30 p.m.",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 40,
+        "spotsLeft": 40
       },
       "allergiesEvent": {
         "date": "2026-02-28",
