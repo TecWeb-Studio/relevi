@@ -155,6 +155,8 @@ export default function ImageCarousel() {
             onTouchEnd={handleDragEnd}
           >
             {CAROUSEL_IMAGES.map((_, imgIndex) => {
+              const imageSrc = CAROUSEL_IMAGES[imgIndex];
+              const isContainImage = imageSrc.includes("carousel-04.jpeg");
               const offset = getSlideOffset(imgIndex);
               const isCurrent = offset === 0;
               const isLeft = offset === -1;
@@ -233,13 +235,15 @@ export default function ImageCarousel() {
                     }}
                   >
                     <img
-                      src={CAROUSEL_IMAGES[imgIndex]}
+                      src={imageSrc}
                       alt={`Gallery image ${imgIndex + 1}`}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${isContainImage ? "object-contain bg-olive-100" : "object-cover"}`}
                       style={{
                         transition: "transform 8s ease-out",
                         transform: isCurrent
-                          ? "scale(1.08)"
+                          ? isContainImage
+                            ? "scale(1.01)"
+                            : "scale(1.08)"
                           : "scale(1)",
                       }}
                       draggable={false}
@@ -340,7 +344,8 @@ export default function ImageCarousel() {
           {/* Image counter */}
           <div className="text-center mt-3">
             <span className="text-sm text-olive-500 font-medium tabular-nums">
-              {String(currentIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
+              {String(currentIndex + 1).padStart(2, "0")} /{" "}
+              {String(totalSlides).padStart(2, "0")}
             </span>
           </div>
         </div>
@@ -357,8 +362,18 @@ export default function ImageCarousel() {
             className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 transition-all duration-300"
             onClick={() => setLightboxOpen(false)}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
 
@@ -370,8 +385,18 @@ export default function ImageCarousel() {
               setLightboxIndex((lightboxIndex - 1 + totalSlides) % totalSlides);
             }}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
@@ -395,14 +420,25 @@ export default function ImageCarousel() {
               setLightboxIndex((lightboxIndex + 1) % totalSlides);
             }}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
 
           {/* Counter */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium tabular-nums">
-            {String(lightboxIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
+            {String(lightboxIndex + 1).padStart(2, "0")} /{" "}
+            {String(totalSlides).padStart(2, "0")}
           </div>
         </div>
       )}

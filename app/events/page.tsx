@@ -1,6 +1,7 @@
 "use client";
 
 import { MouseEvent, useEffect, useState } from "react";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 interface Event {
@@ -27,20 +28,36 @@ interface EventImageCarouselProps {
   className?: string;
 }
 
-function EventImageCarousel({ images, alt, className = "" }: EventImageCarouselProps) {
+function EventImageCarousel({
+  images,
+  alt,
+  className = "",
+}: EventImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     setCurrentIndex(0);
   }, [images]);
 
+  useEffect(() => {
+    images.forEach((src) => {
+      const preloadedImage = new window.Image();
+      preloadedImage.src = src;
+    });
+  }, [images]);
+
   if (images.length <= 1) {
     return (
-      <img
-        src={images[0]}
-        alt={alt}
-        className={`w-full h-full object-cover object-center ${className}`}
-      />
+      <div className={`relative w-full h-full bg-olive-50 ${className}`}>
+        <Image
+          src={images[0]}
+          alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-contain object-center"
+          priority
+        />
+      </div>
     );
   }
 
@@ -55,12 +72,33 @@ function EventImageCarousel({ images, alt, className = "" }: EventImageCarouselP
   };
 
   return (
-    <div className={`relative w-full h-full ${className}`}>
-      <img
-        src={images[currentIndex]}
-        alt={`${alt} ${currentIndex + 1}`}
-        className="w-full h-full object-cover object-center"
-      />
+    <div className={`relative w-full h-full bg-olive-50 ${className}`}>
+      <div className="w-full h-full overflow-hidden">
+        <div
+          className="flex h-full transition-transform duration-500 ease-out"
+          style={{
+            width: `${images.length * 100}%`,
+            transform: `translateX(-${(currentIndex * 100) / images.length}%)`,
+          }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={image}
+              className="relative h-full"
+              style={{ width: `${100 / images.length}%` }}
+            >
+              <Image
+                src={image}
+                alt={`${alt} ${index + 1}`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-contain object-center"
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
 
       <button
         type="button"
@@ -308,21 +346,61 @@ export default function EventsPage() {
                           </h3>
                           <div className="space-y-2 text-sm text-gray-600 mb-4">
                             <div className="flex items-center gap-2">
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              <svg
+                                className="w-4 h-4 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
                               </svg>
-                              <span>{details.dateDisplay ?? formatDate(details.date)}</span>
+                              <span>
+                                {details.dateDisplay ??
+                                  formatDate(details.date)}
+                              </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              <svg
+                                className="w-4 h-4 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                               </svg>
-                              <span>{details.time} - {details.endTime}</span>
+                              <span>
+                                {details.time} - {details.endTime}
+                              </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <svg
+                                className="w-4 h-4 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
                               </svg>
                               <span>{details.location}</span>
                             </div>
@@ -333,8 +411,12 @@ export default function EventsPage() {
                           {event.key !== "studyDaysEvent" && (
                             <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                               <div className="text-sm">
-                                <span className="text-gray-500">{t("events.spotsAvailable")}:{" "}</span>
-                                <span className={`font-semibold ${details.spotsLeft <= 3 ? "text-red-500" : "text-olive-600"}`}>
+                                <span className="text-gray-500">
+                                  {t("events.spotsAvailable")}:{" "}
+                                </span>
+                                <span
+                                  className={`font-semibold ${details.spotsLeft <= 3 ? "text-red-500" : "text-olive-600"}`}
+                                >
                                   {details.spotsLeft}/{details.spots}
                                 </span>
                               </div>
@@ -401,7 +483,9 @@ export default function EventsPage() {
                         </div>
                         <div className="p-8 grow">
                           <div className="flex items-center justify-between mb-4">
-                            <span className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(event.type)}`}>
+                            <span
+                              className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(event.type)}`}
+                            >
                               {t(`events.filters.${event.type}`)}
                             </span>
                             <span className="text-olive-600 font-bold">
@@ -413,21 +497,61 @@ export default function EventsPage() {
                           </h3>
                           <div className="space-y-2 text-sm text-gray-600 mb-4">
                             <div className="flex items-center gap-2">
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              <svg
+                                className="w-4 h-4 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
                               </svg>
-                              <span>{details.dateDisplay ?? formatDate(details.date)}</span>
+                              <span>
+                                {details.dateDisplay ??
+                                  formatDate(details.date)}
+                              </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              <svg
+                                className="w-4 h-4 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                               </svg>
-                              <span>{details.time} - {details.endTime}</span>
+                              <span>
+                                {details.time} - {details.endTime}
+                              </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <svg
+                                className="w-4 h-4 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
                               </svg>
                               <span>{details.location}</span>
                             </div>
@@ -437,7 +561,10 @@ export default function EventsPage() {
                           </p>
                         </div>
                         <div className="p-6 pt-0">
-                          <button disabled className="w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-semibold cursor-not-allowed">
+                          <button
+                            disabled
+                            className="w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-semibold cursor-not-allowed"
+                          >
                             {t("events.eventPassed")}
                           </button>
                         </div>
@@ -640,13 +767,15 @@ export default function EventsPage() {
             className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-scaleIn"
             onClick={(e) => e.stopPropagation()}
           >
-            {selectedEvent.key === "studyDaysEvent" ? (
+            <>
               <div className="relative">
-                <img
-                  src={selectedEvent.image}
-                  alt={t(`events.eventList.${selectedEvent.key}.title`)}
-                  className="w-full h-auto rounded-3xl"
-                />
+                <div className="relative w-full h-36 overflow-hidden bg-olive-100">
+                  <img
+                    src={selectedEvent.image}
+                    alt={t(`events.eventList.${selectedEvent.key}.title`)}
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </div>
                 <button
                   onClick={() => setSelectedEvent(null)}
                   className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-olive-700 transition-colors shadow-lg"
@@ -667,267 +796,238 @@ export default function EventsPage() {
                   </svg>
                 </button>
               </div>
-            ) : (
-              <>
-                <div className="relative">
-                  <div className="relative w-full h-36 overflow-hidden bg-olive-100">
-                    <img
-                      src={selectedEvent.image}
-                      alt={t(`events.eventList.${selectedEvent.key}.title`)}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                    />
-                  </div>
-                  <button
-                    onClick={() => setSelectedEvent(null)}
-                    className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-olive-700 transition-colors shadow-lg"
-                    aria-label="Close"
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(
+                      selectedEvent.type,
+                    )}`}
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
+                    {t(`events.filters.${selectedEvent.type}`)}
+                  </span>
+                  <span className="text-2xl font-bold text-olive-600">
+                    {t(`events.eventList.${selectedEvent.key}.price`)}
+                  </span>
                 </div>
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className={`px-4 py-1 rounded-full text-sm font-medium ${getEventTypeColor(
-                        selectedEvent.type,
-                      )}`}
-                    >
-                      {t(`events.filters.${selectedEvent.type}`)}
-                    </span>
-                    <span className="text-2xl font-bold text-olive-600">
-                      {t(`events.eventList.${selectedEvent.key}.price`)}
-                    </span>
-                  </div>
 
-                  <h2 className="text-3xl font-bold text-olive-800 mb-4">
-                    {t(`events.eventList.${selectedEvent.key}.title`)}
-                  </h2>
+                <h2 className="text-3xl font-bold text-olive-800 mb-4">
+                  {t(`events.eventList.${selectedEvent.key}.title`)}
+                </h2>
 
-                  {(() => {
-                    const details = getEventDetails(selectedEvent.key);
-                    const isPassed = isEventPassed(details);
-                    return (
-                      <>
-                        {isPassed && (
-                          <div className="mb-4 p-4 bg-red-100 border border-red-300 rounded-lg">
-                            <p className="text-red-700 font-semibold">
-                              This event has already passed.
-                            </p>
-                          </div>
-                        )}
-                        <div className="space-y-3 mb-6">
-                          <div className="flex items-center gap-3 text-gray-700">
-                            <svg
-                              className="w-5 h-5 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              />
-                            </svg>
-                            <span className="font-medium">
-                              {formatDate(details.date)}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-3 text-gray-700">
-                            <svg
-                              className="w-5 h-5 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span>
-                              {details.time} - {details.endTime}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-3 text-gray-700">
-                            <svg
-                              className="w-5 h-5 flex-shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                            </svg>
-                            <span>{details.location}</span>
-                          </div>
-                        </div>
-
-                        <div className="mb-6">
-                          <h3 className="text-lg font-semibold text-olive-800 mb-2">
-                            {t("events.modal.description")}
-                          </h3>
-                          <p className="text-gray-600 leading-relaxed">
-                            {t(
-                              `events.eventList.${selectedEvent.key}.description`,
-                            )}
+                {(() => {
+                  const details = getEventDetails(selectedEvent.key);
+                  const isPassed = isEventPassed(details);
+                  return (
+                    <>
+                      {isPassed && (
+                        <div className="mb-4 p-4 bg-red-100 border border-red-300 rounded-lg">
+                          <p className="text-red-700 font-semibold">
+                            This event has already passed.
                           </p>
                         </div>
+                      )}
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center gap-3 text-gray-700">
+                          <svg
+                            className="w-5 h-5 flex-shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                          </svg>
+                          <span className="font-medium">
+                            {formatDate(details.date)}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-3 text-gray-700">
+                          <svg
+                            className="w-5 h-5 flex-shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                          <span>
+                            {details.time} - {details.endTime}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-3 text-gray-700">
+                          <svg
+                            className="w-5 h-5 flex-shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                          </svg>
+                          <span>{details.location}</span>
+                        </div>
+                      </div>
 
-                        {selectedEvent.images && selectedEvent.images.length > 1 && (
+                      <div className="mb-6">
+                        <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                          {t("events.modal.description")}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {t(
+                            `events.eventList.${selectedEvent.key}.description`,
+                          )}
+                        </p>
+                      </div>
+
+                      {selectedEvent.images &&
+                        selectedEvent.images.length > 1 && (
                           <div className="mb-6">
-                            <div className="w-full h-[32rem] rounded-2xl overflow-hidden">
+                            <div className="w-full h-[22rem] md:h-[26rem] lg:h-[28rem] rounded-2xl overflow-hidden bg-olive-50">
                               <EventImageCarousel
                                 images={selectedEvent.images}
-                                alt={t(`events.eventList.${selectedEvent.key}.title`)}
+                                alt={t(
+                                  `events.eventList.${selectedEvent.key}.title`,
+                                )}
                               />
                             </div>
                           </div>
                         )}
 
-                        {Array.isArray(
-                          t(`events.eventList.${selectedEvent.key}.programme`, {
-                            returnObjects: true,
-                          }),
-                        ) && (
-                          <div className="mb-6">
-                            <h3 className="text-lg font-semibold text-olive-800 mb-2">
-                              {t("events.modal.programme")}
-                            </h3>
-                            <ul className="space-y-2 text-gray-600">
-                              {(
-                                t(
-                                  `events.eventList.${selectedEvent.key}.programme`,
-                                  { returnObjects: true },
-                                ) as string[]
-                              ).map((item, index) => (
-                                <li
-                                  key={index}
-                                  className="flex items-start gap-2"
-                                >
-                                  <span className="text-olive-600 mt-1">•</span>
-                                  <span>{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {Array.isArray(
-                          t(`events.eventList.${selectedEvent.key}.cost`, {
-                            returnObjects: true,
-                          }),
-                        ) && (
-                          <div className="mb-6">
-                            <h3 className="text-lg font-semibold text-olive-800 mb-2">
-                              {t("events.modal.cost")}
-                            </h3>
-                            <ul className="space-y-1 text-gray-600">
-                              {(
-                                t(
-                                  `events.eventList.${selectedEvent.key}.cost`,
-                                  { returnObjects: true },
-                                ) as string[]
-                              ).map((item, index) => (
-                                <li
-                                  key={index}
-                                  className="flex items-start gap-2"
-                                >
-                                  <span className="text-olive-600 mt-1">•</span>
-                                  <span>{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {t(
-                          `events.eventList.${selectedEvent.key}.reservations`,
-                        ) && (
-                          <div className="mb-6">
-                            <h3 className="text-lg font-semibold text-olive-800 mb-2">
-                              {t("events.modal.reservations")}
-                            </h3>
-                            <p className="text-gray-600 leading-relaxed">
-                              {t(
-                                `events.eventList.${selectedEvent.key}.reservations`,
-                              )}
-                            </p>
-                          </div>
-                        )}
-
-                        <div className="flex items-center justify-between pt-6 border-t border-gray-200">
-                          <div>
-                            <p className="text-gray-500">
-                              {t("events.modal.availableSpots")}
-                            </p>
-                            <p
-                              className={`text-lg font-semibold ${
-                                details.spotsLeft <= 3
-                                  ? "text-red-500"
-                                  : "text-olive-600"
-                              }`}
-                            >
-                              {details.spotsLeft} {t("events.modal.remaining")}{" "}
-                              {details.spots}
-                            </p>
-                          </div>
-                          <div className="flex gap-4">
-                            <button
-                              onClick={() => setSelectedEvent(null)}
-                              className="px-6 py-3 border-2 border-olive-600 text-olive-600 rounded-full font-semibold hover:bg-olive-50 transition-all duration-300"
-                            >
-                              {t("events.modal.close")}
-                            </button>
-                            <button
-                              onClick={() =>
-                                window.open(
-                                  "https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0",
-                                  "_blank",
-                                )
-                              }
-                              disabled={isPassed}
-                              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                                isPassed
-                                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                  : "bg-olive-600 text-white hover:bg-olive-700"
-                              }`}
-                            >
-                              {t("events.modal.registerNow")}
-                            </button>
-                          </div>
+                      {Array.isArray(
+                        t(`events.eventList.${selectedEvent.key}.programme`, {
+                          returnObjects: true,
+                        }),
+                      ) && (
+                        <div className="mb-6">
+                          <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                            {t("events.modal.programme")}
+                          </h3>
+                          <ul className="space-y-2 text-gray-600">
+                            {(
+                              t(
+                                `events.eventList.${selectedEvent.key}.programme`,
+                                { returnObjects: true },
+                              ) as string[]
+                            ).map((item, index) => (
+                              <li
+                                key={index}
+                                className="flex items-start gap-2"
+                              >
+                                <span className="text-olive-600 mt-1">•</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      </>
-                    );
-                  })()}
-                </div>
-              </>
-            )}
+                      )}
+
+                      {Array.isArray(
+                        t(`events.eventList.${selectedEvent.key}.cost`, {
+                          returnObjects: true,
+                        }),
+                      ) && (
+                        <div className="mb-6">
+                          <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                            {t("events.modal.cost")}
+                          </h3>
+                          <ul className="space-y-1 text-gray-600">
+                            {(
+                              t(`events.eventList.${selectedEvent.key}.cost`, {
+                                returnObjects: true,
+                              }) as string[]
+                            ).map((item, index) => (
+                              <li
+                                key={index}
+                                className="flex items-start gap-2"
+                              >
+                                <span className="text-olive-600 mt-1">•</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {t(
+                        `events.eventList.${selectedEvent.key}.reservations`,
+                      ) && (
+                        <div className="mb-6">
+                          <h3 className="text-lg font-semibold text-olive-800 mb-2">
+                            {t("events.modal.reservations")}
+                          </h3>
+                          <p className="text-gray-600 leading-relaxed">
+                            {t(
+                              `events.eventList.${selectedEvent.key}.reservations`,
+                            )}
+                          </p>
+                        </div>
+                      )}
+
+                      <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+                        <div>
+                          <p className="text-gray-500">
+                            {t("events.modal.availableSpots")}
+                          </p>
+                          <p
+                            className={`text-lg font-semibold ${
+                              details.spotsLeft <= 3
+                                ? "text-red-500"
+                                : "text-olive-600"
+                            }`}
+                          >
+                            {details.spotsLeft} {t("events.modal.remaining")}{" "}
+                            {details.spots}
+                          </p>
+                        </div>
+                        <div className="flex gap-4">
+                          <button
+                            onClick={() => setSelectedEvent(null)}
+                            className="px-6 py-3 border-2 border-olive-600 text-olive-600 rounded-full font-semibold hover:bg-olive-50 transition-all duration-300"
+                          >
+                            {t("events.modal.close")}
+                          </button>
+                          <button
+                            onClick={() =>
+                              window.open(
+                                "https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0",
+                                "_blank",
+                              )
+                            }
+                            disabled={isPassed}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                              isPassed
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                : "bg-olive-600 text-white hover:bg-olive-700"
+                            }`}
+                          >
+                            {t("events.modal.registerNow")}
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })()}
+              </div>
+            </>
           </div>
         </div>
       )}

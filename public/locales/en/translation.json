@@ -9,7 +9,8 @@
     "contact": "Contact",
     "partners": "Partners",
     "uniPro": "UNI-PRO",
-    "villaMaternini": "Villa Maternini"
+    "villaMaternini": "Villa Maternini",
+    "humanStudies": "Human Studies"
   },
   "home": {
     "hero": {
@@ -643,6 +644,7 @@
       "wellness": "Wellness",
       "spirituality": "Spirituality"
     },
+    "loading": "Loading insights...",
     "downloadPdf": "Download PDF",
     "noLessons": {
       "title": "Lessons Coming Soon",

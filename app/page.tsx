@@ -332,20 +332,36 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-16 reveal">
-            <a href="/uni-pro" className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+            <Link
+              href="/uni-pro"
+              className="flex items-center justify-center transition-all duration-300 hover:scale-105"
+            >
               <img
                 src="/images/partners/unipro.png"
                 alt="UNI-PRO"
                 className="h-24 object-contain"
               />
-            </a>
-            <a href="https://www.villamaternini.com/" className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+            </Link>
+            <Link
+              href="/villa-maternini"
+              className="flex items-center justify-center transition-all duration-300 hover:scale-105"
+            >
               <img
                 src="/images/partners/villaMaternini.jpg.jpeg"
                 alt="Villa Maternini"
                 className="h-24 object-contain"
               />
-            </a>
+            </Link>
+            <Link
+              href="/human-studies"
+              className="flex items-center justify-center transition-all duration-300 hover:scale-105"
+            >
+              <img
+                src="/images/partners/humanStudies.jpeg"
+                alt="Human Studies"
+                className="h-24 object-contain"
+              />
+            </Link>
           </div>
         </div>
       </section>
@@ -371,7 +387,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="py-24 relative overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{
             backgroundImage: "url('/images/imgsfondo1.jpg')",

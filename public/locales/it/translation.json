@@ -9,7 +9,8 @@
     "contact": "Contatti",
     "partners": "Partner",
     "uniPro": "UNI-PRO",
-    "villaMaternini": "Villa Maternini"
+    "villaMaternini": "Villa Maternini",
+    "humanStudies": "Human Studies"
   },
   "home": {
     "hero": {
@@ -632,6 +633,7 @@
       "wellness": "Benessere",
       "spirituality": "Spiritualità"
     },
+    "loading": "Caricamento approfondimenti...",
     "downloadPdf": "Scarica PDF",
     "noLessons": {
       "title": "Lezioni in Arrivo",
