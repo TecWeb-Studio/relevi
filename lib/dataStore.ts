@@ -24,9 +24,34 @@ export interface AvailabilityOverride {
   reason?: string;
 }
 
+export interface OperatorSchedule {
+  operatorKey: string;
+  daysOfWeek: number[]; // 0=Sun, 1=Mon, ... 6=Sat
+  timeSlots: { start: string; end: string }[]; // default slots (backward compat)
+  daySlots?: { [day: number]: { start: string; end: string }[] }; // per-day slots override
+  sessionDuration: number; // minutes
+  breakBetweenSessions: number; // minutes
+}
+
+const DEFAULT_SCHEDULES: OperatorSchedule[] = [
+  { operatorKey: "headmaster", daysOfWeek: [1,2,3,4,5], timeSlots: [{ start: "09:00", end: "13:00" }, { start: "14:30", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "corradoZamboni", daysOfWeek: [2,4], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "deniseDallaPasqua", daysOfWeek: [1,3,5], timeSlots: [{ start: "09:00", end: "13:00" }, { start: "14:00", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "francescaTonon", daysOfWeek: [2,4,6], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "giancarloPavanello", daysOfWeek: [1,2,3,4,5], timeSlots: [{ start: "09:00", end: "13:00" }, { start: "14:00", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "martinaPasut", daysOfWeek: [2,4,6], timeSlots: [{ start: "09:00", end: "12:00" }, { start: "16:00", end: "20:00" }], sessionDuration: 45, breakBetweenSessions: 15 },
+  { operatorKey: "massimoGnesotto", daysOfWeek: [2,4,6], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "michelaDolce", daysOfWeek: [1,3,5], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "14:30", end: "18:30" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "monicaBortoluzzi", daysOfWeek: [1,3,5], timeSlots: [{ start: "09:30", end: "12:30" }, { start: "14:30", end: "18:30" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "paoloAvella", daysOfWeek: [1,2,3,4,5,6], timeSlots: [{ start: "08:00", end: "12:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 45, breakBetweenSessions: 15 },
+  { operatorKey: "sabrinaPozzobon", daysOfWeek: [2,4,6], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "14:30", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+  { operatorKey: "tamaraZanchetta", daysOfWeek: [1,3,5,6], timeSlots: [{ start: "09:00", end: "12:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
+];
+
 interface DataStore {
   appointments: Appointment[];
   availabilityOverrides: AvailabilityOverride[];
+  operatorSchedules: OperatorSchedule[];
 }
 
 const DATA_PATH = join(process.cwd(), "data");
@@ -42,15 +67,17 @@ function ensureDataDir() {
 function readData(): DataStore {
   ensureDataDir();
   if (!existsSync(APPOINTMENTS_FILE)) {
-    const defaultData: DataStore = { appointments: [], availabilityOverrides: [] };
+    const defaultData: DataStore = { appointments: [], availabilityOverrides: [], operatorSchedules: [] };
     writeFileSync(APPOINTMENTS_FILE, JSON.stringify(defaultData, null, 2));
     return defaultData;
   }
   try {
     const raw = readFileSync(APPOINTMENTS_FILE, "utf-8");
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    if (!parsed.operatorSchedules) parsed.operatorSchedules = [];
+    return parsed;
   } catch {
-    return { appointments: [], availabilityOverrides: [] };
+    return { appointments: [], availabilityOverrides: [], operatorSchedules: [] };
   }
 }
 
@@ -144,4 +171,31 @@ export function removeAvailabilityOverride(operatorKey: string, date: string): b
   data.availabilityOverrides.splice(idx, 1);
   writeData(data);
   return true;
+}
+
+// Operator Schedules
+export function getOperatorSchedule(operatorKey: string): OperatorSchedule {
+  const data = readData();
+  const found = data.operatorSchedules.find((s) => s.operatorKey === operatorKey);
+  if (found) return found;
+  const def = DEFAULT_SCHEDULES.find((s) => s.operatorKey === operatorKey);
+  return def || { operatorKey, daysOfWeek: [1, 2, 3, 4, 5], timeSlots: [{ start: "09:00", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 };
+}
+
+export function setOperatorSchedule(schedule: OperatorSchedule): void {
+  const data = readData();
+  const idx = data.operatorSchedules.findIndex((s) => s.operatorKey === schedule.operatorKey);
+  if (idx >= 0) {
+    data.operatorSchedules[idx] = schedule;
+  } else {
+    data.operatorSchedules.push(schedule);
+  }
+  writeData(data);
+}
+
+export function getAllOperatorSchedules(): OperatorSchedule[] {
+  const data = readData();
+  const dbKeys = new Set(data.operatorSchedules.map((s) => s.operatorKey));
+  const defaults = DEFAULT_SCHEDULES.filter((s) => !dbKeys.has(s.operatorKey));
+  return [...data.operatorSchedules, ...defaults];
 }

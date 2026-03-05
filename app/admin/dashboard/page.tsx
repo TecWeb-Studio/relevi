@@ -33,6 +33,15 @@ interface AvailabilityOverride {
   reason?: string;
 }
 
+interface OperatorSchedule {
+  operatorKey: string;
+  daysOfWeek: number[];
+  timeSlots: { start: string; end: string }[];
+  daySlots?: { [day: number]: { start: string; end: string }[] };
+  sessionDuration: number;
+  breakBetweenSessions: number;
+}
+
 const OPERATOR_NAMES: Record<string, string> = {
   headmaster: "Francesca Mayer",
   corradoZamboni: "Corrado Zamboni",
@@ -66,11 +75,14 @@ export default function AdminDashboard() {
   const [overrides, setOverrides] = useState<AvailabilityOverride[]>([]);
   const [selectedOperator, setSelectedOperator] = useState<string>("");
   const [showNewAppointment, setShowNewAppointment] = useState(false);
-  const [showDayOff, setShowDayOff] = useState(false);
+  const [showScheduleEditor, setShowScheduleEditor] = useState(false);
+  const [showOverrideEditor, setShowOverrideEditor] = useState(false);
   const [editingAppointment, setEditingAppointment] = useState<Appointment | null>(null);
   const [statusFilter, setStatusFilter] = useState<string>("");
   const [dateFilter, setDateFilter] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [schedule, setSchedule] = useState<OperatorSchedule | null>(null);
+  const [calendarDate, setCalendarDate] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() });
 
   // New appointment form state
   const [newApt, setNewApt] = useState({
@@ -85,11 +97,14 @@ export default function AdminDashboard() {
     notes: "",
   });
 
-  // Day off form state
-  const [dayOffForm, setDayOffForm] = useState({
+  // Override form state
+  const [overrideForm, setOverrideForm] = useState({
     operatorKey: "",
     date: "",
+    available: false,
     reason: "",
+    customSlots: false,
+    timeSlots: [{ start: "", end: "" }] as { start: string; end: string }[],
   });
 
   // Auth check
@@ -124,8 +139,8 @@ export default function AdminDashboard() {
     }
   }, [user, selectedOperator, statusFilter, dateFilter]);
 
-  // Fetch overrides
-  const fetchOverrides = useCallback(async () => {
+  // Fetch availability (overrides + schedule)
+  const fetchAvailability = useCallback(async () => {
     if (!user) return;
     const params = new URLSearchParams();
     if (selectedOperator) params.set("operatorKey", selectedOperator);
@@ -134,15 +149,16 @@ export default function AdminDashboard() {
     if (res.ok) {
       const data = await res.json();
       setOverrides(data.overrides);
+      setSchedule(data.schedule ?? null);
     }
   }, [user, selectedOperator]);
 
   useEffect(() => {
     if (user) {
       fetchAppointments();
-      fetchOverrides();
+      fetchAvailability();
     }
-  }, [user, fetchAppointments, fetchOverrides]);
+  }, [user, fetchAppointments, fetchAvailability]);
 
   // Today's date string
   const todayStr = useMemo(() => {
@@ -238,22 +254,51 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleAddDayOff = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSaveSchedule = async (
+    formData: { daysOfWeek: number[]; timeSlots: { start: string; end: string }[]; daySlots?: { [day: number]: { start: string; end: string }[] }; sessionDuration: number; breakBetweenSessions: number },
+    targetKey?: string
+  ) => {
     const res = await fetch("/api/admin/availability", {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        operatorKey: dayOffForm.operatorKey || undefined,
-        date: dayOffForm.date,
-        available: false,
-        reason: dayOffForm.reason,
+        operatorKey: targetKey || selectedOperator || user?.employeeKey,
+        ...formData,
       }),
     });
     if (res.ok) {
-      setShowDayOff(false);
-      setDayOffForm({ operatorKey: "", date: "", reason: "" });
-      fetchOverrides();
+      setShowScheduleEditor(false);
+      fetchAvailability();
+    }
+  };
+
+  const handleSaveOverride = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { operatorKey, date, available, reason, customSlots, timeSlots } = overrideForm;
+    const body: {
+      operatorKey?: string;
+      date: string;
+      available: boolean;
+      reason: string;
+      timeSlots?: { start: string; end: string }[];
+    } = {
+      operatorKey: operatorKey || undefined,
+      date,
+      available,
+      reason,
+    };
+    if (customSlots && timeSlots.length > 0) {
+      body.timeSlots = timeSlots.filter((s) => s.start && s.end);
+    }
+    const res = await fetch("/api/admin/availability", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (res.ok) {
+      setShowOverrideEditor(false);
+      setOverrideForm({ operatorKey: "", date: "", available: false, reason: "", customSlots: false, timeSlots: [{ start: "", end: "" }] });
+      fetchAvailability();
     }
   };
 
@@ -261,7 +306,7 @@ export default function AdminDashboard() {
     const params = new URLSearchParams({ operatorKey, date });
     const res = await fetch(`/api/admin/availability?${params}`, { method: "DELETE" });
     if (res.ok) {
-      fetchOverrides();
+      fetchAvailability();
     }
   };
 
@@ -287,6 +332,7 @@ export default function AdminDashboard() {
   const tabs: { key: TabType; label: string; icon: string }[] = [
     { key: "today", label: "Oggi", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
     { key: "appointments", label: "Appuntamenti", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" },
+    { key: "calendar", label: "Calendario", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" },
     { key: "availability", label: "Disponibilità", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
     { key: "stats", label: "Statistiche", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
   ];
@@ -401,7 +447,7 @@ export default function AdminDashboard() {
                 Nuovo Appuntamento
               </button>
               <button
-                onClick={() => setShowDayOff(true)}
+                onClick={() => { setOverrideForm((p) => ({ ...p, available: false })); setShowOverrideEditor(true); }}
                 className="bg-white text-olive-700 px-5 py-2.5 rounded-xl font-medium hover:bg-olive-50 transition-all flex items-center gap-2 border border-olive-200"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -582,26 +628,136 @@ export default function AdminDashboard() {
           </div>
         )}
 
+        {/* ===== CALENDAR TAB ===== */}
+        {activeTab === "calendar" && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-olive-800">Calendario</h2>
+              <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-2 py-1">
+                <button
+                  onClick={() => setCalendarDate((p) => {
+                    const d = new Date(p.year, p.month - 1, 1);
+                    return { year: d.getFullYear(), month: d.getMonth() };
+                  })}
+                  className="p-1.5 text-gray-500 hover:text-olive-700 hover:bg-olive-50 rounded-lg transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <span className="text-sm font-semibold text-gray-700 min-w-32 text-center">
+                  {new Date(calendarDate.year, calendarDate.month).toLocaleDateString("it-IT", { month: "long", year: "numeric" })}
+                </span>
+                <button
+                  onClick={() => setCalendarDate((p) => {
+                    const d = new Date(p.year, p.month + 1, 1);
+                    return { year: d.getFullYear(), month: d.getMonth() };
+                  })}
+                  className="p-1.5 text-gray-500 hover:text-olive-700 hover:bg-olive-50 rounded-lg transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                </button>
+              </div>
+            </div>
+            <MonthCalendar
+              year={calendarDate.year}
+              month={calendarDate.month}
+              appointments={appointments}
+              overrides={overrides}
+              schedule={schedule}
+              operatorKey={selectedOperator || user.employeeKey}
+              onDayClick={(date) => { setDateFilter(date); setActiveTab("appointments"); }}
+            />
+            <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-olive-100 border border-olive-200 inline-block" />Giorno lavorativo</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-red-100 border border-red-200 inline-block" />Giorno libero</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-green-100 border border-green-200 inline-block" />Giorno extra</span>
+              <span className="flex items-center gap-1.5"><span className="w-4 h-4 rounded-full bg-olive-600 text-white flex items-center justify-center font-bold inline-flex text-[10px]">N</span>Appuntamenti</span>
+            </div>
+          </div>
+        )}
+
         {/* ===== AVAILABILITY TAB ===== */}
         {activeTab === "availability" && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-bold text-olive-800">Gestione Disponibilità</h2>
-              <button
-                onClick={() => setShowDayOff(true)}
-                className="bg-olive-600 text-white px-5 py-2.5 rounded-xl font-medium hover:bg-olive-700 transition-all flex items-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Aggiungi Modifica
-              </button>
+            {/* Base Schedule Section */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+              <div className="p-5 border-b border-gray-100 flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-olive-800">Orario Settimanale Base</h3>
+                  <p className="text-sm text-gray-500">Giorni e fasce orarie lavorative regolari</p>
+                </div>
+                {(schedule || user.role !== "superadmin" || selectedOperator) && (
+                  <button
+                    onClick={() => setShowScheduleEditor(true)}
+                    className="bg-olive-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-olive-700 flex items-center gap-2"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    Modifica Orario
+                  </button>
+                )}
+              </div>
+              {schedule ? (
+                <div className="p-5 space-y-3">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Orario per Giorno</p>
+                  <div className="space-y-2">
+                    {["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"].map((dayLabel, i) => {
+                      if (!schedule.daysOfWeek.includes(i)) return null;
+                      const slots = schedule.daySlots?.[i] || schedule.timeSlots;
+                      return (
+                        <div key={i} className="flex items-start gap-3 py-1.5 border-b border-gray-50 last:border-0">
+                          <span className="w-9 text-sm font-semibold text-olive-700 pt-0.5">{dayLabel}</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {slots.map((slot, si) => (
+                              <span key={si} className="text-sm text-gray-700 bg-olive-50 px-2.5 py-1 rounded-lg border border-olive-100">
+                                {slot.start}–{slot.end}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="flex gap-6 text-sm text-gray-600 pt-1">
+                    <div><span className="font-medium text-gray-700">Durata sessione:</span> {schedule.sessionDuration} min</div>
+                    <div><span className="font-medium text-gray-700">Pausa:</span> {schedule.breakBetweenSessions} min</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-10 text-center text-gray-400">
+                  <svg className="w-12 h-12 mx-auto mb-3 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="font-medium">Seleziona un operatore</p>
+                  <p className="text-sm mt-1">Scegli un operatore dal menu in alto per visualizzare e modificare il suo orario</p>
+                </div>
+              )}
             </div>
 
-            {/* Overrides list */}
+            {/* Overrides / Exceptions Section */}
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-olive-800">Eccezioni al Calendario</h2>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => { setOverrideForm((p) => ({ ...p, available: true, operatorKey: selectedOperator })); setShowOverrideEditor(true); }}
+                  className="bg-green-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-green-700 flex items-center gap-1.5"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                  Giorno Extra
+                </button>
+                <button
+                  onClick={() => { setOverrideForm((p) => ({ ...p, available: false, operatorKey: selectedOperator })); setShowOverrideEditor(true); }}
+                  className="bg-red-500 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-red-600 flex items-center gap-1.5"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                  Giorno Libero
+                </button>
+              </div>
+            </div>
+
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
               <div className="p-5 border-b border-gray-100">
-                <h3 className="font-semibold text-olive-800">Giorni Liberi / Modifiche</h3>
+                <h3 className="font-semibold text-olive-800">Modifiche Programmate</h3>
                 <p className="text-sm text-gray-500">Eccezioni al calendario regolare</p>
               </div>
               {overrides.length === 0 ? (
@@ -621,12 +777,18 @@ export default function AdminDashboard() {
                         </div>
                         <div>
                           <p className="font-medium text-gray-800">
+                            {override.available ? "Giorno Extra" : "Giorno Libero"} —{" "}
                             {new Date(override.date + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" })}
                           </p>
                           <p className="text-sm text-gray-500">
                             {OPERATOR_NAMES[override.operatorKey] || override.operatorKey}
                             {override.reason && ` — ${override.reason}`}
                           </p>
+                          {override.timeSlots && override.timeSlots.length > 0 && (
+                            <p className="text-xs text-gray-400 mt-0.5">
+                              Orari: {override.timeSlots.map(s => `${s.start}–${s.end}`).join(", ")}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <button
@@ -807,19 +969,22 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* ===== DAY OFF MODAL ===== */}
-      {showDayOff && (
-        <Modal onClose={() => setShowDayOff(false)} title="Segna Giorno Libero">
-          <form onSubmit={handleAddDayOff} className="space-y-4">
+      {/* ===== OVERRIDE EDITOR MODAL ===== */}
+      {showOverrideEditor && (
+        <Modal
+          onClose={() => setShowOverrideEditor(false)}
+          title={overrideForm.available ? "Aggiungi Giorno Extra" : "Segna Giorno Libero"}
+        >
+          <form onSubmit={handleSaveOverride} className="space-y-4">
             {user.role === "superadmin" && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Operatore</label>
                 <select
-                  value={dayOffForm.operatorKey}
-                  onChange={(e) => setDayOffForm((p) => ({ ...p, operatorKey: e.target.value }))}
+                  value={overrideForm.operatorKey}
+                  onChange={(e) => setOverrideForm((p) => ({ ...p, operatorKey: e.target.value }))}
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white"
                 >
-                  <option value="">Se stesso</option>
+                  <option value="">Seleziona operatore (default: se stesso)</option>
                   {Object.entries(OPERATOR_NAMES).map(([key, name]) => (
                     <option key={key} value={key}>{name}</option>
                   ))}
@@ -827,12 +992,39 @@ export default function AdminDashboard() {
               </div>
             )}
             <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setOverrideForm((p) => ({ ...p, available: false }))}
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
+                    !overrideForm.available
+                      ? "bg-red-500 text-white border-red-500"
+                      : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+                  }`}
+                >
+                  Giorno Libero
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setOverrideForm((p) => ({ ...p, available: true }))}
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
+                    overrideForm.available
+                      ? "bg-green-600 text-white border-green-600"
+                      : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+                  }`}
+                >
+                  Giorno Extra
+                </button>
+              </div>
+            </div>
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Data *</label>
               <input
                 type="date"
                 required
-                value={dayOffForm.date}
-                onChange={(e) => setDayOffForm((p) => ({ ...p, date: e.target.value }))}
+                value={overrideForm.date}
+                onChange={(e) => setOverrideForm((p) => ({ ...p, date: e.target.value }))}
                 className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700"
               />
             </div>
@@ -840,28 +1032,98 @@ export default function AdminDashboard() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Motivo</label>
               <input
                 type="text"
-                value={dayOffForm.reason}
-                onChange={(e) => setDayOffForm((p) => ({ ...p, reason: e.target.value }))}
+                value={overrideForm.reason}
+                onChange={(e) => setOverrideForm((p) => ({ ...p, reason: e.target.value }))}
                 placeholder="Es: Ferie, Malattia, Formazione..."
                 className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700"
               />
             </div>
+            {overrideForm.available && (
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-medium text-gray-700">Orari Personalizzati</label>
+                  <button
+                    type="button"
+                    onClick={() => setOverrideForm((p) => ({ ...p, customSlots: !p.customSlots }))}
+                    className={`relative w-10 h-5 rounded-full transition-colors ${
+                      overrideForm.customSlots ? "bg-olive-600" : "bg-gray-200"
+                    }`}
+                  >
+                    <span className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${
+                      overrideForm.customSlots ? "translate-x-5" : "translate-x-0.5"
+                    }`} />
+                  </button>
+                </div>
+                {overrideForm.customSlots && (
+                  <div className="space-y-2">
+                    {overrideForm.timeSlots.map((slot, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <input
+                          type="time"
+                          value={slot.start}
+                          onChange={(e) => setOverrideForm((p) => ({ ...p, timeSlots: p.timeSlots.map((s, j) => j === i ? { ...s, start: e.target.value } : s) }))}
+                          className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700"
+                        />
+                        <span className="text-gray-400 text-sm">—</span>
+                        <input
+                          type="time"
+                          value={slot.end}
+                          onChange={(e) => setOverrideForm((p) => ({ ...p, timeSlots: p.timeSlots.map((s, j) => j === i ? { ...s, end: e.target.value } : s) }))}
+                          className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700"
+                        />
+                        {overrideForm.timeSlots.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => setOverrideForm((p) => ({ ...p, timeSlots: p.timeSlots.filter((_, j) => j !== i) }))}
+                            className="text-gray-400 hover:text-red-500 p-1"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setOverrideForm((p) => ({ ...p, timeSlots: [...p.timeSlots, { start: "", end: "" }] }))}
+                      className="text-xs text-olive-600 hover:text-olive-700 font-medium"
+                    >
+                      + Aggiungi fascia
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
             <div className="flex gap-3 pt-2">
               <button
                 type="button"
-                onClick={() => setShowDayOff(false)}
+                onClick={() => setShowOverrideEditor(false)}
                 className="flex-1 py-2.5 border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50"
               >
                 Annulla
               </button>
               <button
                 type="submit"
-                className="flex-1 py-2.5 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600"
+                className={`flex-1 py-2.5 text-white rounded-lg text-sm font-medium ${
+                  overrideForm.available ? "bg-green-600 hover:bg-green-700" : "bg-red-500 hover:bg-red-600"
+                }`}
               >
-                Segna Come Libero
+                {overrideForm.available ? "Aggiungi Giorno Extra" : "Segna Come Libero"}
               </button>
             </div>
           </form>
+        </Modal>
+      )}
+
+      {/* ===== SCHEDULE EDITOR MODAL ===== */}
+      {showScheduleEditor && (
+        <Modal onClose={() => setShowScheduleEditor(false)} title="Modifica Orario Settimanale">
+          <ScheduleEditorForm
+            schedule={schedule}
+            defaultOperatorKey={selectedOperator || user.employeeKey}
+            isSuperAdmin={user.role === "superadmin"}
+            onSave={handleSaveSchedule}
+            onCancel={() => setShowScheduleEditor(false)}
+          />
         </Modal>
       )}
 
@@ -1138,6 +1400,355 @@ function StatCard({ label, value, color }: { label: string; value: number; color
     <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
       <p className={`text-4xl font-bold ${colorMap[color] || "text-gray-800"}`}>{value}</p>
       <p className="text-sm text-gray-500 mt-1">{label}</p>
+    </div>
+  );
+}
+
+function MonthCalendar({
+  year,
+  month,
+  appointments,
+  overrides,
+  schedule,
+  operatorKey,
+  onDayClick,
+}: {
+  year: number;
+  month: number;
+  appointments: Appointment[];
+  overrides: AvailabilityOverride[];
+  schedule: OperatorSchedule | null;
+  operatorKey: string;
+  onDayClick: (date: string) => void;
+}) {
+  const DAY_LABELS = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
+  const firstDay = new Date(year, month, 1);
+  const lastDayNum = new Date(year, month + 1, 0).getDate();
+  const startOffset = firstDay.getDay();
+
+  const cells: (number | null)[] = [];
+  for (let i = 0; i < startOffset; i++) cells.push(null);
+  for (let d = 1; d <= lastDayNum; d++) cells.push(d);
+
+  const todayStr = (() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  })();
+
+  const getDateStr = (day: number) =>
+    `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div className="grid grid-cols-7 border-b border-gray-100 bg-gray-50">
+        {DAY_LABELS.map((d) => (
+          <div key={d} className="p-3 text-center text-xs font-semibold text-gray-500">
+            {d}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7">
+        {cells.map((day, idx) => {
+          if (day === null) {
+            return <div key={idx} className="min-h-20 border-b border-r border-gray-50" />;
+          }
+
+          const dateStr = getDateStr(day);
+          const dayOfWeek = new Date(year, month, day).getDay();
+          const isToday = dateStr === todayStr;
+          const isPast = dateStr < todayStr;
+
+          const isWorkingDay = schedule ? schedule.daysOfWeek.includes(dayOfWeek) : false;
+          const override = overrides.find(
+            (o) => o.date === dateStr && (!operatorKey || o.operatorKey === operatorKey)
+          );
+          const aptCount = appointments.filter(
+            (a) =>
+              a.date === dateStr &&
+              a.status !== "cancelled" &&
+              (!operatorKey || a.operatorKey === operatorKey)
+          ).length;
+
+          let bgClass = "";
+          if (override) {
+            bgClass = override.available ? "bg-green-50" : "bg-red-50";
+          } else if (isWorkingDay) {
+            bgClass = isPast ? "bg-olive-50/40" : "bg-olive-50";
+          } else {
+            bgClass = "";
+          }
+
+          return (
+            <div
+              key={idx}
+              onClick={() => aptCount > 0 && onDayClick(dateStr)}
+              className={`min-h-20 p-2 border-b border-r border-gray-50 transition-opacity ${
+                bgClass
+              } ${isToday ? "ring-2 ring-olive-500 ring-inset" : ""} ${
+                aptCount > 0 ? "cursor-pointer hover:opacity-80" : ""
+              }`}
+            >
+              <div
+                className={`text-sm font-medium mb-1 ${
+                  isToday
+                    ? "text-olive-700 font-bold"
+                    : isPast
+                    ? "text-gray-400"
+                    : "text-gray-700"
+                }`}
+              >
+                {day}
+              </div>
+              {override && (
+                <div
+                  className={`text-xs font-medium ${
+                    override.available ? "text-green-700" : "text-red-600"
+                  }`}
+                >
+                  {override.available ? "Extra" : override.reason || "Libero"}
+                </div>
+              )}
+              {aptCount > 0 && (
+                <div className="mt-1 inline-flex w-5 h-5 bg-olive-600 text-white text-[10px] rounded-full items-center justify-center font-bold">
+                  {aptCount}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ScheduleEditorForm({
+  schedule,
+  defaultOperatorKey,
+  isSuperAdmin,
+  onSave,
+  onCancel,
+}: {
+  schedule: OperatorSchedule | null;
+  defaultOperatorKey: string;
+  isSuperAdmin: boolean;
+  onSave: (
+    formData: {
+      daysOfWeek: number[];
+      timeSlots: { start: string; end: string }[];
+      daySlots?: { [day: number]: { start: string; end: string }[] };
+      sessionDuration: number;
+      breakBetweenSessions: number;
+    },
+    targetKey?: string
+  ) => void;
+  onCancel: () => void;
+}) {
+  type DayConfig = { enabled: boolean; slots: { start: string; end: string }[] };
+  const DAY_LABELS = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
+
+  const initDayConfigs = (): DayConfig[] => {
+    const defaultSlots = schedule?.timeSlots ?? [{ start: "09:00", end: "18:00" }];
+    return Array.from({ length: 7 }, (_, i) => ({
+      enabled: schedule ? schedule.daysOfWeek.includes(i) : [1, 2, 3, 4, 5].includes(i),
+      slots: schedule?.daySlots?.[i]
+        ? schedule.daySlots[i].map((s) => ({ ...s }))
+        : defaultSlots.map((s) => ({ ...s })),
+    }));
+  };
+
+  const [operatorKey, setOperatorKey] = useState(schedule?.operatorKey || defaultOperatorKey);
+  const [dayConfigs, setDayConfigs] = useState<DayConfig[]>(initDayConfigs);
+  const [sessionDuration, setSessionDuration] = useState(schedule?.sessionDuration ?? 60);
+  const [breakBetweenSessions, setBreakBetweenSessions] = useState(schedule?.breakBetweenSessions ?? 15);
+
+  const toggleDay = (i: number) =>
+    setDayConfigs((prev) => prev.map((d, idx) => (idx === i ? { ...d, enabled: !d.enabled } : d)));
+
+  const updateSlot = (dayIdx: number, slotIdx: number, field: "start" | "end", val: string) =>
+    setDayConfigs((prev) =>
+      prev.map((d, i) =>
+        i === dayIdx
+          ? { ...d, slots: d.slots.map((s, j) => (j === slotIdx ? { ...s, [field]: val } : s)) }
+          : d
+      )
+    );
+
+  const addSlot = (dayIdx: number) =>
+    setDayConfigs((prev) =>
+      prev.map((d, i) => (i === dayIdx ? { ...d, slots: [...d.slots, { start: "", end: "" }] } : d))
+    );
+
+  const removeSlot = (dayIdx: number, slotIdx: number) =>
+    setDayConfigs((prev) =>
+      prev.map((d, i) =>
+        i === dayIdx ? { ...d, slots: d.slots.filter((_, j) => j !== slotIdx) } : d
+      )
+    );
+
+  const handleSave = () => {
+    const daysOfWeek = dayConfigs.map((d, i) => (d.enabled ? i : -1)).filter((i) => i !== -1);
+    const daySlots: { [day: number]: { start: string; end: string }[] } = {};
+    dayConfigs.forEach((d, i) => { if (d.enabled) daySlots[i] = d.slots; });
+    const firstEnabled = dayConfigs.find((d) => d.enabled);
+    const timeSlots = firstEnabled?.slots ?? [{ start: "09:00", end: "18:00" }];
+    onSave({ daysOfWeek, timeSlots, daySlots, sessionDuration, breakBetweenSessions }, operatorKey || undefined);
+  };
+
+  return (
+    <div className="space-y-5">
+      {isSuperAdmin && (
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Operatore</label>
+          <select
+            value={operatorKey}
+            onChange={(e) => {
+              setOperatorKey(e.target.value);
+              setDayConfigs(Array.from({ length: 7 }, (_, i) => ({
+                enabled: [1, 2, 3, 4, 5].includes(i),
+                slots: [{ start: "09:00", end: "18:00" }],
+              })));
+              setSessionDuration(60);
+              setBreakBetweenSessions(15);
+            }}
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white"
+          >
+            <option value="">Seleziona operatore</option>
+            {Object.entries(OPERATOR_NAMES).map(([key, name]) => (
+              <option key={key} value={key}>{name}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Orario per Giorno</label>
+        <div className="space-y-2">
+          {dayConfigs.map((config, dayIdx) => (
+            <div
+              key={dayIdx}
+              className={`border rounded-xl overflow-hidden ${
+                config.enabled ? "border-olive-200" : "border-gray-100"
+              }`}
+            >
+              {/* Day header with toggle */}
+              <div
+                className={`flex items-center justify-between px-3 py-2.5 ${
+                  config.enabled ? "bg-olive-50" : "bg-gray-50"
+                }`}
+              >
+                <span
+                  className={`text-sm font-semibold ${
+                    config.enabled ? "text-olive-800" : "text-gray-400"
+                  }`}
+                >
+                  {DAY_LABELS[dayIdx]}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => toggleDay(dayIdx)}
+                  className={`relative w-10 h-5 rounded-full transition-colors flex-shrink-0 ${
+                    config.enabled ? "bg-olive-600" : "bg-gray-300"
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${
+                      config.enabled ? "translate-x-5" : "translate-x-0.5"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {/* Time slots */}
+              {config.enabled && (
+                <div className="p-3 space-y-2 bg-white">
+                  {config.slots.map((slot, slotIdx) => (
+                    <div key={slotIdx} className="flex items-center gap-2">
+                      <input
+                        type="time"
+                        value={slot.start}
+                        onChange={(e) => updateSlot(dayIdx, slotIdx, "start", e.target.value)}
+                        className="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-700"
+                      />
+                      <span className="text-gray-400 text-sm">—</span>
+                      <input
+                        type="time"
+                        value={slot.end}
+                        onChange={(e) => updateSlot(dayIdx, slotIdx, "end", e.target.value)}
+                        className="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-700"
+                      />
+                      {config.slots.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeSlot(dayIdx, slotIdx)}
+                          className="text-gray-400 hover:text-red-500 p-1 flex-shrink-0"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => addSlot(dayIdx)}
+                    className="text-xs text-olive-600 hover:text-olive-700 font-medium"
+                  >
+                    + Aggiungi fascia
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Durata Sessione</label>
+          <select
+            value={sessionDuration}
+            onChange={(e) => setSessionDuration(Number(e.target.value))}
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white"
+          >
+            <option value={30}>30 min</option>
+            <option value={45}>45 min</option>
+            <option value={60}>60 min</option>
+            <option value={90}>90 min</option>
+            <option value={120}>120 min</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Pausa tra Sessioni</label>
+          <select
+            value={breakBetweenSessions}
+            onChange={(e) => setBreakBetweenSessions(Number(e.target.value))}
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white"
+          >
+            <option value={0}>Nessuna</option>
+            <option value={10}>10 min</option>
+            <option value={15}>15 min</option>
+            <option value={30}>30 min</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="flex gap-3 pt-2">
+        <button
+          type="button"
+          onClick={onCancel}
+          className="flex-1 py-2.5 border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50"
+        >
+          Annulla
+        </button>
+        <button
+          type="button"
+          onClick={handleSave}
+          className="flex-1 py-2.5 bg-olive-600 text-white rounded-lg text-sm font-medium hover:bg-olive-700"
+        >
+          Salva Orario
+        </button>
+      </div>
     </div>
   );
 }

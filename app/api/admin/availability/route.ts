@@ -4,6 +4,8 @@ import {
   getAvailabilityOverrides,
   setAvailabilityOverride,
   removeAvailabilityOverride,
+  getOperatorSchedule,
+  setOperatorSchedule,
 } from "../../../../lib/dataStore";
 
 function authenticate(request: NextRequest) {
@@ -22,13 +24,17 @@ export async function GET(request: NextRequest) {
   const operatorKey = searchParams.get("operatorKey");
 
   let overrides;
+  let schedule = null;
+
   if (user.role === "superadmin") {
     overrides = getAvailabilityOverrides(operatorKey || undefined);
+    if (operatorKey) schedule = getOperatorSchedule(operatorKey);
   } else {
     overrides = getAvailabilityOverrides(user.employeeKey);
+    schedule = getOperatorSchedule(user.employeeKey);
   }
 
-  return NextResponse.json({ overrides });
+  return NextResponse.json({ overrides, schedule });
 }
 
 export async function POST(request: NextRequest) {
@@ -81,4 +87,36 @@ export async function DELETE(request: NextRequest) {
 
   const removed = removeAvailabilityOverride(targetOperator, date);
   return NextResponse.json({ success: removed });
+}
+
+export async function PUT(request: NextRequest) {
+  const user = authenticate(request);
+  if (!user) {
+    return NextResponse.json({ error: "Non autenticato" }, { status: 401 });
+  }
+
+  try {
+    const body = await request.json();
+    const { operatorKey, daysOfWeek, timeSlots, daySlots, sessionDuration, breakBetweenSessions } = body;
+
+    const targetKey =
+      user.role === "superadmin" && operatorKey ? operatorKey : user.employeeKey;
+
+    if (!Array.isArray(daysOfWeek) || !Array.isArray(timeSlots)) {
+      return NextResponse.json({ error: "Dati non validi" }, { status: 400 });
+    }
+
+    setOperatorSchedule({
+      operatorKey: targetKey,
+      daysOfWeek,
+      timeSlots,
+      daySlots: daySlots || undefined,
+      sessionDuration: Number(sessionDuration) || 60,
+      breakBetweenSessions: Number(breakBetweenSessions) || 15,
+    });
+
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json({ error: "Errore nel salvataggio" }, { status: 500 });
+  }
 }
