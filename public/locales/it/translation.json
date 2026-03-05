@@ -471,6 +471,26 @@
           "Consulente di Benessere"
         ]
       },
+      "francescaMayer": {
+        "name": "Francesca Mayer",
+        "role": "Professionista Olistica e Consulente del Benessere",
+        "shortBio": "Oltre al suo ruolo di direttrice, Francesca è una professionista olistica attiva, specializzata in consulenze personalizzate di benessere e terapie integrative.",
+        "bio": "Francesca Mayer non è solo la fondatrice e direttrice di Relevi Healing, ma è anche una professionista olistica attiva con oltre 20 anni di esperienza pratica. Offre consulenze personalizzate di benessere che integrano diverse discipline olistiche, dalla medicina tradizionale cinese alle terapie energetiche, creando percorsi su misura per ogni persona. La sua visione olistica e il suo approccio empatico la rendono una guida preziosa per chi cerca un cambiamento profondo nel proprio percorso di salute e benessere.",
+        "specialties": [
+          "Consulenze Olistiche Personalizzate",
+          "Terapie Integrative",
+          "Medicina Tradizionale Cinese",
+          "Percorsi di Benessere",
+          "Coaching del Benessere"
+        ],
+        "certifications": [
+          "Fondatrice e Direttrice Relevi Healing",
+          "Esperta in Terapie Olistiche Integrate",
+          "Specialista in Medicina Integrata",
+          "Consulente Certificata del Benessere",
+          "Praticante di Medicina Tradizionale Cinese"
+        ]
+      },
       "corradoZamboni": {
         "name": "Corrado Zamboni",
         "role": "Consulente Filosofico",

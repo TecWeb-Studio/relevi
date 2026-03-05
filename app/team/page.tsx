@@ -34,6 +34,11 @@ export default function TeamPage() {
 
   const teamMembers: TeamMember[] = [
     {
+      id: 0,
+      key: "francescaMayer",
+      image: "/team-photos-crop/FrancescaMayer.jpg",
+    },
+    {
       id: 1,
       key: "corradoZamboni",
       image: "/team-photos-crop/CorradoZamboni.jpg",
@@ -538,7 +543,7 @@ export default function TeamPage() {
 
               <div className="flex items-center justify-between pt-6 border-t border-gray-200">
                 <a
-                  href={`/prenota?operatore=${selectedMember.key}`}
+                  href={`/prenota?operatore=${selectedMember.key === "francescaMayer" ? "headmaster" : selectedMember.key}`}
                   className="bg-olive-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-olive-700 transition-all duration-300 inline-flex items-center gap-2"
                 >
                   <svg

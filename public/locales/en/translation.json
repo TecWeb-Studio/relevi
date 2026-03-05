@@ -471,6 +471,26 @@
           "Wellness Consultant"
         ]
       },
+      "francescaMayer": {
+        "name": "Francesca Mayer",
+        "role": "Holistic Practitioner & Wellness Consultant",
+        "shortBio": "Beyond her role as director, Francesca is an active holistic practitioner specializing in personalized wellness consultations and integrative therapies.",
+        "bio": "Francesca Mayer is not only the founder and director of Relevi Healing, but also an active holistic practitioner with over 20 years of hands-on experience. She offers personalized wellness consultations that integrate various holistic disciplines, from traditional Chinese medicine to energy therapies, creating tailored pathways for each individual. Her holistic vision and empathetic approach make her an invaluable guide for those seeking profound change in their health and wellness journey.",
+        "specialties": [
+          "Personalized Holistic Consultations",
+          "Integrative Therapies",
+          "Traditional Chinese Medicine",
+          "Wellness Pathways",
+          "Wellness Coaching"
+        ],
+        "certifications": [
+          "Founder & Director of Relevi Healing",
+          "Expert in Integrated Holistic Therapies",
+          "Integrative Medicine Specialist",
+          "Certified Wellness Consultant",
+          "Traditional Chinese Medicine Practitioner"
+        ]
+      },
       "corradoZamboni": {
         "name": "Corrado Zamboni",
         "role": "Philosophical Consultant",
