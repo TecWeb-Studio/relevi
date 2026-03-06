@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const CAROUSEL_IMAGES = [
-  "/images/carousel/i1.jpeg",
+  "/images/carousel/carousel-40.jpeg",
   "/images/carousel/i2.jpeg",
   "/images/carousel/i3.jpeg",
   "/images/carousel/i4.jpeg",
@@ -19,7 +19,7 @@ const CAROUSEL_IMAGES = [
   "/images/carousel/carousel-30.jpeg",
   "/images/carousel/carousel-32.jpeg",
   "/images/carousel/carousel-33.jpeg",
-  "/images/carousel/carousel-40.jpeg",
+  "/images/carousel/i1.jpeg",
 ];
 
 export default function ImageCarousel() {
