@@ -8,15 +8,15 @@ export async function POST(request: NextRequest) {
     if (!username || !password) {
       return NextResponse.json(
         { error: "Username e password sono obbligatori" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    const user = verifyCredentials(username, password);
+    const user = await verifyCredentials(username, password);
     if (!user) {
       return NextResponse.json(
         { error: "Credenziali non valide" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json(
       { error: "Errore interno del server" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
