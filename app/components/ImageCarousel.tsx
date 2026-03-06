@@ -4,20 +4,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const CAROUSEL_IMAGES = [
+  "/images/carousel/i1.jpeg",
+  "/images/carousel/i2.jpeg",
+  "/images/carousel/i3.jpeg",
+  "/images/carousel/i4.jpeg",
+  "/images/carousel/i5.jpeg",
+  "/images/carousel/i6.jpeg",
+  "/images/carousel/i7.jpeg",
+  "/images/carousel/i8.jpeg",
   "/images/carousel/carousel-01.jpeg",
-  "/images/carousel/carousel-04.jpeg",
-  "/images/carousel/carousel-07.jpeg",
-  "/images/carousel/carousel-10.jpeg",
-  "/images/carousel/carousel-14.jpeg",
-  "/images/carousel/carousel-18.jpeg",
-  "/images/carousel/carousel-22.jpeg",
-  "/images/carousel/carousel-26.jpeg",
+  "/images/carousel/carousel-05.jpeg",
+  "/images/carousel/carousel-09.jpeg",
+  "/images/carousel/carousel-21.jpeg",
   "/images/carousel/carousel-30.jpeg",
-  "/images/carousel/carousel-34.jpeg",
-  "/images/carousel/carousel-38.jpeg",
-  "/images/carousel/carousel-42.jpeg",
-  "/images/carousel/carousel-46.jpeg",
-  "/images/carousel/carousel-49.jpeg",
+  "/images/carousel/carousel-32.jpeg",
+  "/images/carousel/carousel-33.jpeg",
+  "/images/carousel/carousel-40.jpeg",
 ];
 
 export default function ImageCarousel() {
@@ -156,7 +158,7 @@ export default function ImageCarousel() {
           >
             {CAROUSEL_IMAGES.map((_, imgIndex) => {
               const imageSrc = CAROUSEL_IMAGES[imgIndex];
-              const isContainImage = imageSrc.includes("carousel-04.jpeg");
+              const isContainImage = false;
               const offset = getSlideOffset(imgIndex);
               const isCurrent = offset === 0;
               const isLeft = offset === -1;
