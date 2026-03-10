@@ -1,32 +1,33 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
-import i18n from '../lib/i18n';
-
-function useI18nReady() {
-  return useSyncExternalStore(
-    (callback) => {
-      if (i18n.isInitialized) {
-        return () => {};
-      }
-      i18n.on('initialized', callback);
-      return () => {
-        i18n.off('initialized', callback);
-      };
-    },
-    () => i18n.isInitialized,
-    () => false
-  );
-}
+import { useEffect, useState } from 'react';
+import { initI18n } from '../lib/i18n';
 
 interface I18nProviderProps {
   children: React.ReactNode;
 }
 
 export default function I18nProvider({ children }: I18nProviderProps) {
-  const isReady = useI18nReady();
+  const [isReady, setIsReady] = useState(false);
 
-  // Use a simpler approach - check if we're on the client
+  useEffect(() => {
+    let mounted = true;
+
+    initI18n()
+      .then(() => {
+        if (mounted) {
+          setIsReady(true);
+        }
+      })
+      .catch((error) => {
+        console.error('i18n initialization failed', error);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   if (typeof window === 'undefined' || !isReady) {
     return (
       <div className="min-h-screen flex items-center justify-center">

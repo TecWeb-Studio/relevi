@@ -30,12 +30,21 @@ const i18nConfig = {
   },
 };
 
-if (!i18n.isInitialized) {
-  i18n
-    .use(Backend)
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init(i18nConfig);
+export async function initI18n(): Promise<typeof i18n> {
+  // Prevent backend URL parsing errors during server rendering/build.
+  if (typeof window === 'undefined') {
+    return i18n;
+  }
+
+  if (!i18n.isInitialized) {
+    await i18n
+      .use(Backend)
+      .use(LanguageDetector)
+      .use(initReactI18next)
+      .init(i18nConfig);
+  }
+
+  return i18n;
 }
 
 export default i18n;
