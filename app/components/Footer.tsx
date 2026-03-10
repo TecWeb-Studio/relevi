@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Script from "next/script";
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
@@ -137,7 +138,24 @@ export default function Footer() {
               {t('footer.tecweb')}
             </Link>
           </p>
+          <div className="flex justify-center gap-6 mt-3">
+            <a
+              href="https://www.iubenda.com/privacy-policy/29386294"
+              className="iubenda-nostyle iubenda-noiframe iubenda-embed text-olive-200 hover:text-white transition-colors duration-300 text-sm"
+              title="Privacy Policy"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="https://www.iubenda.com/privacy-policy/29386294/cookie-policy"
+              className="iubenda-nostyle iubenda-noiframe iubenda-embed text-olive-200 hover:text-white transition-colors duration-300 text-sm"
+              title="Cookie Policy"
+            >
+              Cookie Policy
+            </a>
+          </div>
         </div>
+        <Script src="https://cdn.iubenda.com/iubenda.js" strategy="lazyOnload" />
       </div>
     </footer>
   );
