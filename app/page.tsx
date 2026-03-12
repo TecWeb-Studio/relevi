@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ImageCarousel from "./components/ImageCarousel";
 
@@ -9,6 +9,7 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
   const heroTitleParts = t("home.hero.title").split("Relevi Healing");
+  const [contactConsented, setContactConsented] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -607,15 +608,38 @@ export default function Home() {
                       placeholder={t("home.contact.messagePlaceholder")}
                     />
                   </div>
+                  <div>
+                    <label className="flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="mt-1 rounded border-gray-300"
+                        checked={contactConsented}
+                        onChange={(e) => setContactConsented(e.target.checked)}
+                      />
+                      <span className="text-sm text-gray-600 pt-0.5">
+                        {t("home.contact.consent")}
+                      </span>
+                    </label>
+                  </div>
+                  {!contactConsented && (
+                    <div className="text-sm text-red-600 text-center">
+                      {t("home.contact.consentRequired")}
+                    </div>
+                  )}
                   <button
                     type="button"
+                    disabled={!contactConsented}
                     onClick={() =>
                       window.open(
                         "https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0",
                         "_blank",
                       )
                     }
-                    className="w-full bg-olive-600 text-white py-4 rounded-lg font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02] shadow-lg"
+                    className={`w-full py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg ${
+                      contactConsented
+                        ? "bg-olive-600 text-white hover:bg-olive-700 hover:scale-[1.02]"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    }`}
                   >
                     {t("home.contact.sendMessage")}
                   </button>

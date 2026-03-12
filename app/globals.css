@@ -104,7 +104,8 @@
   }
 
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
@@ -113,7 +114,8 @@
   }
 
   @keyframes pulse-slow {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
@@ -158,7 +160,9 @@
   }
 
   .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .hover-lift:hover {
@@ -229,7 +233,8 @@
     0% {
       transform: translateX(-150%);
     }
-    60%, 100% {
+    60%,
+    100% {
       transform: translateX(250%);
     }
   }
@@ -246,7 +251,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
     animation: progressShimmer 2s ease-in-out infinite;
   }
 
@@ -258,4 +268,23 @@
       transform: translateX(100%);
     }
   }
+}
+
+/* Keep Iubenda cookie/policy UI above the navbar on all breakpoints */
+#iubenda-cs-banner,
+#iubenda-cs-title,
+#iubenda-cs-content,
+#iubenda-cs-rationale,
+.iubenda-cs-overlay,
+.iubenda-cs-container,
+.iubenda-cs-content {
+  z-index: 2147483000 !important;
+  position: fixed !important;
+}
+
+/* Use footer policy links instead of the floating preferences launcher */
+#iubenda-cs-preferences-link,
+.iubenda-cs-preferences-link,
+[class*="iubenda-cs-preferences"] {
+  display: none !important;
 }

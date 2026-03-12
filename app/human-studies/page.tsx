@@ -2,8 +2,48 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import {
+  EVENTS,
+  EventDetail,
+  isEventPassed,
+  getEventTypeColor,
+  mergeEventDetails,
+} from "../lib/eventsData";
 
 export default function HumanStudiesPage() {
+  const { t, i18n } = useTranslation();
+
+  const PARTNER_EVENT_KEYS = ["allergiesEvent", "studyDaysEvent"];
+  const partnerEvents = EVENTS.filter((e) =>
+    PARTNER_EVENT_KEYS.includes(e.key),
+  );
+
+  const getEventDetails = (key: string): EventDetail =>
+    mergeEventDetails(
+      key,
+      t(`events.eventDetails.${key}`, { returnObjects: true }),
+    );
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const locale = i18n.language === "it" ? "it-IT" : "en-US";
+    return new Intl.DateTimeFormat(locale, {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  };
+
+  const activeEvents = partnerEvents.filter((e) => {
+    const details = getEventDetails(e.key);
+    return !isEventPassed(details);
+  });
+  const passedPartnerEvents = partnerEvents.filter((e) => {
+    const details = getEventDetails(e.key);
+    return isEventPassed(details);
+  });
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -86,163 +126,242 @@ export default function HumanStudiesPage() {
         </div>
       </section>
 
-      {/* Event highlights */}
+      {/* Events section */}
       <section className="py-16 bg-olive-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="reveal text-center mb-10">
             <h2 className="text-3xl font-bold text-olive-800 mb-3">
-              Eventi ospitati e in programma
+              {t("events.upcomingEvents.title")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Un evento passato e il prossimo appuntamento di aprile in
-              collaborazione con Human Studies
+              Un evento passato e il prossimo appuntamento in collaborazione con
+              Human Studies
             </p>
           </div>
 
-          <div className="space-y-8">
-            <div className="reveal bg-white rounded-3xl overflow-hidden shadow-xl border border-olive-100 flex flex-col md:flex-row opacity-80">
-              <div className="md:w-2/5 h-56 md:h-auto overflow-hidden relative">
-                <img
-                  src="/images/events/allergie.png"
-                  alt="Allergie"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">Passato</span>
-                </div>
-              </div>
-              <div className="md:w-3/5 p-8 flex flex-col justify-between">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 mb-4">
-                    Workshop
-                  </span>
-                  <h3 className="text-2xl font-bold text-olive-800 mb-3">
-                    ALLERGIE: risposta immunitaria e nutrizione
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Evento formativo con approfondimenti su sistema immunitario,
-                    alimentazione, microbioma intestinale e fitoterapia.
-                  </p>
-                  <div className="space-y-1.5 text-sm text-gray-600 mb-6">
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4 shrink-0 text-olive-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          {activeEvents.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {activeEvents.map((event, index) => {
+                const details = getEventDetails(event.key);
+                return (
+                  <div
+                    key={event.id}
+                    className="reveal bg-white rounded-3xl overflow-hidden shadow-lg hover-lift transition-all duration-300 border border-olive-100 flex flex-col"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div
+                      className={`w-full overflow-hidden relative ${
+                        event.images || event.video ? "h-28" : "h-20"
+                      }`}
+                    >
+                      {event.video ? (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                          <svg
+                            className="w-8 h-8 text-white ml-1"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      ) : (
+                        <img
+                          src={event.image}
+                          alt={t(`events.eventList.${event.key}.title`)}
+                          className="w-full h-full object-cover object-top"
                         />
-                      </svg>
-                      <span>23 Marzo 2025</span>
+                      )}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4 shrink-0 text-olive-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <div className="p-6 grow">
+                      <div className="flex items-center justify-between mb-3">
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${getEventTypeColor(event.type)}`}
+                        >
+                          {t(`events.filters.${event.type}`)}
+                        </span>
+                        <span className="text-olive-600 font-bold text-sm">
+                          {t(`events.eventList.${event.key}.price`)}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-olive-800 mb-3">
+                        {t(`events.eventList.${event.key}.title`)}
+                      </h3>
+                      <div className="space-y-1.5 text-sm text-gray-600 mb-4">
+                        <div className="flex items-center gap-2">
+                          <svg
+                            className="w-4 h-4 shrink-0 text-olive-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                          </svg>
+                          <span>
+                            {details.dateDisplay ?? formatDate(details.date)}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <svg
+                            className="w-4 h-4 shrink-0 text-olive-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                          </svg>
+                          <span>{details.location}</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 text-sm line-clamp-2">
+                        {t(`events.eventList.${event.key}.description`)}
+                      </p>
+                    </div>
+                    <div className="p-6 pt-0">
+                      <Link
+                        href="/events"
+                        className="block w-full bg-olive-600 text-white py-3 rounded-xl font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02] text-center"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Via Campagna 46, San Polo di Piave (TV)</span>
+                        {t("events.learnMore")} →
+                      </Link>
                     </div>
                   </div>
-                </div>
-                <button
-                  disabled
-                  className="inline-block bg-gray-300 text-gray-500 px-6 py-3 rounded-xl font-semibold cursor-not-allowed text-center"
-                >
-                  Evento passato
-                </button>
-              </div>
+                );
+              })}
             </div>
+          )}
 
-            <div className="reveal bg-white rounded-3xl overflow-hidden shadow-xl border border-olive-100 flex flex-col md:flex-row">
-              <div className="md:w-2/5 h-56 md:h-auto overflow-hidden bg-olive-100">
-                <img
-                  src="/images/events/studydays.jpeg"
-                  alt="Studio Days"
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-              <div className="md:w-3/5 p-8 flex flex-col justify-between">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 mb-4">
-                    Workshop
-                  </span>
-                  <h3 className="text-2xl font-bold text-olive-800 mb-3">
-                    Studio Days: Giornate di Approfondimento Olistico
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Giornate di approfondimento olistico con sessioni teoriche e
-                    pratiche guidate da professionisti esperti.
-                  </p>
-                  <div className="space-y-1.5 text-sm text-gray-600 mb-6">
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4 shrink-0 text-olive-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+          {passedPartnerEvents.length > 0 && (
+            <div
+              className={
+                activeEvents.length > 0
+                  ? "mt-8 pt-8 border-t border-olive-100"
+                  : ""
+              }
+            >
+              {activeEvents.length > 0 && (
+                <h3 className="text-2xl font-bold text-olive-800 mb-6">
+                  {t("events.passedEvents.title")}
+                </h3>
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {passedPartnerEvents.map((event, index) => {
+                  const details = getEventDetails(event.key);
+                  return (
+                    <div
+                      key={event.id}
+                      className="reveal bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-300 border border-olive-100 flex flex-col opacity-60"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div
+                        className={`w-full overflow-hidden relative ${
+                          event.images || event.video ? "h-28" : "h-20"
+                        }`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span>1 Aprile – 20 Giugno 2026</span>
+                        <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">
+                            {t("events.eventPassed")}
+                          </span>
+                        </div>
+                        {event.video ? (
+                          <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
+                        ) : (
+                          <img
+                            src={event.image}
+                            alt={t(`events.eventList.${event.key}.title`)}
+                            className="w-full h-full object-cover object-top"
+                          />
+                        )}
+                      </div>
+                      <div className="p-6 grow">
+                        <div className="flex items-center justify-between mb-3">
+                          <span
+                            className={`px-3 py-1 rounded-full text-xs font-medium ${getEventTypeColor(event.type)}`}
+                          >
+                            {t(`events.filters.${event.type}`)}
+                          </span>
+                          <span className="text-olive-600 font-bold text-sm">
+                            {t(`events.eventList.${event.key}.price`)}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold text-olive-800 mb-3">
+                          {t(`events.eventList.${event.key}.title`)}
+                        </h3>
+                        <div className="space-y-1.5 text-sm text-gray-600 mb-4">
+                          <div className="flex items-center gap-2">
+                            <svg
+                              className="w-4 h-4 shrink-0 text-olive-600"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                            <span>
+                              {details.dateDisplay ?? formatDate(details.date)}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <svg
+                              className="w-4 h-4 shrink-0 text-olive-600"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                            <span>{details.location}</span>
+                          </div>
+                        </div>
+                        <p className="text-gray-600 text-sm line-clamp-2">
+                          {t(`events.eventList.${event.key}.description`)}
+                        </p>
+                      </div>
+                      <div className="p-6 pt-0">
+                        <button
+                          disabled
+                          className="w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-semibold cursor-not-allowed"
+                        >
+                          {t("events.eventPassed")}
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4 shrink-0 text-olive-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Via Campagna 46, San Polo di Piave (TV)</span>
-                    </div>
-                  </div>
-                </div>
-                <Link
-                  href="/events"
-                  className="inline-block bg-olive-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02] text-center"
-                >
-                  Scopri l&apos;evento →
-                </Link>
+                  );
+                })}
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </div>

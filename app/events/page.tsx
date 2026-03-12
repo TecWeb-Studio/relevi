@@ -3,24 +3,14 @@
 import { MouseEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-
-interface Event {
-  id: number;
-  key: string;
-  type: "workshop" | "retreat" | "special" | "class";
-  image: string;
-  images?: string[];
-}
-
-interface EventDetail {
-  date: string;
-  dateDisplay?: string;
-  time: string;
-  endTime: string;
-  location: string;
-  spots: number;
-  spotsLeft: number;
-}
+import {
+  EVENTS,
+  EventData as Event,
+  EventDetail,
+  isEventPassed,
+  getEventTypeColor,
+  mergeEventDetails,
+} from "../lib/eventsData";
 
 interface EventImageCarouselProps {
   images: string[];
@@ -142,11 +132,6 @@ export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const { t, i18n } = useTranslation();
 
-  const isEventPassed = (detail: EventDetail): boolean => {
-    const eventDate = new Date(`${detail.date}T${detail.endTime}`);
-    return new Date() > eventDate;
-  };
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -169,51 +154,10 @@ export default function EventsPage() {
     return () => observer.disconnect();
   }, [filter]);
 
-  const events: Event[] = [
-    {
-      id: 1,
-      key: "allergiesEvent",
-      type: "workshop",
-      image: "/images/events/allergie.png",
-    },
-    {
-      id: 2,
-      key: "studyDaysEvent",
-      type: "workshop",
-      image: "/images/events/studydays.jpeg",
-    },
-    {
-      id: 3,
-      key: "equilibrioDonnaEvent",
-      type: "special",
-      image: "/images/events/equilibrio-donna/donna.avif",
-      images: [
-        "/images/events/equilibrio-donna/1.png",
-        "/images/events/equilibrio-donna/2.png",
-        "/images/events/equilibrio-donna/3.png",
-        "/images/events/equilibrio-donna/4.png",
-        "/images/events/equilibrio-donna/5.png",
-      ],
-    },
-  ];
+  const events: Event[] = EVENTS;
 
   const filteredEvents =
     filter === "all" ? events : events.filter((event) => event.type === filter);
-
-  const getEventTypeColor = (type: string) => {
-    switch (type) {
-      case "workshop":
-        return "bg-blue-100 text-blue-700";
-      case "retreat":
-        return "bg-purple-100 text-purple-700";
-      case "special":
-        return "bg-pink-100 text-pink-700";
-      case "class":
-        return "bg-green-100 text-green-700";
-      default:
-        return "bg-olive-100 text-olive-700";
-    }
-  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -228,9 +172,12 @@ export default function EventsPage() {
   };
 
   const getEventDetails = (key: string): EventDetail => {
-    return t(`events.eventDetails.${key}`, {
-      returnObjects: true,
-    }) as EventDetail;
+    return mergeEventDetails(
+      key,
+      t(`events.eventDetails.${key}`, {
+        returnObjects: true,
+      }),
+    );
   };
 
   const upcomingEvents = filteredEvents.filter((event) => {
@@ -314,21 +261,38 @@ export default function EventsPage() {
                     >
                       <>
                         <div
-                          className={`w-full overflow-hidden ${
-                            event.key === "equilibrioDonnaEvent"
-                              ? "h-28"
-                              : "h-20"
+                          className={`w-full overflow-hidden relative ${
+                            event.image
+                              ? "h-20"
+                              : event.images || event.video
+                                ? "h-28"
+                                : "h-20"
                           }`}
                         >
-                          <img
-                            src={event.image}
-                            alt={t(`events.eventList.${event.key}.title`)}
-                            className={`w-full h-full ${
-                              event.key === "equilibrioDonnaEvent"
-                                ? "object-cover object-center"
-                                : "object-cover object-top"
-                            }`}
-                          />
+                          {event.image ? (
+                            <img
+                              src={event.image}
+                              alt={t(`events.eventList.${event.key}.title`)}
+                              className="w-full h-full object-cover object-top"
+                            />
+                          ) : event.video ? (
+                            <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                                <svg
+                                  className="w-7 h-7 text-white ml-1"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                >
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </div>
+                          ) : event.images && event.images.length > 0 ? (
+                            <EventImageCarousel
+                              images={event.images}
+                              alt={t(`events.eventList.${event.key}.title`)}
+                            />
+                          ) : null}
                         </div>
                         <div className="p-8 grow">
                           <div className="flex items-center justify-between mb-4">
@@ -408,7 +372,7 @@ export default function EventsPage() {
                           <p className="text-gray-600 text-sm line-clamp-3 mb-4">
                             {t(`events.eventList.${event.key}.description`)}
                           </p>
-                          {event.key !== "studyDaysEvent" && (
+                          {details.spots > 0 && (
                             <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                               <div className="text-sm">
                                 <span className="text-gray-500">
@@ -461,9 +425,11 @@ export default function EventsPage() {
                       <>
                         <div
                           className={`w-full overflow-hidden relative ${
-                            event.key === "equilibrioDonnaEvent"
-                              ? "h-28"
-                              : "h-20"
+                            event.image
+                              ? "h-20"
+                              : event.images || event.video
+                                ? "h-28"
+                                : "h-20"
                           }`}
                         >
                           <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
@@ -471,15 +437,30 @@ export default function EventsPage() {
                               {t("events.eventPassed")}
                             </span>
                           </div>
-                          <img
-                            src={event.image}
-                            alt={t(`events.eventList.${event.key}.title`)}
-                            className={`w-full h-full ${
-                              event.key === "equilibrioDonnaEvent"
-                                ? "object-cover object-center"
-                                : "object-cover object-top"
-                            }`}
-                          />
+                          {event.image ? (
+                            <img
+                              src={event.image}
+                              alt={t(`events.eventList.${event.key}.title`)}
+                              className="w-full h-full object-cover object-top"
+                            />
+                          ) : event.video ? (
+                            <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                                <svg
+                                  className="w-7 h-7 text-white ml-1"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                >
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </div>
+                          ) : event.images && event.images.length > 0 ? (
+                            <EventImageCarousel
+                              images={event.images}
+                              alt={t(`events.eventList.${event.key}.title`)}
+                            />
+                          ) : null}
                         </div>
                         <div className="p-8 grow">
                           <div className="flex items-center justify-between mb-4">
@@ -769,16 +750,32 @@ export default function EventsPage() {
           >
             <>
               <div className="relative">
-                <div className="relative w-full h-36 overflow-hidden bg-olive-100">
-                  <img
-                    src={selectedEvent.image}
-                    alt={t(`events.eventList.${selectedEvent.key}.title`)}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                </div>
+                {selectedEvent.video ? (
+                  <div className="relative bg-black">
+                    <video
+                      controls
+                      src={selectedEvent.video}
+                      className="w-full max-h-64 md:max-h-80 object-contain"
+                    >
+                      <source src={selectedEvent.video} type="video/mp4" />
+                    </video>
+                  </div>
+                ) : (
+                  <div className="relative w-full h-36 overflow-hidden bg-olive-100">
+                    <img
+                      src={selectedEvent.image}
+                      alt={t(`events.eventList.${selectedEvent.key}.title`)}
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+                  </div>
+                )}
                 <button
                   onClick={() => setSelectedEvent(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-olive-700 transition-colors shadow-lg"
+                  className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg ${
+                    selectedEvent.video
+                      ? "bg-black/60 text-white hover:bg-black/80"
+                      : "bg-white text-gray-600 hover:text-olive-700"
+                  }`}
                   aria-label="Close"
                 >
                   <svg
@@ -822,7 +819,7 @@ export default function EventsPage() {
                       {isPassed && (
                         <div className="mb-4 p-4 bg-red-100 border border-red-300 rounded-lg">
                           <p className="text-red-700 font-semibold">
-                            This event has already passed.
+                            {t("events.modal.eventHasPassed")}
                           </p>
                         </div>
                       )}
@@ -982,22 +979,28 @@ export default function EventsPage() {
                         </div>
                       )}
 
-                      <div className="flex items-center justify-between pt-6 border-t border-gray-200">
-                        <div>
-                          <p className="text-gray-500">
-                            {t("events.modal.availableSpots")}
-                          </p>
-                          <p
-                            className={`text-lg font-semibold ${
-                              details.spotsLeft <= 3
-                                ? "text-red-500"
-                                : "text-olive-600"
-                            }`}
-                          >
-                            {details.spotsLeft} {t("events.modal.remaining")}{" "}
-                            {details.spots}
-                          </p>
-                        </div>
+                      <div
+                        className={`flex items-center pt-6 border-t border-gray-200 ${
+                          details.spots > 0 ? "justify-between" : "justify-end"
+                        }`}
+                      >
+                        {details.spots > 0 && (
+                          <div>
+                            <p className="text-gray-500">
+                              {t("events.modal.availableSpots")}
+                            </p>
+                            <p
+                              className={`text-lg font-semibold ${
+                                details.spotsLeft <= 3
+                                  ? "text-red-500"
+                                  : "text-olive-600"
+                              }`}
+                            >
+                              {details.spotsLeft} {t("events.modal.remaining")}{" "}
+                              {details.spots}
+                            </p>
+                          </div>
+                        )}
                         <div className="flex gap-4">
                           <button
                             onClick={() => setSelectedEvent(null)}

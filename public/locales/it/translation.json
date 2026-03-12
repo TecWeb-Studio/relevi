@@ -102,7 +102,9 @@
       "emailPlaceholder": "tua@email.com",
       "message": "Messaggio",
       "messagePlaceholder": "Dicci cosa ti serve...",
-      "sendMessage": "Invia Messaggio"
+      "sendMessage": "Invia Messaggio",
+      "consent": "Accetto il trattamento dei dati personali ai sensi delle normative vigenti sulla privacy.",
+      "consentRequired": "Accetta l'informativa sulla privacy per inviare il messaggio."
     }
   },
   "services": {
@@ -745,7 +747,8 @@
       "programme": "Programma",
       "cost": "Costo",
       "reservations": "Prenotazioni",
-      "registrationMessage": "Iscrizioni in arrivo!"
+      "registrationMessage": "Iscrizioni in arrivo!",
+      "eventHasPassed": "Questo evento è già terminato."
     },
     "eventList": {
       "studyDaysEvent": {
@@ -785,6 +788,18 @@
         ],
         "cost": ["Evento gratuito", "Contributo di €20 per pranzo e buffet"],
         "reservations": "Posti limitati – prenotazione obbligatoria. Telefono: 351 7471159"
+      },
+      "dinamicheEducativeEvent": {
+        "title": "Dinamiche Educative",
+        "description": "Un evento dedicato alle dinamiche educative, con sessioni esperienziali e approfondimenti pratici per educare e crescere attraverso il benessere.",
+        "price": "Da definire",
+        "reservations": "Per informazioni e prenotazioni contattaci via WhatsApp al 351 7471159"
+      },
+      "benessereRelaxEvent": {
+        "title": "Benessere e Relax",
+        "description": "Un momento dedicato al benessere e al relax. Guarda il video per scoprire di più su questo appuntamento.",
+        "price": "Da definire",
+        "reservations": "Per informazioni: 351 7471159"
       }
     },
     "eventDetails": {
@@ -812,6 +827,22 @@
         "location": "Via Campagna 46, San Polo di Piave (TV)",
         "spots": 30,
         "spotsLeft": 30
+      },
+      "dinamicheEducativeEvent": {
+        "date": "2026-05-24",
+        "time": "09:30",
+        "endTime": "16:30",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 20,
+        "spotsLeft": 20
+      },
+      "benessereRelaxEvent": {
+        "date": "2026-07-12",
+        "time": "09:30",
+        "endTime": "16:30",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
       }
     }
   },
