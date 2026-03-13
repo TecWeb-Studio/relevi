@@ -38,10 +38,10 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-olive-50 to-olive-100 flex items-center justify-center p-4 pt-24">
+    <div className="min-h-screen bg-gradient-to-br from-olive-50 via-white to-olive-100/50 flex items-center justify-center p-4 pt-24">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-olive-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <div className="w-16 h-16 bg-gradient-to-br from-olive-500 to-olive-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-olive-200/50">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
@@ -50,9 +50,9 @@ export default function AdminLoginPage() {
           <p className="text-gray-500 mt-2">Accedi al tuo pannello di gestione</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-8 border border-olive-100">
+        <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-olive-100/60">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm flex items-center gap-2">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm flex items-center gap-2 animate-in slide-in-from-top-1 duration-200">
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -64,37 +64,47 @@ export default function AdminLoginPage() {
             <label htmlFor="username" className="block text-sm font-semibold text-olive-700 mb-2">
               Username
             </label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-olive-200 rounded-xl focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-200 transition-all text-gray-800"
-              placeholder="nome.cognome"
-              required
-              autoFocus
-            />
+            <div className="relative">
+              <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <input
+                id="username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full pl-11 pr-4 py-3 border-2 border-olive-200 rounded-xl focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-200 transition-all text-gray-800"
+                placeholder="nome.cognome"
+                required
+                autoFocus
+              />
+            </div>
           </div>
 
           <div className="mb-6">
             <label htmlFor="password" className="block text-sm font-semibold text-olive-700 mb-2">
               Password
             </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-olive-200 rounded-xl focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-200 transition-all text-gray-800"
-              placeholder="••••••••••"
-              required
-            />
+            <div className="relative">
+              <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full pl-11 pr-4 py-3 border-2 border-olive-200 rounded-xl focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-200 transition-all text-gray-800"
+                placeholder="••••••••••"
+                required
+              />
+            </div>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-olive-600 text-white py-3.5 rounded-xl font-bold text-lg hover:bg-olive-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+            className="w-full bg-gradient-to-r from-olive-600 to-olive-700 text-white py-3.5 rounded-xl font-bold text-lg hover:from-olive-700 hover:to-olive-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md shadow-olive-200/50 hover:shadow-lg hover:shadow-olive-200/50 active:scale-[0.99]"
           >
             {loading ? (
               <>

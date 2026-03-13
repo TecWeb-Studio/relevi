@@ -318,10 +318,14 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center pt-24">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-olive-50/30 flex items-center justify-center pt-24">
         <div className="text-center">
-          <div className="animate-spin w-10 h-10 border-4 border-olive-200 border-t-olive-600 rounded-full mx-auto mb-4" />
-          <p className="text-gray-500">Caricamento...</p>
+          <div className="relative w-14 h-14 mx-auto mb-4">
+            <div className="absolute inset-0 rounded-full border-4 border-olive-100" />
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-olive-600 animate-spin" />
+          </div>
+          <p className="text-gray-500 font-medium">Caricamento...</p>
+          <p className="text-xs text-gray-400 mt-1">Preparazione pannello</p>
         </div>
       </div>
     );
@@ -338,13 +342,13 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-olive-50/30 pt-20">
       {/* Top Bar */}
-      <div className="bg-white border-b border-gray-200 sticky top-16 z-30">
+      <div className="bg-white/80 backdrop-blur-md border-b border-gray-200/60 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-olive-600 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-olive-500 to-olive-700 rounded-xl flex items-center justify-center shadow-md shadow-olive-200">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
@@ -361,7 +365,7 @@ export default function AdminDashboard() {
                 <select
                   value={selectedOperator}
                   onChange={(e) => setSelectedOperator(e.target.value)}
-                  className="text-sm border border-olive-200 rounded-lg px-3 py-2 focus:outline-none focus:border-olive-500 text-gray-700 bg-white"
+                  className="text-sm border border-olive-200 rounded-xl px-3 py-2 focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-100 text-gray-700 bg-white transition-all"
                 >
                   <option value="">Tutti gli operatori</option>
                   {Object.entries(OPERATOR_NAMES).map(([key, name]) => (
@@ -371,7 +375,7 @@ export default function AdminDashboard() {
               )}
               <button
                 onClick={handleLogout}
-                className="text-sm text-gray-500 hover:text-red-600 transition-colors flex items-center gap-1"
+                className="text-sm text-gray-500 hover:text-red-600 transition-all duration-200 flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-red-50"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -384,17 +388,17 @@ export default function AdminDashboard() {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white/60 backdrop-blur-sm border-b border-gray-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-1 overflow-x-auto py-2">
+          <div className="flex gap-1 overflow-x-auto py-2 scrollbar-hide">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                   activeTab === tab.key
-                    ? "bg-olive-600 text-white shadow-md"
-                    : "text-gray-600 hover:bg-olive-50 hover:text-olive-700"
+                    ? "bg-gradient-to-r from-olive-600 to-olive-700 text-white shadow-md shadow-olive-200/50"
+                    : "text-gray-500 hover:bg-olive-50 hover:text-olive-700"
                 }`}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -414,20 +418,48 @@ export default function AdminDashboard() {
           <div className="space-y-6">
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-olive-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-5 h-5 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
                 <p className="text-3xl font-bold text-olive-600">{stats.today}</p>
                 <p className="text-sm text-gray-500">Oggi</p>
               </div>
-              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                <p className="text-3xl font-bold text-olive-600">{stats.thisMonth}</p>
+              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-3xl font-bold text-blue-600">{stats.thisMonth}</p>
                 <p className="text-sm text-gray-500">Questo mese</p>
               </div>
-              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
                 <p className="text-3xl font-bold text-green-600">{stats.confirmed}</p>
                 <p className="text-sm text-gray-500">Confermati</p>
               </div>
-              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                <p className="text-3xl font-bold text-yellow-600">{stats.pending}</p>
+              <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-3xl font-bold text-amber-600">{stats.pending}</p>
                 <p className="text-sm text-gray-500">In attesa</p>
               </div>
             </div>
@@ -439,7 +471,7 @@ export default function AdminDashboard() {
                   setNewApt((prev) => ({ ...prev, date: todayStr }));
                   setShowNewAppointment(true);
                 }}
-                className="bg-olive-600 text-white px-5 py-2.5 rounded-xl font-medium hover:bg-olive-700 transition-all flex items-center gap-2 shadow-sm"
+                className="bg-gradient-to-r from-olive-600 to-olive-700 text-white px-5 py-2.5 rounded-xl font-medium hover:from-olive-700 hover:to-olive-800 transition-all duration-200 flex items-center gap-2 shadow-md shadow-olive-200/50 hover:shadow-lg hover:shadow-olive-200/50 active:scale-[0.98]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -448,7 +480,7 @@ export default function AdminDashboard() {
               </button>
               <button
                 onClick={() => { setOverrideForm((p) => ({ ...p, available: false })); setShowOverrideEditor(true); }}
-                className="bg-white text-olive-700 px-5 py-2.5 rounded-xl font-medium hover:bg-olive-50 transition-all flex items-center gap-2 border border-olive-200"
+                className="bg-white text-olive-700 px-5 py-2.5 rounded-xl font-medium hover:bg-olive-50 transition-all duration-200 flex items-center gap-2 border border-olive-200 hover:border-olive-300 active:scale-[0.98]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
@@ -457,7 +489,7 @@ export default function AdminDashboard() {
               </button>
               <button
                 onClick={() => handleExport("csv")}
-                className="bg-white text-gray-600 px-5 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition-all flex items-center gap-2 border border-gray-200"
+                className="bg-white text-gray-600 px-5 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition-all duration-200 flex items-center gap-2 border border-gray-200 hover:border-gray-300 active:scale-[0.98]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -467,18 +499,29 @@ export default function AdminDashboard() {
             </div>
 
             {/* Today's Schedule */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-              <div className="p-5 border-b border-gray-100">
-                <h2 className="text-lg font-bold text-olive-800">Programma di Oggi</h2>
-                <p className="text-sm text-gray-500">{new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+              <div className="p-5 border-b border-gray-100 bg-gradient-to-r from-olive-50/50 to-transparent">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-olive-100 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-olive-800">Programma di Oggi</h2>
+                    <p className="text-sm text-gray-500">{new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
+                  </div>
+                </div>
               </div>
               {todayAppointments.length === 0 ? (
-                <div className="p-10 text-center text-gray-400">
-                  <svg className="w-16 h-16 mx-auto mb-3 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p className="font-medium">Nessun appuntamento oggi</p>
-                  <p className="text-sm mt-1">Il tuo programma è libero</p>
+                <div className="p-10 text-center">
+                  <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-olive-100 to-olive-50 rounded-2xl flex items-center justify-center">
+                    <svg className="w-8 h-8 text-olive-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
+                  <p className="font-medium text-gray-600">Nessun appuntamento oggi</p>
+                  <p className="text-sm mt-1 text-gray-400">Il tuo programma è libero</p>
                 </div>
               ) : (
                 <div className="divide-y divide-gray-50">
@@ -524,24 +567,27 @@ export default function AdminDashboard() {
         {activeTab === "appointments" && (
           <div className="space-y-6">
             {/* Filters */}
-            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-500 mb-1">Cerca</label>
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Nome, telefono, email..."
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-olive-500 text-gray-700"
-                  />
+                  <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Cerca</label>
+                  <div className="relative">
+                    <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Nome, telefono, email..."
+                      className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-100 text-gray-700 transition-all"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-500 mb-1">Stato</label>
+                  <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Stato</label>
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-olive-500 text-gray-700 bg-white"
+                    className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-100 text-gray-700 bg-white transition-all"
                   >
                     <option value="">Tutti</option>
                     <option value="confirmed">Confermato</option>
@@ -551,12 +597,12 @@ export default function AdminDashboard() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-500 mb-1">Da data</label>
+                  <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Da data</label>
                   <input
                     type="date"
                     value={dateFilter}
                     onChange={(e) => setDateFilter(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-olive-500 text-gray-700"
+                    className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-100 text-gray-700 transition-all"
                   />
                 </div>
                 <div className="flex items-end gap-2">
@@ -566,13 +612,13 @@ export default function AdminDashboard() {
                       setStatusFilter("");
                       setDateFilter("");
                     }}
-                    className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50"
+                    className="px-4 py-2.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-150"
                   >
                     Reset
                   </button>
                   <button
                     onClick={() => setShowNewAppointment(true)}
-                    className="px-4 py-2 text-sm bg-olive-600 text-white rounded-lg hover:bg-olive-700 flex items-center gap-1"
+                    className="px-4 py-2.5 text-sm bg-gradient-to-r from-olive-600 to-olive-700 text-white rounded-xl hover:from-olive-700 hover:to-olive-800 flex items-center gap-1 shadow-sm shadow-olive-200/50 transition-all duration-150 active:scale-[0.98]"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -666,11 +712,11 @@ export default function AdminDashboard() {
               operatorKey={selectedOperator || user.employeeKey}
               onDayClick={(date) => { setDateFilter(date); setActiveTab("appointments"); }}
             />
-            <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+            <div className="flex flex-wrap gap-4 text-xs text-gray-500 bg-white rounded-xl p-3 border border-gray-100 shadow-sm">
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-olive-100 border border-olive-200 inline-block" />Giorno lavorativo</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-red-100 border border-red-200 inline-block" />Giorno libero</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-green-100 border border-green-200 inline-block" />Giorno extra</span>
-              <span className="flex items-center gap-1.5"><span className="w-4 h-4 rounded-full bg-olive-600 text-white flex items-center justify-center font-bold inline-flex text-[10px]">N</span>Appuntamenti</span>
+              <span className="flex items-center gap-1.5"><span className="w-5 h-5 rounded-full bg-gradient-to-br from-olive-500 to-olive-700 text-white flex items-center justify-center font-bold inline-flex text-[10px] shadow-sm">N</span>Appuntamenti</span>
             </div>
           </div>
         )}
@@ -820,26 +866,39 @@ export default function AdminDashboard() {
               <StatCard label="Annullati" value={stats.cancelled} color="red" />
             </div>
 
-            {user.role === "superadmin" && (
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <div className="p-5 border-b border-gray-100">
-                  <h3 className="font-semibold text-olive-800">Appuntamenti per Operatore</h3>
-                </div>
-                <div className="p-5">
-                  <div className="space-y-3">
-                    {Object.entries(OPERATOR_NAMES).map(([key, name]) => {
-                      const count = appointments.filter((a) => a.operatorKey === key && a.date >= todayStr).length;
-                      return (
-                        <div key={key} className="flex items-center justify-between py-2">
-                          <span className="text-sm text-gray-700">{name}</span>
-                          <span className="text-sm font-bold text-olive-600">{count} prossimi</span>
-                        </div>
-                      );
-                    })}
+            {user.role === "superadmin" && (() => {
+              const maxCount = Math.max(1, ...Object.keys(OPERATOR_NAMES).map((key) => appointments.filter((a) => a.operatorKey === key && a.date >= todayStr).length));
+              return (
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                  <div className="p-5 border-b border-gray-100">
+                    <h3 className="font-semibold text-olive-800">Appuntamenti per Operatore</h3>
+                    <p className="text-xs text-gray-400 mt-1">Appuntamenti futuri per ogni membro del team</p>
+                  </div>
+                  <div className="p-5">
+                    <div className="space-y-3">
+                      {Object.entries(OPERATOR_NAMES).map(([key, name]) => {
+                        const count = appointments.filter((a) => a.operatorKey === key && a.date >= todayStr).length;
+                        const pct = (count / maxCount) * 100;
+                        return (
+                          <div key={key} className="group">
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-sm text-gray-700 font-medium">{name}</span>
+                              <span className="text-sm font-bold text-olive-600">{count}</span>
+                            </div>
+                            <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-gradient-to-r from-olive-400 to-olive-600 rounded-full transition-all duration-500 group-hover:from-olive-500 group-hover:to-olive-700"
+                                style={{ width: `${pct}%` }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
           </div>
         )}
       </div>
@@ -1049,7 +1108,7 @@ export default function AdminDashboard() {
                       overrideForm.customSlots ? "bg-olive-600" : "bg-gray-200"
                     }`}
                   >
-                    <span className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${
+                    <span className={`absolute top-0.5 left-0 w-4 h-4 bg-white rounded-full shadow transition-transform ${
                       overrideForm.customSlots ? "translate-x-5" : "translate-x-0.5"
                     }`} />
                   </button>
@@ -1146,11 +1205,11 @@ export default function AdminDashboard() {
 
 function Modal({ children, onClose, title }: { children: React.ReactNode; onClose: () => void; title: string }) {
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        <div className="p-5 border-b border-gray-100 flex items-center justify-between">
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-150" onClick={onClose}>
+      <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-2 duration-200" onClick={(e) => e.stopPropagation()}>
+        <div className="p-5 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-sm rounded-t-2xl z-10">
           <h3 className="text-lg font-bold text-olive-800">{title}</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 p-1">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 p-1.5 rounded-lg hover:bg-gray-100 transition-all duration-150">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -1179,20 +1238,40 @@ function AppointmentRow({
 }) {
   const [showActions, setShowActions] = useState(false);
   const statusCfg = STATUS_CONFIG[appointment.status];
+  const initials = appointment.clientName
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+
+  const statusColors: Record<string, string> = {
+    confirmed: "from-green-400 to-green-500",
+    pending: "from-amber-400 to-amber-500",
+    cancelled: "from-red-400 to-red-500",
+    completed: "from-blue-400 to-blue-500",
+  };
 
   return (
-    <div className="p-4 hover:bg-gray-50 transition-colors group">
-      <div className="flex items-center justify-between">
+    <div className="p-4 hover:bg-olive-50/40 transition-all duration-200 group">
+      <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-4 flex-1 min-w-0">
-          <div className="text-center flex-shrink-0 w-14">
-            <p className="text-lg font-bold text-olive-600">{appointment.time}</p>
+          {/* Status indicator + time */}
+          <div className="text-center flex-shrink-0 w-14 relative">
+            <div className={`absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full bg-gradient-to-b ${statusColors[appointment.status]}`} />
+            <p className="text-lg font-bold text-olive-700">{appointment.time}</p>
             {showDate && (
               <p className="text-xs text-gray-400">{new Date(appointment.date + "T12:00:00").toLocaleDateString("it-IT", { day: "2-digit", month: "short" })}</p>
             )}
           </div>
+          {/* Avatar */}
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-olive-100 to-olive-200 flex items-center justify-center flex-shrink-0">
+            <span className="text-xs font-bold text-olive-700">{initials}</span>
+          </div>
+          {/* Info */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <p className="font-medium text-gray-800 truncate">{appointment.clientName}</p>
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="font-semibold text-gray-800 truncate">{appointment.clientName}</p>
               <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${statusCfg.color}`}>
                 {statusCfg.label}
               </span>
@@ -1201,18 +1280,26 @@ function AppointmentRow({
               {showOperator && (
                 <span className="font-medium text-olive-600">{OPERATOR_NAMES[appointment.operatorKey] || appointment.operatorKey}</span>
               )}
-              {appointment.clientPhone && <span>{appointment.clientPhone}</span>}
-              <span>{appointment.duration} min</span>
+              {appointment.clientPhone && (
+                <span className="flex items-center gap-1">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  {appointment.clientPhone}
+                </span>
+              )}
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                {appointment.duration} min
+              </span>
             </div>
             {appointment.notes && (
-              <p className="text-xs text-gray-400 mt-1 truncate">{appointment.notes}</p>
+              <p className="text-xs text-gray-400 mt-1 truncate italic">{appointment.notes}</p>
             )}
           </div>
         </div>
         <div className="relative flex-shrink-0">
           <button
             onClick={() => setShowActions(!showActions)}
-            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-all"
+            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -1221,25 +1308,25 @@ function AppointmentRow({
           {showActions && (
             <>
               <div className="fixed inset-0 z-40" onClick={() => setShowActions(false)} />
-              <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-gray-100 py-1 w-48 z-50">
-                <button onClick={() => { onEdit(); setShowActions(false); }} className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-olive-50 flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+              <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-48 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <button onClick={() => { onEdit(); setShowActions(false); }} className="w-full px-4 py-2.5 text-left text-sm text-gray-700 hover:bg-olive-50 flex items-center gap-2.5 transition-colors">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                   Modifica
                 </button>
                 {appointment.status !== "completed" && (
-                  <button onClick={() => { onStatusChange("completed"); setShowActions(false); }} className="w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 flex items-center gap-2">
+                  <button onClick={() => { onStatusChange("completed"); setShowActions(false); }} className="w-full px-4 py-2.5 text-left text-sm text-green-700 hover:bg-green-50 flex items-center gap-2.5 transition-colors">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     Segna completato
                   </button>
                 )}
                 {appointment.status !== "cancelled" && (
-                  <button onClick={() => { onStatusChange("cancelled"); setShowActions(false); }} className="w-full px-4 py-2 text-left text-sm text-yellow-700 hover:bg-yellow-50 flex items-center gap-2">
+                  <button onClick={() => { onStatusChange("cancelled"); setShowActions(false); }} className="w-full px-4 py-2.5 text-left text-sm text-amber-700 hover:bg-amber-50 flex items-center gap-2.5 transition-colors">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
                     Annulla
                   </button>
                 )}
-                <hr className="my-1" />
-                <button onClick={() => { onDelete(); setShowActions(false); }} className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
+                <div className="my-1.5 border-t border-gray-100" />
+                <button onClick={() => { onDelete(); setShowActions(false); }} className="w-full px-4 py-2.5 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2.5 transition-colors">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                   Elimina
                 </button>
@@ -1388,17 +1475,32 @@ function EditAppointmentForm({
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: number; color: string }) {
-  const colorMap: Record<string, string> = {
-    olive: "text-olive-600",
-    green: "text-green-600",
-    blue: "text-blue-600",
-    yellow: "text-yellow-600",
-    red: "text-red-600",
+function StatCard({ label, value, color, icon }: { label: string; value: number; color: string; icon?: string }) {
+  const colorMap: Record<string, { text: string; bg: string; iconBg: string }> = {
+    olive: { text: "text-olive-600", bg: "bg-olive-50", iconBg: "bg-olive-100" },
+    green: { text: "text-green-600", bg: "bg-green-50", iconBg: "bg-green-100" },
+    blue: { text: "text-blue-600", bg: "bg-blue-50", iconBg: "bg-blue-100" },
+    yellow: { text: "text-amber-600", bg: "bg-amber-50", iconBg: "bg-amber-100" },
+    red: { text: "text-red-600", bg: "bg-red-50", iconBg: "bg-red-100" },
+  };
+  const c = colorMap[color] || colorMap.olive;
+  const icons: Record<string, string> = {
+    olive: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+    green: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+    blue: "M5 13l4 4L19 7",
+    yellow: "M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    red: "M6 18L18 6M6 6l12 12",
   };
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
-      <p className={`text-4xl font-bold ${colorMap[color] || "text-gray-800"}`}>{value}</p>
+    <div className={`${c.bg} rounded-2xl p-6 border border-gray-100/50 shadow-sm hover:shadow-md transition-all duration-200 group`}>
+      <div className="flex items-center justify-between mb-3">
+        <div className={`w-9 h-9 ${c.iconBg} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+          <svg className={`w-4.5 h-4.5 ${c.text}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icon || icons[color] || icons.olive} />
+          </svg>
+        </div>
+      </div>
+      <p className={`text-4xl font-bold ${c.text}`}>{value}</p>
       <p className="text-sm text-gray-500 mt-1">{label}</p>
     </div>
   );
@@ -1439,10 +1541,10 @@ function MonthCalendar({
     `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-      <div className="grid grid-cols-7 border-b border-gray-100 bg-gray-50">
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+      <div className="grid grid-cols-7 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-olive-50/30">
         {DAY_LABELS.map((d) => (
-          <div key={d} className="p-3 text-center text-xs font-semibold text-gray-500">
+          <div key={d} className="p-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">
             {d}
           </div>
         ))}
@@ -1450,7 +1552,7 @@ function MonthCalendar({
       <div className="grid grid-cols-7">
         {cells.map((day, idx) => {
           if (day === null) {
-            return <div key={idx} className="min-h-20 border-b border-r border-gray-50" />;
+            return <div key={idx} className="min-h-20 border-b border-r border-gray-50 bg-gray-50/30" />;
           }
 
           const dateStr = getDateStr(day);
@@ -1471,9 +1573,9 @@ function MonthCalendar({
 
           let bgClass = "";
           if (override) {
-            bgClass = override.available ? "bg-green-50" : "bg-red-50";
+            bgClass = override.available ? "bg-green-50/70" : "bg-red-50/70";
           } else if (isWorkingDay) {
-            bgClass = isPast ? "bg-olive-50/40" : "bg-olive-50";
+            bgClass = isPast ? "bg-olive-50/30" : "bg-olive-50/60";
           } else {
             bgClass = "";
           }
@@ -1482,16 +1584,16 @@ function MonthCalendar({
             <div
               key={idx}
               onClick={() => aptCount > 0 && onDayClick(dateStr)}
-              className={`min-h-20 p-2 border-b border-r border-gray-50 transition-opacity ${
+              className={`min-h-20 p-2 border-b border-r border-gray-50 transition-all duration-150 ${
                 bgClass
-              } ${isToday ? "ring-2 ring-olive-500 ring-inset" : ""} ${
-                aptCount > 0 ? "cursor-pointer hover:opacity-80" : ""
+              } ${isToday ? "ring-2 ring-olive-500 ring-inset rounded-sm" : ""} ${
+                aptCount > 0 ? "cursor-pointer hover:brightness-[0.97] hover:shadow-inner" : ""
               }`}
             >
               <div
                 className={`text-sm font-medium mb-1 ${
                   isToday
-                    ? "text-olive-700 font-bold"
+                    ? "w-7 h-7 bg-olive-600 text-white rounded-full flex items-center justify-center font-bold"
                     : isPast
                     ? "text-gray-400"
                     : "text-gray-700"
@@ -1501,7 +1603,7 @@ function MonthCalendar({
               </div>
               {override && (
                 <div
-                  className={`text-xs font-medium ${
+                  className={`text-xs font-semibold ${
                     override.available ? "text-green-700" : "text-red-600"
                   }`}
                 >
@@ -1509,7 +1611,7 @@ function MonthCalendar({
                 </div>
               )}
               {aptCount > 0 && (
-                <div className="mt-1 inline-flex w-5 h-5 bg-olive-600 text-white text-[10px] rounded-full items-center justify-center font-bold">
+                <div className="mt-1 inline-flex w-5 h-5 bg-gradient-to-br from-olive-500 to-olive-700 text-white text-[10px] rounded-full items-center justify-center font-bold shadow-sm">
                   {aptCount}
                 </div>
               )}
@@ -1651,7 +1753,7 @@ function ScheduleEditorForm({
                   }`}
                 >
                   <span
-                    className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${
+                    className={`absolute top-0.5 left-0 w-4 h-4 bg-white rounded-full shadow transition-transform ${
                       config.enabled ? "translate-x-5" : "translate-x-0.5"
                     }`}
                   />

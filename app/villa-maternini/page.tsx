@@ -14,7 +14,7 @@ import {
 export default function VillaMaterniniPage() {
   const { t, i18n } = useTranslation();
 
-  const PARTNER_EVENT_KEYS = ["equilibrioDonnaEvent"];
+  const PARTNER_EVENT_KEYS = ["equilibrioDonnaEvent", "benessereRelaxEvent"];
   const partnerEvents = EVENTS.filter((e) =>
     PARTNER_EVENT_KEYS.includes(e.key),
   );
@@ -144,26 +144,14 @@ export default function VillaMaterniniPage() {
                   >
                     <div
                       className={`w-full overflow-hidden relative ${
-                        event.images || event.video ? "h-28" : "h-20"
+                        event.images ? "h-28" : "h-20"
                       }`}
                     >
-                      {event.video ? (
-                        <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                          <svg
-                            className="w-8 h-8 text-white ml-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      ) : (
-                        <img
-                          src={event.image}
-                          alt={t(`events.eventList.${event.key}.title`)}
-                          className="w-full h-full object-cover object-center"
-                        />
-                      )}
+                      <img
+                        src={event.image}
+                        alt={t(`events.eventList.${event.key}.title`)}
+                        className="w-full h-full object-cover object-center"
+                      />
                     </div>
                     <div className="p-6 grow">
                       <div className="flex items-center justify-between mb-3">
@@ -263,7 +251,7 @@ export default function VillaMaterniniPage() {
                     >
                       <div
                         className={`w-full overflow-hidden relative ${
-                          event.images || event.video ? "h-28" : "h-20"
+                          event.images ? "h-28" : "h-20"
                         }`}
                       >
                         <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
@@ -271,15 +259,11 @@ export default function VillaMaterniniPage() {
                             {t("events.eventPassed")}
                           </span>
                         </div>
-                        {event.video ? (
-                          <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
-                        ) : (
-                          <img
-                            src={event.image}
-                            alt={t(`events.eventList.${event.key}.title`)}
-                            className="w-full h-full object-cover object-center"
-                          />
-                        )}
+                        <img
+                          src={event.image}
+                          alt={t(`events.eventList.${event.key}.title`)}
+                          className="w-full h-full object-cover object-center"
+                        />
                       </div>
                       <div className="p-6 grow">
                         <div className="flex items-center justify-between mb-3">

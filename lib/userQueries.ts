@@ -1,4 +1,4 @@
-import { db } from "./db";
+import { getDb } from "./db";
 import bcrypt from "bcryptjs";
 
 export interface AdminUser {
@@ -14,7 +14,7 @@ export async function getUserByUsername(
   username: string,
 ): Promise<AdminUser | null> {
   try {
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: "SELECT id, username, password_hash as passwordHash, employee_key as employeeKey, display_name as displayName, role FROM users WHERE username = ?",
       args: [username],
     });
@@ -31,7 +31,7 @@ export async function getUserByEmployeeKey(
   employeeKey: string,
 ): Promise<AdminUser | null> {
   try {
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: "SELECT id, username, password_hash as passwordHash, employee_key as employeeKey, display_name as displayName, role FROM users WHERE employee_key = ?",
       args: [employeeKey],
     });
@@ -46,7 +46,7 @@ export async function getUserByEmployeeKey(
 
 export async function getAllUsers(): Promise<AdminUser[]> {
   try {
-    const result = await db.execute(
+    const result = await getDb().execute(
       "SELECT id, username, password_hash as passwordHash, employee_key as employeeKey, display_name as displayName, role FROM users ORDER BY display_name ASC",
     );
     return result.rows as unknown as AdminUser[];
@@ -66,7 +66,7 @@ export async function createUser(
   try {
     const passwordHash = bcrypt.hashSync(password, 10);
 
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: "INSERT INTO users (username, password_hash, employee_key, display_name, role) VALUES (?, ?, ?, ?, ?) RETURNING id, username, password_hash as passwordHash, employee_key as employeeKey, display_name as displayName, role",
       args: [username, passwordHash, employeeKey, displayName, role],
     });

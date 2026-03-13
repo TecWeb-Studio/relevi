@@ -750,32 +750,16 @@ export default function EventsPage() {
           >
             <>
               <div className="relative">
-                {selectedEvent.video ? (
-                  <div className="relative bg-black">
-                    <video
-                      controls
-                      src={selectedEvent.video}
-                      className="w-full max-h-64 md:max-h-80 object-contain"
-                    >
-                      <source src={selectedEvent.video} type="video/mp4" />
-                    </video>
-                  </div>
-                ) : (
-                  <div className="relative w-full h-36 overflow-hidden bg-olive-100">
-                    <img
-                      src={selectedEvent.image}
-                      alt={t(`events.eventList.${selectedEvent.key}.title`)}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                    />
-                  </div>
-                )}
+                <div className="relative w-full h-36 overflow-hidden bg-olive-100">
+                  <img
+                    src={selectedEvent.image}
+                    alt={t(`events.eventList.${selectedEvent.key}.title`)}
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </div>
                 <button
                   onClick={() => setSelectedEvent(null)}
-                  className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg ${
-                    selectedEvent.video
-                      ? "bg-black/60 text-white hover:bg-black/80"
-                      : "bg-white text-gray-600 hover:text-olive-700"
-                  }`}
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg bg-white text-gray-600 hover:text-olive-700"
                   aria-label="Close"
                 >
                   <svg
@@ -894,6 +878,20 @@ export default function EventsPage() {
                           )}
                         </p>
                       </div>
+
+                      {selectedEvent.video && (
+                        <div className="mb-6">
+                          <div className="rounded-2xl overflow-hidden bg-black">
+                            <video
+                              controls
+                              src={selectedEvent.video}
+                              className="w-full max-h-80 object-contain"
+                            >
+                              <source src={selectedEvent.video} type="video/mp4" />
+                            </video>
+                          </div>
+                        </div>
+                      )}
 
                       {selectedEvent.images &&
                         selectedEvent.images.length > 1 && (
