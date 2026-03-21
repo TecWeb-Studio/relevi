@@ -270,21 +270,70 @@
   }
 }
 
-/* Keep Iubenda cookie/policy UI above the navbar on all breakpoints */
+/* Iubenda cookie/policy UI: cleaner, less invasive visual style */
 #iubenda-cs-banner,
-#iubenda-cs-title,
-#iubenda-cs-content,
-#iubenda-cs-rationale,
-.iubenda-cs-overlay,
 .iubenda-cs-container,
 .iubenda-cs-content {
   z-index: 2147483000 !important;
+}
+
+/* Keep only actual banner shell fixed, avoid forcing internal text blocks */
+#iubenda-cs-banner,
+.iubenda-cs-container {
   position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  width: min(360px, calc(100vw - 32px)) !important;
+  max-width: min(360px, calc(100vw - 32px)) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(109, 122, 66, 0.18) !important;
+  box-shadow: 0 14px 32px rgba(30, 34, 18, 0.12) !important;
+  backdrop-filter: blur(8px) saturate(115%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(115%) !important;
+  opacity: 0.88 !important;
+  overflow: hidden !important;
+}
+
+#iubenda-cs-title,
+#iubenda-cs-content,
+#iubenda-cs-rationale,
+.iubenda-cs-content {
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+}
+
+@media (max-width: 768px) {
+  #iubenda-cs-banner,
+  .iubenda-cs-container {
+    top: auto !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: none !important;
+    border-radius: 14px !important;
+    opacity: 0.93 !important;
+  }
+
+  #iubenda-cs-title,
+  #iubenda-cs-content,
+  #iubenda-cs-rationale,
+  .iubenda-cs-content {
+    font-size: 12px !important;
+  }
 }
 
 /* Use footer policy links instead of the floating preferences launcher */
 #iubenda-cs-preferences-link,
 .iubenda-cs-preferences-link,
-[class*="iubenda-cs-preferences"] {
+[class*="iubenda-cs-preferences"],
+#iubenda-pp-btn,
+.iubenda-pp-btn,
+#iubenda-cs-tp-btn,
+.iubenda-cs-tp-btn,
+[id*="iubenda"][id*="preferences"],
+[class*="iubenda"][class*="preferences"] {
   display: none !important;
 }
