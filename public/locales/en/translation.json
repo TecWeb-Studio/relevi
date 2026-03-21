@@ -848,7 +848,8 @@
         "spotsLeft": 20
       },
       "benessereRelaxEvent": {
-        "date": "2026-07-12",
+        "date": "2026-03-28",
+        "dateDisplay": "28-29 March 2026",
         "time": "9:30 a.m.",
         "endTime": "4:30 p.m.",
         "location": "Via Campagna 46, San Polo di Piave (TV)",

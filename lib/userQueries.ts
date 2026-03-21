@@ -104,7 +104,7 @@ export async function updateUser(
 
     args.push(id);
 
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: `UPDATE users SET ${setClauses.join(", ")}, updated_at = CURRENT_TIMESTAMP WHERE id = ? RETURNING id, username, password_hash as passwordHash, employee_key as employeeKey, display_name as displayName, role`,
       args,
     });
@@ -124,7 +124,7 @@ export async function updateUserPassword(
   try {
     const passwordHash = bcrypt.hashSync(newPassword, 10);
 
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: "UPDATE users SET password_hash = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
       args: [passwordHash, id],
     });
@@ -138,7 +138,7 @@ export async function updateUserPassword(
 
 export async function deleteUser(id: number): Promise<boolean> {
   try {
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: "DELETE FROM users WHERE id = ?",
       args: [id],
     });
