@@ -27,10 +27,10 @@ export async function GET(request: NextRequest) {
   let appointments;
   if (user.role === "superadmin") {
     appointments = operatorKey
-      ? getAppointmentsByOperator(operatorKey)
-      : getAllAppointments();
+      ? await getAppointmentsByOperator(operatorKey)
+      : await getAllAppointments();
   } else {
-    appointments = getAppointmentsByOperator(user.employeeKey);
+    appointments = await getAppointmentsByOperator(user.employeeKey);
   }
 
   // Apply filters
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const appointment = createAppointment({
+    const appointment = await createAppointment({
       operatorKey: targetOperator,
       clientName,
       clientPhone: clientPhone || "",

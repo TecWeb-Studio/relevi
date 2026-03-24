@@ -22,7 +22,7 @@ export async function PUT(
   }
 
   const { id } = await params;
-  const existing = getAppointmentById(id);
+  const existing = await getAppointmentById(id);
   if (!existing) {
     return NextResponse.json({ error: "Appuntamento non trovato" }, { status: 404 });
   }
@@ -34,7 +34,7 @@ export async function PUT(
 
   try {
     const body = await request.json();
-    const updated = updateAppointment(id, body);
+    const updated = await updateAppointment(id, body);
     if (!updated) {
       return NextResponse.json({ error: "Aggiornamento fallito" }, { status: 500 });
     }
@@ -54,7 +54,7 @@ export async function DELETE(
   }
 
   const { id } = await params;
-  const existing = getAppointmentById(id);
+  const existing = await getAppointmentById(id);
   if (!existing) {
     return NextResponse.json({ error: "Appuntamento non trovato" }, { status: 404 });
   }
@@ -63,7 +63,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Non autorizzato" }, { status: 403 });
   }
 
-  const deleted = deleteAppointment(id);
+  const deleted = await deleteAppointment(id);
   if (!deleted) {
     return NextResponse.json({ error: "Eliminazione fallita" }, { status: 500 });
   }

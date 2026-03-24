@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "../../../../lib/auth";
-import { getAllAppointments, getAppointmentsByOperator } from "../../../../lib/dataStore";
+import { getAllAppointments, getAppointmentsByOperator, Appointment } from "../../../../lib/dataStore";
 
 function authenticate(request: NextRequest) {
   const token = request.cookies.get("admin_token")?.value;
@@ -18,13 +18,13 @@ export async function GET(request: NextRequest) {
   const format = searchParams.get("format") || "csv";
   const operatorKey = searchParams.get("operatorKey");
 
-  let appointments;
+  let appointments: Appointment[];
   if (user.role === "superadmin") {
     appointments = operatorKey
-      ? getAppointmentsByOperator(operatorKey)
-      : getAllAppointments();
+      ? await getAppointmentsByOperator(operatorKey)
+      : await getAllAppointments();
   } else {
-    appointments = getAppointmentsByOperator(user.employeeKey);
+    appointments = await getAppointmentsByOperator(user.employeeKey);
   }
 
   // Sort

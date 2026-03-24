@@ -27,11 +27,11 @@ export async function GET(request: NextRequest) {
   let schedule = null;
 
   if (user.role === "superadmin") {
-    overrides = getAvailabilityOverrides(operatorKey || undefined);
-    if (operatorKey) schedule = getOperatorSchedule(operatorKey);
+    overrides = await getAvailabilityOverrides(operatorKey || undefined);
+    if (operatorKey) schedule = await getOperatorSchedule(operatorKey);
   } else {
-    overrides = getAvailabilityOverrides(user.employeeKey);
-    schedule = getOperatorSchedule(user.employeeKey);
+    overrides = await getAvailabilityOverrides(user.employeeKey);
+    schedule = await getOperatorSchedule(user.employeeKey);
   }
 
   return NextResponse.json({ overrides, schedule });
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Data obbligatoria" }, { status: 400 });
     }
 
-    setAvailabilityOverride({
+    await setAvailabilityOverride({
       operatorKey: targetOperator,
       date,
       available: available ?? false,
@@ -85,7 +85,7 @@ export async function DELETE(request: NextRequest) {
   const targetOperator =
     user.role === "superadmin" && operatorKey ? operatorKey : user.employeeKey;
 
-  const removed = removeAvailabilityOverride(targetOperator, date);
+  const removed = await removeAvailabilityOverride(targetOperator, date);
   return NextResponse.json({ success: removed });
 }
 
@@ -106,7 +106,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Dati non validi" }, { status: 400 });
     }
 
-    setOperatorSchedule({
+    await setOperatorSchedule({
       operatorKey: targetKey,
       daysOfWeek,
       timeSlots,
