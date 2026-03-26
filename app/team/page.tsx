@@ -78,6 +78,26 @@ export default function TeamPage() {
       key: "tamaraZanchetta",
       image: "/team-photos-crop/TamaraZanchetta.jpg",
     },
+    {
+      id: 9,
+      key: "dariaDeBona",
+      image: "/team-photos-crop/placeholder-team.svg",
+    },
+    {
+      id: 10,
+      key: "giadaGiacomini",
+      image: "/team-photos-crop/placeholder-team.svg",
+    },
+    {
+      id: 11,
+      key: "stefanoPerinotto",
+      image: "/team-photos-crop/placeholder-team.svg",
+    },
+    {
+      id: 12,
+      key: "monicaDeGiusti",
+      image: "/team-photos-crop/placeholder-team.svg",
+    },
   ];
 
   return (

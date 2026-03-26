@@ -645,6 +645,68 @@
           "Life and Spiritual Coach",
           "Art Therapist"
         ]
+      },
+      "dariaDeBona": {
+        "name": "Daria De Bona",
+        "role": "Counselor and Coach specialized in EFT",
+        "bio": "Daria began her path by studying psychology at the University of Trieste and later continued her studies in Paris at the University Rene Descartes. In France, she discovered and deepened EFT (Emotional Freedom Technique) through a three-year training program at IFPEC. As a Counselor, she offers a safe and non-judgmental listening space, with interdisciplinary support that considers the person at physical, emotional, and social levels. She has also participated in studies showing the benefits of EFT in managing stress, fear, and pain, including situations of significant distress.",
+        "specialties": [
+          "EFT (Emotional Freedom Technique)",
+          "Counseling",
+          "Coaching",
+          "Stress, fear, and pain management"
+        ],
+        "certifications": [
+          "Psychology studies - University of Trieste",
+          "University studies - University Rene Descartes (Paris)",
+          "Three-year EFT training - IFPEC"
+        ]
+      },
+      "giadaGiacomini": {
+        "name": "Giada Giacomini",
+        "role": "Montessori Method Educator",
+        "bio": "Giada holds a degree in Primary Education Sciences from the University of Udine and later obtained a specialization in Montessori didactic differentiation in Padua. She leads creative hands-on activities, animated reading, singing, and group games, with special attention to the quality of relationships among children. Her approach is based on empathic listening and observation to value each child's uniqueness. She also works closely with families by offering educational strategies to support parenting.",
+        "specialties": [
+          "Montessori Method",
+          "Didactic differentiation",
+          "Creative educational activities",
+          "Parenting support"
+        ],
+        "certifications": [
+          "Degree in Primary Education Sciences - University of Udine",
+          "Specialization in Montessori didactic differentiation - Padua"
+        ]
+      },
+      "stefanoPerinotto": {
+        "name": "Stefano Perinotto",
+        "role": "Iridologist",
+        "bio": "Stefano practices iridology as a tool for prevention and self-knowledge, not as a diagnostic instrument. Through iris observation and dialogue, he helps identify predispositions and vulnerabilities of the organs. His goal is to foster body awareness, showing that genetics is not destiny and supporting informed lifestyle and nutrition choices to rebalance possible predispositions.",
+        "specialties": [
+          "Preventive iridology",
+          "Body awareness",
+          "Lifestyle and nutrition education",
+          "Self-knowledge"
+        ],
+        "certifications": [
+          "Professional in Iridology",
+          "Prevention and rebalancing-oriented approach"
+        ]
+      },
+      "monicaDeGiusti": {
+        "name": "Monica De Giusti",
+        "role": "Sound Therapist",
+        "bio": "Monica is an expert in sound therapy and vibrational practices. She uses the healing sound of Tibetan singing bowls combined with specific vocalizations to foster relaxation, centering, and deep psychophysical well-being. She also leads sound yoga sessions, creating profound experiences of release and inner rebalancing.",
+        "specialties": [
+          "Sound therapy",
+          "Vibrational practices",
+          "Tibetan singing bowls",
+          "Sound yoga"
+        ],
+        "certifications": [
+          "Expert in sound therapy",
+          "Facilitator of vibrational practices",
+          "Sound yoga sessions"
+        ]
       }
     }
   },

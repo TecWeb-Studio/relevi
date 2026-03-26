@@ -30,6 +30,19 @@ const allOperators: OperatorInfo[] = [
   { key: "paoloAvella", image: "/team-photos-crop/PaoloAvella.jpg" },
   { key: "sabrinaPozzobon", image: "/team-photos-crop/SabrinaPozzobon.jpg" },
   { key: "tamaraZanchetta", image: "/team-photos-crop/TamaraZanchetta.jpg" },
+  { key: "dariaDeBona", image: "/team-photos-crop/placeholder-team.svg" },
+  {
+    key: "giadaGiacomini",
+    image: "/team-photos-crop/placeholder-team.svg",
+  },
+  {
+    key: "stefanoPerinotto",
+    image: "/team-photos-crop/placeholder-team.svg",
+  },
+  {
+    key: "monicaDeGiusti",
+    image: "/team-photos-crop/placeholder-team.svg",
+  },
 ];
 
 const DAY_NAMES_IT = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];

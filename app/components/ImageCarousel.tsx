@@ -20,6 +20,7 @@ const CAROUSEL_IMAGES = [
   "/images/carousel/carousel-32.jpeg",
   "/images/carousel/carousel-33.jpeg",
   "/images/carousel/i1.jpeg",
+  "/images/carousel/carousel-50.jpeg",
 ];
 
 export default function ImageCarousel() {

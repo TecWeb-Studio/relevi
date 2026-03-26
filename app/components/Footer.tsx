@@ -2,10 +2,40 @@
 
 import Link from "next/link";
 import Script from "next/script";
+import { useCallback } from "react";
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
   const { t } = useTranslation();
+
+  const handleCookiePreferences = useCallback(() => {
+    const win = window as Window & {
+      _iub?: {
+        cs?: {
+          api?: {
+            openPreferences?: () => void;
+            showPreferences?: () => void;
+          };
+        };
+      };
+    };
+
+    const api = win._iub?.cs?.api;
+    if (api?.openPreferences) {
+      api.openPreferences();
+      return;
+    }
+    if (api?.showPreferences) {
+      api.showPreferences();
+      return;
+    }
+
+    window.open(
+      "https://www.iubenda.com/privacy-policy/29386294/cookie-policy",
+      "_blank",
+      "noopener,noreferrer",
+    );
+  }, []);
 
   return (
     <footer className="bg-olive-900 text-white py-12 animate-fadeIn">
@@ -153,6 +183,17 @@ export default function Footer() {
             >
               Cookie Policy
             </a>
+          </div>
+          <div className="mt-5 flex justify-center">
+            <button
+              type="button"
+              onClick={handleCookiePreferences}
+              className="cookie-preferences-btn"
+              aria-label="Apri preferenze cookie"
+            >
+              <span className="cookie-preferences-btn__dot" aria-hidden="true" />
+              Informativa Raccolta Dati
+            </button>
           </div>
         </div>
         <Script src="https://cdn.iubenda.com/iubenda.js" strategy="lazyOnload" />

@@ -634,6 +634,68 @@
           "Life and Spiritual Coach",
           "Arteterapeuta"
         ]
+      },
+      "dariaDeBona": {
+        "name": "Daria De Bona",
+        "role": "Counselor e Coach specializzata in EFT",
+        "bio": "Daria ha avviato il suo percorso con gli studi di psicologia presso l'Università di Trieste e lo ha proseguito a Parigi all'Università René Descartes. In Francia ha approfondito l'EFT (Emotional Freedom Technique) con una formazione triennale all'IFPEC. Come Counselor offre uno spazio di ascolto sicuro e privo di giudizio, con un supporto interdisciplinare che considera la persona nella sua dimensione fisica, emotiva e sociale. Ha inoltre partecipato a studi sui benefici dell'EFT nella gestione dello stress, della paura e del dolore, anche in situazioni di forte disagio.",
+        "specialties": [
+          "EFT (Emotional Freedom Technique)",
+          "Counseling",
+          "Coaching",
+          "Gestione di stress, paura e dolore"
+        ],
+        "certifications": [
+          "Studi di Psicologia - Università di Trieste",
+          "Percorso universitario - Università René Descartes (Parigi)",
+          "Formazione triennale EFT - IFPEC"
+        ]
+      },
+      "giadaGiacomini": {
+        "name": "Giada Giacomini",
+        "role": "Educatrice Metodo Montessori",
+        "bio": "Giada è laureata in Scienze della Formazione Primaria all'Università di Udine e ha conseguito la specializzazione in Differenziazione didattica Montessori a Padova. Conduce attività manuali creative, letture animate, canto e giochi di gruppo, dedicando particolare attenzione alla qualità delle relazioni tra i bambini. Il suo approccio si basa su ascolto e osservazione empatica per valorizzare l'unicità di ogni bambino. Collabora inoltre con le famiglie offrendo strategie educative di sostegno alla genitorialità.",
+        "specialties": [
+          "Metodo Montessori",
+          "Differenziazione didattica",
+          "Attività educative creative",
+          "Sostegno alla genitorialità"
+        ],
+        "certifications": [
+          "Laurea in Scienze della Formazione Primaria - Università di Udine",
+          "Specializzazione in Differenziazione didattica Montessori - Padova"
+        ]
+      },
+      "stefanoPerinotto": {
+        "name": "Stefano Perinotto",
+        "role": "Iridologo",
+        "bio": "Stefano pratica l'iridologia come strumento di prevenzione e conoscenza di sé, non come strumento diagnostico. Attraverso l'osservazione dell'iride e il dialogo, aiuta a individuare predisposizioni e fragilità degli organi. Il suo obiettivo è favorire la consapevolezza corporea, mostrando che la genetica non è un destino e supportando scelte mirate nello stile di vita e nell'alimentazione per riequilibrare eventuali predisposizioni.",
+        "specialties": [
+          "Iridologia preventiva",
+          "Consapevolezza corporea",
+          "Educazione a stile di vita e alimentazione",
+          "Conoscenza di sé"
+        ],
+        "certifications": [
+          "Professionista in Iridologia",
+          "Approccio orientato a prevenzione e riequilibrio"
+        ]
+      },
+      "monicaDeGiusti": {
+        "name": "Monica De Giusti",
+        "role": "Terapista del Suono",
+        "bio": "Monica è esperta in Terapia del suono e pratiche vibrazionali. Utilizza il suono curativo delle campane tibetane abbinato a specifiche vocalizzazioni per favorire rilassamento, centratura e benessere psicofisico. Conduce inoltre sessioni di Yoga sonoro, creando esperienze profonde di distensione e riequilibrio interiore.",
+        "specialties": [
+          "Terapia del suono",
+          "Pratiche vibrazionali",
+          "Campane tibetane",
+          "Yoga sonoro"
+        ],
+        "certifications": [
+          "Esperta in Terapia del suono",
+          "Conduzione di pratiche vibrazionali",
+          "Sessioni di Yoga sonoro"
+        ]
       }
     }
   },
