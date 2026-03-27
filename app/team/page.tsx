@@ -81,22 +81,22 @@ export default function TeamPage() {
     {
       id: 9,
       key: "dariaDeBona",
-      image: "/team-photos-crop/placeholder-team.svg",
+      image: "/team-photos-crop/DariaDeBona.jpg",
     },
     {
       id: 10,
       key: "giadaGiacomini",
-      image: "/team-photos-crop/placeholder-team.svg",
+      image: "/team-photos-crop/GiadaGiacomini.jpg",
     },
     {
       id: 11,
       key: "stefanoPerinotto",
-      image: "/team-photos-crop/placeholder-team.svg",
+      image: "/team-photos-crop/StefanoPerinotto.jpg",
     },
     {
       id: 12,
       key: "monicaDeGiusti",
-      image: "/team-photos-crop/placeholder-team.svg",
+      image: "/team-photos-crop/MonicaDeGiusti.jpg",
     },
   ];
 
