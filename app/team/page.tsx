@@ -80,8 +80,8 @@ export default function TeamPage() {
     },
     {
       id: 9,
-      key: "dariaDeBona",
-      image: "/team-photos-crop/DariaDeBona.jpg",
+      key: "dariaBonora",
+      image: "/team-photos-crop/DariaBonora.jpg",
     },
     {
       id: 10,
