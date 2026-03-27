@@ -30,7 +30,7 @@ const allOperators: OperatorInfo[] = [
   { key: "paoloAvella", image: "/team-photos-crop/PaoloAvella.jpg" },
   { key: "sabrinaPozzobon", image: "/team-photos-crop/SabrinaPozzobon.jpg" },
   { key: "tamaraZanchetta", image: "/team-photos-crop/TamaraZanchetta.jpg" },
-  { key: "dariaBonora", image: "/team-photos-crop/DariaBonora.jpg" },
+  { key: "dariaDeBona", image: "/team-photos-crop/DariaBonora.jpg" },
   {
     key: "giadaGiacomini",
     image: "/team-photos-crop/placeholder-team.svg",
