@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
   });
 
   const users = [
-    { username: "daria.debona", password: "daria.debona2026", employeeKey: "dariaDeBona", displayName: "Daria De Bona" },
+    { username: "daria.debona", password: "daria.debona2026", employeeKey: "dariaDeBona", displayName: "Daria Bonora" },
     { username: "giada.giacomini", password: "giada.giacomini2026", employeeKey: "giadaGiacomini", displayName: "Giada Giacomini" },
     { username: "stefano.perinotto", password: "stefano.perinotto2026", employeeKey: "stefanoPerinotto", displayName: "Stefano Perinotto" },
     { username: "monica.degiusti", password: "monica.degiusti2026", employeeKey: "monicaDeGiusti", displayName: "Monica De Giusti" },

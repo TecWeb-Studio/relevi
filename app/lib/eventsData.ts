@@ -98,7 +98,7 @@ export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
     spotsLeft: 40,
   },
   dinamicheEducativeEvent: {
-    date: "2026-05-24",
+    date: "2026-04-15",
     time: "09:30",
     endTime: "16:30",
     location: "Via Campagna 46, San Polo di Piave (TV)",
