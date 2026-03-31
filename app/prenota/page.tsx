@@ -33,15 +33,15 @@ const allOperators: OperatorInfo[] = [
   { key: "dariaDeBona", image: "/team-photos-crop/DariaBonora.jpg" },
   {
     key: "giadaGiacomini",
-    image: "/team-photos-crop/placeholder-team.svg",
+    image: "/team-photos-crop/GiadaGiacomini.jpg",
   },
   {
     key: "stefanoPerinotto",
-    image: "/team-photos-crop/placeholder-team.svg",
+    image: "/team-photos-crop/StefanoPerinotto.jpg",
   },
   {
     key: "monicaDeGiusti",
-    image: "/team-photos-crop/placeholder-team.svg",
+    image: "/team-photos-crop/MonicaDeGiusti.jpg",
   },
 ];
 
