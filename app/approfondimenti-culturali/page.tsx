@@ -24,6 +24,7 @@ interface CulturalShowcase {
   key: string;
   cover: string;
   images: string[];
+  youtubeUrl?: string;
 }
 
 interface CulturalImageCarouselProps {
@@ -171,6 +172,13 @@ export default function CulturalInsightsPage() {
         "/images/cultural/zanatta/incontroZanatta-2.jpeg",
       ],
     },
+    {
+      id: "medicinaIntegrata",
+      key: "medicinaIntegrata",
+      cover: `https://img.youtube.com/vi/tBEKG_focMw/hqdefault.jpg`,
+      images: [],
+      youtubeUrl: "https://www.youtube.com/watch?v=tBEKG_focMw",
+    },
   ];
 
   // Fetch PDFs from the API
@@ -303,7 +311,13 @@ export default function CulturalInsightsPage() {
                     key={showcase.id}
                     className="reveal bg-white rounded-3xl overflow-hidden shadow-xl hover-lift transition-all duration-300 border border-olive-100 cursor-pointer group"
                     style={{ animationDelay: `${index * 100}ms` }}
-                    onClick={() => setSelectedShowcase(showcase)}
+                    onClick={() => {
+                      if (showcase.youtubeUrl) {
+                        window.open(showcase.youtubeUrl, "_blank", "noopener,noreferrer");
+                      } else {
+                        setSelectedShowcase(showcase);
+                      }
+                    }}
                   >
                     <div className="relative w-full h-64 overflow-hidden bg-olive-100">
                       <img
@@ -315,19 +329,29 @@ export default function CulturalInsightsPage() {
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <svg
-                            className="w-12 h-12 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M4 6h16M4 12h16M4 18h16"
-                            />
-                          </svg>
+                          {showcase.youtubeUrl ? (
+                            <svg
+                              className="w-16 h-16 text-white drop-shadow-lg"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                            >
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          ) : (
+                            <svg
+                              className="w-12 h-12 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h16M4 18h16"
+                              />
+                            </svg>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -340,9 +364,18 @@ export default function CulturalInsightsPage() {
                           `culturalInsights.showcases.${showcase.key}.description`,
                         )}
                       </p>
-                      <button className="mt-6 inline-block text-olive-600 font-semibold hover:text-olive-700 transition-colors">
-                        Scopri di Più →
-                      </button>
+                      {showcase.youtubeUrl ? (
+                        <span className="mt-6 inline-flex items-center gap-2 text-red-600 font-semibold group-hover:text-red-700 transition-colors">
+                          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.488 3.45.029 5.804 0 12c.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0C23.512 20.55 23.971 18.196 24 12c-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z" />
+                          </svg>
+                          {t("culturalInsights.showcases.watchOnYouTube") || "Guarda su YouTube"} →
+                        </span>
+                      ) : (
+                        <button className="mt-6 inline-block text-olive-600 font-semibold hover:text-olive-700 transition-colors">
+                          Scopri di Più →
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}

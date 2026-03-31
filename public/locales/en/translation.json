@@ -745,7 +745,12 @@
       "zanatta": {
         "title": "Te lo Prometto! - Rudi Zanatta",
         "description": "A space dedicated to promises, commitments, and authentic human connections, explored through visual encounters and profound conversations."
-      }
+      },
+      "medicinaIntegrata": {
+        "title": "La medicina integrata nel terzo millennio",
+        "description": "An exploration of integrative medicine and its perspectives in the third millennium with prof. Pascazio, bridging tradition and innovation in personal care."
+      },
+      "watchOnYouTube": "Watch on YouTube"
     },
     "cta": {
       "title": "Have Questions?",
