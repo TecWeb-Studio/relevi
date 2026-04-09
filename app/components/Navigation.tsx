@@ -66,12 +66,12 @@ export default function Navigation() {
     { href: "/team", label: t("nav.team") },
     { href: "/events", label: t("nav.events") },
     { href: "/approfondimenti-culturali", label: t("nav.culturalInsights") },
+    { href: "/approfondimenti-fiscali-sindacali", label: t("nav.fiscalInsights") },
     { href: "/#contact", label: t("nav.contact") },
   ];
 
   const partnerLinks = [
     { href: "/uni-pro", label: t("nav.uniPro") },
-    { href: "/approfondimenti-fiscali-sindacali", label: t("nav.fiscalInsights") },
     { href: "/villa-maternini", label: t("nav.villaMaternini") },
     { href: "/human-studies", label: t("nav.humanStudies") },
   ];

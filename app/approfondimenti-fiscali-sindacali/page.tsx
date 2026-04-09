@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 interface DirectionMember {
@@ -13,8 +13,6 @@ interface DirectionMember {
 
 export default function ApprofondimentiFiscaliPage() {
   const { t } = useTranslation();
-  const [selectedMember, setSelectedMember] =
-    useState<DirectionMember | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,92 +72,34 @@ export default function ApprofondimentiFiscaliPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {directionMembers.map((member, index) => (
-              <div
-                key={member.name}
-                className="reveal bg-white rounded-3xl overflow-hidden shadow-lg hover-lift transition-all duration-300 group cursor-pointer border border-olive-100"
-                style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => setSelectedMember(member)}
-              >
-                <div className="h-55 bg-gradient-to-br from-olive-100 to-olive-200 flex items-center justify-center group-hover:from-olive-200 group-hover:to-olive-300 transition-all duration-300">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-olive-800 mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-olive-600 font-medium mb-4">
-                    {member.role}
-                  </p>
-                  <p className="text-gray-600 leading-relaxed">
-                    {member.shortBio}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Modal */}
-      {selectedMember && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
-          onClick={() => setSelectedMember(null)}
-        >
-          <div
-            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-scaleIn"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative">
-              <div className="h-94 bg-gradient-to-br from-olive-100 to-olive-300 flex items-center justify-center">
+          {directionMembers.map((member, index) => (
+            <div
+              key={member.name}
+              className="reveal max-w-3xl mx-auto bg-white rounded-3xl overflow-hidden shadow-xl border border-olive-100"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="w-full bg-gradient-to-br from-olive-100 to-olive-200">
                 <img
-                  src={selectedMember.image}
-                  alt={selectedMember.name}
-                  className="w-full h-full object-cover"
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full object-cover"
                 />
               </div>
-              <button
-                onClick={() => setSelectedMember(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-olive-700 transition-colors shadow-lg"
-                aria-label="Close"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="p-8">
-              <h2 className="text-3xl font-bold text-olive-800 mb-2">
-                {selectedMember.name}
-              </h2>
-              <p className="text-olive-600 text-lg mb-6">
-                {selectedMember.role}
-              </p>
-              <div className="mb-6">
+              <div className="p-8 md:p-10 text-center">
+                {/* <h3 className="text-3xl font-bold text-olive-800 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-olive-600 font-semibold text-lg mb-4">
+                  {member.role}
+                </p> */}
                 <p className="text-gray-600 leading-relaxed whitespace-pre-line">
-                  {selectedMember.bio}
+                  {member.bio}
                 </p>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      )}
+      </section>
     </div>
   );
 }
