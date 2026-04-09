@@ -40,63 +40,63 @@ export default function TeamPage() {
     },
     {
       id: 1,
-      key: "corradoZamboni",
-      image: "/team-photos-crop/CorradoZamboni.jpg",
-    },
-    {
-      id: 2,
       key: "deniseDallaPasqua",
       image: "/team-photos-crop/DeniseDallaPasqua.jpg",
     },
     {
-      id: 3,
+      id: 2,
       key: "giancarloPavanello",
       image: "/team-photos-crop/GiancarloPavanello.jpg",
     },
     {
-      id: 4,
+      id: 3,
       key: "massimoGnesotto",
       image: "/team-photos-crop/MassimoGnesotto2.jpg",
     },
     {
-      id: 5,
+      id: 4,
       key: "michelaDolce",
       image: "/team-photos-crop/MichelaDolce.jpg",
     },
     {
-      id: 6,
+      id: 5,
       key: "paoloAvella",
       image: "/team-photos-crop/PaoloAvella.jpg",
     },
     {
-      id: 7,
+      id: 6,
       key: "sabrinaPozzobon",
       image: "/team-photos-crop/SabrinaPozzobon.jpg",
     },
     {
-      id: 8,
+      id: 7,
       key: "tamaraZanchetta",
       image: "/team-photos-crop/TamaraZanchetta.jpg",
     },
     {
-      id: 9,
+      id: 8,
       key: "dariaDeBona",
       image: "/team-photos-crop/DariaBonora.jpg",
     },
     {
-      id: 10,
+      id: 9,
       key: "giadaGiacomini",
       image: "/team-photos-crop/GiadaGiacomini.jpg",
     },
     {
-      id: 11,
+      id: 10,
       key: "stefanoPerinotto",
       image: "/team-photos-crop/StefanoPerinotto.jpg",
     },
     {
-      id: 12,
+      id: 11,
       key: "monicaDeGiusti",
       image: "/team-photos-crop/MonicaDeGiusti.jpg",
+    },
+    {
+      id: 12,
+      key: "corradoZamboni",
+      image: "/team-photos-crop/CorradoZamboni.jpg",
     },
   ];
 

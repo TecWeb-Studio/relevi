@@ -223,27 +223,14 @@ export default function Home() {
 
       <section className="py-24 bg-gradient-to-r from-olive-800 to-olive-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 reveal">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {t("home.whyChooseUs.title")}
-            </h2>
-            <p className="text-lg text-olive-100 max-w-2xl mx-auto">
-              {t("home.whyChooseUs.intro")}
-            </p>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div
-              className="reveal relative h-full"
-              style={{ animationDelay: "300ms" }}
-            >
-              {/* Placeholder for what you'll find logo/image - replace src when ready */}
-              <img
-                src="/images/Progetto-Patrocinato.png"
-                alt={t("home.whyChooseUs.title")}
-                className="w-full h-auto drop-shadow-2xl rounded-lg object-contain"
-                onError={(e) => (e.currentTarget.style.display = "none")}
-              />
+            <div className="reveal">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t("home.whyChooseUs.title")}
+              </h2>
+              <p className="text-lg text-olive-100 leading-relaxed">
+                {t("home.whyChooseUs.intro")}
+              </p>
             </div>
             <div className="space-y-8">
               <div className="reveal bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 hover:shadow-xl transition-all duration-300 group">
@@ -294,16 +281,53 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div
-            className="mt-12 text-center reveal"
-            style={{ animationDelay: "400ms" }}
-          >
+      {/* UNI-PRO Patronage Section */}
+      <section className="py-16 bg-olive-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 reveal">
+            <h2 className="text-4xl md:text-5xl font-bold text-olive-800 mb-4">
+              {t("home.uniPro.title")}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {t("home.uniPro.subtitle")}
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto mb-12 reveal">
+            <img
+              src="/images/Progetto-Patrocinato.png"
+              alt={t("home.uniPro.title")}
+              className="w-full h-auto rounded-2xl shadow-lg object-contain"
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center reveal">
             <Link
               href="/uni-pro"
-              className="inline-flex items-center gap-3 bg-white text-olive-800 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-olive-200"
+              className="inline-flex items-center justify-center gap-3 bg-olive-600 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:bg-olive-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               {t("home.uniPro.pageButton")}
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
+            <Link
+              href="/approfondimenti-fiscali-sindacali"
+              className="inline-flex items-center justify-center gap-3 bg-white text-olive-800 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-olive-200"
+            >
+              {t("home.patronageSection.fiscalButton")}
               <svg
                 className="w-5 h-5"
                 viewBox="0 0 24 24"

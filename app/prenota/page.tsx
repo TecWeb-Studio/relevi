@@ -16,7 +16,6 @@ interface OperatorInfo {
 
 const allOperators: OperatorInfo[] = [
   { key: "headmaster", image: "/team-photos-crop/FrancescaMayer.jpg" },
-  { key: "corradoZamboni", image: "/team-photos-crop/CorradoZamboni.jpg" },
   {
     key: "deniseDallaPasqua",
     image: "/team-photos-crop/DeniseDallaPasqua.jpg",
@@ -43,6 +42,7 @@ const allOperators: OperatorInfo[] = [
     key: "monicaDeGiusti",
     image: "/team-photos-crop/MonicaDeGiusti.jpg",
   },
+  { key: "corradoZamboni", image: "/team-photos-crop/CorradoZamboni.jpg" },
 ];
 
 const DAY_NAMES_IT = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];

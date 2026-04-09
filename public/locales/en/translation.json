@@ -9,6 +9,7 @@
     "contact": "Contact",
     "partners": "Partners",
     "uniPro": "UNI-PRO",
+    "fiscalInsights": "Fiscal Insights",
     "villaMaternini": "Villa Maternini",
     "humanStudies": "Human Studies"
   },
@@ -66,16 +67,11 @@
       "pageButton": "Go to UNI-PRO page",
       "collaborators": {
         "title": "Collaborators",
-        "list": [
-          {
-            "name": "Simonetta Conti",
-            "role": "Labor and Tax Consultancy",
-            "image": "/uni-pro/SimonettaConti.jpg",
-            "shortBio": "Labor and tax consultant registered with the Order of Labor Consultants of Trieste. Independent practice carried out both in association and individually.",
-            "bio": "Labor and tax consultant registered with the Order of Labor Consultants of Trieste.\nIndependent practice carried out both in association and individually.\nMulti-year teaching activity in tax, fiscal and labor law subjects.\nMember of the commission for the State exams to qualify for the profession of Labor Consultant.\nCourt-appointed Technical Consultant at the Tribunal of Trieste."
-          }
-        ]
+        "list": []
       }
+    },
+    "patronageSection": {
+      "fiscalButton": "Fiscal & Union Insights"
     },
     "partners": {
       "title": "Our Partners",
@@ -105,6 +101,28 @@
       "sendMessage": "Send Message",
       "consent": "I accept the processing of personal data in accordance with applicable privacy regulations.",
       "consentRequired": "Please accept the privacy policy to send the message."
+    }
+  },
+  "fiscalInsights": {
+    "hero": {
+      "title": "Fiscal & Union Insights",
+      "subtitle": "Professional consultancy and support in the holistic sector"
+    },
+    "holisticSector": {
+      "title": "Holistic Sector",
+      "subtitle": "Professionals dedicated to wellness and personal growth"
+    },
+    "direction": {
+      "title": "Direction",
+      "list": [
+        {
+          "name": "Simonetta Conti",
+          "role": "Direction",
+          "image": "/uni-pro/SimonettaConti.jpg",
+          "shortBio": "Labor and tax consultant registered with the Order of Labor Consultants of Trieste. Independent practice carried out both in association and individually.",
+          "bio": "Labor and tax consultant registered with the Order of Labor Consultants of Trieste.\nIndependent practice carried out both in association and individually.\nMulti-year teaching activity in tax, fiscal and labor law subjects.\nMember of the commission for the State exams to qualify for the profession of Labor Consultant.\nCourt-appointed Technical Consultant at the Tribunal of Trieste."
+        }
+      ]
     }
   },
   "services": {

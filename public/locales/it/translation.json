@@ -9,6 +9,7 @@
     "contact": "Contatti",
     "partners": "Partner",
     "uniPro": "UNI-PRO",
+    "fiscalInsights": "Approfondimenti Fiscali",
     "villaMaternini": "Villa Maternini",
     "humanStudies": "Human Studies"
   },
@@ -66,16 +67,11 @@
       "pageButton": "Vai alla pagina UNI-PRO",
       "collaborators": {
         "title": "Collaboratori",
-        "list": [
-          {
-            "name": "Simonetta Conti",
-            "role": "Consulenza del Lavoro e Fiscale",
-            "image": "/uni-pro/SimonettaConti.jpg",
-            "shortBio": "Consulente del lavoro e fiscale iscritto all'Ordine dei Consulenti del Lavoro di Trieste. Libera professione svolta in forma associata e individuale.",
-            "bio": "Consulente del lavoro e fiscale iscritto all'Ordine dei Consulenti del Lavoro di Trieste.\nLibera professione svolta in forma associata e individuale.\nAttività di docenza pluriannuale su materie fiscali, tributarie e giuslavoristiche.\nMembro di commissione per gli esami di Stato per l'abilitazione all'esercizio della professione di Consulente del Lavoro.\nConsulente Tecnico del Giudice presso il Tribunale di Trieste."
-          }
-        ]
+        "list": []
       }
+    },
+    "patronageSection": {
+      "fiscalButton": "Approfondimenti Fiscali Sindacali"
     },
     "partners": {
       "title": "I Nostri Partner",
@@ -105,6 +101,28 @@
       "sendMessage": "Invia Messaggio",
       "consent": "Accetto il trattamento dei dati personali ai sensi delle normative vigenti sulla privacy.",
       "consentRequired": "Accetta l'informativa sulla privacy per inviare il messaggio."
+    }
+  },
+  "fiscalInsights": {
+    "hero": {
+      "title": "Approfondimenti Fiscali Sindacali",
+      "subtitle": "Consulenza e supporto professionale nel settore olistico"
+    },
+    "holisticSector": {
+      "title": "Settore Olistico",
+      "subtitle": "Professionisti al servizio del benessere e della crescita personale"
+    },
+    "direction": {
+      "title": "Direzione",
+      "list": [
+        {
+          "name": "Simonetta Conti",
+          "role": "Direzione",
+          "image": "/uni-pro/SimonettaConti.jpg",
+          "shortBio": "Consulente del lavoro e fiscale iscritto all'Ordine dei Consulenti del Lavoro di Trieste. Libera professione svolta in forma associata e individuale.",
+          "bio": "Consulente del lavoro e fiscale iscritto all'Ordine dei Consulenti del Lavoro di Trieste.\nLibera professione svolta in forma associata e individuale.\nAttività di docenza pluriannuale su materie fiscali, tributarie e giuslavoristiche.\nMembro di commissione per gli esami di Stato per l'abilitazione all'esercizio della professione di Consulente del Lavoro.\nConsulente Tecnico del Giudice presso il Tribunale di Trieste."
+        }
+      ]
     }
   },
   "services": {

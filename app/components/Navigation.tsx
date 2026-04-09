@@ -71,6 +71,7 @@ export default function Navigation() {
 
   const partnerLinks = [
     { href: "/uni-pro", label: t("nav.uniPro") },
+    { href: "/approfondimenti-fiscali-sindacali", label: t("nav.fiscalInsights") },
     { href: "/villa-maternini", label: t("nav.villaMaternini") },
     { href: "/human-studies", label: t("nav.humanStudies") },
   ];
