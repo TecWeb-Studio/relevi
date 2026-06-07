@@ -369,9 +369,11 @@ export default function EventsPage() {
                               <span>{details.location}</span>
                             </div>
                           </div>
-                          <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                            {t(`events.eventList.${event.key}.description`)}
-                          </p>
+                          {!event.openImageUrl && (
+                            <p className="text-gray-600 text-sm line-clamp-3 mb-4">
+                              {t(`events.eventList.${event.key}.description`)}
+                            </p>
+                          )}
                           {details.spots > 0 && (
                             <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                               <div className="text-sm">
@@ -389,7 +391,11 @@ export default function EventsPage() {
                         </div>
                         <div className="p-6 pt-0">
                           <button
-                            onClick={() => setSelectedEvent(event)}
+                            onClick={() =>
+                              event.openImageUrl
+                                ? window.open(event.openImageUrl, "_blank")
+                                : setSelectedEvent(event)
+                            }
                             className="w-full bg-olive-600 text-white py-3 rounded-xl font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02]"
                           >
                             {t("events.learnMore")}

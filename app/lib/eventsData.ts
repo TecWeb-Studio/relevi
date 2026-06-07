@@ -5,6 +5,7 @@ export interface EventData {
   image: string;
   images?: string[];
   video?: string;
+  openImageUrl?: string;
 }
 
 export interface EventDetail {
@@ -69,6 +70,13 @@ export const EVENTS: EventData[] = [
     image: "/images/events/benessere-relax/bannerBenessere.jpg",
     video: "/images/events/benessere-relax/benessere.mp4",
   },
+  {
+    id: 6,
+    key: "serataBagnoSonoroEvent",
+    type: "special",
+    image: "/images/events/serata-bagno-sonoro/card-banner.jpg",
+    openImageUrl: "/images/events/Volantino Serata Bagno Sonoro.jpg",
+  },
 ];
 
 export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
@@ -111,6 +119,15 @@ export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
     time: "09:30",
     endTime: "16:30",
     location: "Via Campagna 46, San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
+  serataBagnoSonoroEvent: {
+    date: "2026-07-09",
+    dateDisplay: "Mercoledì 17 Giugno | Giovedì 9 Luglio",
+    time: "20:30",
+    endTime: "22:30",
+    location: "Relevi - Via Campagna 46, San Polo di Piave (TV)",
     spots: 0,
     spotsLeft: 0,
   },

@@ -515,7 +515,10 @@
         "name": "Corrado Zamboni",
         "role": "Consulente Filosofico",
         "bio": "Corrado ha studiato e insegnato economia ed è un imprenditore nel settore della salute e della nutrizione. Si è laureato in storia e filosofia, con una tesi in estetica sul pensiero delle arti in Paul Valery, si occupa di economia sociale e filosofia politica sotto il cielo dell'etica e del pensiero critico. Accompagna la ricerca personale con l'attenzione e l'espressione del linguaggio della parola, del corpo e delle emozioni, quindi la filosofia e il pensiero delle arti, in laboratori di pensiero, danza, scrittura e disegno. Un approccio che risveglia la vitalità, le emozioni e la connessione autentica con sè, con l'altro, con l'universo. E che si propone anche attraverso uno sportello di confronto/consulenza individuale e in caffè filosofici aperti alla cittadinanza",
-        "specialties": ["Economia e Commercio", "Consulenze Filosofiche"],
+        "specialties": [
+          "Economia e Commercio",
+          "Consulenze Filosofiche"
+        ],
         "certifications": [
           "Laurea in Storia e Filosofia",
           "Esperto in Economia Sociale"
@@ -570,7 +573,11 @@
         "name": "Giancarlo Pavanello",
         "role": "Professionista Olistico Specializzato Multitech",
         "bio": "Da ReLeVi Healing, Giancarlo propone trattamenti personalizzati orientati al riequilibrio e all'ascolto del corpo, con un approccio basato su sensibilità, presenza e tecnica. Le sue competenze includono: Massaggio Decontratturante e Sportivo, Linfodrenaggio metodo Vodder, Massaggio Svedese e Antistress, Massaggio Biodinamico a 4 mani per un'esperienza di profonda connessione corpo-mente, Tecniche orientali come Thai Tradizionale, Ayurvedico Abhyangam, Massaggi con oli essenziali, Hot Stone, Lomi Lomi NUI e Californiano emozionale. Ogni trattamento è adattato ai bisogni della persona in un ambiente accogliente e rispettoso.",
-        "specialties": ["Riflessologia", "Massaggio Thai", "Shiatsu"],
+        "specialties": [
+          "Riflessologia",
+          "Massaggio Thai",
+          "Shiatsu"
+        ],
         "certifications": [
           "Riflessologo Certificato",
           "Praticante Massaggio Thai",
@@ -581,14 +588,23 @@
         "name": "Massimo Gnesotto",
         "role": "Praticante Biodinamico Craniosacrale",
         "bio": "Massimo ha abbracciato e approfondito l'approccio Biodinamico sotto la guida di Mike Boxhall, terapeuta inglese pioniere del settore. Propone una modalità di lavoro e sostegno basata sull'ascolto profondo della persona, integrando corpo- mente-Spirito e sostenendo le intrinseche capacità di autoregolazione innate in ognuno di noi. Affinché la Salute possa nuovamente manifestare il suo potenziale e garantirci vitalità, armonia, serenità e pienezza.",
-        "specialties": ["Biodinamica"],
-        "certifications": ["Operatore Craniosacrale", "Praticante Biodinamico"]
+        "specialties": [
+          "Biodinamica"
+        ],
+        "certifications": [
+          "Operatore Craniosacrale",
+          "Praticante Biodinamico"
+        ]
       },
       "michelaDolce": {
         "name": "Michela Dolce",
         "role": "Operatrice Shiatsu & Craniosacrale",
         "bio": "Michela in ricerca dell'Essenza che la anima, appassionata di cammini e camminate in natura dove la percezione di essa stimola il benessere psicofisico portando leggerezza nella quotidianità e da questo inizia il percorso di conoscenza e approfondimento tramite corsi in natura. Approcciandomi allo shiatsu ho iniziato a comprendere quali fossero le mie qualità, questa disciplina valuta e valorizza le risorse vitali della persona portandone beneficio. Con il cranio sacrale è stata una vera rivelazione, tecnica bio meccanica di ascolto profondo del liquido cefalorachidiano, entrambe le tecniche stimolano il benessere della persona. Ci sono due modi di camminare, uno nel fare e l'altro nell'Essere. Cammina con il cuore è quello che mi caratterizza, il nostro percorrere la terra crea un'impronta per il futuro ed è quello che fa la differenza dal semplice passo. Ragazza in cammino 👣💚",
-        "specialties": ["Shiatsu", "Craniosacrale", "Camminate in Natura"],
+        "specialties": [
+          "Shiatsu",
+          "Craniosacrale",
+          "Camminate in Natura"
+        ],
         "certifications": [
           "Operatrice Shiatsu",
           "Craniosacrale",
@@ -599,7 +615,9 @@
         "name": "Paolo Avella",
         "role": "Specialista Ginnastica Ortodinamica",
         "bio": "La sua missione è aiutare le persone a migliorare mobilità, postura e benessere generale, attraverso un approccio mirato e progressivo. Grazie alla sua formazione riconosciuta da Sport e Salute e dal Ministero dello Sport, Paolo guida con professionalità e passione ogni percorso, adattando gli esercizi alle esigenze di ciascun individuo.",
-        "specialties": ["Ginnastica Ortodinamica"],
+        "specialties": [
+          "Ginnastica Ortodinamica"
+        ],
         "certifications": [
           "Migliora la funzionalità neuro-motoria",
           "Incrementa resistenza e capacità cardio-respiratorie",
@@ -610,8 +628,12 @@
         "name": "Sabrina Pozzobon",
         "role": "Consulente di Immagine",
         "bio": "Amo la natura e i suoi colori, ma anche la moda e il tessile, campo in cui ho sempre lavorato anche grazie al mio diploma da modellista. Da queste passioni è nata la mia attuale professione. Posso aiutarvi a studiare la vostra armocromia, le vostre forme, le vostre potenzialità e il vostro stile in poche e semplici mosse. I colori giusti non cambiano solo l'aspetto, ma il modo in cui ci percepiamo e ci presentiamo al mondo.",
-        "specialties": ["Consulente di Immagine Armocromia"],
-        "certifications": ["Consulente di Immagine Armocromia"]
+        "specialties": [
+          "Consulente di Immagine Armocromia"
+        ],
+        "certifications": [
+          "Consulente di Immagine Armocromia"
+        ]
       },
       "tamaraZanchetta": {
         "name": "Tamara Zanchetta",
@@ -871,7 +893,10 @@
           "12:30 – Pranzo a buffet",
           "14:00 – Sessione pratica (circa 3 ore)"
         ],
-        "cost": ["Evento gratuito", "Contributo di €20 per pranzo e buffet"],
+        "cost": [
+          "Evento gratuito",
+          "Contributo di €20 per pranzo e buffet"
+        ],
         "reservations": "Posti limitati – prenotazione obbligatoria. Telefono: 351 7471159"
       },
       "dinamicheEducativeEvent": {
@@ -885,6 +910,11 @@
         "description": "Un momento dedicato al benessere e al relax. Guarda il video per scoprire di più su questo appuntamento.",
         "price": "Da definire",
         "reservations": "Per informazioni: 351 7471159"
+      },
+      "serataBagnoSonoroEvent": {
+        "title": "Serata Bagno Sonoro",
+        "description": "",
+        "price": ""
       }
     },
     "eventDetails": {
@@ -926,6 +956,14 @@
         "dateDisplay": "28-29 Marzo 2026",
         "time": "09:30",
         "endTime": "16:30",
+        "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
+      "serataBagnoSonoroEvent": {
+        "date": "2026-07-09",
+        "dateDisplay": "Mercoledì 17 Giugno | Giovedì 9 Luglio",
+        "time": "20:30",
         "location": "Via Campagna 46, San Polo di Piave (TV)",
         "spots": 0,
         "spotsLeft": 0
