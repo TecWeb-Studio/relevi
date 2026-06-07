@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import { useCallback } from "react";
@@ -153,9 +154,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 text-sm text-olive-200 space-y-2 text-center">
-          <p>{t('footer.patronage')}</p>
-          <p>{t('footer.collaboration')}</p>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-olive-200">
+          <div className="md:col-span-2 space-y-2">
+            <p>{t('footer.patronage')}</p>
+            <p>{t('footer.collaboration')}</p>
+          </div>
+          <div>
+            <Image
+              src="/images/CENTRO CARDIO PROTETTO.webp"
+              alt="Struttura Cardioprotetta - DAE certificato"
+              width={220}
+              height={128}
+              className="rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+            />
+          </div>
         </div>
 
         <div className="border-t border-olive-700 mt-8 pt-8 text-center text-olive-300 animate-fadeIn">

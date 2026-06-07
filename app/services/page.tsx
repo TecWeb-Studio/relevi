@@ -256,6 +256,21 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ── Kinesiologia Sistematica Activity Photo ── */}
+      <section className="py-12 bg-olive-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal relative w-full aspect-video rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/Miglioramento Foto.jpg"
+              alt="Kinesiologia Sistematica - Attività"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
+              className="object-cover object-center"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── Promotional Banner Section ── */}
       <section className="relative py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
