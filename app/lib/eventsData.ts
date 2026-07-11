@@ -77,6 +77,20 @@ export const EVENTS: EventData[] = [
     image: "/images/events/serata-bagno-sonoro/card-banner.jpg",
     openImageUrl: "/images/events/Volantino Serata Bagno Sonoro.jpg",
   },
+  {
+    id: 7,
+    key: "corsoResidenzialeNutrizioneEvent",
+    type: "retreat",
+    image: "/images/events/corso-residenziale-nutrizione.jpeg",
+    openImageUrl: "/images/events/corso-residenziale-nutrizione.jpeg",
+  },
+  {
+    id: 8,
+    key: "masterCounselingOlisticoEvent",
+    type: "class",
+    image: "/images/events/master-counseling-olistico.jpeg",
+    openImageUrl: "/images/events/master-counseling-olistico.jpeg",
+  },
 ];
 
 export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
@@ -128,6 +142,24 @@ export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
     time: "20:30",
     endTime: "22:30",
     location: "Relevi - Via Campagna 46, San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
+  corsoResidenzialeNutrizioneEvent: {
+    date: "2026-10-25",
+    dateDisplay: "23 - 24 - 25 Ottobre 2026",
+    time: "09:00",
+    endTime: "18:00",
+    location: "Relevi Healing - Via Campagna 46, San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
+  masterCounselingOlisticoEvent: {
+    date: "2027-03-31",
+    dateDisplay: "Anno Accademico 2026/2027",
+    time: "09:00",
+    endTime: "18:00",
+    location: "Relevi Healing - Via Campagna 46, San Polo di Piave (TV)",
     spots: 0,
     spotsLeft: 0,
   },

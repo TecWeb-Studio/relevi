@@ -4,6 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const CAROUSEL_IMAGES = [
+  "/images/carousel/i9.jpeg",
+  "/images/carousel/i10.jpeg",
+  "/images/carousel/i11.jpeg",
+  "/images/carousel/i12.jpeg",
   "/images/carousel/i2.jpeg",
   "/images/carousel/i3.jpeg",
   "/images/carousel/i4.jpeg",

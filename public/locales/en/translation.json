@@ -569,21 +569,6 @@
           "Traditional Chinese Medicine Practitioner"
         ]
       },
-      "giancarloPavanello": {
-        "name": "Giancarlo Pavanello",
-        "role": "Multi-Technique Holistic Professional",
-        "bio": "At ReLeVi Healing, Giancarlo offers personalized treatments focused on rebalancing and body listening, with an approach based on sensitivity, presence and technique. His skills include: Detoxifying and Sports Massage, Vodder Method Lymphatic Drainage, Swedish and Anti-stress Massage, Four-handed Biodynamic Massage for a profound mind-body connection experience, Oriental techniques such as Traditional Thai, Ayurvedic Abhyangam, Massages with essential oils, Hot Stone, Lomi Lomi NUI and emotional California massage. Each treatment is adapted to the individual's needs in a welcoming and respectful environment.",
-        "specialties": [
-          "Detoxifying & Sports Massage",
-          "Lymphatic Drainage",
-          "Oriental Massage Techniques"
-        ],
-        "certifications": [
-          "Certified Holistic Professional",
-          "Vodder Method Certified",
-          "Traditional Thai Massage Practitioner"
-        ]
-      },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
         "role": "Craniosacral & Biodynamic Practitioner",
@@ -906,19 +891,42 @@
       "dinamicheEducativeEvent": {
         "title": "Educational Dynamics",
         "description": "An event dedicated to educational dynamics, with experiential sessions and practical insights to learn and grow through wellbeing.",
-        "price": "TBD",
+        "price": "",
         "reservations": "For information and reservations, contact us via WhatsApp at 351 7471159"
       },
       "benessereRelaxEvent": {
         "title": "Wellbeing & Relaxation",
         "description": "A time dedicated to wellbeing and relaxation. Watch the video to discover more about this event.",
-        "price": "TBD",
+        "price": "",
         "reservations": "For information: 351 7471159"
       },
       "serataBagnoSonoroEvent": {
         "title": "Sound Bath Evening",
         "description": "",
         "price": ""
+      },
+      "corsoResidenzialeNutrizioneEvent": {
+        "title": "Residential Course: Nutrition",
+        "description": "Three days of in-depth study on nutrition and \"low grade\" inflammation: nutritional principles, phytopharmaceuticals and related pathologies. Speakers: Dr Massimo Caliendo, Dr Lorenzo Pascazio, Dr Marco Pasqualini.",
+        "price": "",
+        "programme": [
+          "Friday 23 October – Opening and introductions; nutritional principles and inflammation; coffee break; optional dinner with speakers",
+          "Saturday 24 October – Prevention, cardiovascular and neurodegenerative diseases, phytopharmaceuticals; coffee break; optional dinner",
+          "Sunday 25 October – Infectious diseases, COVID, Long COVID and related phytopharmaceuticals"
+        ],
+        "reservations": "Info and Reservations: https://www.humanstudies.it/ | Tel. 351 7471159 | info@relevihealing.com"
+      },
+      "masterCounselingOlisticoEvent": {
+        "title": "Integrative Master in Holistic Counselling",
+        "description": "Advanced professional development programme for holistic practitioners. 7 Intensive in-person Weekends (approx. 120 contact hours). Open to UNI-PRO members and qualified holistic practitioners.",
+        "price": "",
+        "programme": [
+          "7 Intensive in-person Weekends – approx. 120 contact hours",
+          "Improving Client Relationships",
+          "Advanced Listening",
+          "Ethics and Professional Boundaries"
+        ],
+        "reservations": "Information and registration: amministrazione@uni-pro.it"
       }
     },
     "eventDetails": {
@@ -970,6 +978,24 @@
         "time": "8:30 p.m.",
         "endTime": "10:30 p.m.",
         "location": "Relevi - Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
+      "corsoResidenzialeNutrizioneEvent": {
+        "date": "2026-10-25",
+        "dateDisplay": "23 - 24 - 25 October 2026",
+        "time": "9:00 a.m.",
+        "endTime": "6:00 p.m.",
+        "location": "Relevi Healing - Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
+      "masterCounselingOlisticoEvent": {
+        "date": "2027-03-31",
+        "dateDisplay": "Academic Year 2026/2027",
+        "time": "9:00 a.m.",
+        "endTime": "6:00 p.m.",
+        "location": "To be confirmed",
         "spots": 0,
         "spotsLeft": 0
       }

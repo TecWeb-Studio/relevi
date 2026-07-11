@@ -147,8 +147,9 @@ export default function EventsPage() {
 
     const elements = document.querySelectorAll(".reveal");
     elements.forEach((el) => {
-      el.classList.remove("animate-fadeInUp");
-      observer.observe(el);
+      if (!el.classList.contains("animate-fadeInUp")) {
+        observer.observe(el);
+      }
     });
 
     return () => observer.disconnect();
@@ -391,11 +392,7 @@ export default function EventsPage() {
                         </div>
                         <div className="p-6 pt-0">
                           <button
-                            onClick={() =>
-                              event.openImageUrl
-                                ? window.open(event.openImageUrl, "_blank")
-                                : setSelectedEvent(event)
-                            }
+                            onClick={() => setSelectedEvent(event)}
                             className="w-full bg-olive-600 text-white py-3 rounded-xl font-semibold hover:bg-olive-700 transition-all duration-300 hover:scale-[1.02]"
                           >
                             {t("events.learnMore")}
@@ -980,6 +977,32 @@ export default function EventsPage() {
                               `events.eventList.${selectedEvent.key}.reservations`,
                             )}
                           </p>
+                        </div>
+                      )}
+
+                      {selectedEvent.openImageUrl && (
+                        <div className="mb-6">
+                          <a
+                            href={selectedEvent.openImageUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 w-full px-6 py-3 border-2 border-olive-600 text-olive-700 rounded-xl font-semibold hover:bg-olive-50 transition-all duration-300"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                            Visualizza Locandina
+                          </a>
                         </div>
                       )}
 

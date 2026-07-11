@@ -47,7 +47,6 @@ const OPERATOR_NAMES: Record<string, string> = {
   corradoZamboni: "Corrado Zamboni",
   deniseDallaPasqua: "Denise Dalla Pasqua",
   francescaTonon: "Francesca Tonon",
-  giancarloPavanello: "Giancarlo Pavanello",
   massimoGnesotto: "Massimo Gnesotto",
   michelaDolce: "Michela Dolce",
   monicaBortoluzzi: "Monica Bortoluzzi",

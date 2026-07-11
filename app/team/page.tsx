@@ -44,11 +44,6 @@ export default function TeamPage() {
       image: "/team-photos-crop/DeniseDallaPasqua.jpg",
     },
     {
-      id: 2,
-      key: "giancarloPavanello",
-      image: "/team-photos-crop/GiancarloPavanello.jpg",
-    },
-    {
       id: 3,
       key: "massimoGnesotto",
       image: "/team-photos-crop/MassimoGnesotto2.jpg",

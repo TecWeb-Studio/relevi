@@ -20,10 +20,6 @@ const allOperators: OperatorInfo[] = [
     key: "deniseDallaPasqua",
     image: "/team-photos-crop/DeniseDallaPasqua.jpg",
   },
-  {
-    key: "giancarloPavanello",
-    image: "/team-photos-crop/GiancarloPavanello.jpg",
-  },
   { key: "massimoGnesotto", image: "/team-photos-crop/MassimoGnesotto2.jpg" },
   { key: "michelaDolce", image: "/team-photos-crop/MichelaDolce.jpg" },
   { key: "paoloAvella", image: "/team-photos-crop/PaoloAvella.jpg" },

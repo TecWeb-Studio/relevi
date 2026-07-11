@@ -14,7 +14,7 @@ import {
 export default function HumanStudiesPage() {
   const { t, i18n } = useTranslation();
 
-  const PARTNER_EVENT_KEYS = ["allergiesEvent", "studyDaysEvent"];
+  const PARTNER_EVENT_KEYS = ["allergiesEvent", "studyDaysEvent", "masterCounselingOlisticoEvent"];
   const partnerEvents = EVENTS.filter((e) =>
     PARTNER_EVENT_KEYS.includes(e.key),
   );

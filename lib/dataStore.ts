@@ -39,7 +39,6 @@ const DEFAULT_SCHEDULES: OperatorSchedule[] = [
   { operatorKey: "corradoZamboni", daysOfWeek: [2,4], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
   { operatorKey: "deniseDallaPasqua", daysOfWeek: [1,3,5], timeSlots: [{ start: "09:00", end: "13:00" }, { start: "14:00", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
   { operatorKey: "francescaTonon", daysOfWeek: [2,4,6], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
-  { operatorKey: "giancarloPavanello", daysOfWeek: [1,2,3,4,5], timeSlots: [{ start: "09:00", end: "13:00" }, { start: "14:00", end: "18:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
   { operatorKey: "martinaPasut", daysOfWeek: [2,4,6], timeSlots: [{ start: "09:00", end: "12:00" }, { start: "16:00", end: "20:00" }], sessionDuration: 45, breakBetweenSessions: 15 },
   { operatorKey: "massimoGnesotto", daysOfWeek: [2,4,6], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "15:00", end: "19:00" }], sessionDuration: 60, breakBetweenSessions: 15 },
   { operatorKey: "michelaDolce", daysOfWeek: [1,3,5], timeSlots: [{ start: "10:00", end: "13:00" }, { start: "14:30", end: "18:30" }], sessionDuration: 60, breakBetweenSessions: 15 },

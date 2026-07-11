@@ -569,21 +569,6 @@
           "Praticante di Medicina Tradizionale Cinese"
         ]
       },
-      "giancarloPavanello": {
-        "name": "Giancarlo Pavanello",
-        "role": "Professionista Olistico Specializzato Multitech",
-        "bio": "Da ReLeVi Healing, Giancarlo propone trattamenti personalizzati orientati al riequilibrio e all'ascolto del corpo, con un approccio basato su sensibilità, presenza e tecnica. Le sue competenze includono: Massaggio Decontratturante e Sportivo, Linfodrenaggio metodo Vodder, Massaggio Svedese e Antistress, Massaggio Biodinamico a 4 mani per un'esperienza di profonda connessione corpo-mente, Tecniche orientali come Thai Tradizionale, Ayurvedico Abhyangam, Massaggi con oli essenziali, Hot Stone, Lomi Lomi NUI e Californiano emozionale. Ogni trattamento è adattato ai bisogni della persona in un ambiente accogliente e rispettoso.",
-        "specialties": [
-          "Riflessologia",
-          "Massaggio Thai",
-          "Shiatsu"
-        ],
-        "certifications": [
-          "Riflessologo Certificato",
-          "Praticante Massaggio Thai",
-          "Specialista Shiatsu"
-        ]
-      },
       "massimoGnesotto": {
         "name": "Massimo Gnesotto",
         "role": "Praticante Biodinamico Craniosacrale",
@@ -902,19 +887,42 @@
       "dinamicheEducativeEvent": {
         "title": "Dinamiche Educative",
         "description": "Un evento dedicato alle dinamiche educative, con sessioni esperienziali e approfondimenti pratici per educare e crescere attraverso il benessere.",
-        "price": "Da definire",
+        "price": "",
         "reservations": "Per informazioni e prenotazioni contattaci via WhatsApp al 351 7471159"
       },
       "benessereRelaxEvent": {
         "title": "Benessere e Relax",
         "description": "Un momento dedicato al benessere e al relax. Guarda il video per scoprire di più su questo appuntamento.",
-        "price": "Da definire",
+        "price": "",
         "reservations": "Per informazioni: 351 7471159"
       },
       "serataBagnoSonoroEvent": {
         "title": "Serata Bagno Sonoro",
         "description": "",
         "price": ""
+      },
+      "corsoResidenzialeNutrizioneEvent": {
+        "title": "Corso Residenziale: Nutrizione",
+        "description": "Tre giorni di approfondimento su nutrizione e infiammazione \"low grade\": principi nutrizionali, fitofarmaceutici e patologie correlate. Relatori: Dott. Massimo Caliendo, Dott. Lorenzo Pascazio, Dott. Marco Pasqualini. Introduzioni a cura di Francesca Mayer, Simonetta Conti, Corrado Zamboni.",
+        "price": "",
+        "programme": [
+          "Venerd\u00ec 23 Ottobre \u2013 Apertura lavori e presentazioni; principi nutrizionali e infiammazione; coffee break; cena facoltativa con i relatori",
+          "Sabato 24 Ottobre \u2013 Prevenzione, patologie cardiovascolari e neurodegenerative, fitofarmaceutici; coffee break; cena facoltativa",
+          "Domenica 25 Ottobre \u2013 Patologie infettive, COVID, Long COVID e fitofarmaceutici correlati"
+        ],
+        "reservations": "Info e Prenotazioni: https://www.humanstudies.it/ | Tel. 351 7471159 | info@relevihealing.com"
+      },
+      "masterCounselingOlisticoEvent": {
+        "title": "Master Integrativo in Counseling Olistico",
+        "description": "Percorso avanzato di crescita professionale e sviluppo delle competenze relazionali per operatori olistici. 7 Weekend Intensivi in presenza (ca. 120 ore frontali). Rivolto a Soci UNI-PRO e Operatori Olistici diplomati.",
+        "price": "",
+        "programme": [
+          "7 Weekend Intensivi in presenza \u2013 ca. 120 Ore Frontali",
+          "Miglioramento Relazione Cliente",
+          "Ascolto Evoluto",
+          "Etica e Confini Professionali"
+        ],
+        "reservations": "Informazioni e iscrizioni: amministrazione@uni-pro.it"
       }
     },
     "eventDetails": {
@@ -965,6 +973,24 @@
         "dateDisplay": "Mercoledì 17 Giugno | Giovedì 9 Luglio",
         "time": "20:30",
         "location": "Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
+      "corsoResidenzialeNutrizioneEvent": {
+        "date": "2026-10-25",
+        "dateDisplay": "23 - 24 - 25 Ottobre 2026",
+        "time": "09:00",
+        "endTime": "18:00",
+        "location": "Relevi Healing - Via Campagna 46, San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
+      "masterCounselingOlisticoEvent": {
+        "date": "2027-03-31",
+        "dateDisplay": "Anno Accademico 2026/2027",
+        "time": "09:00",
+        "endTime": "18:00",
+        "location": "Da definire",
         "spots": 0,
         "spotsLeft": 0
       }
