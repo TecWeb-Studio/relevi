@@ -52,6 +52,40 @@
     "gallery": {
       "title": "La Nostra Galleria"
     },
+    "news": {
+      "badge": "Novita del momento",
+      "title": "Le novita che meritano subito attenzione",
+      "subtitle": "Abbiamo creato una sezione dedicata agli appuntamenti e alle proposte che in questo momento raccontano meglio l'energia di Relevi Healing.",
+      "sectionCta": "Esplora tutti gli eventi",
+      "items": {
+        "holiday": {
+          "label": "In evidenza",
+          "eyebrow": "Reset d'autunno",
+          "tagline": "Check-up olistico",
+          "title": "Holiday reset & ripartenza",
+          "description": "Un percorso integrato per ritrovare equilibrio e vitalita dopo l'estate: lettura dell'iride, test kinesiologico e riflessologia del piede in una proposta pensata per ripartire con chiarezza.",
+          "highlights": [
+            "Tre professionisti in sinergia",
+            "Percorso personalizzato",
+            "Offerta speciale da scoprire"
+          ],
+          "cta": "Richiedi informazioni"
+        },
+        "new": {
+          "label": "Nuova proposta",
+          "eyebrow": "Nuova sala polifunzionale",
+          "tagline": "Settembre in movimento",
+          "title": "Tempo di ripartenza, tempo per te",
+          "description": "Yoga, bagno sonoro, meditazione, ortodinamica e pratiche rigeneranti nella nuova sala panoramica: una proposta pensata per accompagnare la ripartenza con ritmo, presenza e benessere concreto.",
+          "highlights": [
+            "Nuove attivita da settembre",
+            "Prove e percorsi dedicati",
+            "Spazi accoglienti e versatili"
+          ],
+          "cta": "Scopri le attivita"
+        }
+      }
+    },
     "uniPro": {
       "title": "Patrocinio UNI-PRO",
       "subtitle": "Collaborazione e garanzie professionali",
@@ -843,6 +877,17 @@
       "eventHasPassed": "Questo evento è già terminato."
     },
     "eventList": {
+      "veraCartaIdentitaEvent": {
+        "title": "LA NOSTRA VERA CARTA D'IDENTITA",
+        "description": "Conferenza esperienziale per riconoscere la propria unicita, valorizzare qualita e virtu, trasformare emozioni e pensieri e fare pace con il proprio passato. Ingresso libero. L'evento si terra martedi 29 settembre 2026 alle ore 20:45 presso Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV). Condotto da Fabrizia Iervese, sociologa, counselor e dottoressa in psicologia integrativa.",
+        "price": "Ingresso libero",
+        "programme": [
+          "Conferenza esperienziale guidata da Fabrizia Iervese",
+          "Riconoscere la propria unicita e valorizzare qualita e virtu",
+          "Trasformare emozioni e pensieri e fare pace con il proprio passato"
+        ],
+        "reservations": "Info e prenotazioni: Relevi Healing, cell. 351 7471159"
+      },
       "studyDaysEvent": {
         "title": "Studio Days: Giornate di Approfondimento Olistico",
         "description": "Giornate di studio e approfondimento sulle discipline olistiche, con sessioni teoriche e pratiche guidate da professionisti esperti. Un'occasione unica per imparare e crescere nel benessere.",
@@ -926,6 +971,15 @@
       }
     },
     "eventDetails": {
+      "veraCartaIdentitaEvent": {
+        "date": "2026-09-29",
+        "dateDisplay": "Martedi 29 Settembre 2026",
+        "time": "20:45",
+        "endTime": "22:30",
+        "location": "Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
       "studyDaysEvent": {
         "date": "2026-04-01",
         "dateDisplay": "1 Aprile – 20 Giugno 2026",

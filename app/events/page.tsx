@@ -26,10 +26,6 @@ function EventImageCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    setCurrentIndex(0);
-  }, [images]);
-
-  useEffect(() => {
     images.forEach((src) => {
       const preloadedImage = new window.Image();
       preloadedImage.src = src;
@@ -131,6 +127,24 @@ export default function EventsPage() {
   const [filter, setFilter] = useState<string>("all");
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const { t, i18n } = useTranslation();
+
+  const getEventImageShellClassName = (event: Event) => {
+    if (event.imageDisplay === "poster") {
+      return "h-80 bg-gradient-to-br from-olive-50 via-white to-olive-100 p-4";
+    }
+
+    if (event.image) {
+      return "h-20";
+    }
+
+    return event.images || event.video ? "h-28" : "h-20";
+  };
+
+  const getEventImageClassName = (event: Event) => {
+    return event.imageDisplay === "poster"
+      ? "w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
+      : "w-full h-full object-cover object-top";
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -257,24 +271,18 @@ export default function EventsPage() {
                   return (
                     <div
                       key={event.id}
-                      className="reveal bg-white rounded-3xl overflow-hidden shadow-lg hover-lift transition-all duration-300 border border-olive-100 flex flex-col"
+                      className="reveal group bg-white rounded-3xl overflow-hidden shadow-lg hover-lift transition-all duration-300 border border-olive-100 flex flex-col"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       <>
                         <div
-                          className={`w-full overflow-hidden relative ${
-                            event.image
-                              ? "h-20"
-                              : event.images || event.video
-                                ? "h-28"
-                                : "h-20"
-                          }`}
+                          className={`w-full overflow-hidden relative ${getEventImageShellClassName(event)}`}
                         >
                           {event.image ? (
                             <img
                               src={event.image}
                               alt={t(`events.eventList.${event.key}.title`)}
-                              className="w-full h-full object-cover object-top"
+                              className={getEventImageClassName(event)}
                             />
                           ) : event.video ? (
                             <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
@@ -422,18 +430,12 @@ export default function EventsPage() {
                   return (
                     <div
                       key={event.id}
-                      className="reveal bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-300 border border-olive-100 flex flex-col opacity-60"
+                      className="reveal group bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-300 border border-olive-100 flex flex-col opacity-60"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       <>
                         <div
-                          className={`w-full overflow-hidden relative ${
-                            event.image
-                              ? "h-20"
-                              : event.images || event.video
-                                ? "h-28"
-                                : "h-20"
-                          }`}
+                          className={`w-full overflow-hidden relative ${getEventImageShellClassName(event)}`}
                         >
                           <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
                             <span className="text-white font-bold text-lg">
@@ -444,7 +446,7 @@ export default function EventsPage() {
                             <img
                               src={event.image}
                               alt={t(`events.eventList.${event.key}.title`)}
-                              className="w-full h-full object-cover object-top"
+                              className={getEventImageClassName(event)}
                             />
                           ) : event.video ? (
                             <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">

@@ -3,6 +3,7 @@ export interface EventData {
   key: string;
   type: "workshop" | "retreat" | "special" | "class";
   image: string;
+  imageDisplay?: "banner" | "poster";
   images?: string[];
   video?: string;
   openImageUrl?: string;
@@ -28,6 +29,14 @@ const DEFAULT_EVENT_DETAIL: EventDetail = {
 };
 
 export const EVENTS: EventData[] = [
+  {
+    id: 9,
+    key: "veraCartaIdentitaEvent",
+    type: "special",
+    image: "/images/events/evento-29-7.jpeg",
+    imageDisplay: "poster",
+    openImageUrl: "/images/events/evento-29-7.jpeg",
+  },
   {
     id: 1,
     key: "allergiesEvent",
@@ -94,6 +103,15 @@ export const EVENTS: EventData[] = [
 ];
 
 export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
+  veraCartaIdentitaEvent: {
+    date: "2026-09-29",
+    dateDisplay: "Martedi 29 Settembre 2026",
+    time: "20:45",
+    endTime: "22:30",
+    location: "Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
   allergiesEvent: {
     date: "2026-02-28",
     time: "10:00",

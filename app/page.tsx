@@ -10,6 +10,22 @@ export default function Home() {
   const { t } = useTranslation();
   const heroTitleParts = t("home.hero.title").split("Relevi Healing");
   const [contactConsented, setContactConsented] = useState(false);
+  const spotlightItems = [
+    {
+      key: "holiday",
+      image: "/images/news/holiday.jpeg",
+      href: "/prenota",
+      accent: "from-[#f5f2e6] via-white to-[#edf1e7]",
+      delay: "0ms",
+    },
+    {
+      key: "new",
+      image: "/images/news/new.jpeg",
+      href: "/events",
+      accent: "from-[#f0efe5] via-white to-[#e7ecd9]",
+      delay: "160ms",
+    },
+  ] as const;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -110,6 +126,110 @@ export default function Home() {
       </section>
 
       <ImageCarousel />
+
+      {/* ── Sezione Novità ── */}
+      <section className="relative overflow-hidden bg-[#f8f6ef] py-24">
+        {/* blobs di sfondo */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-[#e9e3cc] opacity-60 blur-3xl" />
+          <div className="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-olive-100 opacity-70 blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* intestazione sezione */}
+          <div className="reveal mb-14 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center rounded-full border border-olive-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-olive-700 shadow-sm backdrop-blur-sm">
+                {t("home.news.badge")}
+              </span>
+              <h2 className="mt-5 text-4xl font-bold tracking-tight text-olive-900 md:text-5xl">
+                {t("home.news.title")}
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-gray-600">
+                {t("home.news.subtitle")}
+              </p>
+            </div>
+            <Link
+              href="/events"
+              className="inline-flex items-center gap-2 self-start rounded-full border border-olive-200 bg-white/85 px-6 py-3 text-sm font-semibold text-olive-800 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              {t("home.news.sectionCta")}
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+
+          {/* griglia delle due card */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {spotlightItems.map((item) => (
+              <article
+                key={item.key}
+                className="reveal group flex flex-col overflow-hidden rounded-3xl bg-white shadow-[0_8px_48px_rgba(69,77,43,0.13)] border border-olive-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_72px_rgba(69,77,43,0.2)]"
+                style={{ animationDelay: item.delay }}
+              >
+                {/* immagine a piena larghezza */}
+                <div className="relative w-full overflow-hidden bg-olive-50">
+                  <img
+                    src={item.image}
+                    alt={t(`home.news.items.${item.key}.title`)}
+                    className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{ display: "block", maxHeight: "520px" }}
+                  />
+                  {/* badge sovrapposto */}
+                  <span className="absolute left-4 top-4 inline-flex rounded-full bg-olive-900/90 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow backdrop-blur-sm">
+                    {t(`home.news.items.${item.key}.label`)}
+                  </span>
+                </div>
+
+                {/* footer testuale */}
+                <div className="flex flex-1 flex-col justify-between p-7">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-olive-500">
+                      {t(`home.news.items.${item.key}.tagline`)}
+                    </p>
+                    <h3 className="mt-2 text-xl font-bold leading-snug text-olive-900">
+                      {t(`home.news.items.${item.key}.title`)}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-gray-600">
+                      {t(`home.news.items.${item.key}.description`)}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {(
+                        t(`home.news.items.${item.key}.highlights`, {
+                          returnObjects: true,
+                        }) as string[]
+                      ).map((highlight) => (
+                        <span
+                          key={highlight}
+                          className="rounded-full border border-olive-200 bg-olive-50 px-3 py-1 text-xs text-olive-800"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <Link
+                      href={item.href}
+                      className="inline-flex items-center gap-2 rounded-full bg-olive-700 px-5 py-2.5 text-sm font-semibold text-white shadow transition-all duration-300 hover:bg-olive-800 hover:shadow-lg"
+                    >
+                      {t(`home.news.items.${item.key}.cta`)}
+                      <svg
+                        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-24 bg-gradient-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

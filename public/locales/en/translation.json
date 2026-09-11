@@ -52,6 +52,40 @@
     "gallery": {
       "title": "Our Gallery"
     },
+    "news": {
+      "badge": "Current highlights",
+      "title": "The updates that deserve immediate attention",
+      "subtitle": "We created a dedicated section for the events and proposals that best express the current energy of Relevi Healing.",
+      "sectionCta": "Explore all events",
+      "items": {
+        "holiday": {
+          "label": "Featured",
+          "eyebrow": "Autumn reset",
+          "tagline": "Holistic check-up",
+          "title": "Holiday reset & restart",
+          "description": "An integrated path to regain balance and vitality after summer: iris reading, kinesiology testing and foot reflexology combined in a focused proposal designed for a stronger restart.",
+          "highlights": [
+            "Three professionals in synergy",
+            "Personalised path",
+            "Special offer to discover"
+          ],
+          "cta": "Request information"
+        },
+        "new": {
+          "label": "New proposal",
+          "eyebrow": "New multifunctional room",
+          "tagline": "September in motion",
+          "title": "Time to restart, time for yourself",
+          "description": "Yoga, sound bath, meditation, orthodynamics and regenerative practices in the new panoramic room: a programme designed to support the season restart with rhythm, presence and tangible wellbeing.",
+          "highlights": [
+            "New activities from September",
+            "Trials and dedicated paths",
+            "Welcoming, versatile spaces"
+          ],
+          "cta": "Discover the activities"
+        }
+      }
+    },
     "uniPro": {
       "title": "UNI-PRO Patronage",
       "subtitle": "Collaboration and professional guarantees",
@@ -847,6 +881,17 @@
       "eventHasPassed": "This event has already passed."
     },
     "eventList": {
+      "veraCartaIdentitaEvent": {
+        "title": "OUR TRUE IDENTITY CARD",
+        "description": "An experiential conference to recognise your uniqueness, value your qualities and virtues, transform emotions and thoughts, and make peace with your past. Free entry. The event will take place on Tuesday 29 September 2026 at 8:45 p.m. at Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV). Led by Fabrizia Iervese, sociologist, counsellor and doctor in integrative psychology.",
+        "price": "Free entry",
+        "programme": [
+          "Experiential conference led by Fabrizia Iervese",
+          "Recognising personal uniqueness and enhancing qualities and virtues",
+          "Transforming emotions and thoughts while making peace with the past"
+        ],
+        "reservations": "Info and reservations: Relevi Healing, mobile 351 7471159"
+      },
       "studyDaysEvent": {
         "title": "Study Days: In-depth Holistic Learning",
         "description": "Study days dedicated to holistic disciplines, featuring theoretical and practical sessions led by expert professionals. A unique opportunity to learn and grow in the field of well-being.",
@@ -930,6 +975,15 @@
       }
     },
     "eventDetails": {
+      "veraCartaIdentitaEvent": {
+        "date": "2026-09-29",
+        "dateDisplay": "Tuesday 29 September 2026",
+        "time": "8:45 p.m.",
+        "endTime": "10:30 p.m.",
+        "location": "Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV)",
+        "spots": 0,
+        "spotsLeft": 0
+      },
       "studyDaysEvent": {
         "date": "2026-04-01",
         "dateDisplay": "1 April – 20 June 2026",
