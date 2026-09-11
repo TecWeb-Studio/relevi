@@ -27,10 +27,6 @@ const allOperators: OperatorInfo[] = [
   { key: "tamaraZanchetta", image: "/team-photos-crop/TamaraZanchetta.jpg" },
   { key: "dariaDeBona", image: "/team-photos-crop/DariaBonora.jpg" },
   {
-    key: "giadaGiacomini",
-    image: "/team-photos-crop/GiadaGiacomini.jpg",
-  },
-  {
     key: "stefanoPerinotto",
     image: "/team-photos-crop/StefanoPerinotto.jpg",
   },

@@ -259,14 +259,35 @@ export default function ServicesPage() {
       {/* ── Kinesiologia Sistematica Activity Photo ── */}
       <section className="py-12 bg-olive-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="reveal relative w-full aspect-video rounded-3xl overflow-hidden shadow-xl">
-            <Image
-              src="/images/Miglioramento Foto.jpg"
-              alt="Kinesiologia Sistematica - Attività"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
-              className="object-cover object-center"
-            />
+          <div className="reveal border-[3px] border-green-600 rounded-3xl p-[4px] shadow-xl">
+            <div className="border-[3px] border-green-600 rounded-[22px]">
+              <div className="relative w-full aspect-video rounded-[18px] overflow-hidden">
+                <Image
+                  src="/images/Miglioramento Foto.jpg"
+                  alt="Kinesiologia Sistematica - Attività"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mindful Lab for Kids ── */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal flex justify-center">
+            <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/events/mindful-lab-kids.jpeg"
+                alt="Mindful Lab for Kids - Tamara Zanchetta"
+                width={800}
+                height={1000}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

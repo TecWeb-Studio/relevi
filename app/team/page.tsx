@@ -74,11 +74,6 @@ export default function TeamPage() {
       image: "/team-photos-crop/DariaBonora.jpg",
     },
     {
-      id: 9,
-      key: "giadaGiacomini",
-      image: "/team-photos-crop/GiadaGiacomini.jpg",
-    },
-    {
       id: 10,
       key: "stefanoPerinotto",
       image: "/team-photos-crop/StefanoPerinotto.jpg",

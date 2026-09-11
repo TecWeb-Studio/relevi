@@ -9,7 +9,6 @@ const CAROUSEL_IMAGES = [
   "/images/carousel/i11.jpeg",
   "/images/carousel/i12.jpeg",
   "/images/carousel/i2.jpeg",
-  "/images/carousel/i3.jpeg",
   "/images/carousel/i4.jpeg",
   "/images/carousel/i5.jpeg",
   "/images/carousel/i6.jpeg",
