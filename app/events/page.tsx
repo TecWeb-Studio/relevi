@@ -129,6 +129,9 @@ export default function EventsPage() {
   const { t, i18n } = useTranslation();
 
   const getEventImageShellClassName = (event: Event) => {
+    if (event.imageDisplay === "banner") {
+      return "aspect-[4/1]";
+    }
     if (event.imageDisplay === "poster") {
       return "h-80 bg-gradient-to-br from-olive-50 via-white to-olive-100 p-4";
     }
@@ -141,6 +144,9 @@ export default function EventsPage() {
   };
 
   const getEventImageClassName = (event: Event) => {
+    if (event.imageDisplay === "banner") {
+      return "w-full h-full object-contain object-center";
+    }
     return event.imageDisplay === "poster"
       ? "w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
       : "w-full h-full object-cover object-top";
@@ -352,7 +358,7 @@ export default function EventsPage() {
                                 />
                               </svg>
                               <span>
-                                {details.time} - {details.endTime}
+                                {details.timeDisplay ?? `${details.time} - ${details.endTime}`}
                               </span>
                             </div>
                             <div className="flex items-center gap-2">
@@ -516,7 +522,7 @@ export default function EventsPage() {
                                 />
                               </svg>
                               <span>
-                                {details.time} - {details.endTime}
+                                {details.timeDisplay ?? `${details.time} - ${details.endTime}`}
                               </span>
                             </div>
                             <div className="flex items-center gap-2">
@@ -755,11 +761,13 @@ export default function EventsPage() {
           >
             <>
               <div className="relative">
-                <div className="relative w-full h-36 overflow-hidden bg-olive-100">
+                <div className={`relative w-full overflow-hidden bg-olive-100 ${selectedEvent.imageDisplay === "banner" ? "aspect-[4/1]" : "h-36"}`}>
                   <img
                     src={selectedEvent.image}
                     alt={t(`events.eventList.${selectedEvent.key}.title`)}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    className={selectedEvent.imageDisplay === "banner"
+                      ? getEventImageClassName(selectedEvent)
+                      : "absolute inset-0 w-full h-full object-cover object-center"}
                   />
                 </div>
                 <button
@@ -828,7 +836,7 @@ export default function EventsPage() {
                             />
                           </svg>
                           <span className="font-medium">
-                            {formatDate(details.date)}
+                            {details.dateDisplay ?? formatDate(details.date)}
                           </span>
                         </div>
                         <div className="flex items-center gap-3 text-gray-700">
@@ -846,7 +854,7 @@ export default function EventsPage() {
                             />
                           </svg>
                           <span>
-                            {details.time} - {details.endTime}
+                            {details.timeDisplay ?? `${details.time} - ${details.endTime}`}
                           </span>
                         </div>
                         <div className="flex items-center gap-3 text-gray-700">
@@ -1040,7 +1048,7 @@ export default function EventsPage() {
                           <button
                             onClick={() =>
                               window.open(
-                                "https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0",
+                                selectedEvent.registrationUrl ?? "https://api.whatsapp.com/message/PIEXHXZ5H3RRJ1?autoload=1&app_absent=0",
                                 "_blank",
                               )
                             }

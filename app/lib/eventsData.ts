@@ -7,11 +7,13 @@ export interface EventData {
   images?: string[];
   video?: string;
   openImageUrl?: string;
+  registrationUrl?: string;
 }
 
 export interface EventDetail {
   date: string;
   dateDisplay?: string;
+  timeDisplay?: string;
   time: string;
   endTime: string;
   location: string;
@@ -30,11 +32,38 @@ const DEFAULT_EVENT_DETAIL: EventDetail = {
 
 export const EVENTS: EventData[] = [
   {
+    id: 10,
+    key: "corsiYogaEvent",
+    type: "class",
+    image: "/images/events/corsi-yoga-banner.jpg",
+    imageDisplay: "banner",
+    openImageUrl: "/images/events/CorsiYoga.jpeg",
+    registrationUrl: "https://wa.me/393517471159",
+  },
+  {
+    id: 11,
+    key: "impronteNascitaEvent",
+    type: "special",
+    image: "/images/events/impronte-nascita-banner.jpg",
+    imageDisplay: "banner",
+    openImageUrl: "/images/events/ImpronteNascita.jpeg",
+    registrationUrl: "https://wa.me/393393473278",
+  },
+  {
+    id: 12,
+    key: "traLeManiEvent",
+    type: "workshop",
+    image: "/images/events/tra-le-mani-banner.jpg",
+    imageDisplay: "banner",
+    openImageUrl: "/images/events/TraLeMani.jpeg",
+    registrationUrl: "https://www.instagram.com/moniagioielli/",
+  },
+  {
     id: 9,
     key: "veraCartaIdentitaEvent",
     type: "special",
-    image: "/images/events/evento-29-7.jpeg",
-    imageDisplay: "poster",
+    image: "/images/events/vera-carta-identita-banner.jpg",
+    imageDisplay: "banner",
     openImageUrl: "/images/events/evento-29-7.jpeg",
   },
   {
@@ -103,6 +132,33 @@ export const EVENTS: EventData[] = [
 ];
 
 export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
+  corsiYogaEvent: {
+    // The flyer gives a weekly schedule, without a start or end date.
+    date: "",
+    dateDisplay: "Ogni lunedì e giovedì",
+    time: "09:00",
+    endTime: "10:30",
+    timeDisplay: "Lunedì 09:00–10:30 · Giovedì 19:00–20:30",
+    location: "Relevi Healing - Via Campagna 46, 31020 San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
+  impronteNascitaEvent: {
+    date: "2026-10-17",
+    time: "10:00",
+    endTime: "18:00",
+    location: "Relevi Healing - Via Campagna 46, 31020 San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
+  traLeManiEvent: {
+    date: "2026-10-19",
+    time: "19:00",
+    endTime: "22:00",
+    location: "Relevi Healing - Via Campagna 46, 31020 San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
   veraCartaIdentitaEvent: {
     date: "2026-09-29",
     dateDisplay: "Martedi 29 Settembre 2026",
@@ -212,6 +268,10 @@ export const mergeEventDetails = (key: string, raw: unknown): EventDetail => {
       typeof translated.dateDisplay === "string"
         ? translated.dateDisplay
         : base.dateDisplay,
+    timeDisplay:
+      typeof translated.timeDisplay === "string"
+        ? translated.timeDisplay
+        : base.timeDisplay,
     time:
       typeof translated.time === "string" && translated.time
         ? translated.time

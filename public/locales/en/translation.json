@@ -866,8 +866,41 @@
       "eventHasPassed": "This event has already passed."
     },
     "eventList": {
+      "corsiYogaEvent": {
+        "title": "Yoga classes with Tamara Zanchetta",
+        "description": "Yoga classes with Tamara Zanchetta, a teacher of Hatha Yoga, Yin Yoga, Yoga Nidra and yoga for children. Book your free trial class at Relevi Healing. Individual sessions are also available on request.",
+        "price": "Free trial",
+        "programme": [
+          "Monday, 09:00–10:30",
+          "Or Thursday, 19:00–20:30",
+          "Individual sessions on request"
+        ],
+        "reservations": "To register and book your free trial class, call, text or send a WhatsApp message to +39 351 7471159."
+      },
+      "impronteNascitaEvent": {
+        "title": "Birth Imprints: experiential day",
+        "description": "A day with Valentina Cicini, Weaver of the Soul, to explore your Birth Imprints and experience together what the body remembers and tells of your story. An experience dedicated to the body, presence, listening and care.",
+        "price": "",
+        "programme": [
+          "Saturday 17 October 2026, 10:00–18:00",
+          "Experiential day with Valentina Cicini",
+          "Shared lunch break"
+        ],
+        "reservations": "For information and bookings: Valentina, +39 339 347 3278."
+      },
+      "traLeManiEvent": {
+        "title": "“Tra le mani” jewellery workshop",
+        "description": "A jewellery-making workshop with Monia Gioielli and Mariasole: create a rosary-style piece of jewellery using silver wire and semi-precious stones, at Relevi Healing.",
+        "price": "",
+        "programme": [
+          "Monday 19 October 2026, 19:00–22:00",
+          "Jewellery-making workshop with Monia Gioielli and Mariasole",
+          "Create a rosary-style piece of jewellery using silver wire and semi-precious stones"
+        ],
+        "reservations": "For information and bookings, send a direct message on Instagram to @moniagioielli."
+      },
       "veraCartaIdentitaEvent": {
-        "title": "OUR TRUE IDENTITY CARD",
+        "title": "Our true identity card",
         "description": "An experiential conference to recognise your uniqueness, value your qualities and virtues, transform emotions and thoughts, and make peace with your past. Free entry. The event will take place on Tuesday 29 September 2026 at 8:45 p.m. at Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV). Led by Fabrizia Iervese, sociologist, counsellor and doctor in integrative psychology.",
         "price": "Free entry",
         "programme": [
@@ -960,6 +993,10 @@
       }
     },
     "eventDetails": {
+      "corsiYogaEvent": {
+        "dateDisplay": "Every Monday and Thursday",
+        "timeDisplay": "Monday 09:00–10:30 · Thursday 19:00–20:30"
+      },
       "veraCartaIdentitaEvent": {
         "date": "2026-09-29",
         "dateDisplay": "Tuesday 29 September 2026",

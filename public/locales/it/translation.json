@@ -862,8 +862,41 @@
       "eventHasPassed": "Questo evento è già terminato."
     },
     "eventList": {
+      "corsiYogaEvent": {
+        "title": "Corsi di yoga con Tamara Zanchetta",
+        "description": "Corsi di yoga con Tamara Zanchetta, insegnante di Hatha Yoga, Yin Yoga, Yoga Nidra e yoga per bambini. Prenota la tua lezione di prova gratuita presso Relevi Healing. Sono disponibili anche sessioni individuali su richiesta.",
+        "price": "Prova gratuita",
+        "programme": [
+          "Lunedì dalle 09:00 alle 10:30",
+          "Oppure giovedì dalle 19:00 alle 20:30",
+          "Sessioni individuali su richiesta"
+        ],
+        "reservations": "Per iscrizioni e per prenotare la lezione di prova gratuita: chiama o invia un SMS o un messaggio WhatsApp al 351 7471159."
+      },
+      "impronteNascitaEvent": {
+        "title": "Impronte di Nascita: giornata esperienziale",
+        "description": "Una giornata con Valentina Cicini, Tessitrice dell’Anima, per esplorare le tue Impronte di Nascita e sperimentare insieme ciò che il corpo ricorda e racconta della tua storia. Un’esperienza dedicata al corpo, alla presenza, all’ascolto e alla cura.",
+        "price": "",
+        "programme": [
+          "Sabato 17 ottobre 2026, dalle 10:00 alle 18:00",
+          "Giornata esperienziale con Valentina Cicini",
+          "Pausa pranzo condivisa"
+        ],
+        "reservations": "Per informazioni e prenotazioni: Valentina, 339 347 3278."
+      },
+      "traLeManiEvent": {
+        "title": "Workshop “Tra le mani”",
+        "description": "Laboratorio orafo con Monia Gioielli e Mariasole: realizzerai un gioiello in stile “Rosario” con filo d’argento e pietre semipreziose, presso Relevi Healing.",
+        "price": "",
+        "programme": [
+          "Lunedì 19 ottobre 2026, dalle 19:00 alle 22:00",
+          "Laboratorio orafo con Monia Gioielli e Mariasole",
+          "Realizzazione di un gioiello in stile “Rosario” con filo d’argento e pietre semipreziose"
+        ],
+        "reservations": "Per informazioni e prenotazioni: invia un messaggio diretto su Instagram a @moniagioielli."
+      },
       "veraCartaIdentitaEvent": {
-        "title": "LA NOSTRA VERA CARTA D'IDENTITA",
+        "title": "La nostra vera carta d’identità",
         "description": "Conferenza esperienziale per riconoscere la propria unicita, valorizzare qualita e virtu, trasformare emozioni e pensieri e fare pace con il proprio passato. Ingresso libero. L'evento si terra martedi 29 settembre 2026 alle ore 20:45 presso Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV). Condotto da Fabrizia Iervese, sociologa, counselor e dottoressa in psicologia integrativa.",
         "price": "Ingresso libero",
         "programme": [
@@ -956,6 +989,10 @@
       }
     },
     "eventDetails": {
+      "corsiYogaEvent": {
+        "dateDisplay": "Ogni lunedì e giovedì",
+        "timeDisplay": "Lunedì 09:00–10:30 · Giovedì 19:00–20:30"
+      },
       "veraCartaIdentitaEvent": {
         "date": "2026-09-29",
         "dateDisplay": "Martedi 29 Settembre 2026",
