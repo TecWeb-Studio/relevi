@@ -862,6 +862,20 @@
       "eventHasPassed": "Questo evento è già terminato."
     },
     "eventList": {
+      "vestitiDiTeEvent": {
+        "title": "Vestiti di te",
+        "description": "Percorso interattivo di gruppo in tre incontri per comunicare chi sei attraverso la tua immagine: comunicazione non verbale, autostima e colori. A cura di Sabrina Pozzebon, consulente d’immagine, e Tamara Zanchetta, Life Coach. Massimo 10 partecipanti; è prevista la partecipazione a tutti e tre gli incontri, non ai singoli appuntamenti.",
+        "price": "€130",
+        "programme": [
+          "Martedì 20 ottobre 2026, 20:30–22:30 — Ciò che indosso comunica quella che sono? Immagine, difficoltà, paure e ciò che desideriamo esprimere.",
+          "Martedì 27 ottobre 2026, 20:30–22:30 — Quale colore indosso oggi? Un viaggio nei colori per scoprire quelli che ci rappresentano.",
+          "Venerdì 6 novembre 2026, dalle 19:30 — Aperitivo Armocromatico con mini-sessione personalizzata di analisi del sottotono e della stagione."
+        ],
+        "cost": [
+          "€130 per il percorso completo: consulenza semipersonalizzata, test personalizzati, palette della tua stagione e serata aperitivo sui colori."
+        ],
+        "reservations": "Per informazioni e prenotazioni chiama Relevi Healing al 351 747 1159. Posti limitati: massimo 10 partecipanti."
+      },
       "corsiYogaEvent": {
         "title": "Corsi di yoga con Tamara Zanchetta",
         "description": "Corsi di yoga con Tamara Zanchetta, insegnante di Hatha Yoga, Yin Yoga, Yoga Nidra e yoga per bambini. Prenota la tua lezione di prova gratuita presso Relevi Healing. Sono disponibili anche sessioni individuali su richiesta.",
@@ -989,6 +1003,10 @@
       }
     },
     "eventDetails": {
+      "vestitiDiTeEvent": {
+        "dateDisplay": "20 e 27 ottobre · 6 novembre 2026",
+        "timeDisplay": "20 e 27 ottobre 20:30–22:30 · 6 novembre dalle 19:30"
+      },
       "corsiYogaEvent": {
         "dateDisplay": "Ogni lunedì e giovedì",
         "timeDisplay": "Lunedì 09:00–10:30 · Giovedì 19:00–20:30"

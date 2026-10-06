@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title subtitle">
+  <title id="title">Vestiti di te</title>
+  <desc id="subtitle">Percorso interattivo: 3 incontri per comunicare chi sei</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#fbf5f1"/><stop offset="1" stop-color="#f3e4dc"/></linearGradient>
+    <linearGradient id="silk" x2="1" y2="1"><stop stop-color="#e2bdac"/><stop offset="1" stop-color="#986b68"/></linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#paper)"/>
+  <path d="M0 241 Q85 180 160 257 T326 227 L326 300 H0Z" fill="#e7d5c9" opacity=".55"/>
+  <path d="M963 0 Q1060 66 1200 5 V300 H1072 Q1057 191 960 134Z" fill="url(#silk)" opacity=".65"/>
+  <path d="M1086 0 Q1070 112 1164 206 L1200 240 M1031 0 Q1020 114 1086 232" fill="none" stroke="#f6e9e0" stroke-width="15" opacity=".6"/>
+  <path d="M34 236 Q80 160 143 55 M67 178 Q17 153 17 99 M88 132 Q137 119 165 80 M48 213 Q16 218 2 193" fill="none" stroke="#b59b6e" stroke-width="3" opacity=".65"/>
+  <text x="555" y="126" text-anchor="middle" fill="#245745" font-family="Georgia, 'Times New Roman', serif" font-size="78" letter-spacing="4">VESTITI DI TE</text>
+  <path d="M318 155 H793" stroke="#c9ab89" stroke-width="2"/>
+  <text x="555" y="199" text-anchor="middle" fill="#503f3d" font-family="Arial, sans-serif" font-size="23" letter-spacing="2">PERCORSO INTERATTIVO · 3 INCONTRI</text>
+  <text x="555" y="240" text-anchor="middle" fill="#245745" font-family="Arial, sans-serif" font-size="21">Per comunicare chi sei</text>
+</svg>

@@ -866,6 +866,20 @@
       "eventHasPassed": "This event has already passed."
     },
     "eventList": {
+      "vestitiDiTeEvent": {
+        "title": "Vestiti di te (Dress as yourself)",
+        "description": "An interactive three-session group programme to express who you are through your image, exploring non-verbal communication, self-esteem and colours. Led by image consultant Sabrina Pozzebon and life coach Tamara Zanchetta. Maximum 10 participants; registration is for all three sessions, not individual meetings.",
+        "price": "€130",
+        "programme": [
+          "Tuesday 20 October 2026, 20:30–22:30 — What do my clothes say about me? Image, fears and what we want to express.",
+          "Tuesday 27 October 2026, 20:30–22:30 — What colour am I wearing today? Discover the colours that represent you.",
+          "Friday 6 November 2026, from 19:30 — Colour analysis aperitivo with a personalised mini-session on undertone and seasonal palette."
+        ],
+        "cost": [
+          "€130 for the complete programme: semi-personalised consultation, personalised tests, your seasonal palette and colour-themed aperitivo."
+        ],
+        "reservations": "For information and bookings call Relevi Healing at +39 351 747 1159. Limited to 10 participants."
+      },
       "corsiYogaEvent": {
         "title": "Yoga classes with Tamara Zanchetta",
         "description": "Yoga classes with Tamara Zanchetta, a teacher of Hatha Yoga, Yin Yoga, Yoga Nidra and yoga for children. Book your free trial class at Relevi Healing. Individual sessions are also available on request.",
@@ -993,6 +1007,11 @@
       }
     },
     "eventDetails": {
+      "vestitiDiTeEvent": {
+        "dateDisplay": "20 & 27 October · 6 November 2026",
+        "timeDisplay": "20 & 27 October 20:30–22:30 · 6 November from 19:30",
+        "location": "Venue to be confirmed with Relevi Healing"
+      },
       "corsiYogaEvent": {
         "dateDisplay": "Every Monday and Thursday",
         "timeDisplay": "Monday 09:00–10:30 · Thursday 19:00–20:30"

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Vestiti di te — percorso interattivo</title>
+  <desc id="desc">Tre incontri il 20 e 27 ottobre e il 6 novembre 2026. Prezzo 130 euro, prenotazioni Relevi Healing 351 747 1159.</desc>
+  <rect width="1080" height="1350" fill="#fcf7f3"/>
+  <path d="M0 140 Q110 10 275 0 H0Z M840 0 Q1090 80 1080 360 V0Z" fill="#f1ded8"/>
+  <path d="M890 0 Q836 178 996 360 L1080 410 V0Z" fill="#cbb2a3" opacity=".65"/>
+  <path d="M955 0 Q912 115 1035 292 M1042 0 Q990 92 1080 194" fill="none" stroke="#f8e9e1" stroke-width="18"/>
+  <path d="M0 165 Q65 80 108 29 M30 117 Q9 87 15 43 M60 82 Q97 60 105 13" fill="none" stroke="#b7a47e" stroke-width="3"/>
+  <text x="440" y="98" text-anchor="middle" font-family="Georgia, serif" font-size="70" letter-spacing="3" fill="#245745">VESTITI DI TE</text>
+  <text x="435" y="143" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="#302d2b">PERCORSO INTERATTIVO · 3 INCONTRI PER</text>
+  <text x="435" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="#302d2b">COMUNICARE CHI SEI</text>
+  <text x="540" y="241" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#252525">Scopri come esprimere attraverso la tua immagine</text>
+  <text x="540" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#252525">chi sei veramente, tra comunicazione non verbale,</text>
+  <text x="540" y="303" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#252525">autostima e colori.</text>
+  <rect x="124" y="338" width="832" height="70" rx="12" fill="#f3e0dc"/>
+  <text x="540" y="382" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" fill="#245745">Percorso di gruppo · massimo 10 partecipanti</text>
+  <text x="540" y="446" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#302d2b">È prevista la partecipazione a tutti e tre gli incontri.</text>
+  <text x="540" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#302d2b">Non è possibile partecipare ad incontri singoli.</text>
+  <path d="M134 529 H325 M755 529 H946" stroke="#d4bea4" stroke-width="2"/>
+  <text x="540" y="538" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#245745">I TRE APPUNTAMENTI</text>
+  <rect x="90" y="574" width="900" height="169" rx="22" fill="#fffdfb" stroke="#ebd8cb" stroke-width="2"/>
+  <circle cx="160" cy="651" r="49" fill="#f4dfdc"/><text x="160" y="661" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#705355">1°</text>
+  <text x="231" y="619" font-family="Arial, sans-serif" font-weight="bold" font-size="23" fill="#245745">Ciò che indosso comunica quella che sono?</text>
+  <text x="231" y="653" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#302d2b">Martedì 20 ottobre 2026 · 20:30–22:30</text>
+  <text x="231" y="686" font-family="Arial, sans-serif" font-size="19" fill="#302d2b">Difficoltà, paure e convinzioni: come ci rapportiamo</text>
+  <text x="231" y="714" font-family="Arial, sans-serif" font-size="19" fill="#302d2b">alla nostra immagine e cosa desideriamo esprimere.</text>
+  <rect x="90" y="759" width="900" height="169" rx="22" fill="#fffdfb" stroke="#ebd8cb" stroke-width="2"/>
+  <circle cx="160" cy="835" r="49" fill="#f4dfdc"/><text x="160" y="845" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#705355">2°</text>
+  <text x="231" y="802" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="#245745">Quale colore indosso oggi?</text>
+  <text x="231" y="831" font-family="Arial, sans-serif" font-size="20" fill="#245745">Da “nero per sempre” a giocare con la Vita</text>
+  <text x="231" y="862" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#302d2b">Martedì 27 ottobre 2026 · 20:30–22:30</text>
+  <text x="231" y="893" font-family="Arial, sans-serif" font-size="19" fill="#302d2b">Un viaggio nei colori per scoprire quali ci rappresentano.</text>
+  <rect x="90" y="944" width="900" height="163" rx="22" fill="#fffdfb" stroke="#ebd8cb" stroke-width="2"/>
+  <circle cx="160" cy="1021" r="49" fill="#f4dfdc"/><text x="160" y="1031" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#705355">3°</text>
+  <text x="231" y="985" font-family="Arial, sans-serif" font-weight="bold" font-size="23" fill="#245745">Aperitivo Armocromatico</text>
+  <text x="231" y="1018" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#302d2b">Venerdì 6 novembre 2026 · dalle 19:30</text>
+  <text x="231" y="1050" font-family="Arial, sans-serif" font-size="19" fill="#302d2b">Serata conclusiva con mini-sessione personalizzata</text>
+  <text x="231" y="1078" font-family="Arial, sans-serif" font-size="19" fill="#302d2b">di analisi del sottotono e della propria stagione.</text>
+  <rect x="40" y="1123" width="1000" height="92" rx="18" fill="#f5e3df"/>
+  <text x="72" y="1160" font-family="Georgia, serif" font-size="27" fill="#245745">Prezzo speciale: 130 euro</text>
+  <text x="72" y="1191" font-family="Arial, sans-serif" font-size="18" fill="#302d2b">Consulenza semipersonalizzata · test · palette della tua stagione · aperitivo</text>
+  <rect x="82" y="1226" width="916" height="70" fill="#765059"/>
+  <text x="540" y="1255" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="white">Scopri il percorso e prenota il tuo posto</text>
+  <text x="540" y="1282" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="21" fill="white">Chiama Relevi Healing · 351 747 1159</text>
+  <text x="540" y="1327" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#245745">Sabrina Pozzebon, consulente d’immagine · Tamara Zanchetta, Life Coach</text>
+</svg>
