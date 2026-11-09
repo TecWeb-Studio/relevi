@@ -866,6 +866,28 @@
       "eventHasPassed": "This event has already passed."
     },
     "eventList": {
+      "incontriSaluteComunita": {
+        "title": "Community Health Talks",
+        "description": "A free series of talks dedicated to wellbeing, prevention and mindful healthcare. Your health in numbers, choices and daily habits. Organised by Relevi Healing and Farmacia di Tezze di Piave. Led by Dr Angela Iudici, Pharmacy Director, and Francesca Mayer, Director of Relevi Healing.",
+        "price": "Free admission",
+        "programme": [
+          "1. Know your numbers — Thursday 12 November 2026, 8:45 p.m.: measurements to help you look after your health: blood pressure, heart rate, blood sugar, cholesterol, BMI, etc.",
+          "2. Supplements — Thursday 3 December 2026, 8:45 p.m.: how to navigate supplements without being misled, and interactions with medications.",
+          "3. The home first-aid kit — Thursday 14 January 2027, 8:45 p.m.: what do you really need? Over-the-counter and prescription medicines."
+        ],
+        "reservations": "Info/bookings: 0438 488260 Farmacia di Tezze di Piave or 351 7471159 Relevi Healing. Venue: Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV)."
+      },
+      "corsoQiGongEvent": {
+        "title": "New Qi Gong Course",
+        "description": "Movement, breath and awareness to restore balance and wellbeing. Led by Ruben Rossi. First lesson free.",
+        "price": "First lesson free",
+        "programme": [
+          "Tuesday 17 November 2026, 18:30–20:00",
+          "Led by Ruben Rossi",
+          "First lesson free — book your spot"
+        ],
+        "reservations": "Book your spot: contact Relevi Healing at 351 747 1159. Venue: Via Campagna 46, 31020 San Polo di Piave (TV)."
+      },
       "vestitiDiTeEvent": {
         "title": "Vestiti di te (Dress as yourself)",
         "description": "An interactive three-session group programme to express who you are through your image, exploring non-verbal communication, self-esteem and colours. Led by image consultant Sabrina Pozzebon and life coach Tamara Zanchetta. Maximum 10 participants; registration is for all three sessions, not individual meetings.",
@@ -1007,6 +1029,14 @@
       }
     },
     "eventDetails": {
+      "incontriSaluteComunita": {
+        "dateDisplay": "12 Nov · 3 Dec 2026 · 14 Jan 2027",
+        "timeDisplay": "8:45 p.m."
+      },
+      "corsoQiGongEvent": {
+        "dateDisplay": "Tuesday 17 November 2026",
+        "timeDisplay": "18:30–20:00"
+      },
       "vestitiDiTeEvent": {
         "dateDisplay": "20 & 27 October · 6 November 2026",
         "timeDisplay": "20 & 27 October 20:30–22:30 · 6 November from 19:30",

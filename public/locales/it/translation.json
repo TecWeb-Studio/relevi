@@ -862,6 +862,28 @@
       "eventHasPassed": "Questo evento è già terminato."
     },
     "eventList": {
+      "incontriSaluteComunita": {
+        "title": "Incontri sulla Salute e la sua Gestione per la Comunità",
+        "description": "Un ciclo di appuntamenti gratuiti dedicati al benessere, alla prevenzione e alla cura consapevole. La tua salute in numeri, scelte e gesti quotidiani. Organizzato da Relevi Healing e Farmacia di Tezze di Piave. A cura di Dr.ssa Angela Iudici, Direttrice Farmacia, e Francesca Mayer, direttrice Relevi Healing.",
+        "price": "Ingresso gratuito",
+        "programme": [
+          "1. Conosci i tuoi numeri — Giovedì 12 novembre 2026, ore 20.45: le misurazioni che possono aiutarti a prenderti cura della tua salute: pressione, FC, glicemia, colesterolo, BMI, ecc.",
+          "2. Integratori — Giovedì 3 dicembre 2026, ore 20.45: come orientarsi senza farsi ingannare e interazioni con farmaci.",
+          "3. La cassetta del pronto soccorso in casa — Giovedì 14 gennaio 2027, ore 20.45: cosa serve davvero? Farmaci da banco e da prescrizione."
+        ],
+        "reservations": "Info/prenotazioni: 0438 488260 Farmacia di Tezze di Piave oppure 351 7471159 Relevi Healing. Luogo: Relevi Healing, Via Campagna 46, 31020 San Polo di Piave (TV)."
+      },
+      "corsoQiGongEvent": {
+        "title": "Nuovo Corso di Qi Gong",
+        "description": "Movimento, respiro e consapevolezza per ritrovare equilibrio e benessere. Conduce Ruben Rossi. Prima lezione gratuita.",
+        "price": "Prima lezione gratuita",
+        "programme": [
+          "Martedì 17 novembre 2026, dalle 18:30 alle 20:00",
+          "Conduce Ruben Rossi",
+          "Prima lezione gratuita — prenota il tuo posto"
+        ],
+        "reservations": "Prenota il tuo posto: contatta Relevi Healing al 351 747 1159. Luogo: Via Campagna 46, 31020 San Polo di Piave (TV)."
+      },
       "vestitiDiTeEvent": {
         "title": "Vestiti di te",
         "description": "Percorso interattivo di gruppo in tre incontri per comunicare chi sei attraverso la tua immagine: comunicazione non verbale, autostima e colori. A cura di Sabrina Pozzebon, consulente d’immagine, e Tamara Zanchetta, Life Coach. Massimo 10 partecipanti; è prevista la partecipazione a tutti e tre gli incontri, non ai singoli appuntamenti.",
@@ -1003,6 +1025,14 @@
       }
     },
     "eventDetails": {
+      "incontriSaluteComunita": {
+        "dateDisplay": "12 nov · 3 dic 2026 · 14 gen 2027",
+        "timeDisplay": "ore 20.45"
+      },
+      "corsoQiGongEvent": {
+        "dateDisplay": "Martedì 17 novembre 2026",
+        "timeDisplay": "18:30–20:00"
+      },
       "vestitiDiTeEvent": {
         "dateDisplay": "20 e 27 ottobre · 6 novembre 2026",
         "timeDisplay": "20 e 27 ottobre 20:30–22:30 · 6 novembre dalle 19:30"

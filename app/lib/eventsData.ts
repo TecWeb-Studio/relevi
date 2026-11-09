@@ -32,6 +32,24 @@ const DEFAULT_EVENT_DETAIL: EventDetail = {
 
 export const EVENTS: EventData[] = [
   {
+    id: 15,
+    key: "incontriSaluteComunita",
+    type: "special",
+    image: "/images/events/incontri-salute-comunita/volantino.jpeg",
+    imageDisplay: "poster",
+    openImageUrl: "/images/events/incontri-salute-comunita/volantino.jpeg",
+    registrationUrl: "https://wa.me/393517471159",
+  },
+  {
+    id: 14,
+    key: "corsoQiGongEvent",
+    type: "class",
+    image: "/images/events/corso-qi-gong/volantino.jpeg",
+    imageDisplay: "poster",
+    openImageUrl: "/images/events/corso-qi-gong/volantino.jpeg",
+    registrationUrl: "https://wa.me/393517471159",
+  },
+  {
     id: 13,
     key: "vestitiDiTeEvent",
     type: "workshop",
@@ -141,6 +159,26 @@ export const EVENTS: EventData[] = [
 ];
 
 export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
+  incontriSaluteComunita: {
+    date: "2027-01-14",
+    dateDisplay: "12 nov · 3 dic 2026 · 14 gen 2027",
+    time: "20:45",
+    endTime: "22:00",
+    timeDisplay: "ore 20.45",
+    location: "Relevi Healing - Via Campagna 46, 31020 San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
+  corsoQiGongEvent: {
+    date: "2026-11-17",
+    dateDisplay: "Martedì 17 novembre 2026",
+    time: "18:30",
+    endTime: "20:00",
+    timeDisplay: "18:30–20:00",
+    location: "Relevi Healing - Via Campagna 46, 31020 San Polo di Piave (TV)",
+    spots: 0,
+    spotsLeft: 0,
+  },
   vestitiDiTeEvent: {
     date: "2026-11-06",
     dateDisplay: "20 e 27 ottobre · 6 novembre 2026",
