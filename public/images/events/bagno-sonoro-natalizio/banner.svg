@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Bagno sonoro natalizio</title>
+  <desc id="desc">Un regalo speciale, tempo di benessere. Giovedì 10 dicembre 2026, ore 20:30. Invito gratuito.</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f7efdd"/><stop offset="1" stop-color="#e9dcc0"/></linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#paper)"/>
+  <path d="M0 0H155Q80 150 167 300H0Z M1200 0H1060Q1150 150 1030 300H1200Z" fill="#244737"/>
+  <g fill="none" stroke="#b6a16a" stroke-width="2" opacity=".8">
+    <path d="M20 280Q60 150 102 32 M45 210L17 165 M45 210L87 177 M62 156L35 108 M62 156L105 120 M80 100L58 61 M80 100L116 65"/>
+    <path d="M1180 280Q1140 150 1098 32 M1155 210L1183 165 M1155 210L1113 177 M1138 156L1165 108 M1138 156L1095 120 M1120 100L1142 61 M1120 100L1084 65"/>
+    <path d="M439 213H761"/>
+  </g>
+  <text x="600" y="56" text-anchor="middle" fill="#54654d" font-family="Arial, sans-serif" font-size="21" letter-spacing="3">UN REGALO SPECIALE, TEMPO DI BENESSERE</text>
+  <text x="600" y="135" text-anchor="middle" fill="#244737" font-family="Georgia, 'Times New Roman', serif" font-size="67">Bagno sonoro natalizio</text>
+  <text x="600" y="185" text-anchor="middle" fill="#244737" font-family="Arial, sans-serif" font-size="24">Lasciati massaggiare dalle vibrazioni dei suoni</text>
+  <text x="600" y="255" text-anchor="middle" fill="#244737" font-family="Arial, sans-serif" font-size="24">10 DICEMBRE 2026 · ORE 20:30 · INVITO GRATUITO</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Incontri sulla Salute e la sua Gestione per la Comunità</title>
+  <desc id="desc">Appuntamenti gratuiti con Relevi Healing e Farmacia di Tezze di Piave.</desc>
+  <rect width="1200" height="300" fill="#faf8f0"/>
+  <path d="M0 0H100Q45 160 177 300H0Z M1200 0H1050Q1100 100 1200 160Z" fill="#b8c4b0" opacity=".7"/>
+  <g fill="none" stroke="#98a68a" stroke-width="2">
+    <path d="M22 278Q80 160 70 42 M58 188Q15 169 19 126Q64 140 58 188 M70 139Q116 117 111 77Q67 96 70 139 M69 91Q32 71 40 28Q75 47 69 91"/>
+    <path d="M1175 275Q1110 204 1120 143 M1146 239Q1182 218 1175 190Q1139 208 1146 239 M1123 193Q1083 189 1081 159Q1115 162 1123 193"/>
+  </g>
+  <text x="600" y="47" text-anchor="middle" fill="#365c62" font-family="Arial, sans-serif" font-size="20" letter-spacing="1">RELEVI HEALING · FARMACIA DI TEZZE DI PIAVE</text>
+  <text x="600" y="116" text-anchor="middle" fill="#285563" font-family="Georgia, 'Times New Roman', serif" font-size="53">Incontri sulla Salute</text>
+  <text x="600" y="175" text-anchor="middle" fill="#285563" font-family="Georgia, 'Times New Roman', serif" font-size="43">e la sua Gestione per la Comunità</text>
+  <path d="M410 207H790" stroke="#baa56c" stroke-width="2"/>
+  <text x="600" y="252" text-anchor="middle" fill="#52634f" font-family="Arial, sans-serif" font-size="24">Benessere, prevenzione e cura consapevole · Ingresso gratuito</text>
+</svg>

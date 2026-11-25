@@ -32,11 +32,19 @@ const DEFAULT_EVENT_DETAIL: EventDetail = {
 
 export const EVENTS: EventData[] = [
   {
+    id: 16,
+    key: "bagnoSonoroNatalizioEvent",
+    type: "special",
+    image: "/images/events/bagno-sonoro-natalizio/banner.svg",
+    imageDisplay: "banner",
+    openImageUrl: "/images/events/bagno-natalizio.jpeg",
+  },
+  {
     id: 15,
     key: "incontriSaluteComunita",
     type: "special",
-    image: "/images/events/incontri-salute-comunita/volantino.jpeg",
-    imageDisplay: "poster",
+    image: "/images/events/incontri-salute-comunita/banner.svg",
+    imageDisplay: "banner",
     openImageUrl: "/images/events/incontri-salute-comunita/volantino.jpeg",
     registrationUrl: "https://wa.me/393517471159",
   },
@@ -153,12 +161,23 @@ export const EVENTS: EventData[] = [
     id: 8,
     key: "masterCounselingOlisticoEvent",
     type: "class",
-    image: "/images/events/master-counseling-olistico/volantino.jpeg",
+    image: "/images/events/master-counseling-olistico/banner.svg",
+    imageDisplay: "banner",
     openImageUrl: "/images/events/master-counseling-olistico/volantino.jpeg",
   },
 ];
 
 export const EVENT_DETAILS_BY_KEY: Record<string, EventDetail> = {
+  bagnoSonoroNatalizioEvent: {
+    date: "2026-12-10",
+    dateDisplay: "Giovedì 10 dicembre 2026",
+    time: "20:30",
+    endTime: "",
+    timeDisplay: "ore 20:30",
+    location: "Relevi Healing",
+    spots: 0,
+    spotsLeft: 0,
+  },
   incontriSaluteComunita: {
     date: "2027-01-14",
     dateDisplay: "12 nov · 3 dic 2026 · 14 gen 2027",

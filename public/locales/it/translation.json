@@ -859,9 +859,20 @@
       "cost": "Costo",
       "reservations": "Prenotazioni",
       "registrationMessage": "Iscrizioni in arrivo!",
+      "viewFlyer": "Visualizza Locandina",
       "eventHasPassed": "Questo evento è già terminato."
     },
     "eventList": {
+      "bagnoSonoroNatalizioEvent": {
+        "title": "Bagno sonoro natalizio",
+        "reservations": "Per iscrizioni e per prenotare la lezione di prova gratuita: chiama o invia un SMS o un messaggio WhatsApp al 351 7471159.",
+        "description": "Un regalo speciale, tempo di benessere. Quest’anno il nostro regalo di Natale non è un oggetto: è una serata di benessere, un dono prezioso di tempo, ascolto e armonia. Lasciati massaggiare dalle vibrazioni dei suoni. Un invito gratuito per chi ha già avuto il piacere di frequentare Relevi Healing nelle sue diverse proposte o desidera conoscerla per la prima volta.",
+        "price": "Invito gratuito",
+        "programme": [
+          "Giovedì 10 dicembre 2026, ore 20:30",
+          "Bagno sonoro natalizio: lasciati massaggiare dalle vibrazioni dei suoni"
+        ]
+      },
       "incontriSaluteComunita": {
         "title": "Incontri sulla Salute e la sua Gestione per la Comunità",
         "description": "Un ciclo di appuntamenti gratuiti dedicati al benessere, alla prevenzione e alla cura consapevole. La tua salute in numeri, scelte e gesti quotidiani. Organizzato da Relevi Healing e Farmacia di Tezze di Piave. A cura di Dr.ssa Angela Iudici, Direttrice Farmacia, e Francesca Mayer, direttrice Relevi Healing.",
@@ -1025,6 +1036,10 @@
       }
     },
     "eventDetails": {
+      "bagnoSonoroNatalizioEvent": {
+        "dateDisplay": "Giovedì 10 dicembre 2026",
+        "timeDisplay": "ore 20:30"
+      },
       "incontriSaluteComunita": {
         "dateDisplay": "12 nov · 3 dic 2026 · 14 gen 2027",
         "timeDisplay": "ore 20.45"

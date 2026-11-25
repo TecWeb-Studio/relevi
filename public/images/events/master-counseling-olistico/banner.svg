@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Master Integrativo in Counseling Olistico</title>
+  <desc id="desc">UNI-PRO. Percorso di crescita professionale, sette weekend intensivi in presenza.</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#faf9f0"/><stop offset="1" stop-color="#eae8db"/></linearGradient>
+    <linearGradient id="color" x2="1" y2="1"><stop stop-color="#b08b46"/><stop offset="1" stop-color="#287586"/></linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#paper)"/>
+  <path d="M0 0H92Q172 97 94 180T100 300H0Z M1200 0H1120Q1036 115 1120 195T1100 300H1200Z" fill="url(#color)" opacity=".55"/>
+  <path d="M143 20H1057 M143 280H1057" stroke="#a18e60" stroke-width="2"/>
+  <text x="600" y="63" text-anchor="middle" fill="#36656c" font-family="Arial, sans-serif" font-size="22" letter-spacing="5">UNI-PRO</text>
+  <text x="600" y="124" text-anchor="middle" fill="#283c3c" font-family="Georgia, 'Times New Roman', serif" font-size="51">Master Integrativo in</text>
+  <text x="600" y="187" text-anchor="middle" fill="#283c3c" font-family="Georgia, 'Times New Roman', serif" font-size="60">Counseling Olistico</text>
+  <text x="600" y="244" text-anchor="middle" fill="#36656c" font-family="Arial, sans-serif" font-size="23">CRESCITA PROFESSIONALE · 7 WEEKEND IN PRESENZA</text>
+</svg>

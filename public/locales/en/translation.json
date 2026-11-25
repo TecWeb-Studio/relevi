@@ -863,9 +863,20 @@
       "cost": "Cost",
       "reservations": "Reservations",
       "registrationMessage": "Registration coming soon!",
+      "viewFlyer": "View Flyer",
       "eventHasPassed": "This event has already passed."
     },
     "eventList": {
+      "bagnoSonoroNatalizioEvent": {
+        "title": "Christmas Sound Bath",
+        "reservations": "To register and book your free trial lesson, call or send an SMS or WhatsApp message to +39 351 7471159.",
+        "description": "A special gift: time for wellbeing. This year, our Christmas gift is not an object: it is an evening of wellbeing, a precious gift of time, listening and harmony. Let the vibrations of sound massage you. A free invitation for anyone who has already enjoyed Relevi Healing’s activities or would like to discover them for the first time.",
+        "price": "Free admission",
+        "programme": [
+          "Thursday, December 10, 2026, at 8:30 PM",
+          "Christmas sound bath: let the vibrations of sound massage you"
+        ]
+      },
       "incontriSaluteComunita": {
         "title": "Community Health Talks",
         "description": "A free series of talks dedicated to wellbeing, prevention and mindful healthcare. Your health in numbers, choices and daily habits. Organised by Relevi Healing and Farmacia di Tezze di Piave. Led by Dr Angela Iudici, Pharmacy Director, and Francesca Mayer, Director of Relevi Healing.",
@@ -1029,6 +1040,10 @@
       }
     },
     "eventDetails": {
+      "bagnoSonoroNatalizioEvent": {
+        "dateDisplay": "Thursday, December 10, 2026",
+        "timeDisplay": "8:30 PM"
+      },
       "incontriSaluteComunita": {
         "dateDisplay": "12 Nov · 3 Dec 2026 · 14 Jan 2027",
         "timeDisplay": "8:45 p.m."
